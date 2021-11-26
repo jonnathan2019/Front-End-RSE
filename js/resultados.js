@@ -1,0 +1,638 @@
+let resutaldo_final;//tiene el resultado final del algoritmo
+let objeto_resp;//objeto para guardar los resulatados de las dimensiones, temas e indicadores 
+//Obtenemos el USUARIO de la URL
+function obtener_valor(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+
+var usuario_ID = obtener_valor("usuario");//OBtenemos el ID de la URLs
+// console.log(usuario_ID)
+//cargamos al informacion del USUARIO 
+const info_user = document.querySelector('.datos-usuario');
+let out_info_user = '';
+var encuestado_ID;
+fetch(`${link_service}consultas/usuarioId/${usuario_ID}`)
+    .then(response => response.json())
+    .then(data => {
+        out_info_user += `
+                            <div class="nombre-user">
+                                <span>${data.usuario}</span>
+                            </div>
+                            <div class="correo-user">
+                                <span>${data.encuestado.correo}</span>
+                            </div>
+                                `;
+        info_user.innerHTML = out_info_user;
+        encuestado_ID = data.encuestado.encuestado_ID;//guardamos el ID del encuestado
+
+    })
+
+var valor_minimo = [];
+var valor_maximo = [];
+var valor_real = [];
+var indicadores_tema = [];//cantidad de indicadores por tema 
+let tema_dimension = [4, 1];//***********************NUMERO DE TEMAS POR DIMENSION */
+//______________OBTENER INFORMACION (creamos un objeto con toda la informaicion respecto a las respuestas del Usuaio)______________________
+const objeto_respuestas = [];
+let auxiliar = 0;
+//________________________________________--
+async function getRespuetasIndicadores() {
+    const respuesta = await fetch(`${link_service}consultas/respuestasIndicadores`)
+    const json = await respuesta.json()
+
+    return json;
+}
+
+async function getRespuetasIndicadoresPreguntas() {
+    const respuesta = await fetch(`${link_service}consultas/respuestasIndicadoresPreguntas`)
+    const json = await respuesta.json()
+
+    return json;
+}
+//Creamos el Objeto
+(async function () {
+    const respuestasIndicadores = await getRespuetasIndicadores()
+    const respuestasIndicadoresPreguntas = await getRespuetasIndicadoresPreguntas()
+
+    //console.log(data)
+    // console.log(encuestado_ID)
+    respuestasIndicadores.forEach(element => {
+        //console.log("- " + element.indicador.indicador_ID) //ID del indicador respondido
+        //console.log("- "+element.respuestas_Indicadores_ID)
+        //para o tener las respuesats solo del encuestado
+        if (element.encuestado.encuestado_ID == encuestado_ID) {
+            auxiliar = 1;
+            // console.log(element.encuestado.encuestado_ID)
+            let datos = []
+            respuestasIndicadoresPreguntas.forEach(respuestas_valores => {
+                if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID) {//obtenemos las respuetas del indicador para realizar la suma
+                    //console.log("-- " + element.indicador.tema.dimension.nombre)//nombre la dimensionrespondido
+                    //console.log("----- " + element.indicador.tema.nombre)//nombre del tema respondido
+                    //console.log("- " + element.indicador.nombre)//nombre del indicador respondido
+                    //console.log(respuestas_valores.respuesta)
+                    //guardamos desde DIMENIONES
+                    const dimension_existe = objeto_respuestas.find(t => t.dimension === element.indicador.tema.dimension.nombre);
+                    if (!dimension_existe) {
+                        const object_dim = {
+                            dimension: element.indicador.tema.dimension.nombre,
+                            temas: [],
+                            uno_cantidad_temas: 0,
+                            nivel_2: 0
+                        }
+                        objeto_respuestas.push(object_dim)
+                    }
+                    objeto_respuestas.find((dimen, index) => {
+                        if (dimen.dimension === element.indicador.tema.dimension.nombre) {
+                            const object_tema = {
+                                nombre: element.indicador.tema.nombre,
+                                indicadores: [],
+                                uno_cantida_indiacadores: 0,
+                                nivel_1: 0
+                            }
+
+                            const tema_existe = objeto_respuestas[index].temas.find(t => t.nombre === element.indicador.tema.nombre)
+                            if (!tema_existe) {
+                                objeto_respuestas[index].temas.push(object_tema)
+                            }
+                            objeto_respuestas[index].temas.find((tema, index_1) => {
+                                if (tema.nombre === element.indicador.tema.nombre) {
+                                    const object_inidcadores = {
+                                        indicador: element.indicador.nombre,
+                                        respuestas: [],
+                                        valor_real: 0,
+                                        valor_maximo: 0,
+                                        valor_minimo: 0,
+                                        valor_real_normalizado: 0,
+                                        valor_1_formula: 0
+                                    }
+                                    const indicador_existe = objeto_respuestas[index].temas[index_1].indicadores.find(i => i.indicador === element.indicador.nombre)
+                                    if (!indicador_existe) {
+                                        objeto_respuestas[index].temas[index_1].indicadores.push(object_inidcadores)
+                                    }
+                                    //00000
+                                    objeto_respuestas[index].temas[index_1].indicadores.find((indica, inidex_2) => {
+                                        if (indica.indicador === element.indicador.nombre) {
+                                            objeto_respuestas[index].temas[index_1].indicadores[inidex_2].respuestas.push(respuestas_valores.respuesta)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+
+        }
+    })
+    if (auxiliar == 1) {
+        //llamamos a la funcion para aplicar el algoritmo
+        algoritmo_graficar();
+    }
+
+
+})()
+
+//______Algoritmo Inicio_____
+async function getAlgoritmo() {
+
+    //---------------- FORMULA Inicio ---------------------------
+    //console.log(objeto_respuestas)
+    objeto_resp = objeto_respuestas;
+    objeto_resp.forEach(datos_preguntas => {
+        //console.log(datos_preguntas)
+        datos_preguntas.temas.forEach(element => {
+            //console.log(element.indicadores)
+            element.indicadores.forEach(element_2 => {//recorremos cada indicador
+                //console.log(element_2.indicador)
+                //console.log(element_2.respuestas)
+                let sum = 0;
+                let cont = 0;
+                for (let i = 0; i < element_2.respuestas.length; i++) {
+                    sum += element_2.respuestas[i];
+                    cont = cont + 1;
+                }
+                element_2.valor_real = sum//guardamos la suma
+                element_2.valor_maximo = cont * 2//el valor maximo (multiplicamos por dos por que es el valor maximo de cada pregunta)
+                //normalizamos el valor real y guardamos en OBJETO
+                element_2.valor_real_normalizado = (element_2.valor_real - element_2.valor_minimo) / (element_2.valor_maximo - element_2.valor_minimo)
+            })
+            element.uno_cantida_indiacadores = 1 / element.indicadores.length;//1 sobre cantidad de  INIDCADORES (1/cant_indicadores) 
+
+        })
+
+    })
+
+    //--------------------- FORMULA -------------------------
+    //--------------------- NIVEL 1 ------------------------
+    let peso = 2;
+    objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+        datos_preguntas.temas.forEach(element => {//recorresmos TEMAS
+            let cantidad_indadores_normalizado = element.uno_cantida_indiacadores;
+            let suma_niveles = 0;
+            element.indicadores.forEach(element_2 => {//recorremos cada indicador
+                let total = Math.pow(element_2.valor_real_normalizado, peso) * cantidad_indadores_normalizado;
+                element_2.valor_1_formula = total;//guardamos los resultados de los indicadores
+                suma_niveles = suma_niveles + total;
+            })
+            element.nivel_1 = Math.pow(suma_niveles, 1 / peso).toFixed(3)//guardamos los resultados de los temas
+
+        })
+        datos_preguntas.uno_cantidad_temas = 1 / datos_preguntas.temas.length;//1 sobre la cantidad de TEMAS (1/cant_TEMAS)
+
+    })
+    //--------------------- NIVEL 2 -------------------------
+    objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+        let cantidad_temas_normalizados = datos_preguntas.uno_cantidad_temas;
+        let suma_niveles = 0;
+        datos_preguntas.temas.forEach(element => {//recorremos TEMAS
+            //console.log(element)
+            let total = Math.pow(element.nivel_1, peso) * cantidad_temas_normalizados;
+            suma_niveles = suma_niveles + total;
+        })
+        //Math.pow(suma_niveles, 1 / peso).toFixed(3)
+        datos_preguntas.nivel_2 = Math.pow(suma_niveles, 1 / peso).toFixed(3) //guardamos los resultados de las Dimenisones
+    })
+    //--------------------- NIVEL 3 -------------------------
+    let suma_niveles = 0;
+    objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+        let total = Math.pow(datos_preguntas.nivel_2, peso) * datos_preguntas.uno_cantidad_temas;
+        suma_niveles = suma_niveles + total;
+    })
+    resutaldo_final = Math.pow(suma_niveles, 1 / peso).toFixed(2);//FINAL DEL ALGORITMO-----------
+    //---------------- FORMULA Fin ---------------------------
+}
+//______Algoritmo FIn_____
+
+function algoritmo_graficar() {
+
+    (async function () {
+        //llamamos a la funcion para que aplique el algoritmo
+        await getAlgoritmo()
+        //__________________Clasifcacion TEMAS____________________________
+        const mejora_social = document.querySelector('.contenido-info-mejora-social');
+        const posibilidad_mejora_social = document.querySelector('.contenido-info-posibilidad-mejora-social');
+        const estable_social = document.querySelector('.contenido-info-estable-social');
+        let outMejora_social = '';
+        let outPosiblidaMejora_social = '';
+        let outEstable_social = '';
+
+        const mejora_ambiental = document.querySelector('.contenido-info-mejora-ambiental');
+        const posibilidad_mejora_ambiental = document.querySelector('.contenido-info-posibilidad-mejora-ambiental');
+        const estable_ambiental = document.querySelector('.contenido-info-estable-ambiental');
+        let outMejora_ambiental = '';
+        let outPosiblidaMejora_ambiental = '';
+        let outEstable_ambiental = '';
+
+        objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+            let nom_dim = datos_preguntas.dimension
+            datos_preguntas.temas.forEach(element => {//recorremos TEMAS
+                if (nom_dim == "Social") {
+                    if (element.nivel_1 < 0.33) {
+                        outMejora_social += `
+                                    <div class="tema-puntaje"> 
+                                        <div class="tema-info">
+                                            <p>${element.nombre}</p>
+                                        </div>
+                                        <div class="puntaje-info">
+                                            <p>${(element.nivel_1 * 100).toFixed(2)}%</p>
+                                        </div>
+                                    </div>`;
+                    } else if (element.nivel_1 < 0.66) {
+                        outPosiblidaMejora_social += `
+                                    <div class="tema-puntaje"> 
+                                        <div class="tema-info">
+                                            <p>${element.nombre}</p>
+                                        </div>
+                                        <div class="puntaje-info">
+                                            <p>${(element.nivel_1 * 100).toFixed(2)}%</p>
+                                        </div>
+                                    </div>`;
+                    } else if (element.nivel_1 > 0.66) {
+                        outEstable_social += `
+                                    <div class="tema-puntaje"> 
+                                        <div class="tema-info">
+                                            <p>${element.nombre}</p>
+                                        </div>
+                                        <div class="puntaje-info">
+                                            <p>${(element.nivel_1 * 100).toFixed(2)}%</p>
+                                        </div>
+                                    </div>`;
+                    }
+
+                } else {
+                    if (element.nivel_1 < 0.33) {
+                        outMejora_ambiental += `
+                    <div class="tema-puntaje">
+                        <div class="tema-info">
+                            <p>${element.nombre}</p>
+                        </div>
+                        <div class="puntaje-info">
+                            <p>${(element.nivel_1 * 100).toFixed(2)}%</p>
+                        </div>
+                    </div>`;
+                    } else if (element.nivel_1 < 0.66) {
+                        outPosiblidaMejora_ambiental += `
+                    <div class="tema-puntaje">
+                        <div class="tema-info">
+                            <p>${element.nombre}</p>
+                        </div>
+                        <div class="puntaje-info">
+                            <p>${(element.nivel_1 * 100).toFixed(2)}%</p>
+                        </div>
+                    </div>`;
+                    } else if (element.nivel_1 > 0.66) {
+                        outEstable_ambiental += `
+                    <div class="tema-puntaje">
+                        <div class="tema-info">
+                            <p>${element.nombre}</p>
+                        </div>
+                        <div class="puntaje-info">
+                            <p>${(element.nivel_1 * 100).toFixed(2)}%</p>
+                        </div>
+                    </div>`;
+                    }
+                }
+            })
+        })
+
+        mejora_social.innerHTML = outMejora_social;
+        posibilidad_mejora_social.innerHTML = outPosiblidaMejora_social;
+        estable_social.innerHTML = outEstable_social;
+
+        mejora_ambiental.innerHTML = outMejora_ambiental;
+        posibilidad_mejora_ambiental.innerHTML = outPosiblidaMejora_ambiental;
+        estable_ambiental.innerHTML = outEstable_ambiental;
+        //_____________________________________________
+
+
+        //---------------------- MOSTRAR INFO TABLA ----------------------
+        const estandares = document.querySelector('.cuerpo-tabla-temas');
+        const estandares_pdf = document.querySelector('.cuerpo-tabla-temas-pdf');
+        let outEstandares = '';
+        let outEstandares_pdf = '';
+        let imagenes = ["../imagenes/Derechos_Humanos.jpg", "../imagenes/practicas_trabajo.png", "../imagenes/medio_ambiente.jpg", "../imagenes/participacion_comunidad_desarrollo.jpg", "../imagenes/practicas_trabajo.png"]
+        let i = 0;
+        let num_temas = 0;
+        var lista_temas_class = [];
+        var lista_barras_temas = [];
+        var lista_barras_temas_pdf = [];
+        objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+            let nom_dim = datos_preguntas.dimension
+            datos_preguntas.temas.forEach(element => {//recorremos TEMAS
+                element.nombre
+                element.nivel_1
+                outEstandares += `
+                                                        <div class="contenido-indicador fila">
+                                                            <div class="info-tema">
+                                                                <div class="nom-img-temas fila-contenct">
+                                                                    <img class="imagen" src=${imagenes[i]}>
+                                                                    <div class="nom_tema">${element.nombre}</div>
+                                                                </div>
+                                                                <div class="impacto-tema fila-contenct">${(element.nivel_1 * 100).toFixed(2)}%</div>
+                                                                <div class="barra-tema fila-contenct">
+                                                                    <div class="grafica-barra-temas">
+                                                                        <div class="linea-vertical linea-vertical-izquierda">
+                                                                            <div class="vertical-line" style="height: 30px;" ></div>
+                                                                            <span>0</span>
+                                                                        </div>
+                                                                        <div class="contorno">
+                                                                            <div class="valor valor-${num_temas}">
+
+                                                                            </div>
+                                                                        </div>
+                                                                            <div class="linea-vertical linea-vertica-deracha">
+                                                                            <div class="vertical-line" style="height: 30px;" ></div>
+                                                                            <span>100</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tabla-info-indicadores">
+                                                                <div class="tabla-indicadores-titulo tabla-indicadores-titulo-${num_temas}">
+                                                                    <div class="cabecera-tabla">
+                                                                        <span class="titulo-1">Nombre</span>
+                                                                        <span class="titulo-2">Impacto</span>
+                                                                    </div>
+                                                                    <div class="cuerpo-tabla cuerpo-tabla-${num_temas}">
+                                                                        <div class="cuerpo-fila">
+                                                                            <span class="contendio-1">a</span>
+                                                                            <span class="contenido-2">1</span>
+                                                                        </div>
+                                                                        <div class="cuerpo-fila">
+                                                                            <span class="contendio-1">b</span>
+                                                                            <span class="contenido-2">2</span>
+                                                                        </div>
+                                                                        <div class="cuerpo-fila">
+                                                                            <span class="contendio-1">b</span>
+                                                                            <span class="contenido-2">2</span>
+                                                                        </div>
+                                                                        <div class="cuerpo-fila">
+                                                                            <span class="contendio-1">b</span>
+                                                                            <span class="contenido-2">2</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                `;
+
+                outEstandares_pdf += `<div class="contenido-indicador fila">
+                <div class="info-tema">
+                    <div class="nom-img-temas fila-contenct">
+                        <img class="imagen" src=${imagenes[i]}>
+                        <div class="nom_tema">${element.nombre}</div>
+                    </div>
+                    <div class="impacto-tema fila-contenct">${(element.nivel_1 * 100).toFixed(2)}%</div>
+                    <div class="barra-tema fila-contenct">
+                        <div class="grafica-barra-temas-pdf">
+                            <div
+                                class="linea-vertical-pdf linea-vertical-pdf-izquierda">
+                                <div class="vertical-line-pdf"
+                                    style="height: 30px;"></div>
+                                <span>0</span>
+                            </div>
+                            <div class="contorno valor-${num_temas}">
+                                <div class="valor valor-pdf-${num_temas}"">
+
+                                </div>
+                            </div>
+                            <div
+                                class="linea-vertical-pdf linea-vertica-deracha">
+                                <div class="vertical-line-pdf"
+                                    style="height: 30px;"></div>
+                                <span>100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                i = i + 1;
+                lista_temas_class.push(`.cuerpo-tabla-${num_temas}`)
+                lista_barras_temas.push(`.valor-${num_temas}`)
+                lista_barras_temas_pdf.push(`.valor-pdf-${num_temas}`)
+                num_temas = num_temas + 1;
+
+            })
+
+        })
+        estandares.innerHTML = outEstandares;
+        estandares_pdf.innerHTML = outEstandares_pdf;
+        //para la TABLA CLASIFICACION de Temas 
+        let numero_temas = 0;
+        objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+            datos_preguntas.temas.forEach(element => {//recorremos TEMAS
+                const cargarIndicadores = document.querySelector(lista_temas_class[numero_temas]);
+                let outCargarIndicadores = '';
+                //console.log(element.nivel_1)
+                let valor_barra = (element.nivel_1 * 100)
+                //console.log(valor_barra)
+                //cambiar el color a las barras
+                if (valor_barra < 33) {
+                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "red"
+                    document.querySelector(lista_barras_temas_pdf[numero_temas]).style.background = "red"
+                } else if (valor_barra > 66) {
+                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "green"
+                    document.querySelector(lista_barras_temas_pdf[numero_temas]).style.background = "green"
+                } else {
+                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "yellow"
+                    document.querySelector(lista_barras_temas_pdf[numero_temas]).style.background = "yellow"
+                }
+                document.querySelector(lista_barras_temas[numero_temas]).style.width = valor_barra + "%";//para mostrar el resultados de cada TEMA en una BARRA
+                document.querySelector(lista_barras_temas_pdf[numero_temas]).style.width = valor_barra + "%";
+                element.indicadores.forEach(ind => {//recorremos indicadores
+                    //console.log(ind.indicador)
+                    //console.log(ind.valor_1_formula)
+                    outCargarIndicadores += `<div class="cuerpo-fila">
+                                        <span class="contendio-1">${ind.indicador}</span>
+                                        <span class="contenido-2">${(ind.valor_1_formula * 100).toFixed(2)}</span>
+                                    </div>`;
+                })
+                cargarIndicadores.innerHTML = outCargarIndicadores;
+                numero_temas = numero_temas + 1;
+            })
+        })
+        //-------------- MODAL Inicio -------------------
+        setTimeout(() => {
+            //LINK demora: https://stackoverflow.com/questions/48295288/how-to-handle-single-click-and-double-click-on-the-same-html-dom-element-usi
+            const mostrar_info_indicadores = function () {
+                this.timer = 0;
+                this.preventSimpleClick = false;
+                let delay = 300;
+                this.timer = setTimeout(() => {
+                    if (!this.preventSimpleClick) {
+                        this.classList.toggle('active')//solo esto es para abrir los INDICADORES el resto es para la demora
+                    }
+                }, delay);
+            }
+
+            //obtenemos los datos de las filas de estadnares
+            const mostrar_modal_info = function (evento) {
+                this.preventSimpleClick = true;//para la demora
+                clearTimeout(this.timer);//para la demora
+                //--- obtenner un PADRE ESPECIFICO Inicio ---
+                var padre = evento.srcElement.parentNode//obtenemos el primer padre
+                //console.log(padre)
+                while (padre.className != 'info-tema') {//comparamos si es el padre que buscamos
+                    padre = padre.parentNode;//obtenemos el siguiente padre en caso de que no se el que buscamos 
+                }
+                //console.log(padre.firstElementChild.textContent)
+                //--- obtenner un PADRE ESPECIFICO Fin ---
+                //--- Mostrar Retroalimenatcion de acuerdo al TEMA --
+                fetch(`${link_service}consultas/listarTemas`)//obtenemos que indicadores son respondidos
+                    .then(respuesta => respuesta.json())
+                    .then(data => {
+                        data.forEach(element => {
+                            var nombre_1 = element.nombre;
+                            var nombre_2 = padre.children[0].children[1].textContent;
+                            var valor = padre.children[1].textContent.replace(/[&\/\\#,+()$~%'":*?<>{}]/g, '');
+                            if (nombre_1 == nombre_2) {
+                                if (valor > 66) {
+                                    document.querySelector(".retoalimentacion-tema").innerHTML = element.retroalimentacion_temas.retroalimentacion_bueno;
+
+                                } else if (valor < 33) {
+                                    document.querySelector(".retoalimentacion-tema").innerHTML = element.retroalimentacion_temas.retroalimentacion_malo;
+                                } else {
+                                    document.querySelector(".retoalimentacion-tema").innerHTML = element.retroalimentacion_temas.retroalimentacion_regular;
+                                }
+                            }
+
+                        })
+
+                    })
+                document.querySelector(".titulo-modal-info-span").innerHTML = padre.firstElementChild.textContent;//para mostrar el nombre del TEMA en el MODALS
+                document.getElementById("modal-info-id").style.visibility = "visible";
+                document.getElementById("modal-info-id").style.opacity = "1";
+                //document.getElementById("cotendor-modal-info-id").transform = "translateY(0%)";
+            }
+            // boton_mostrar_modal es un arreglo así que lo recorremos
+            const boton_mostrar_modal = document.querySelectorAll(".contenido-indicador");
+            boton_mostrar_modal.forEach(boton => {
+                //Agregar listener
+                boton.addEventListener("dblclick", mostrar_modal_info);
+            });
+            const conte_indica = document.getElementsByClassName('contenido-indicador')
+            for (m = 0; m < conte_indica.length; m++) {
+                conte_indica[m].addEventListener('click', mostrar_info_indicadores)
+            }
+
+            document.getElementById("cerrar-modal").addEventListener('click', () => {
+                document.getElementById("modal-info-id").style.visibility = "hidden";
+                document.getElementById("modal-info-id").style.opacity = "0";
+                //document.getElementById("cotendor-modal-info-id").transform = "translateY(-30%)";
+            })
+
+        }, 1500)
+
+    })()
+    //-------------- MODAL Fin -------------------
+}
+
+
+////------------------Select GRAFICAS----------------------------
+function cargar_graficas_temas() {
+    var combo = document.getElementById("selector");
+    var selected = combo.options[combo.selectedIndex].text;
+    if (selected == 'Radar') {
+        document.getElementById('grafica-radar').style.display = 'block'
+        document.getElementById('grafica-polar').style.display = 'none'
+    }
+    else if (selected == 'Polar') {
+        document.getElementById('grafica-radar').style.display = 'none'
+        document.getElementById('grafica-polar').style.display = 'block'
+    }
+    else if (selected == 'Todo') {
+        document.getElementById('grafica-radar').style.display = 'block'
+        document.getElementById('grafica-polar').style.display = 'block'
+    }
+}
+////-----------------MENU-----------------------------
+function menuToggle() {
+    const toggleMenu = document.querySelector('.menu-salir');
+    toggleMenu.classList.toggle('active')
+}
+// ______________TAB_____
+var tabs = document.querySelectorAll(".tabs ul li");
+var tab_wraps = document.querySelectorAll(".tab_wrap");
+tabs.forEach(function (tab, tab_index) {
+    tab.addEventListener("click", function () {
+        tabs.forEach(function (tab) {
+            tab.classList.remove("active");
+        })
+        tab.classList.add("active");
+
+        tab_wraps.forEach(function (content, content_index) {
+            if (content_index == tab_index) {
+                content.style.display = "block";
+            }
+            else {
+                content.style.display = "none";
+            }
+        })
+
+    })
+})
+
+//_____________segundo TAB___________________
+var tabs_1 = document.querySelectorAll(".tabs-1 ul li");
+var tab_wraps_1 = document.querySelectorAll(".tab_wrap_1");
+tabs_1.forEach(function (tab, tab_index) {
+    tab.addEventListener("click", function () {
+        tabs_1.forEach(function (tab) {
+            tab.classList.remove("active");
+        })
+        tab.classList.add("active");
+
+        tab_wraps_1.forEach(function (content, content_index) {
+            if (content_index == tab_index) {
+                content.style.display = "block";
+            }
+            else {
+                content.style.display = "none";
+            }
+        })
+
+    })
+})
+
+
+
+//____________________
+/*
+var ctx = document.getElementById('marksChart_2').getContext('2d');
+
+var chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: resultados_nivel_2,
+            backgroundColor: ['#42a5f5', 'rgba(26,129,102,0.2)',],
+            label: 'Comparacion Dimensiones'
+        }],
+        labels: ['Social', 'Ambiental']
+    },
+    options: { responsive: true }
+});
+
+*/
+
+
+
+function ir_evaluacion() {
+    window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_ID}`;
+}
+
+function ir_reporte() {
+    window.location.href = `${url_global_pagina}resultados${extencion}?usuario=${usuario_ID}`;
+}
+function ir_perfil() {
+    window.location.href = `${url_global_pagina}perfil_usuario${extencion}?usuario=${usuario_ID}`;
+}
+
+function salir() {
+    window.location.href = `${url_global_pagina}login_encuestado${extencion}`;
+}
