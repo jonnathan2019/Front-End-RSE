@@ -289,13 +289,80 @@
 
                 <div class="content-tabs">
                     <div class="tab_wrap" style="display: block;">
-                        <div class="title">Puntaje General</div>
+                        <div class="title title-main">Puntaje General</div>
                         <div class="tab_content">
                             <div class="puntaje">
+                                <div class="info-puntage-eva">
+                                    <div class="info-puntaje-evaluado-titulo">
+                                        <div class="titulo">
+                                            <span>Información Aspectos Evaluados</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-puntage-evaluado">
+                                        <div class="num-dim-evaluados">
+                                            <div class="titulo-dim">
+                                                <span>Dimensiones.</span>
+                                            </div>
+                                            <div class="num-total-dim">
+                                                <span>Total de Dimensiones: </span>
+                                                <span class="num-total-valor-dim">0</span>
+                                            </div>
+                                            <div class="num-total-dim-evaluadas">
+                                                <span>Total de Dimensiones Evaluadas: </span>
+                                                <span class="num-total-valor-dim-eva">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="num-temas-evaluados">
+                                            <div class="titulo-tem">
+                                                <span>Temas.</span>
+                                            </div>
+                                            <div class="num-total-temas">
+                                                <span>Total de Temas: </span>
+                                                <span class="num-total-valor-temas">0</span>
+                                            </div>
+                                            <div class="num-total-temas-evaluadas">
+                                                <span>Total de Temas Evaluadas: </span>
+                                                <span class="num-total-valor-temas-eva">0</span>
+                                            </div>
+                                        </div>
+                                        <div class="num-indi-evaluados">
+                                            <div class="titulo-sub-temas">
+                                                <span>Sub Temas.</span>
+                                            </div>
+                                            <div class="num-total-indi">
+                                                <span>Total de Sub Temas: </span>
+                                                <span class="num-total-valor-indi">0</span>
+                                            </div>
+                                            <div class="num-total-indi-evaluadas">
+                                                <span>Total de Sub Temas Evaluadas: </span>
+                                                <span class="num-total-valor-indi-eva">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="retroalimentacion-integracion">
+                                        <div class="titulo-retroalimentacion-integracion">
+                                            <span>Retroalimentación.</span>
+                                        </div>
+                                        <span>
+                                            Su resultado respecto al total de prácticas evaluadas
+                                            hasta el momento es de <span class="resultado-integracion"></span> de
+                                            integración
+                                            respecto a las dimensiones <span class="dim-evaluadas-integracion"></span> y
+                                            a los
+                                            temas <span class="tem-evaluados-integracion"></span> para este resultado
+                                            se
+                                            tomaron en cuentas solo las dimensiones y temas que usted haya previamente
+                                            registrados.
+                                            Mientras que usando todas las dimensiones, temas y subtemas su resultado
+                                            es <span class="resultado-integracion-todo"></span> de integración de
+                                            conceptos de RSE.
+                                        </span>
+                                    </div>
+                                </div>
                                 <div class="info-general">
                                     <div class="info-total">
                                         <div class="title">
-                                            Retroalimentación.
+                                            Nivel de Integración.
                                         </div>
                                         <span class="retroalimentacion-general"></span>
                                     </div>
@@ -314,14 +381,14 @@
                                     </div>
                                     <div class="grafica-general">
                                         <div class="title">
-                                            Impacto.
+                                            Integración.
                                         </div>
                                         <div class="chart-container"></div>
                                     </div>
                                 </div>
                                 <div class="info-temas-indicadores">
                                     <div class="titulo-temas-inidcadores">
-                                        <span>Aspectos Analisados.</span>
+                                        <span>Temas Evaluados.</span>
                                     </div>
                                     <div class="tabla-temas-indicadores">
                                         <!--MINI INFOMRE-->
@@ -331,7 +398,7 @@
                                                     <div class="cabecera-titutlo">
                                                         <div class="titulo titulo-nombre">Nombre</div>
                                                         <div class="titulo titulo-valor">Valor</div>
-                                                        <div class="titulo titulo-impacto">Impacto</div>
+                                                        <div class="titulo titulo-impacto">Integración</div>
                                                     </div>
                                                 </div>
 
@@ -369,7 +436,7 @@
                                                             <div class="tabla-indicadores-titulo">
                                                                 <div class="cabecera-tabla">
                                                                     <span class="titulo-1">Nombre</span>
-                                                                    <span class="titulo-2">Impacto</span>
+                                                                    <span class="titulo-2">Integración</span>
                                                                 </div>
                                                                 <div class="cuerpo-tabla">
                                                                     <div class="cuerpo-fila">
@@ -522,7 +589,7 @@
                         </div>
                     </div>
                     <div class="tab_wrap" style="display: none;">
-                        <div class="title">Analisis de Dimensiones</div>
+                        <div class="title title-main">Análisis Dimensiones</div>
                         <div class="tab_content">
                             <div class="puntaje-dimensiones">
                                 <div class="info-total-dimension-social">
@@ -552,7 +619,7 @@
                                     </div>
                                     <div class="tablas-puntajes-totales-dimensiones">
                                         <div class="temas-clasficacion">
-                                            <p>Clasificacion Temas Sociales</p>
+                                            <p>Clasificación  Temas Sociales</p>
                                         </div>
                                         <!--_____________________________________________________________-->
                                         <div class="opciones-mejora">
@@ -636,7 +703,7 @@
                                     </div>
                                     <div class="tablas-puntajes-totales-dimensiones">
                                         <div class="temas-clasficacion">
-                                            <p>Clasificacion Temas Ambientales.</p>
+                                            <p>Clasificación  Temas Ambientales.</p>
                                         </div>
                                         <!--_____________________________________________________________-->
                                         <div class="opciones-mejora">
@@ -868,7 +935,7 @@
                             </div>
                             <div class="desmpeno-impacto info-desempeno">
                                 <div class="titulo-desempeno">
-                                    <span>Impacto.</span>
+                                    <span>Integración.</span>
                                 </div>
                                 <div class="chart-container-pdf"></div>
                             </div>
@@ -954,7 +1021,7 @@
                                                     <div class="cabecera-titutlo">
                                                         <div class="titulo titulo-nombre">Nombre</div>
                                                         <div class="titulo titulo-valor">Valor</div>
-                                                        <div class="titulo titulo-impacto">Impacto</div>
+                                                        <div class="titulo titulo-impacto">Integración</div>
                                                     </div>
                                                 </div>
 

@@ -414,6 +414,11 @@
 	font-weight: 600;
 }
 
+.tab_wrap .title-main{
+	border-bottom: 3px solid #ccc;
+}
+
+
 .tab_wrap .title .titulo-graficas{
     width: 100%;
 }
@@ -506,6 +511,81 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+}
+
+.puntaje .info-puntage-eva{
+    margin-top: 20px;
+    width: 97%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.puntaje .info-puntage-eva .info-puntaje-evaluado-titulo{
+    width: 94%;
+    margin: 10px;
+    border-bottom: 3px solid #ccc;
+    font-weight: bold;
+}
+.puntaje .info-puntage-eva  .info-puntage-evaluado{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.puntaje .info-puntage-eva .retroalimentacion-integracion{
+    width: 94%;
+    padding: 15px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.dim-evaluadas-integracion, .tem-evaluados-integracion{
+    font-style: oblique;
+    /* text-decoration: underline; */
+    font-weight: bold;
+}
+
+.resultado-integracion{
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.resultado-integracion-todo{
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.titulo-dim, .titulo-tem, .titulo-sub-temas{
+    font-weight: bold;
+    width: 100%;
+    padding-left: 5px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 5px;
+} 
+
+.titulo-retroalimentacion-integracion{
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.puntaje .info-puntage-eva .info-puntage-evaluado .num-dim-evaluados, .puntaje .info-puntage-eva  .info-puntage-evaluado .num-temas-evaluados, .puntaje .info-puntage-eva  .info-puntage-evaluado .num-indi-evaluados{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin: 10px 10px;
+
 }
 .puntaje .info-total,.puntaje .puntaje-total,.puntaje .grafica-general{
     background: #fff;
@@ -1022,6 +1102,16 @@ select:hover{
     width: 75%;
 }
 
+.tabla-info-indicadores .tabla-indicadores-titulo .cuerpo-tabla .visto-bueno{
+    color: green;
+}
+
+.tabla-info-indicadores .tabla-indicadores-titulo .cuerpo-tabla .visto-regular{
+    color: yellow;
+}
+.tabla-info-indicadores .tabla-indicadores-titulo .cuerpo-tabla .visto-malo{
+    color: red;
+}
 .tabla-info-indicadores .tabla-indicadores-titulo .cabecera-tabla .titulo-2{
     padding: auto;
     width: 25%;

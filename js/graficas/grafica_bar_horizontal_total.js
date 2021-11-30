@@ -8,7 +8,7 @@
 
 
     var data = [
-      { "legend_value": "E", "value": (resutaldo_final * 100), "label": "test5" }
+      { "legend_value": "E", "value": (resutaldo_final * 100).toFixed(2), "label": "test5" }
     ];
     for (var i = 0; i < data.length; i++) {
       data[i]["legend_value"] = String.fromCharCode(65 + i)

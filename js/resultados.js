@@ -1,5 +1,7 @@
 let resutaldo_final;//tiene el resultado final del algoritmo
 let objeto_resp;//objeto para guardar los resulatados de las dimensiones, temas e indicadores 
+let respuesta_final_2;
+let objeto_resp_2;
 //Obtenemos el USUARIO de la URL
 function obtener_valor(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -39,6 +41,7 @@ var indicadores_tema = [];//cantidad de indicadores por tema
 let tema_dimension = [4, 1];//***********************NUMERO DE TEMAS POR DIMENSION */
 //______________OBTENER INFORMACION (creamos un objeto con toda la informaicion respecto a las respuestas del Usuaio)______________________
 const objeto_respuestas = [];
+const objeto_respuestas_new = [];
 let auxiliar = 0;
 //________________________________________--
 async function getRespuetasIndicadores() {
@@ -54,10 +57,218 @@ async function getRespuetasIndicadoresPreguntas() {
 
     return json;
 }
+
+async function getTotalDimensiones() {
+    const respuesta = await fetch(`${link_service}consultas/listarDimensiones`)
+    const json = await respuesta.json()
+
+    return json;
+}
+
+async function getTotalTemas() {
+    const respuesta = await fetch(`${link_service}consultas/listarTemas`)
+    const json = await respuesta.json()
+
+    return json;
+}
+
+
+async function getTotalIndicadores() {
+    const respuesta = await fetch(`${link_service}consultas/listarIndicadores`)
+    const json = await respuesta.json()
+
+    return json;
+}
+
+function algoritmo_todo_aspecpectos(objeto_respuestas_new){
+    objeto_resp_2 = objeto_respuestas_new;
+    objeto_resp_2.forEach(datos_preguntas => {
+        //console.log(datos_preguntas)
+        datos_preguntas.temas.forEach(element => {
+            //console.log(element.indicadores)
+            element.indicadores.forEach(element_2 => {//recorremos cada indicador
+                //console.log(element_2.indicador)
+                //console.log(element_2.respuestas)
+                let sum = 0;
+                let cont = 0;
+                for (let i = 0; i < element_2.respuestas.length; i++) {
+                    sum += element_2.respuestas[i];
+                    cont = cont + 1;
+                }
+                element_2.valor_real = sum//guardamos la suma
+                element_2.valor_maximo = cont * 2//el valor maximo (multiplicamos por dos por que es el valor maximo de cada pregunta)
+                //normalizamos el valor real y guardamos en OBJETO
+                element_2.valor_real_normalizado = (element_2.valor_real - element_2.valor_minimo) / (element_2.valor_maximo - element_2.valor_minimo)
+            })
+            element.uno_cantida_indiacadores = 1 / element.indicadores.length;//1 sobre cantidad de  INIDCADORES (1/cant_indicadores) 
+
+        })
+
+    })
+
+    //--------------------- FORMULA -------------------------
+    //--------------------- NIVEL 1 ------------------------
+    let peso = 2;
+    objeto_resp_2.forEach(datos_preguntas => {//recorremos DIMENSIONES
+        datos_preguntas.temas.forEach(element => {//recorresmos TEMAS
+            let cantidad_indadores_normalizado = element.uno_cantida_indiacadores;
+            let suma_niveles = 0;
+            element.indicadores.forEach(element_2 => {//recorremos cada indicador
+                let total = Math.pow(element_2.valor_real_normalizado, peso) * cantidad_indadores_normalizado;
+                element_2.valor_1_formula = total;//guardamos los resultados de los indicadores
+                suma_niveles = suma_niveles + total;
+            })
+            element.nivel_1 = Math.pow(suma_niveles, 1 / peso).toFixed(3)//guardamos los resultados de los temas
+
+        })
+        datos_preguntas.uno_cantidad_temas = 1 / datos_preguntas.temas.length;//1 sobre la cantidad de TEMAS (1/cant_TEMAS)
+
+    })
+    //--------------------- NIVEL 2 -------------------------
+    objeto_resp_2.forEach(datos_preguntas => {//recorremos DIMENSIONES
+        let cantidad_temas_normalizados = datos_preguntas.uno_cantidad_temas;
+        let suma_niveles = 0;
+        datos_preguntas.temas.forEach(element => {//recorremos TEMAS
+            //console.log(element)
+            let total = Math.pow(element.nivel_1, peso) * cantidad_temas_normalizados;
+            suma_niveles = suma_niveles + total;
+        })
+        //Math.pow(suma_niveles, 1 / peso).toFixed(3)
+        datos_preguntas.nivel_2 = Math.pow(suma_niveles, 1 / peso).toFixed(3) //guardamos los resultados de las Dimenisones
+    })
+    //--------------------- NIVEL 3 -------------------------
+    let suma_niveles = 0;
+    objeto_resp_2.forEach(datos_preguntas => {//recorremos DIMENSIONES
+        let total = Math.pow(datos_preguntas.nivel_2, peso) * datos_preguntas.uno_cantidad_temas;
+        suma_niveles = suma_niveles + total;
+    })
+    respuesta_final_2 = Math.pow(suma_niveles, 1 / peso).toFixed(2);//FINAL DEL ALGORITMO-----------
+    //---------------- FORMULA Fin ---------------------------
+    // console.log(respuesta_final_2)
+
+    document.querySelector('.resultado-integracion-todo').innerHTML = `${(respuesta_final_2*100).toFixed(2)}%`
+    
+}
+
 //Creamos el Objeto
 (async function () {
+    const total_dimensiones = await getTotalDimensiones();
+    const total_temas = await getTotalTemas();
+    const total_indicadores = await getTotalIndicadores();
     const respuestasIndicadores = await getRespuetasIndicadores()
     const respuestasIndicadoresPreguntas = await getRespuetasIndicadoresPreguntas()
+
+    // console.log('Total de Dimensiones: '+total_dimensiones.length)
+    // console.log('Total de Temas: '+total_temas.length)
+    // console.log('Total de Indicadores: '+total_indicadores.length)
+    document.querySelector('.num-total-valor-dim').innerHTML = total_dimensiones.length;
+    document.querySelector('.num-total-valor-temas').innerHTML = total_temas.length;
+    document.querySelector('.num-total-valor-indi').innerHTML = total_indicadores.length;
+    // ________________________
+    //creamos el objeto con toda la info
+    total_dimensiones.forEach(dimensiones_new => {//recoremos las dimensiones
+        const object_dim_new = {
+            dimension: dimensiones_new.nombre,
+            temas: [],
+            uno_cantidad_temas: 0,
+            nivel_2: 0
+        }
+        objeto_respuestas_new.push(object_dim_new)
+        total_temas.forEach(temas_new => {//recorremos los temas
+            objeto_respuestas_new.find((dimen_new, index) => {
+                if (dimen_new.dimension === temas_new.dimension.nombre) {
+                    const object_tema = {
+                        nombre: temas_new.nombre,
+                        indicadores: [],
+                        uno_cantida_indiacadores: 0,
+                        nivel_1: 0
+                    }
+                    const tema_existe = objeto_respuestas_new[index].temas.find(t => t.nombre === temas_new.nombre)
+                    if (!tema_existe) {
+                        objeto_respuestas_new[index].temas.push(object_tema)
+                    }
+                    total_indicadores.forEach(indicador_new => {//recorremos los idnicadores
+                        objeto_respuestas_new[index].temas.find((tema_new, index_1_new) => {
+                            if (tema_new.nombre === indicador_new.tema.nombre) {
+                                let array = [];
+                                array.push('0' * indicador_new.preguntas_cualitativas.length);
+                                // console.log(indicador_new.preguntas_cualitativas)
+                                // console.log(indicador_new.preguntas_cualitativas.length)
+                                for (i = 1; i < indicador_new.preguntas_cualitativas.length; i++) {
+                                    array.push(0)
+                                }
+                                const object_inidcadores = {
+                                    indicador: indicador_new.nombre,
+                                    respuestas: array,
+                                    valor_real: 0,
+                                    valor_maximo: 0,
+                                    valor_minimo: 0,
+                                    valor_real_normalizado: 0,
+                                    valor_1_formula: 0
+                                }
+                                const indicador_existe = objeto_respuestas_new[index].temas[index_1_new].indicadores.find(i => i.indicador === indicador_new.nombre)
+                                if (!indicador_existe) {
+                                    objeto_respuestas_new[index].temas[index_1_new].indicadores.push(object_inidcadores)
+                                }
+
+                            }
+                        })
+                    })
+
+                }
+            })
+        })
+
+    })
+
+    console.log(objeto_respuestas_new)
+    objeto_respuestas_new.forEach(element_dim => {
+        element_dim.temas.forEach(element_temas => {
+            element_temas.indicadores.forEach(elem_indicador => {
+                // console.log(elem_indicador.indicador)
+                respuestasIndicadores.forEach(element => {
+                    if (element.encuestado.encuestado_ID == encuestado_ID) {
+                        respuestasIndicadoresPreguntas.forEach(respuestas_valores => {
+                            if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID) {
+                                // console.log("-- " + element.indicador.tema.dimension.nombre)//nombre la dimension respondido
+                                // console.log("----- " + element.indicador.tema.nombre)//nombre del tema respondido
+                                // console.log("- " + element.indicador.nombre)//nombre del indicador respondido
+                                // console.log("- " + respuestas_valores.preguntasCualitativas.pregunta_cualitativa)//pregunta
+                                // console.log(respuestas_valores.respuesta)
+                                if (element.indicador.nombre == elem_indicador.indicador) {
+                                    elem_indicador.respuestas.shift();//eliminamos un elemento
+                                    elem_indicador.respuestas.push(respuestas_valores.respuesta)
+                                }
+
+                            }
+                        })
+                    }
+
+                })
+
+
+                // console.log(elem_indicador.respuestas)
+            })
+
+        })
+    })
+    console.log(objeto_respuestas_new)
+    algoritmo_todo_aspecpectos(objeto_respuestas_new)
+    // ________________________
+    // respuestasIndicadores.forEach(element => {
+    //     if (element.encuestado.encuestado_ID == encuestado_ID) {
+    //         respuestasIndicadoresPreguntas.forEach(respuestas_valores => {
+    //             if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID) {
+    //                 console.log("-- " + element.indicador.tema.dimension.nombre)//nombre la dimension respondido
+    //                 console.log("----- " + element.indicador.tema.nombre)//nombre del tema respondido
+    //                 console.log("- " + element.indicador.nombre)//nombre del indicador respondido
+    //                 console.log("- " + respuestas_valores.preguntasCualitativas.pregunta_cualitativa)//pregunta
+    //                 console.log(respuestas_valores.respuesta)
+    //             }
+    //         })
+    //     }
+
+    // })
 
     //console.log(data)
     // console.log(encuestado_ID)
@@ -213,6 +424,48 @@ function algoritmo_graficar() {
     (async function () {
         //llamamos a la funcion para que aplique el algoritmo
         await getAlgoritmo()
+        // Obtenemos el nuemor de Dimensiones, Temas e Indicadores 
+        let numero_temas_evaluados = 0;
+        let numero_indicadores_evaluados = 0;
+        let numero_dimensiones_evaluados = objeto_resp.length;
+        let dim_evaluados = [];
+        let temas_evaluados = [];
+        let indi_evaluados = []
+        console.log('___________________________')
+        let outDimIntegracion = '';
+        let ottTemIntegracion = '';
+        const DimIntegracion = document.querySelector('.dim-evaluadas-integracion');
+        const TemIntegracion = document.querySelector('.tem-evaluados-integracion');
+        document.querySelector('.resultado-integracion').innerHTML = `${(resutaldo_final * 100).toFixed(2)}%`;
+        objeto_resp.forEach(datos_dimensiones => {
+            // console.log(datos_dimensiones.dimension)
+            dim_evaluados.push(datos_dimensiones.dimension)
+            outDimIntegracion += `${datos_dimensiones.dimension.replace(/\./g, '')}, `;// las dimensiones
+            numero_temas_evaluados = numero_temas_evaluados + datos_dimensiones.temas.length;
+            datos_dimensiones.temas.forEach(datos_temas => {
+                // console.log(datos_temas.nombre)
+                temas_evaluados.push(datos_temas.nombre)
+                ottTemIntegracion += `${datos_temas.nombre.replace(/\./g, '')}, `;// los Temas
+                numero_indicadores_evaluados = numero_indicadores_evaluados + datos_temas.indicadores.length;
+                datos_temas.indicadores.forEach(datos_indicadores => {
+                    // console.log(datos_indicadores.indicador)
+                    indi_evaluados.push(datos_indicadores.indicador)
+                })
+            })
+        })
+        // console.log(dim_evaluados)
+        // console.log(temas_evaluados)
+        // console.log(indi_evaluados)
+        DimIntegracion.innerHTML = outDimIntegracion;
+        TemIntegracion.innerHTML = ottTemIntegracion;
+
+
+        // console.log('Dimesniones Evaluadas: '+numero_dimensiones_evaluados)
+        // console.log('Temas Evaluados: '+numero_temas_evaluados)
+        // console.log('Indicadores Evaluados: '+numero_indicadores_evaluados)
+        document.querySelector('.num-total-valor-dim-eva').innerHTML = numero_dimensiones_evaluados;
+        document.querySelector('.num-total-valor-temas-eva').innerHTML = numero_temas_evaluados;
+        document.querySelector('.num-total-valor-indi-eva').innerHTML = numero_indicadores_evaluados;
         //__________________Clasifcacion TEMAS____________________________
         const mejora_social = document.querySelector('.contenido-info-mejora-social');
         const posibilidad_mejora_social = document.querySelector('.contenido-info-posibilidad-mejora-social');
@@ -356,7 +609,7 @@ function algoritmo_graficar() {
                                                                 <div class="tabla-indicadores-titulo tabla-indicadores-titulo-${num_temas}">
                                                                     <div class="cabecera-tabla">
                                                                         <span class="titulo-1">Nombre</span>
-                                                                        <span class="titulo-2">Impacto</span>
+                                                                        <span class="titulo-2">Integración</span>
                                                                     </div>
                                                                     <div class="cuerpo-tabla cuerpo-tabla-${num_temas}">
                                                                         <div class="cuerpo-fila">
@@ -447,10 +700,23 @@ function algoritmo_graficar() {
                 element.indicadores.forEach(ind => {//recorremos indicadores
                     //console.log(ind.indicador)
                     //console.log(ind.valor_1_formula)
-                    outCargarIndicadores += `<div class="cuerpo-fila">
-                                        <span class="contendio-1">${ind.indicador}</span>
-                                        <span class="contenido-2">${(ind.valor_1_formula * 100).toFixed(2)}</span>
-                                    </div>`;
+                    if (ind.valor_1_formula > 0.1) {
+                        outCargarIndicadores += `<div class="cuerpo-fila">
+                        <span class="contendio-1">${ind.indicador}</span>
+                        <span class="contenido-2 visto-bueno"><i class="fas fa-check-circle"></i></span>
+                    </div>`;
+                    } else if (ind.valor_1_formula < 0.0199) {
+                        outCargarIndicadores += `<div class="cuerpo-fila">
+                        <span class="contendio-1">${ind.indicador}</span>
+                        <span class="contenido-2 visto-malo"><i class="fas fa-times-circle"></i></span>
+                    </div>`;
+                    } else {
+                        outCargarIndicadores += `<div class="cuerpo-fila">
+                        <span class="contendio-1">${ind.indicador}</span>
+                        <span class="contenido-2 visto-regular"><i class="fas fa-minus-circle"></i></span>
+                    </div>`;
+                    }
+
                 })
                 cargarIndicadores.innerHTML = outCargarIndicadores;
                 numero_temas = numero_temas + 1;
