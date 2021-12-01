@@ -1,7 +1,7 @@
 var info_usuario;
 //obtenemos los datos del usuario para verificar si se encuentran registrado
 async function getDatosUsuarios() {
-    const respuesta = await fetch(`https://sping-boot-postgreswl-1.herokuapp.com/ejemplo01/consultas/usuarios`)
+    const respuesta = await fetch(`${link_service}consultas/usuarios`)
     const json = await respuesta.json()
 
     return json;
