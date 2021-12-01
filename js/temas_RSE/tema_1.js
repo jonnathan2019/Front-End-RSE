@@ -95,16 +95,24 @@ async function getRespuestas() {
     const info_preguntas_respondidas = await getRespuestas()
 
     let contar_temas = 1;
+    let contador_temas_2 = 0;
     info_temas.forEach(element => {
         if (element.dimension.nombre == "Social") {
+            // console.log(`- step_name_tema_${contar_temas}`)
+            // console.log(element.nombre)
             document.getElementById(`step_name_tema_${contar_temas}`).innerHTML = element.nombre;
+            contar_temas = contar_temas + 1;
+        }else{
+            contador_temas_2 = contador_temas_2+1;
         }
 
-        contar_temas = contar_temas + 1;
+        
     });
-
+    contar_temas = contar_temas + contador_temas_2;
     info_temas.forEach(element => {
         if (element.dimension.nombre == "Ambiental") {
+            // console.log(`- step_name_tema_${contar_temas-1}`)
+            // console.log(element.nombre)
             document.getElementById(`step_name_tema_${contar_temas - 1}`).innerHTML = element.nombre;
         }
     });
