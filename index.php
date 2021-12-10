@@ -105,7 +105,7 @@
             <div class="card-contenido">
                 <h2 class="card-titulo">Social</h2>
                 <p class="card-cuerpo">
-                    La Responsabilidad Social incluye los temas relacionados con el personal
+                    La Responsabilidad Social incluye temas relacionados con el personal
                     trabajador de la organización, con la mejora de la calidad de vida de la ciudadanía, creando
                     oportunidades para los colectivos con especiales dificultades.
                 </p>
