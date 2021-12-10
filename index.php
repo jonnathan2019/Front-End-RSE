@@ -115,9 +115,8 @@
             <div class="card-contenido">
                 <h2 class="card-titulo">Ambiental</h2>
                 <p class="card-cuerpo">
-                    La Responsabilidad Social Ambiental se puede entender como el conjunto de mecanismos de producción
-                    más limpia aplicados por las empresas públicas o privadas, para minimizar su impacto al medio
-                    ambiente en el espacio donde desarrolla sus actividades de producción, contribuyendo así a mejorar
+                    La Responsabilidad Social Ambiental se puede entender como el conjunto de mecanismos aplicados por las empresas públicas o privadas, 
+                    para minimizar su impacto al medio ambiente, contribuyendo así a mejorar
                     la calidad de vida de la empresa y de sus alrededores.
                 </p>
             </div>
