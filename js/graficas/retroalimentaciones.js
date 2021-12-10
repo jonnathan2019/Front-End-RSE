@@ -7,25 +7,25 @@
         console.log(objeto_resp)//resulatdo dimensiones y otros
 
         //Retroalimenatcion General
-        fetch(`${link_service}consultas/listarEstandares`)//obtenemos que indicadores son respondidos
-            .then(respuesta => respuesta.json())
-            .then(data => {
-                data.forEach(element => {
-                    if (resutaldo_final > 0.66) {
-                        document.querySelector('.retroalimentacion-general').innerHTML = element.retroalimentacion_puntaje_genaral.retroalimentacion_bueno;
-                    } else if (resutaldo_final < 0.33) {
-                        document.querySelector('.retroalimentacion-general').innerHTML = element.retroalimentacion_puntaje_genaral.retroalimentacion_malo;
-                    } else {
-                        document.querySelector('.retroalimentacion-general').innerHTML = element.retroalimentacion_puntaje_genaral.retroalimentacion_regular;
-                    }
-                    // //retroalimentacion_bueno
-                    // //retroalimentacion_regular
-                    // //retroalimentacion_malo
-                    // console.log(element.retroalimentacion_puntaje_genaral)
-                    // document.querySelector('.retroalimentacion-general').innerHTML = "out_info_user";
-                })
+        // fetch(`${link_service}consultas/listarEstandares`)//obtenemos que indicadores son respondidos
+        //     .then(respuesta => respuesta.json())
+        //     .then(data => {
+        //         data.forEach(element => {
+        //             if (resutaldo_final > 0.66) {
+        //                 document.querySelector('.retroalimentacion-general').innerHTML = element.retroalimentacion_puntaje_genaral.retroalimentacion_bueno;
+        //             } else if (resutaldo_final < 0.33) {
+        //                 document.querySelector('.retroalimentacion-general').innerHTML = element.retroalimentacion_puntaje_genaral.retroalimentacion_malo;
+        //             } else {
+        //                 document.querySelector('.retroalimentacion-general').innerHTML = element.retroalimentacion_puntaje_genaral.retroalimentacion_regular;
+        //             }
+        //             // //retroalimentacion_bueno
+        //             // //retroalimentacion_regular
+        //             // //retroalimentacion_malo
+        //             // console.log(element.retroalimentacion_puntaje_genaral)
+        //             // document.querySelector('.retroalimentacion-general').innerHTML = "out_info_user";
+        //         })
 
-            })
+        //     })
 
         //Retroalimentacion Temas
         fetch(`${link_service}consultas/listarDimensiones`)//obtenemos que indicadores son respondidos

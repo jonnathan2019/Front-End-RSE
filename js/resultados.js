@@ -703,17 +703,29 @@ function algoritmo_graficar() {
                     if (ind.valor_1_formula > 0.1) {
                         outCargarIndicadores += `<div class="cuerpo-fila">
                         <span class="contendio-1">${ind.indicador}</span>
-                        <span class="contenido-2 visto-bueno"><i class="fas fa-check-circle"></i></span>
+                        <span class="contenido-2 visto-bueno"><i class="fas fa-check-circle"></i>
+                            <div class="texto-emergente-indicador emergente-bueno">
+                                Integración Buena
+                            </div>
+                        </span>
                     </div>`;
                     } else if (ind.valor_1_formula < 0.0199) {
                         outCargarIndicadores += `<div class="cuerpo-fila">
                         <span class="contendio-1">${ind.indicador}</span>
-                        <span class="contenido-2 visto-malo"><i class="fas fa-times-circle"></i></span>
+                        <span class="contenido-2 visto-malo"><i class="fas fa-times-circle"></i>
+                            <div class="texto-emergente-indicador emergente-malo">
+                                Integración Mala
+                            </div>
+                        </span>
                     </div>`;
                     } else {
                         outCargarIndicadores += `<div class="cuerpo-fila">
                         <span class="contendio-1">${ind.indicador}</span>
-                        <span class="contenido-2 visto-regular"><i class="fas fa-minus-circle"></i></span>
+                        <span class="contenido-2 visto-regular"><i class="fas fa-minus-circle"></i>
+                            <div class="texto-emergente-indicador emergente-regular">
+                                Integración Regular
+                            </div>
+                        </span>
                     </div>`;
                     }
 

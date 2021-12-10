@@ -172,7 +172,7 @@ label{
     border-radius: 15px;
 }
 .button .btn:hover{
-    background: rgb(98, 98, 236);;
+    background: rgb(126, 126, 241);;
     cursor: pointer;
 }
 .registarse a{
@@ -182,5 +182,6 @@ label{
 
 .registarse a:hover{
     color: rgb(235, 118, 142);
+    cursor: pointer;
 }
 /*_______________________________________________*/

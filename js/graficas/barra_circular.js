@@ -93,8 +93,15 @@
                 }
             }
 
-            let chart = radialProgress('.char-barra-cirular')
-            chart.update(resutaldo_final * 100)
+            // let chart = radialProgress('.char-barra-cirular')
+            // chart.update(resutaldo_final * 100)
+
+            let chart_especifico = radialProgress('.char-barra-cirular-especifico')
+            chart_especifico.update(resutaldo_final * 100)
+        
+            //respuesta_final_2
+            let chart_global = radialProgress('.char-barra-cirular-global')
+            chart_global.update(respuesta_final_2 * 100)
 
         }
 

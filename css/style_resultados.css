@@ -565,20 +565,27 @@
     font-weight: bold;
     width: 100%;
     padding-left: 5px;
-    border-bottom: 2px solid #ccc;
+    /* border-bottom: 2px solid #ccc; */
     margin-bottom: 5px;
+    background: rgb(246,246,249);
+background: linear-gradient(180deg, rgba(246,246,249,1) 25%, rgba(210,212,223,1) 78%);
+padding: 2px 5px;
+text-align: center;
 } 
 
 .titulo-retroalimentacion-integracion{
     font-weight: bold;
-    border-bottom: 2px solid #ccc;
+    /* border-bottom: 2px solid #ccc; */
     margin-bottom: 5px;
+    background: rgb(246,246,249);
+background: linear-gradient(180deg, rgba(246,246,249,1) 25%, rgba(210,212,223,1) 78%);
+padding: 5px 10px;
 }
 
 .puntaje .info-puntage-eva .info-puntage-evaluado .num-dim-evaluados, .puntaje .info-puntage-eva  .info-puntage-evaluado .num-temas-evaluados, .puntaje .info-puntage-eva  .info-puntage-evaluado .num-indi-evaluados{
     width: 30%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-around;
     flex-direction: column;
     padding: 5px;
@@ -587,6 +594,9 @@
     margin: 10px 10px;
 
 }
+
+
+
 .puntaje .info-total,.puntaje .puntaje-total,.puntaje .grafica-general{
     background: #fff;
     border: 1px solid #dddddd;
@@ -611,11 +621,15 @@
 .puntaje .info-temas-indicadores .titulo-temas-inidcadores{
     width: 97%;
     text-align: center;
-    border-bottom: 1px solid #dddddd;
+    /* border-bottom: 1px solid #dddddd; */
     font-size: 20px;
     font-weight: bold;
     padding-top: 5px;
     margin: 10px;
+    background: rgb(246,246,249);
+background: linear-gradient(180deg, rgba(246,246,249,1) 25%, rgba(210,212,223,1) 78%);
+
+
 }
 
 .puntaje .info-temas-indicadores .tabla-temas-indicadores{
@@ -625,6 +639,57 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+
+
+/* ___________Puntaje Gobal Especifico _____________ */
+.info-global-especifica{
+    width: 97%;
+    padding: 15px 30px;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+
+
+.info-global-especifica .info-puntaje-gloabal-especifico .titulo-especifico, .info-global-especifica .info-puntaje-gloabal-especifico .titulo-global{
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;   
+}
+
+.info-especifico, .info-global{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.info-espe, .puntaje-especifico, .grafica-especifico, 
+.info-glob, .puntaje-global, .grafica-global{
+    width: 32%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.char-barra-cirular-especifico, .char-barra-cirular-global{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.title-especifico, .title-global{
+    font-weight: bold;
+    margin-bottom: 5px;
+    background: rgb(246,246,249);
+    background: linear-gradient(180deg, rgba(246,246,249,1) 25%, rgba(210,212,223,1) 78%);
+    padding: 5px 10px;
+    text-align: center;
+}
+/* _________________________ */
 
 .puntaje-total {
     text-align: center;
@@ -664,10 +729,16 @@
 
 .info-total-dimension-social .title{
     background: rgba(148, 194, 235,0.2);
+    background: rgb(189,215,241);
+background: linear-gradient(180deg, rgba(189,215,241,1) 10%, rgba(190,224,255,1) 49%);
 }
 
 .info-total-dimension-ambiental .title{
     background: rgba(140, 209, 191, 0.2);
+    background: rgb(100,206,207);
+background: linear-gradient(180deg, rgba(100,206,207,1) 19%, rgba(94,229,194,1) 73%);
+background: rgb(151,255,228);
+background: linear-gradient(180deg, rgba(151,255,228,1) 25%, rgba(109,243,208,1) 73%);
 }
 
 .retroalimentacion-puntaje{
@@ -697,6 +768,8 @@
     font-size: 15px;
     border-bottom: 1px solid #e0dddd;
     background: #f1f5f9;
+    background: rgb(241,245,249);
+background: linear-gradient(0deg, rgba(241,245,249,1) 26%, rgba(234,234,234,1) 98%);
 }
 
 .puntaje-dimension{
@@ -735,6 +808,8 @@
     text-align: center;
     border: 1px solid #dddddd;
     background: #f1f5f9;
+        background: rgb(241,245,249);
+    background: linear-gradient(0deg, rgba(241,245,249,1) 26%, rgba(234,234,234,1) 98%);
     
 }
 
@@ -770,12 +845,29 @@
 
 #estable{
     background: rgba(140, 209, 191, 0.2);
+    background: rgb(85,235,196);
+background: linear-gradient(0deg, rgba(85,235,196,1) 37%, rgba(198,252,238,1) 98%);
+background: rgb(177,253,186);
+background: linear-gradient(180deg, rgba(177,253,186,1) 25%, rgba(148,255,160,1) 73%);
 }
 #poco-estable{
     background: rgba(194, 209, 140, 0.2);
+    
+background: rgb(240,237,58);
+background: linear-gradient(0deg, rgba(240,237,58,1) 37%, rgba(254,255,224,1) 98%);
+background: rgb(255,254,173);
+background: linear-gradient(180deg, rgba(255,254,173,1) 25%, rgba(255,253,133,1) 73%);
+
 }
 #no-estable{
     background: rgba(209, 140, 140, 0.2);
+    background: rgb(201,20,57);
+background: linear-gradient(0deg, rgba(201,20,57,1) 46%, rgba(233,17,156,1) 100%);
+background: rgb(232,100,100);
+background: linear-gradient(0deg, rgba(232,100,100,1) 37%, rgba(237,187,187,1) 98%);
+background: rgb(255,176,176);
+background: linear-gradient(180deg, rgba(255,176,176,1) 25%, rgba(255,140,140,1) 73%);
+
 }
 .tema-info{
     width: 80%;
@@ -1122,6 +1214,7 @@ select:hover{
     padding: auto;
     width: 25%;
     text-align: center;
+    cursor: pointer;
 }
 
 .tabla-info-indicadores .tabla-indicadores-titulo .cuerpo-tabla .cuerpo-fila{
@@ -1144,6 +1237,45 @@ select:hover{
 
 .contenido-indicador.active .tabla-info-indicadores{
     display: block;
+}
+
+.texto-emergente-indicador{
+    /* background: rgb(71, 71, 241); */
+    position: absolute;
+    padding: 3px 15px;
+    border-radius: 5px;
+    display: inline;
+    /* left: 20%; */
+    left: 73%;
+    /* z-index: 1000; */
+    visibility: hidden; 
+    transition: 0.2s;
+    opacity: 0;
+    font-size: 10px;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.contenido-2:hover .texto-emergente-indicador{
+    opacity: 1;
+    visibility: visible;
+}
+
+.emergente-bueno{
+    background: rgb(177,253,186);
+background: linear-gradient(180deg, rgba(177,253,186,1) 25%, rgba(148,255,160,1) 73%);
+}
+
+.emergente-regular{
+    background: rgb(255,254,173);
+background: linear-gradient(180deg, rgba(255,254,173,1) 25%, rgba(255,253,133,1) 73%);
+}
+
+.emergente-malo{
+    background: rgb(255,176,176);
+background: linear-gradient(180deg, rgba(255,176,176,1) 25%, rgba(255,140,140,1) 73%);
 }
 
 /* ______________grafica BARRAS DIMENSIONES________________ */
@@ -1235,4 +1367,42 @@ text.source {
         .labelName {
             font-size: 0.9em;
             font-style: italic;
+        }
+
+        .grafica-zoomable-sunburst{
+            /* background: #ccc; */
+            border: 1px solid #ccc;
+            padding: 10px;
+            /* height: 500px;
+            width: 500px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+
+        /* Nueva GRafica  */
+        .grafica-zoomable-sunburst{
+            height: 800px;
+            width: 800px;
+        }
+        
+        .slice {
+            cursor: pointer;
+        }
+
+        .slice .main-arc {
+            stroke: #fff;
+            stroke-width: 1px;
+        }
+
+        .slice .hidden-arc {
+            fill: none;
+        }
+
+        .slice text {
+            pointer-events: none;
+            /* dominant-baseline: middle; */
+            text-anchor: middle;
         }

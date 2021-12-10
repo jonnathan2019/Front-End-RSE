@@ -339,7 +339,75 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="retroalimentacion-integracion">
+
+
+                                    <!-- <div class="info-global-especifica">
+
+                                        <div class="info-puntaje-gloabal-especifico">
+                                            <div class="titulo-especifico">
+                                                <span>Integración Especifica.</span>
+                                            </div>
+                                            <div class="info-especifico">
+                                                <div class="info-espe">
+                                                    <div class="title-especifico">
+                                                        Nivel de Integración.
+                                                    </div>
+                                                    <span class="retroalimentacion-especifico">
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae vitae nesciunt dolorem consequuntur eligendi. Veritatis excepturi similique labore at, nam amet deleniti iusto natus sunt autem, nulla molestiae odio deserunt!
+                                                    </span>
+                                                </div>
+                                                <div class="puntaje-especifico">
+                                                    <div class="title-especifico">
+                                                        Puntaje.
+                                                    </div>
+                                                    <div class='char-barra-cirular-especifico'>
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit facilis cupiditate exercitationem repellendus praesentium eos velit reiciendis asperiores magni possimus mollitia, error cum necessitatibus vel recusandae beatae animi. Placeat, cum.
+                                                    </div>
+                                                </div>
+                                                <div class="grafica-especifico">
+                                                    <div class="title-especifico">
+                                                        Integración.
+                                                    </div>
+                                                    <div class="chart-container-espcifico">
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium rerum, minus qui cumque tempore porro a quae obcaecati sit sed doloribus ea dolore. Quasi iste iure ratione nulla cupiditate possimus.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="titulo-global">
+                                                <span>Integración Globla.</span>
+                                            </div>
+                                            <div class="info-global">
+                                                <div class="info-glob">
+                                                    <div class="title-global">
+                                                        Nivel de Integración.
+                                                    </div>
+                                                    <span class="retroalimentacion-global">
+                                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum velit pariatur labore doloribus architecto corrupti nihil ducimus mollitia quam ut, est laborum quibusdam dolore ea. Expedita facere magnam adipisci illo!
+                                                    </span>
+                                                </div>
+                                                <div class="puntaje-global">
+                                                    <div class="title-global">
+                                                        Puntaje.
+                                                    </div>
+                                                    <div class='char-barra-cirular-global'>
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum odit quo dolorem non facere eligendi fugit tempora ullam deleniti assumenda corrupti, quia pariatur consequuntur, reprehenderit laboriosam hic officia suscipit officiis.
+                                                    </div>
+                                                </div>
+                                                <div class="grafica-global">
+                                                    <div class="title-global">
+                                                        Integración.
+                                                    </div>
+                                                    <div class="chart-container-espcifico">
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, vel fugit repellat corporis soluta ullam possimus molestiae quas. Suscipit nisi error consectetur amet mollitia atque maxime molestiae eaque maiores tempora?
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div> -->
+                                    <!-- <div class="retroalimentacion-integracion">
                                         <div class="titulo-retroalimentacion-integracion">
                                             <span>Retroalimentación.</span>
                                         </div>
@@ -357,9 +425,81 @@
                                             es <span class="resultado-integracion-todo"></span> de integración de
                                             conceptos de RSE.
                                         </span>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="info-general">
+                                <!-- infocarion global y especifica  -->
+                                <div class="info-global-especifica">
+
+                                    <div class="info-puntaje-gloabal-especifico">
+                                        <div class="titulo-especifico">
+                                            <span>Integración Especifica.</span>
+                                        </div>
+                                        <div class="info-especifico">
+                                            <div class="info-espe">
+                                                <div class="title-especifico">
+                                                    Nivel de Integración.
+                                                </div>
+                                                <span class="retroalimentacion-especifico">
+                                                    Su nivel de Integración respecto al total de prácticas evaluadas
+                                                    hasta el momento es de <span class="resultado-integracion"></span>,
+                                                    referente a las dimensiones <span
+                                                        class="dim-evaluadas-integracion"></span> y
+                                                    a los
+                                                    temas <span class="tem-evaluados-integracion"></span> para este
+                                                    resultado
+                                                    se
+                                                    tomaron en cuentas solo las dimensiones y temas que usted haya
+                                                    previamente
+                                                    registrados.
+                                                </span>
+                                            </div>
+                                            <div class="puntaje-especifico">
+                                                <div class="title-especifico">
+                                                    Puntaje.
+                                                </div>
+                                                <div class='char-barra-cirular-especifico'></div>
+                                            </div>
+                                            <div class="grafica-especifico">
+                                                <div class="title-especifico">
+                                                    Integración.
+                                                </div>
+                                                <div class="chart-container-espcifico"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="titulo-global">
+                                            <span>Integración Globla.</span>
+                                        </div>
+                                        <div class="info-global">
+                                            <div class="info-glob">
+                                                <div class="title-global">
+                                                    Nivel de Integración.
+                                                </div>
+                                                <span class="retroalimentacion-global">
+                                                    Su nivel de Integración respecto al total de prácticas evaluadas
+                                                    es <span class="resultado-integracion-todo"></span> referente a todas las 
+                                                    dimensiones y a todos temas ya sea que haya o no registrado previamente.
+                                                </span>
+                                            </div>
+                                            <div class="puntaje-global">
+                                                <div class="title-global">
+                                                    Puntaje.
+                                                </div>
+                                                <div class='char-barra-cirular-global'></div>
+                                            </div>
+                                            <div class="grafica-global">
+                                                <div class="title-global">
+                                                    Integración.
+                                                </div>
+                                                <div class="chart-container-global"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- <div class="info-general">
                                     <div class="info-total">
                                         <div class="title">
                                             Nivel de Integración.
@@ -371,13 +511,6 @@
                                             Puntaje.
                                         </div>
                                         <div class='char-barra-cirular'></div>
-                                        <!-- <div id="char-barra-cirular"></div> -->
-                                        <!-- <div class="puntaje-total-valor-numerico">
-                                            <span>0.60/1</span>
-                                        </div>
-                                        <div class="barra_progres_total">
-                                            <progress value="0.6"></progress>
-                                        </div> -->
                                     </div>
                                     <div class="grafica-general">
                                         <div class="title">
@@ -385,7 +518,7 @@
                                         </div>
                                         <div class="chart-container"></div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="info-temas-indicadores">
                                     <div class="titulo-temas-inidcadores">
                                         <span>Temas Evaluados.</span>
@@ -619,7 +752,7 @@
                                     </div>
                                     <div class="tablas-puntajes-totales-dimensiones">
                                         <div class="temas-clasficacion">
-                                            <p>Clasificación  Temas Sociales</p>
+                                            <p>Clasificación Temas Sociales</p>
                                         </div>
                                         <!--_____________________________________________________________-->
                                         <div class="opciones-mejora">
@@ -658,7 +791,7 @@
                                             <!--estable SOCIAL-->
                                             <div class=" container-info">
                                                 <div class="titulo-info" id="estable">
-                                                    <span>Bueno..</span>
+                                                    <span>Bueno.</span>
                                                 </div>
                                                 <div class="contenido-info-estable-social">
                                                     <div class="tema-puntaje">
@@ -703,7 +836,7 @@
                                     </div>
                                     <div class="tablas-puntajes-totales-dimensiones">
                                         <div class="temas-clasficacion">
-                                            <p>Clasificación  Temas Ambientales.</p>
+                                            <p>Clasificación Temas Ambientales.</p>
                                         </div>
                                         <!--_____________________________________________________________-->
                                         <div class="opciones-mejora">
@@ -823,11 +956,13 @@
                                         <!--MINI INFOMRE-->
                                         <div id="grafica-radar">
                                             <!-- <canvas id="marksChart_1"></canvas> -->
+        
                                             <div id="grafica_radar"></div>
                                         </div>
                                         <div id="grafica-polar">
                                             <!-- <div id="chart"></div> -->
-                                            <div id="chartholder"></div>
+                                            <div class="grafica-zoomable-sunburst"></div>
+                                            <!-- <div id="chartholder"></div> esta es la que estaba antes  -->
                                             <!-- <div class="dona_nueva"></div> -->
                                         </div>
 
@@ -1242,6 +1377,9 @@
 <script src="../librerias/anychart-core.js"></script>
 <script src="../librerias/anychart-radar.js"></script>
 <script src="../js/graficas/graficas_char.js"></script>
+
+<!-- GRAFICA zoomable sunburst -->
+<script src="../js/graficas/zoomable_sunburst.js"></script>
 
 <!-- Para cargar RETROALIMENTACIONES -->
 <script src="../js/graficas/retroalimentaciones.js"></script>

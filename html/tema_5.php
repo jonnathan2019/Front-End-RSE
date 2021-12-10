@@ -132,23 +132,73 @@
         <div class="stepper-wrapper">
             <div class="stepper-item active">
                 <div class="step-counter active">1</div>
-                <div id="step_name_tema_1" class="step-name"></div>
+                <div id="step_name_tema_1" class="step-name">
+                    <div class="card-loader-0">
+                        <div id="preloader_2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="stepper-item active">
                 <div class="step-counter active">2</div>
-                <div id="step_name_tema_2" class="step-name"></div>
+                <div id="step_name_tema_2" class="step-name">
+                    <div class="card-loader-0">
+                        <div id="preloader_2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="stepper-item active">
                 <div class="step-counter active">3</div>
-                <div id="step_name_tema_3" class="step-name"></div>
+                <div id="step_name_tema_3" class="step-name">
+                    <div class="card-loader-0">
+                        <div id="preloader_2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="stepper-item active">
                 <div class="step-counter active">4</div>
-                <div id="step_name_tema_4" class="step-name"></div>
+                <div id="step_name_tema_4" class="step-name">
+                    <div class="card-loader-0">
+                        <div id="preloader_2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="stepper-item active">
                 <div class="step-counter active">5</div>
-                <div id="step_name_tema_5" class="step-name"></div>
+                <div id="step_name_tema_5" class="step-name">
+                    <div class="card-loader-0">
+                        <div id="preloader_2">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -160,8 +210,28 @@
             </div>
             <div class="card-content">
                 <div class="info-tema">
-                    <h2 class="car-title" id="tema-titulo"></h2>
-                    <p class="res-concept" id="tema-descripcion"></p>
+                    <h2 class="car-title" id="tema-titulo">
+                        <div class="card-loader">
+                            <div id="preloader_1">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </h2>
+                    <div class="res-concept" id="tema-descripcion">
+                        <div class="card-loader-1">
+                            <div id="preloader_1">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="cards-stats">
                     <div class="stats">
@@ -185,6 +255,15 @@
 
         <div class="contenido">
             <div class="acordion">
+                <div class="card-loader-1">
+                    <div id="preloader_1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
                 <!-- <div class="accordion-item">
                     <div class="accordion-item-header" id="titulo-indicador1">
                         Relaciones con Empleados.

@@ -114,15 +114,21 @@ function syncDelay(milliseconds) {
 
 //Autentificar Encuestado
 function autentificar_encuestado() {
+    document.querySelector('.btn').innerHTML = 'Comprobando...'
+    document.querySelector('.btn').style.background = 'rgb(126, 126, 241)'
     var usuario = document.getElementById("email").value;
     var contrasena = document.getElementById("password").value;
 
     if (usuario == "" || contrasena == "") {
         swal("Porfavor ingrese todos los campos.")
+        document.querySelector('.btn').innerHTML = 'Login'
+        document.querySelector('.btn').style.background = 'rgb(71, 71, 241)'
     } else {
         var valor = 0;
         (async function () {
             const datos_usuario = await getDatosUsuarios();
+            document.querySelector('.btn').innerHTML = 'Login';
+            document.querySelector('.btn').style.background = 'rgb(71, 71, 241)'
             await datos_usuario.forEach(element => {
                 if (element.encuestado != null) {//para comparar solo el Encuestado
                     if (usuario == element.encuestado.correo) {
@@ -139,6 +145,8 @@ function autentificar_encuestado() {
             })
             if (valor == 0) {
                 swal("Datos incorrectos, por favor ingrese de nuevo.");
+                document.querySelector('.btn').innerHTML = 'Login';
+                document.querySelector('.btn').style.background = 'rgb(71, 71, 241)'
             }
         })()
 
