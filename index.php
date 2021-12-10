@@ -103,7 +103,7 @@
     </div>
 
     <!-- cards-dimensiones -->
-    <div class="dimensiones-info">
+    <!-- <div class="dimensiones-info">
         <div class="cards-dimensiones car-social">
             <div class="card-contenido">
                 <h2 class="card-titulo">Social</h2>
@@ -124,7 +124,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--Dim SOCIAL-->
     <!-- <div class="dim-social">
         <div class="imgen">
