@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsabilidad Empresarial.</title>
     <link rel="icon" type="image/png" href="imagenes/logo_3.png" />
-    <link rel="stylesheet" href="css/index_2.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -103,7 +103,7 @@
     </div>
 
     <!-- cards-dimensiones -->
-    <!-- <div class="dimensiones-info">
+    <div class="dimensiones-info">
         <div class="cards-dimensiones car-social">
             <div class="card-contenido">
                 <h2 class="card-titulo">Social</h2>
@@ -124,7 +124,7 @@
                 </p>
             </div>
         </div>
-    </div> -->
+    </div>
     <!--Dim SOCIAL-->
     <!-- <div class="dim-social">
         <div class="imgen">
