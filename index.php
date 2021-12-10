@@ -105,7 +105,7 @@
             <div class="card-contenido">
                 <h2 class="card-titulo">Social</h2>
                 <p class="card-cuerpo">
-                    La Responsabilidad Social dirigida a el ámbito social incluye los temas relacionados con el personal
+                    La Responsabilidad Social incluye los temas relacionados con el personal
                     trabajador de la organización, con la mejora de la calidad de vida de la ciudadanía, creando
                     oportunidades para los colectivos con especiales dificultades.
                 </p>
@@ -115,7 +115,7 @@
             <div class="card-contenido">
                 <h2 class="card-titulo">Ambiental</h2>
                 <p class="card-cuerpo">
-                    La Responsabilidad Social Ambiental se puede entender como el conjunto de mecanismos aplicados por las empresas públicas o privadas, 
+                    La Responsabilidad Social Ambiental se puede entender como el conjunto de mecanismos aplicados por las empresas, 
                     para minimizar su impacto al medio ambiente, contribuyendo así a mejorar
                     la calidad de vida de la empresa y de sus alrededores.
                 </p>
