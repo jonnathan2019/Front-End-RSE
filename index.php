@@ -17,9 +17,7 @@
     <!--LETRA-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Rubik&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Rubik&display=swap" rel="stylesheet">
 
 </head>
 
@@ -47,8 +45,7 @@
         </div>
         <div class="wave" style="height: 150px; overflow: hidden;">
             <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
-                <path d="M0.00,49.99 C150.00,150.00 349.21,-49.99 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
-                    style="stroke: none; fill: #fff;"></path>
+                <path d="M0.00,49.99 C150.00,150.00 349.21,-49.99 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path>
             </svg>
         </div>
     </div>
@@ -118,9 +115,10 @@
             <div class="card-contenido">
                 <h2 class="card-titulo">Ambiental</h2>
                 <p class="card-cuerpo">
-                    La Responsabilidad Social dirigida a el ámbito social incluye los temas relacionados con el personal
-                    trabajador de la organización, con la mejora de la calidad de vida de la ciudadanía, creando
-                    oportunidades para los colectivos con especiales dificultades.
+                    La Responsabilidad Social Ambiental se puede entender como el conjunto de mecanismos de producción
+                    más limpia aplicados por las empresas públicas o privadas, para minimizar su impacto al medio
+                    ambiente en el espacio donde desarrolla sus actividades de producción, contribuyendo así a mejorar
+                    la calidad de vida de la empresa y de sus alrededores.
                 </p>
             </div>
         </div>
