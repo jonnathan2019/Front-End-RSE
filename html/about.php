@@ -131,7 +131,7 @@
                 <span>Evaluación.</span>
             </div>
             <div class="about-reporte about-repoter-info">
-                <span>Reporte</span>
+                <span>Reporte.</span>
             </div>
         </div>
         <div class="contenido-about" style="display: block;">
