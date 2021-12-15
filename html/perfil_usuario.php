@@ -87,19 +87,20 @@
                 Reporte
             </div>
         </a>
-        <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
+        <!-- <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
             <span>Estándar</span>
             <div class="texto-emergente">
                 Estándar
             </div>
-        </a>
+        </a> -->
         <!-- <a class="slider-opcion" href="#"><i class="fas fa-cogs"></i>
             <span>Configuracion</span>
             <div class="texto-emergente">
                 Configuracion
             </div>
         </a> -->
-        <a class="slider-opcion" href="#"><i class="fas fa-info-circle"></i>
+        <a class="slider-opcion" onclick="ir_about();">
+            <i class="fas fa-info-circle"></i>
             <span>About</span>
             <div class="texto-emergente">
                 About

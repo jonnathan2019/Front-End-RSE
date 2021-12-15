@@ -135,6 +135,10 @@ function ir_perfil() {
     window.location.href = `${url_global_pagina}perfil_usuario${extencion}?usuario=${usuario_ID}`;
 }
 
+function ir_about(){
+    window.location.href = `${url_global_pagina}about${extencion}?usuario=${usuario_ID}`;
+}
+
 function regresar() {
     history.back()
 }

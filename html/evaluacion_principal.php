@@ -101,19 +101,20 @@
                 Reporte
             </div>
         </a>
-        <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
+        <!-- <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
             <span>Estándar</span>
             <div class="texto-emergente">
                 Estándar
             </div>
-        </a>
+        </a> -->
         <!-- <a class="slider-opcion" href="#"><i class="fas fa-cogs"></i>
             <span>Configuracion</span>
             <div class="texto-emergente">
                 Configuracion
             </div>
         </a> -->
-        <a class="slider-opcion" href="#"><i class="fas fa-info-circle"></i>
+        <a class="slider-opcion" onclick="ir_about();">
+            <i class="fas fa-info-circle"></i>
             <span>About</span>
             <div class="texto-emergente">
                 About
@@ -134,12 +135,13 @@
             </div>
             <div class="card-content">
                 <h2 class="car-title">Evaluando RSE.</h2>
-                <p class="res-concept">La Responsabilidad social corporativa (RSC), 
-                    también llamada Responsabilidad social empresarial (RSE) 
-                    o simplemente Responsabilidad social (RS), 
-                    se define como la contribución activa y voluntaria 
-                    al mejoramiento social y ambiental por parte de las empresas, 
-                    con este sistema podrá conocer su nivel de RSE.</p>
+                <p class="res-concept">La Responsabilidad social empresarial (RSE) o
+                    simplemente Responsabilidad social (RS), se define como la
+                    contribución activa y voluntaria al mejoramiento social y
+                    ambiental de las empresas. Esta herramienta de uso gratuito,
+                    busca apoyar a las empresas en la incorporación de la
+                    responsabilidad social empresarial (RSE) en sus estrategias
+                    de negocio, de modo que esta sea sustentable y responsable.</p>
                 <div class="buton-comensar" onclick="comezar()">
                     <a class="button">Comenzar</a>
                 </div>

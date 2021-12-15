@@ -3,7 +3,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
 .cuerpo{
     background: #f1f5f9;
 }
@@ -24,11 +23,7 @@
     align-items: center;
     justify-content: space-between;
 }
-/*administradro INICIO*/
-.navegador{
-    width: 100%;
-}
-/*administradro INICIO*/
+
 .nav .logo {
     margin-left: 20px;
     font-weight: bold;
@@ -133,6 +128,7 @@
     border-top: 1px solid #ccc;
     padding: 5px 0px;
     color: #ccc;
+    cursor: pointer;
 } 
 
 .nav .menu-salir ul li i{
@@ -152,7 +148,6 @@
 }
 /*___________________slider_________________________*/
 .sidebar{
-    background-color: #270e8a;
     background-color: rgb(71, 71, 241);
     color: #fff;
     width: 5%;
@@ -171,6 +166,7 @@
     color: #fff;
 
 }
+
 /*_________IMG Encabezado INICIO________________*/
 .sidebar .slider-encabesado{
     border-bottom: 1px solid #fff;
@@ -199,6 +195,7 @@
     border-bottom: 0.05rem solid #130f24;
     padding: 20px 20px;
     color: #fff;
+    cursor: pointer;
 }
 
 .sidebar a:hover{
@@ -252,6 +249,7 @@
 
 
 .content{
+    /* background: #fff;  */
     width: 95%;
     position: relative;
     float: right;
@@ -259,11 +257,7 @@
     margin-left: 15%;
     transition: 0.5s;
 }
-/*Administrador INICIO*/
-.content-administrador{
-    width: 100%;
-}
-/*Administrador FIN*/
+
 
 #check:checked ~ .sidebar{
     width: 15%;
@@ -279,82 +273,218 @@
     
 }
 
-
 #check:checked ~ .sidebar a span{  
     display: inline;
     margin-left: 10px;
     position: absolute;
 }
 
-/*______________CAR INICIO_______*/
-.contenido{
-    width: 70%;
-    margin: 1rem auto;
-    /*border: 1px solid #dddddd;*/
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 0 4px rgba(153, 150, 150, 0.25);
+/* ____________________________________ */
+.nav-abaut-info{
+    background: rgb(250, 249, 249);
+    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    border: 0.5px solid #ccc;
+}
+.about-evaluacion, .about-reporte{
+    /* background: chartreuse; */
+    padding: 20px;
 }
 
-.contenido .titulo{
+.contenido-abput-evaluacion{
+    background: #fff;
     width: 100%;
-    padding: 14px 0px;
-    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 0.5px solid #ccc;
 }
-.contenido .titulo span{
+
+.about-evaluacion-info {
+    width: 40%;
     margin: 20px;
 }
 
-.contenido .info-usuario{
-    width: 90%;
-    margin: 30px 0px;
+.about-evaluacion-img{
+    width: 40%;
+    height: 300px;
 }
 
-.nombre-usuario, .usuario-email, .contrasenas{
+.about-evaluacion-img img{
     width: 100%;
-    margin: 5px 0px;
-    display: flex;
-    justify-content: space-between;
+    height: 100%;
 }
 
-.nombre-usuario .datos, .usuario-email .datos, .contrasenas .datos{
+.about-evaluacion-info .titulo{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.about-evaluacion-info .about-info{
     display: flex;
     flex-direction: column;
+    font-style: italic;
 }
 
-.nombre-usuario input, .usuario-email input, .contrasenas input{
-    padding: 10px 70px;
-    border-radius: 10px;
-    outline: none;
-    border: 1px solid #ccc;
+.about-evaluacion-info .about-info .info-1{
+    margin: 10px auto;
 }
 
-.guardar-info{
-    width: 90%;
-    margin-bottom: 20px;
+/* segundo info */
+.contenido-ejemplo-preguntas{
+    background: #f5f3f3;
+    width: 100%;
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 0.5px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.contenido-ejemplo-preguntas .titulo{
+    font-size: 35px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.contenido-ejemplo-preguntas .info{
+    width: 50%;
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 20px;
+}
+
+.ejemplo-preguntas{
+    /* background: #5b35f1; */
+    width: 90%;
+    display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 
-.guardar-info button{
-    background: rgb(71, 71, 241);
-    border: 1px solid #fff;
-    border-radius: 15px;
-    padding: 5px 15px;
-    color: #fff;
+.ejemplo-preguntas .tema-1{
+    background: chartreuse;
+    width: 18%;
+    text-align: center;
+    margin: 20px auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
 }
 
-.guardar-info button:focus{
-    outline:none !important;
+.ejemplo-preguntas .tema-1 .titulo-imagen{
+    border-bottom: 2px solid #5b35f1;
 }
-.guardar-info button:hover{
-background: rgb(118, 118, 241);
-}
-/*______________CAR FIN_______*/
 
+#boton-ver-pregunta{
+    width: 150px;
+    margin: 10px auto;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.imagenes-temas{
+    width: 100px;
+    height: 100px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
+.ejemplo-preguntas-imagen{
+    width: 90%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+
+.ejemplo-preguntas-imagen .imagen-preguntas img{
+    width: 100%;
+    height: 110%;
+    border-radius: 5px;
+}
+
+.ver-preguntas:hover,
+.ver-preguntas.active{
+	background: #e3dff7;
+	color: #5b35f1;
+    font-weight: bold;
+}
+
+
+.about-repoter-info:hover,
+.about-repoter-info.active{
+	/* background: #e3dff7; */
+	color: #5b35f1;
+    cursor: pointer;
+    border-bottom: 2px solid #5b35f1;
+}
+
+
+/* reporte */
+.contenido-about-reporte{
+    background: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 0.5px solid #ccc;
+    margin: 20px auto;
+}
+
+.contenido-about-reporte .titulo{
+ font-size: 30px;
+ font-weight: bold;
+ /* font-weight: inherit; */
+ font-style: italic;
+ padding: 20px;
+}
+
+.contenido-about-reporte .info{
+    width: 85%;
+    font-size: 20px;
+}
+
+.about-nivel-integracion{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(243, 242, 242);
+    margin: 30px;
+}
+
+.about-nivel-integracion .informacion_1, .about-nivel-integracion .informacion_2{
+    width: 40%;
+    margin: 20px auto;
+}
+
+.about-nivel-integracion .informacion_1 .informacion_1-titulo{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.about-nivel-integracion .informacion_1 .info{
+    font-size: 20px;
+    /* font-weight: bold; */
+    font-style: italic;
+    width: 100%;
+}
+.about-nivel-integracion .informacion_2 img{
+    width: 100%;
+    height: 150px;
+}
 
 /*________ scroll bar INICIO __________*/
 /* width */
@@ -374,3 +504,5 @@ background: rgb(118, 118, 241);
     border-radius: 10px;
   }
  /*________ scroll bar FIN __________*/
+
+

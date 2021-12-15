@@ -1,7 +1,5 @@
-(async function () {
-    //llamamos a la funcion para que aplique el algoritmo
-    await getAlgoritmo()
-    setTimeout(() => {
+
+function grafica_radar(){
         //console.log(resutaldo_final)//resulatdo final
         //console.log(objeto_resp)//resulatdo dimensiones y otros
 
@@ -131,10 +129,8 @@
         });
 
 
-    }, 8000)
-
-
-    setTimeout(() => {
+}
+function grafica_radar_pdf(){
         //console.log(resutaldo_final)//resulatdo final
         //console.log(objeto_resp)//resulatdo dimensiones y otros
 
@@ -262,8 +258,4 @@
             chart.draw();
 
         });
-
-
-    }, 8000)
-
-})()
+}

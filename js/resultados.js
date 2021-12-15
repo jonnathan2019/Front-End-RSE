@@ -80,7 +80,7 @@ async function getTotalIndicadores() {
     return json;
 }
 
-function algoritmo_todo_aspecpectos(objeto_respuestas_new){
+function algoritmo_todo_aspecpectos(objeto_respuestas_new) {
     objeto_resp_2 = objeto_respuestas_new;
     objeto_resp_2.forEach(datos_preguntas => {
         //console.log(datos_preguntas)
@@ -146,8 +146,8 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new){
     //---------------- FORMULA Fin ---------------------------
     // console.log(respuesta_final_2)
 
-    document.querySelector('.resultado-integracion-todo').innerHTML = `${(respuesta_final_2*100).toFixed(2)}%`
-    
+    document.querySelector('.resultado-integracion-todo').innerHTML = `${(respuesta_final_2 * 100).toFixed(2)}%`
+
 }
 
 //Creamos el Objeto
@@ -221,7 +221,7 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new){
 
     })
 
-    console.log(objeto_respuestas_new)
+    // console.log(objeto_respuestas_new)
     objeto_respuestas_new.forEach(element_dim => {
         element_dim.temas.forEach(element_temas => {
             element_temas.indicadores.forEach(elem_indicador => {
@@ -252,7 +252,7 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new){
 
         })
     })
-    console.log(objeto_respuestas_new)
+    // console.log(objeto_respuestas_new)
     algoritmo_todo_aspecpectos(objeto_respuestas_new)
     // ________________________
     // respuestasIndicadores.forEach(element => {
@@ -431,7 +431,7 @@ function algoritmo_graficar() {
         let dim_evaluados = [];
         let temas_evaluados = [];
         let indi_evaluados = []
-        console.log('___________________________')
+        // console.log('___________________________')
         let outDimIntegracion = '';
         let ottTemIntegracion = '';
         const DimIntegracion = document.querySelector('.dim-evaluadas-integracion');
@@ -734,6 +734,28 @@ function algoritmo_graficar() {
                 numero_temas = numero_temas + 1;
             })
         })
+
+        //llamamos a la funcion de Graficar
+        // _____________________________
+        // barra horizontal
+        graficar_barras();
+        // circular 
+        grafica_circular_valor_total()//para la barra de progreso circular TOTAL
+        grafica_circular_valor_dim_social()//barra de progreso circular SOCIAL
+        grafica_circular_valor_dim_ambental()//barra de progreso circular AMBIENTAL
+        // barra vertical
+        grafica_bar_vertical();
+        grafica_bar_vertical_pdf();
+        // barra horizontal
+        grafica_barra_horixzontal();
+        // radar
+        grafica_radar();
+        grafica_radar_pdf();
+        // zoomable
+        grafica_zoomable();
+        // retroalimenatciones
+        obtener_retroalimenatcion();
+        // _____________________________
         //-------------- MODAL Inicio -------------------
         setTimeout(() => {
             //LINK demora: https://stackoverflow.com/questions/48295288/how-to-handle-single-click-and-double-click-on-the-same-html-dom-element-usi
@@ -770,12 +792,12 @@ function algoritmo_graficar() {
                             var valor = padre.children[1].textContent.replace(/[&\/\\#,+()$~%'":*?<>{}]/g, '');
                             if (nombre_1 == nombre_2) {
                                 if (valor > 66) {
-                                    document.querySelector(".retoalimentacion-tema").innerHTML = element.retroalimentacion_temas.retroalimentacion_bueno;
-
+                                    document.querySelector(".retoalimentacion-tema").innerHTML = "Este tema se aplica en gran parte de su empresa por lo que su empresa ya es considerada como una empresa sustentable y responsable.";
+    
                                 } else if (valor < 33) {
-                                    document.querySelector(".retoalimentacion-tema").innerHTML = element.retroalimentacion_temas.retroalimentacion_malo;
+                                    document.querySelector(".retoalimentacion-tema").innerHTML = "Este tema no se aplica en su empresa por lo que se sugiere empezar a trabar en este tema.";
                                 } else {
-                                    document.querySelector(".retoalimentacion-tema").innerHTML = element.retroalimentacion_temas.retroalimentacion_regular;
+                                    document.querySelector(".retoalimentacion-tema").innerHTML = "Este tema se aplica de forma media por lo que se sugiere mejorar en ciertos aspectos respecto a este tema, para alcanzar un nivel óptimo de RSE.";
                                 }
                             }
 
@@ -811,7 +833,7 @@ function algoritmo_graficar() {
 }
 
 
-////------------------Select GRAFICAS----------------------------
+////------------------Select GRAFICAS TEMAS----------------------------
 function cargar_graficas_temas() {
     var combo = document.getElementById("selector");
     var selected = combo.options[combo.selectedIndex].text;
@@ -819,7 +841,7 @@ function cargar_graficas_temas() {
         document.getElementById('grafica-radar').style.display = 'block'
         document.getElementById('grafica-polar').style.display = 'none'
     }
-    else if (selected == 'Polar') {
+    else if (selected == 'Circular') {
         document.getElementById('grafica-radar').style.display = 'none'
         document.getElementById('grafica-polar').style.display = 'block'
     }
@@ -828,6 +850,24 @@ function cargar_graficas_temas() {
         document.getElementById('grafica-polar').style.display = 'block'
     }
 }
+////------------------Select GRAFICAS DIMENSIONES----------------------------
+function cargar_graficas_dimensiones() {
+    var combo = document.getElementById("selector_dim_bar");
+    var selected = combo.options[combo.selectedIndex].text;
+    if (selected == 'Bar-Horizontal') {
+        document.getElementById('grafica-bar-horizontal').style.display = 'block'
+        document.getElementById('grafica-bar-vertical').style.display = 'none'
+    }
+    else if (selected == 'Bar-Vertical') {
+        document.getElementById('grafica-bar-horizontal').style.display = 'none'
+        document.getElementById('grafica-bar-vertical').style.display = 'block'
+    }
+    // else if (selected == 'Barras') {
+    //     document.getElementById('grafica-bar-horizontal').style.display = 'block'
+    //     document.getElementById('grafica-bar-vertical').style.display = 'block'
+    // }
+}
+
 ////-----------------MENU-----------------------------
 function menuToggle() {
     const toggleMenu = document.querySelector('.menu-salir');
@@ -909,6 +949,10 @@ function ir_reporte() {
 }
 function ir_perfil() {
     window.location.href = `${url_global_pagina}perfil_usuario${extencion}?usuario=${usuario_ID}`;
+}
+
+function ir_about(){
+    window.location.href = `${url_global_pagina}about${extencion}?usuario=${usuario_ID}`;
 }
 
 function salir() {
