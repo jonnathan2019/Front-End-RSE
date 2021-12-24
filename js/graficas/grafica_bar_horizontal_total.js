@@ -22,7 +22,7 @@ function graficar_barra_horizontal(variable, valor,ancho,altura) {
   // set the ranges
   var y = d3.scaleBand()
     .range([height_bar_hori, 0])
-    .padding(0.2);
+    .padding(0.1);
 
   var x = d3.scaleLinear()
     .domain([0, 100])
@@ -154,8 +154,8 @@ function graficar_barra_horizontal(variable, valor,ancho,altura) {
 
 function graficar_barras() {
   // graficar_barra_horizontal('.chart-container',resutaldo_final)
-  graficar_barra_horizontal('.chart-container-espcifico', resutaldo_final, 650,100)
-  graficar_barra_horizontal('.chart-container-global', respuesta_final_2,650,100)
+  graficar_barra_horizontal('.chart-container-espcifico', resutaldo_final, 820,80)
+  graficar_barra_horizontal('.chart-container-global', respuesta_final_2,820,80)
 }
 
 

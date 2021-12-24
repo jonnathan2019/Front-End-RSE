@@ -106,9 +106,9 @@ function grafica_radar(){
                 .ticks({ 'interval': 20 });
 
             // create first series
-            chart.area(valores_temas_sociales).name('Social').markers(true).fill("blue", 0.3).stroke("blue")
+            chart.area(valores_temas_sociales).name('Social').markers(true).fill("#ff8000", 0.3).stroke("#ff8000")
             // create second series
-            chart.area(valores_temas_ambientales).name('Ambeintal').markers(true).fill("green", 0.3).stroke("green")
+            chart.area(valores_temas_ambientales).name('Ambeintal').markers(true).fill("#1FE250", 0.3).stroke("#1FE250")
             // create third series
             // chart.area(data3).name('Squirtle').markers(true).fill("#5BC0EB", 0.3).stroke("#5BC0EB")
 

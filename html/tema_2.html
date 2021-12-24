@@ -145,7 +145,7 @@
                     </div>
                 </div>
             </div>
-            <div class="stepper-item active">
+            <div class="stepper-item">
                 <div class="step-counter active">2</div>
                 <div id="step_name_tema_2" class="step-name">
                     <div class="card-loader-0">
@@ -159,8 +159,8 @@
                     </div>
                 </div>
             </div>
-            <div class="stepper-item active">
-                <div class="step-counter active">3</div>
+            <div class="stepper-item">
+                <div class="step-counter">3</div>
                 <div id="step_name_tema_3" class="step-name">
                     <div class="card-loader-0">
                         <div id="preloader_2">
@@ -207,7 +207,7 @@
 
         <div class="card-main">
             <div class="card-imagen">
-                <img src="../imagenes/cuestiones_relacionadas_consumidor.jpg" alt="">
+                <img src="../imagenes/Trabajadores.jpg" alt="">
             </div>
             <div class="card-content">
                 <div class="info-tema">
@@ -338,6 +338,31 @@
                         </div>
 
                     </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-item-header" id="titulo-indicador4">
+                        Trabajo Forzoso (o análogo al Esclavo) en la Cadena de Abastecimiento
+                    </div>
+                    <div class="accordion-item-body" id="crud-table">
+                        <div class="accordion-item-body-content cargar-preguntas3">
+                            <div class="preguntas">
+                                <span></span>
+                            </div>
+                            <div class="radio-button">
+                                <input type="radio" id="SI" name="SI" value="SI">
+                                <input type="radio" id="NO" name="NO" value="NO">
+                                <input type="radio" id="Talvez" name="Talvez" value="Talvez">
+                            </div>
+                        </div>
+                        <div class="coment">
+                            <textarea name="" id="" cols="135" rows="5"></textarea>
+                        </div>
+                        <div class="buton-enviar">
+                            <button class="enviar" id="buton_4" onclick="obtener_datos_indicador_4()">Guardar</button>
+                        </div>
+
+                    </div>
                 </div> -->
 
             </div>
@@ -349,11 +374,6 @@
     </div>
 
     <script>
-
-        function menuToggle() {
-            const toggleMenu = document.querySelector('.menu-salir');
-            toggleMenu.classList.toggle('active')
-        }
         var tabs = document.querySelectorAll(".tabs ul li");
         var tab_wraps = document.querySelectorAll(".tab_wrap");
 
@@ -378,10 +398,16 @@
     </script>
 
 </body>
-<!-- <script src="js/cuestiones_relacionadas_consumidor.js" defer></script> -->
+<script>
+    function menuToggle() {
+        const toggleMenu = document.querySelector('.menu-salir');
+        toggleMenu.classList.toggle('active')
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../librerias/loader.js"></script>
 <script src="../js/urls.js"></script>
-<script src="../js/temas_RSE/tema_3.js" defer></script>
+<!-- <script src="js/practicas_trabajo.js" defer></script> -->
+<script src="../js/temas_RSE/tema_2.js" defer></script>
 
 </html>

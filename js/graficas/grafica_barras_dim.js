@@ -6,10 +6,10 @@ function grafica_bar_vertical() {
     //console.log(objeto_resp)//resulatdo dimensiones y otros
 
     var barColor = '#1FE250';//verde
-    var highlightColor = "#FF5733";//naranja
+    var highlightColor = "#ff8000";//naranja
 
     const objeto_dimensiones = [];
-    let colores = ['#1FE250', '#FF5733']
+    let colores = ['#1FE250', '#ff8000']
     let num = 0;
     objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
         //console.log(datos_preguntas.dimension)
@@ -24,7 +24,7 @@ function grafica_bar_vertical() {
 
     })
 
-    console.log(objeto_dimensiones)
+    // console.log(objeto_dimensiones)
 
     // const sample = [
     //     {

@@ -7,9 +7,9 @@
 //console.log(objeto_resp[0].nivel_2*100)//ambiental
 
 function grafica_circular_valor_total() {
-    function radialProgress(selector) {
-        var anchura = 130;
-        var altura = 420;
+    function radialProgress(selector,ancho,alto,centro,gorsor,letra) {
+        var anchura = ancho;
+        var altura = alto;
 
         const parent = d3.select(selector)
         const size = parent.node().getBoundingClientRect()
@@ -17,7 +17,7 @@ function grafica_circular_valor_total() {
             .attr('width', anchura)
             .attr('height', altura);
         const outerRadius = Math.min(anchura, altura) * 0.45;
-        const thickness = 12;//10 anchura
+        const thickness = gorsor;//10 anchura
         let value = 0;
 
         const mainArc = d3.arc()
@@ -51,7 +51,8 @@ function grafica_circular_valor_total() {
 
         let percentLabel = svg.append("text")
             .attr('class', 'progress-label')
-            .attr('transform', `translate(${anchura / 2},${anchura + 95})`)//en 238 antes estaba -> anchura / 2
+            .style("font-size", letra)
+            .attr('transform', `translate(${anchura / 2},${anchura + centro})`)//en 238 antes estaba -> anchura / 2
             .text('0')
 
         return {
@@ -90,11 +91,11 @@ function grafica_circular_valor_total() {
     // let chart = radialProgress('.char-barra-cirular')
     // chart.update(resutaldo_final * 100)
 
-    let chart_especifico = radialProgress('.char-barra-cirular-especifico')
+    let chart_especifico = radialProgress('.char-barra-cirular-especifico',180,470,73,12,36)
     chart_especifico.update(resutaldo_final * 100)
 
     //respuesta_final_2
-    let chart_global = radialProgress('.char-barra-cirular-global')
+    let chart_global = radialProgress('.char-barra-cirular-global',80,370,113,8,24)
     chart_global.update(respuesta_final_2 * 100)
 
 }

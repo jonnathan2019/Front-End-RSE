@@ -16,7 +16,7 @@ function grafica_barra_horixzontal() {
     const width = 500
     var greyColor = "#898989";
     var barColor = '#1FE250';//verde
-    var highlightColor = "#FF5733";//naranja
+    var highlightColor = "#ff8000";//naranja
 
 
     const svg = d3.select('#grafica-horizontal')

@@ -777,8 +777,10 @@ function algoritmo_graficar() {
                 //--- obtenner un PADRE ESPECIFICO Inicio ---
                 var padre = evento.srcElement.parentNode//obtenemos el primer padre
                 //console.log(padre)
-                while (padre.className != 'info-tema') {//comparamos si es el padre que buscamos
+                var class_name = padre.className.split(" ")[0];
+                while (class_name != 'info-tema') {//comparamos si es el padre que buscamos
                     padre = padre.parentNode;//obtenemos el siguiente padre en caso de que no se el que buscamos 
+                    class_name = padre.className.split(" ")[0];
                 }
                 //console.log(padre.firstElementChild.textContent)
                 //--- obtenner un PADRE ESPECIFICO Fin ---
@@ -810,12 +812,12 @@ function algoritmo_graficar() {
                 //document.getElementById("cotendor-modal-info-id").transform = "translateY(0%)";
             }
             // boton_mostrar_modal es un arreglo así que lo recorremos
-            const boton_mostrar_modal = document.querySelectorAll(".contenido-indicador");
+            const boton_mostrar_modal = document.querySelectorAll(".info-tema");
             boton_mostrar_modal.forEach(boton => {
                 //Agregar listener
                 boton.addEventListener("dblclick", mostrar_modal_info);
             });
-            const conte_indica = document.getElementsByClassName('contenido-indicador')
+            const conte_indica = document.getElementsByClassName('info-tema')
             for (m = 0; m < conte_indica.length; m++) {
                 conte_indica[m].addEventListener('click', mostrar_info_indicadores)
             }

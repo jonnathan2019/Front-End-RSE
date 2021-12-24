@@ -87,6 +87,20 @@ async function getRespuestas() {
 
     return json;
 }
+
+function pintar(numero_indicador){
+    // console.log(numero_indicador)
+    // console.log(`no-total-preguntas-respondidas-${numero_indicador}`)
+    if(numero_indicador>0){
+        var valor_1 = document.getElementById(`no-total-preguntas-respondidas-${numero_indicador}`).textContent
+        var valor_2 = document.getElementById(`no-total-preguntas-${numero_indicador}`).textContent
+        if(valor_1 == valor_2){
+            document.getElementById(`no-respondido_${numero_indicador}`).style.background = "#10962d"
+            document.getElementById(`no-respondido_${numero_indicador}`).style.color = "#fff"
+        }
+    }
+
+}
 //__________________________________________
 
 (async function () {
@@ -159,7 +173,7 @@ async function getRespuestas() {
                                     </div>
                                 </div>
                                 <div class="coment">
-                                    <textarea name="" id="comentario" cols="135" rows="5"></textarea>
+                                    <textarea name="" id="comentario" cols="135" rows="5" placeholder="Descripcion Indicador"></textarea>
                                 </div>
                                 <div class="buton-enviar">
                                     <button class="enviar" id="buton_${num_indicadores + 1}" onclick="obtener_datos_indicador(${num_indicadores + 1})">Guardar</button>
@@ -226,7 +240,7 @@ async function getRespuestas() {
                         if (pregunta.pregunta_cualitativa == element_guardas_1.preguntasCualitativas.pregunta_cualitativa) {//comparamos si la pregunta se encuentra dentro de preguntas respondidas
                             //console.log(element_guardas_1.preguntasCualitativas.pregunta_cualitativa+":    "+element_guardas_1.respuesta
                             //ocultar el boton del indicador respondido
-                            console.log(contador_indicadores)
+                            // console.log(contador_indicadores)
                             let boton = document.getElementById(`buton_${contador_indicadores + 1}`);
                             boton.style.display = "none";
                             total_preguntas_respondidas = total_preguntas_respondidas + 1;
@@ -267,6 +281,7 @@ async function getRespuestas() {
             //para mostrar el numero de preguntas que tiene cada indicador
             document.getElementById(variable_preguntas_indicador_no_1).innerHTML = cont - 1;
             document.getElementById(variable_preguntas_indicador_si_1).innerHTML = cont - 1;
+            pintar(contador_indicadores)
             if (num_preguntas_ind > 0) {//para que no ingrese valores ceros
                 num_preguntas_indicador.push(num_preguntas_ind)//guardamos el numero de preguntas de cada indicador, es decir, la cantidad de opciones por cada Indicador
                 //nos permite determinar indicadores respondidos y no respondidos
@@ -428,6 +443,7 @@ function obtener_datos_indicador(numero) {
         document.getElementById(`si-respondido_${numero}`).style.display = "none";
         //invocamos cada una de las funciones para ingreesar
         (async function () {
+            pintar(numero)
             await setRespuestasIndicador(numero)//llamos a la funcion que ingrese el ID del indicador respondido
             const id_indicador_respondido = await getIdIndicador();//obtenemos el ultimo inidcador respondido
             //recorremos las lisa de pregunatas
