@@ -357,7 +357,7 @@
                                                         Su nivel de Integración respecto al total de prácticas evaluadas
                                                         es <span class="resultado-integracion-todo"></span> referente a
                                                         todas las
-                                                        dimensiones y a todos temas ya sea que haya o no registrado
+                                                        dimensiones y a todos los temas ya sea que haya o no registrado
                                                         previamente.
                                                     </span>
                                                 </div>
