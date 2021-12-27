@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 
     <!--LETRA-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;1,400&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"> -->
 
     <!-- Loader -->
     <link rel="stylesheet" href="../css/loader.css">
@@ -96,7 +96,7 @@
         </a>
         <a class="slider-opcion" onclick="ir_reporte();">
             <i class="far fa-file-alt"></i>
-            <span>Reporte</span>
+            <span>Informe</span>
             <div class="texto-emergente">
                 Reporte
             </div>
@@ -126,30 +126,51 @@
 
     <!--contenido-->
     <div class="content">
+        <div class="contendor-info-general" style="display: block;">
+            <div class="contendor-info">
+                <div class="caja-texto">
+                    <h1>Evalué su nivel de Integración.</h1>
+                    <p>Evalué el desempeño de su empresa frente
+                        a practicas de RSE. Realizar esta evaluación
+                        será un enriquecedor para su empresa.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="contendor-info-general" style="display: none;">
+            <div class="contendor-info_2">
+                <div class="caja-texto">
+                    <h1>Consulte su nivel de Integración.</h1>
+                    <p>Revise su informe sobre el nivel de integración de practicas de RSE y
+                        vea como se comporta su empresa frente a conceptos de RSE.
+                    </p>
+                </div>
+            </div>
+        </div>
         <div class="nav-abaut-info">
             <div class="about-evaluacion about-repoter-info active">
                 <span>Evaluación.</span>
             </div>
             <div class="about-reporte about-repoter-info">
-                <span>Reporte.</span>
+                <span>Informe.</span>
             </div>
         </div>
         <div class="contenido-about" style="display: block;">
             <div class="contenido-abput-evaluacion">
                 <div class="about-evaluacion-info">
                     <div class="titulo">
-                        Obtén el nivel de integración de prácticas de RSE.
+                        Obtenga un nivel de integración de practicas de RSE.
                     </div>
                     <div class="about-info">
                         <div class="info-1">
-                            La mejor manera para mejorar el nivel de
-                            integración de conceptos de RSE de tu negocio es
-                            conocer como está tu desempeño en las distintas dimensiones
-                            de la sustentabilidad.
+                            La mejor forma de mejorar en aspectos de RSE es conocer el
+                            nivel de integración en el que se encuentra su empresa respecto
+                            a conceptos de RSE.
                         </div>
                         <div class="info-2">
-                            El nivel de integración es un índice entre un rango de 0 a 100,
-                            siendo los valores cercanos a 100 los resultados más óptimos.
+                            El nivel de integración es un índice que tiene un rango de 0 a 100,
+                            siendo 100 y valores mas cercanos a 100 los resultados mas óptimos
+                            en cuanto a la ampliación de conceptos de RSE.
                         </div>
                     </div>
                 </div>
@@ -164,9 +185,11 @@
                     Ejemplo de preguntas.
                 </div>
                 <div class="info">
-                    Todas las preguntas tendrán tres opciones si, no,
-                    parcialmente, siendo “si” la opción más optima,
-                    “no” opción mas baja y “parcialmente” opción media.
+                    Todas las preguntas están clasificadas por temas,
+                    y tendrán tres tipos de opciones, si, no y
+                    parcialmente, siendo ‘si’ la opción más optima,
+                    ‘parcialmente’ la opción media y ‘no’
+                    la opción mas baja o menos optima.
                 </div>
                 <div class="ejemplo-preguntas">
                     <div class="tema-1">
@@ -174,7 +197,7 @@
                             <img class="imagenes-temas" src="../imagenes/Derechos_Humanos.jpg" alt="">
                         </div>
                         <div class="titulo-imagen">
-                            DERECHOS HUMANOS
+                            Derechos Humanos
                         </div>
                         <div class="ver-preguntas active" id="boton-ver-pregunta">
                             Ver preguntas
@@ -185,7 +208,7 @@
                             <img class="imagenes-temas" src="../imagenes/cuestiones_relacionadas_consumidor.jpg" alt="">
                         </div>
                         <div class="titulo-imagen">
-                            CUESTIONES RELATIVAS AL CONSUMIDOR
+                            Cuestiones Relativas al Consumidor
                         </div>
                         <div class="ver-preguntas" id="boton-ver-pregunta">
                             Ver preguntas
@@ -196,7 +219,7 @@
                             <img class="imagenes-temas" src="../imagenes/practicas_trabajo.png" alt="">
                         </div>
                         <div class="titulo-imagen">
-                            PRÁCTICAS DE TRABAJO
+                            Prácticas de Trabajo
                         </div>
                         <div class="ver-preguntas" id="boton-ver-pregunta">
                             Ver preguntas
@@ -207,7 +230,7 @@
                             <img class="imagenes-temas" src="../imagenes/participacion_comunidad_desarrollo.jpg" alt="">
                         </div>
                         <div class="titulo-imagen">
-                            RELACIÓN CON LA COMUNIDAD Y PARTICIPACIÓN EN SU DESARROLLO
+                            Relaciones con la Comunidad y su Participación en su Desarrollo
                         </div>
                         <div class="ver-preguntas" id="boton-ver-pregunta">
                             Ver preguntas
@@ -218,7 +241,7 @@
                             <img class="imagenes-temas" src="../imagenes/medio_ambiente.jpg" alt="">
                         </div>
                         <div class="titulo-imagen">
-                            MEDIO AMBIENTE
+                            Medio Ambiente
                         </div>
                         <div class="ver-preguntas" id="boton-ver-pregunta">
                             Ver preguntas
@@ -227,7 +250,7 @@
                 </div>`
                 <div class="ejemplo-preguntas-imagen">
                     <div class="imagen-preguntas" style="display: block;">
-                        <img src="../imagenes/preguntas-DH.png" alt="">    
+                        <img src="../imagenes/preguntas-DH.png" alt="">
                     </div>
                     <div class="imagen-preguntas" style="display: none;">
                         <img src="../imagenes/preguntas-CRC.png" alt="">
@@ -248,10 +271,15 @@
         <div class="contenido-about" style="display: none;">
             <div class="contenido-about-reporte">
                 <div class="titulo">
-                    Reporte.
+                    Informe de Integración.
                 </div>
                 <div class="info">
-                    Este reporte mostrara un análisis por cada una de las dimensiones, temas y subtemas de Responsabilidad Social Empresarial. Además, mostrara un nivel de integración por cada uno de los aspectos antes mencionados. Este nivel de Integración estará entre un rango de 0 a 100 siendo, cero el valor menos aceptable y 100 el más aceptable.
+                    El informe de Integración mostrara un análisis
+                    general de Responsabilidad Social Empresarial,
+                    así como un análisis por cada una de las dimensiones,
+                    temas y subtemas. Este análisis constara en índice que
+                    tiene un rango de 0 a 100 siendo cien el valor mas optimo
+                    y cero el menos optimo.
                 </div>
                 <div class="about-nivel-integracion">
                     <div class="informacion_1">
@@ -259,15 +287,36 @@
                             Puntaje General.
                         </div>
                         <div class="info">
-                            El puntaje general consta de dos niveles de integración. “Nivel de Integración Especifico” se refiere al total de practicas evaluadas, pero solo tomando las practicas que el usuario haya registrad. “Nivel de Integración Global” se refiera a todas las practicas evaluadas haya o no registrado el usuario.
+                            El puntaje general consta de dos niveles de integración.
+                            “Nivel de Integración Especifico” se refiere al total
+                            de prácticas evaluadas, teniendo en cuenta solo
+                            practicas previamente registradas. “Nivel de Integración Global”
+                            se refiera a todas las practicas evaluadas ya sea que se hayan o
+                            no registrado previamente.
                         </div>
                     </div>
                     <div class="informacion_2">
-                        <img src="../imagenes/nivel_integracion_global.png" alt="">
-                        <img src="../imagenes/nivel_integracion_especifico.png" alt="">
+                        <img src="../imagenes/puntaje_general.png" alt="">
                     </div>
                 </div>
-            </div>    
+                <div class="about-aspectos-evaluados">
+                    <div class="informacion-aspectos-evaluados">
+                        <div class="titulo">
+                            Informe de Integración, aspectos evaluados.
+                        </div>
+                        <div class="info">
+                            El informe de integración estará conformado
+                            por un análisis de dimensiones, temas y subtemas,
+                            que estarán clasificados de acuerdo a su nivel de
+                            integración. Este nivel de interacción tiene tres
+                            rangos que Nivel de Integración Alto, Nivel de
+                            Integración Medio y Nivel de Integración Bajo,
+                            siendo el nivel de integración alto el más optimo y
+                            el nivel de integración bajo el menos optimo.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

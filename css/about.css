@@ -1,4 +1,4 @@
-*{
+body{
     font-family: 'Montserrat', sans-serif;
     font-family: 'Poppins', sans-serif;
 }
@@ -253,7 +253,6 @@
     width: 95%;
     position: relative;
     float: right;
-    margin-top: 20px;
     margin-left: 15%;
     transition: 0.5s;
 }
@@ -280,54 +279,116 @@
 }
 
 /* ____________________________________ */
+
+.contendor-info{
+    min-height: 80vh;
+    width: 100%;
+    /* background-attachment: fixed;
+  background-position: center center; */
+    background-size: cover;
+    background-image: url(../imagenes/evaluacion.jpg);
+}
+
+.contendor-info_2{
+    min-height: 80vh;
+    width: 100%;
+    /* background-attachment: fixed;
+  background-position: center center; */
+    background-size: cover;
+    background-image: url(../imagenes/reporte.jpg);
+}
+
+.caja-texto{
+    width: 60%;
+    padding: 20px 0px;
+    color: #fff;
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+/* para la segunda caja de texto  */
+.contendor-info_2 .caja-texto{ 
+    top: 16%;
+}
+.caja-texto h1{
+    font-size: 52px;
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+.caja-texto p{
+    margin: 10px 0 40px;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: black 0.1em 0.1em 0.1em;
+}
+
+
 .nav-abaut-info{
     background: rgb(250, 249, 249);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    color: rgb(68, 67, 67);
     border: 0.5px solid #ccc;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: rgb(241,245,249);
+background: linear-gradient(0deg, rgba(241,245,249,1) 26%, rgba(234,234,234,1) 98%);
 }
 .about-evaluacion, .about-reporte{
     /* background: chartreuse; */
-    padding: 20px;
+    padding: 20px 30px;
+
 }
 
 .contenido-abput-evaluacion{
     background: #fff;
     width: 100%;
-    margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 0.5px solid #ccc;
 }
 
 .about-evaluacion-info {
     width: 40%;
-    margin: 20px;
 }
 
 .about-evaluacion-img{
     width: 40%;
     height: 300px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 .about-evaluacion-img img{
     width: 100%;
     height: 100%;
+    border-radius: 15px;
 }
 
 .about-evaluacion-info .titulo{
     font-size: 30px;
     font-weight: bold;
     padding: 10px 0;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(68, 67, 67);
+    padding-top: 30px;
 }
 
 .about-evaluacion-info .about-info{
     display: flex;
     flex-direction: column;
-    font-style: italic;
+    /* font-style: italic; */
+    color: rgb(117, 116, 116);
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 30px;
 }
 
 .about-evaluacion-info .about-info .info-1{
@@ -336,17 +397,18 @@
 
 /* segundo info */
 .contenido-ejemplo-preguntas{
-    background: #f5f3f3;
+    background: #f1f5f9;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 0.5px solid #ccc;
-    margin-bottom: 20px;
+    
 }
 
 .contenido-ejemplo-preguntas .titulo{
-    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(68, 67, 67);;
+    font-size: 40px;
     font-weight: bold;
     padding: 10px;
 }
@@ -354,8 +416,9 @@
 .contenido-ejemplo-preguntas .info{
     width: 50%;
     text-align: center;
-    font-style: italic;
-    padding-bottom: 20px;
+    /* font-style: italic; */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
 }
 
 .ejemplo-preguntas{
@@ -367,18 +430,21 @@
 }
 
 .ejemplo-preguntas .tema-1{
-    background: chartreuse;
-    width: 18%;
+    width: 16%;
     text-align: center;
     margin: 20px auto;
     background: #fff;
-    border: 1px solid #ccc;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     padding: 10px;
+    color: rgb(88, 85, 85);
+    
 }
 
 .ejemplo-preguntas .tema-1 .titulo-imagen{
     border-bottom: 2px solid #5b35f1;
+    padding-top: 15px;
+    
 }
 
 #boton-ver-pregunta{
@@ -387,7 +453,8 @@
     background: #fff;
     padding: 5px 10px;
     border-radius: 5px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.25); */
+    border: 1px solid #ccc;
     cursor: pointer;
 }
 
@@ -397,12 +464,13 @@
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+    box-shadow: black 0.1em 0.1em 0.2em;
 }
 
 
 .ejemplo-preguntas-imagen{
     width: 90%;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
@@ -416,10 +484,10 @@
 
 .ver-preguntas:hover,
 .ver-preguntas.active{
-	background: #e3dff7;
 	color: #5b35f1;
     font-weight: bold;
-}
+    border: 1px solid #5b35f1;
+}   
 
 
 .about-repoter-info:hover,
@@ -427,10 +495,10 @@
 	/* background: #e3dff7; */
 	color: #5b35f1;
     cursor: pointer;
-    border-bottom: 2px solid #5b35f1;
+    border-bottom: 3px solid #5b35f1;
 }
 
-
+/* ______________________________________ */
 /* reporte */
 .contenido-about-reporte{
     background: #fff;
@@ -439,20 +507,22 @@
     align-items: center;
     flex-direction: column;
     border: 0.5px solid #ccc;
-    margin: 20px auto;
 }
 
 .contenido-about-reporte .titulo{
- font-size: 30px;
- font-weight: bold;
- /* font-weight: inherit; */
- font-style: italic;
- padding: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 10px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(68, 67, 67);
+    padding-top: 30px;
 }
 
 .contenido-about-reporte .info{
     width: 85%;
+    color: rgb(71, 70, 70);
     font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .about-nivel-integracion{
@@ -460,7 +530,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: rgb(243, 242, 242);
+    background: #f1f5f9;
     margin: 30px;
 }
 
@@ -470,22 +540,52 @@
 }
 
 .about-nivel-integracion .informacion_1 .informacion_1-titulo{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     padding: 10px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(68, 67, 67);
 }
 
 .about-nivel-integracion .informacion_1 .info{
+    color: rgb(71, 70, 70);
     font-size: 20px;
-    /* font-weight: bold; */
-    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
     width: 100%;
 }
 .about-nivel-integracion .informacion_2 img{
     width: 100%;
-    height: 150px;
+    height: 400px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
 }
 
+.informacion-aspectos-evaluados{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+
+.about-aspectos-evaluados .titulo{
+    font-size: 35px;
+    font-weight: bold;
+    padding: 10px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(68, 67, 67);
+    padding-top: 10px;
+}
+
+.about-aspectos-evaluados .info{
+    width: 85%;
+    color: rgb(71, 70, 70);
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
 /*________ scroll bar INICIO __________*/
 /* width */
 ::-webkit-scrollbar {

@@ -86,6 +86,28 @@ tabs_eva_repor.forEach(function (tab, tab_index) {
 })
 
 
+var tabs_eva_repor_2 = document.querySelectorAll(".about-repoter-info");
+var tab_wraps_eva_repor_2 = document.querySelectorAll(".contendor-info-general");
+
+tabs_eva_repor_2.forEach(function (tab, tab_index) {
+    tab.addEventListener("click", function () {
+        tabs_eva_repor_2.forEach(function (tab) {
+            tab.classList.remove("active");
+        })
+        tab.classList.add("active");
+
+        tab_wraps_eva_repor_2.forEach(function (content, content_index) {
+            if (content_index == tab_index) {
+                content.style.display = "block";
+            }
+            else {
+                content.style.display = "none";
+            }
+        })
+
+    })
+})
+
 //funciones de los botones
 function ir_evaluacion() {
     window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_ID}`;
