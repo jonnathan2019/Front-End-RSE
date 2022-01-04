@@ -72,7 +72,7 @@ function grafica_zoomable() {
             (root);
     }
     
-    const colores = ['#ff8000', '#1FE250']// naranja: #FF5733
+    const colores = ['#1FE250', '#ff8000']// naranja: #FF5733  ff8000
     // const color = d3.scaleOrdinal(d3.schemeCategory20);
     const color = d3.scaleOrdinal(colores);
     // var color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
