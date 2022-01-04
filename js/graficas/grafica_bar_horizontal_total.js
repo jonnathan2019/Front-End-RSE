@@ -155,7 +155,7 @@ function graficar_barra_horizontal(variable, valor,ancho,altura) {
 function graficar_barras() {
   // graficar_barra_horizontal('.chart-container',resutaldo_final)
   graficar_barra_horizontal('.chart-container-espcifico', resutaldo_final, 820,80)
-  graficar_barra_horizontal('.chart-container-global', respuesta_final_2,820,80)
+  graficar_barra_horizontal('.chart-container-global', respuesta_final_2,500,80)
 }
 
 

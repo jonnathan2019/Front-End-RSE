@@ -108,6 +108,51 @@ tabs_eva_repor_2.forEach(function (tab, tab_index) {
     })
 })
 
+
+var tab_aspectos = document.querySelectorAll(".aspecto");
+var tab_wrap_aspectos = document.querySelectorAll(".info-aspecto");
+
+tab_aspectos.forEach(function (tab, tab_index) {
+    tab.addEventListener("click", function () {
+        tab_aspectos.forEach(function (tab) {
+            tab.classList.remove("active");
+        })
+        tab.classList.add("active");
+
+        tab_wrap_aspectos.forEach(function (content, content_index) {
+            if (content_index == tab_index) {
+                content.style.display = "block";
+            }
+            else {
+                content.style.display = "none";
+            }
+        })
+
+    })
+})
+
+var tab_aspectos_info = document.querySelectorAll(".aspecto");
+var tab_wrap_aspectos_info = document.querySelectorAll(".aspecto-info");
+
+tab_aspectos_info.forEach(function (tab, tab_index) {
+    tab.addEventListener("click", function () {
+        tab_aspectos_info.forEach(function (tab) {
+            tab.classList.remove("active");
+        })
+        tab.classList.add("active");
+
+        tab_wrap_aspectos_info.forEach(function (content, content_index) {
+            if (content_index == tab_index) {
+                content.style.display = "block";
+            }
+            else {
+                content.style.display = "none";
+            }
+        })
+
+    })
+})
+
 //funciones de los botones
 function ir_evaluacion() {
     window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_ID}`;

@@ -302,8 +302,11 @@
                                             <span>Integración Especifica.</span>
                                         </div> -->
                                         <div class="info-especifico">
+                                            <div class="title-especifico-global">
+                                                Nivel de Integración.
+                                            </div>
                                             <div class="title-especifico">
-                                                Nivel de Integración Especifico.
+                                                Integración Especifica.
                                             </div>
                                             <div class="info-especifico-grafica">
                                                 <div class="info-espe">
@@ -338,20 +341,9 @@
                                                 </div>
                                             </div>
                                             <div class="title-global">
-                                                Nivel de Integración Global.
+                                                Integración Global.
                                             </div>
                                             <div class="info-global-grafica">
-                                                <div class="graficas-globales">
-                                                    <div class="puntaje-global">
-                                                        <div class='char-barra-cirular-global'></div>
-                                                    </div>
-                                                    <div class="grafica-global">
-                                                        <!-- <div class="title-global">
-                                                            Integración.
-                                                        </div> -->
-                                                        <div class="chart-container-global"></div>
-                                                    </div>
-                                                </div>
                                                 <div class="info-glob">
                                                     <span class="retroalimentacion-global">
                                                         Su nivel de Integración respecto al total de prácticas evaluadas
@@ -361,113 +353,67 @@
                                                         previamente.
                                                     </span>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- <div class="titulo-global">
-                                            <span>Integración Global.</span>
-                                        </div> -->
-                                        <!-- <div class="info-global">
-                                            <div class="title-global">
-                                                Nivel de Integración Global.
-                                            </div>
-                                            <div class="info-global-grafica">
-                                                <div class="info-glob">
-                                                    <span class="retroalimentacion-global">
-                                                        Su nivel de Integración respecto al total de prácticas evaluadas
-                                                        es <span class="resultado-integracion-todo"></span> referente a
-                                                        todas las
-                                                        dimensiones y a todos temas ya sea que haya o no registrado
-                                                        previamente.
-                                                    </span>
+                                                <div class="puntaje-global">
+                                                    <div class='char-barra-cirular-global'></div>
                                                 </div>
-                                                <div class="graficas-globales">
-                                                    <div class="puntaje-global">
-                                                        <div class='char-barra-cirular-global'></div>
-                                                    </div>
-                                                    <div class="grafica-global">
-                                                        <div class="title-global">
+                                                <div class="grafica-global">
+                                                    <!-- <div class="title-global">
                                                             Integración.
-                                                        </div>
-                                                        <div class="chart-container-global"></div>
+                                                        </div> -->
+                                                    <div class="chart-container-global"></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Numero Dimesniones y Temas Evaluados -->
+                                            <div class="info-puntaje-evaluado-titulo">
+                                                <span>Información Aspectos Evaluados.</span>
+                                            </div>
+                                            <div class="info-puntage-evaluado">
+                                                <div class="num-dim-evaluados">
+                                                    <div class="titulo-dim">
+                                                        <span>Dimensiones.</span>
+                                                    </div>
+                                                    <div class="num-total-dim">
+                                                        <span>Total de Dimensiones: </span>
+                                                        <span class="num-total-valor-dim">0</span>
+                                                    </div>
+                                                    <div class="num-total-dim-evaluadas">
+                                                        <span>Total de Dimensiones Evaluadas: </span>
+                                                        <span class="num-total-valor-dim-eva">0</span>
+                                                    </div>
+                                                </div>
+                                                <div class="num-temas-evaluados">
+                                                    <div class="titulo-tem">
+                                                        <span>Temas.</span>
+                                                    </div>
+                                                    <div class="num-total-temas">
+                                                        <span>Total de Temas: </span>
+                                                        <span class="num-total-valor-temas">0</span>
+                                                    </div>
+                                                    <div class="num-total-temas-evaluadas">
+                                                        <span>Total de Temas Evaluadas: </span>
+                                                        <span class="num-total-valor-temas-eva">0</span>
+                                                    </div>
+                                                </div>
+                                                <div class="num-indi-evaluados">
+                                                    <div class="titulo-sub-temas">
+                                                        <span>Sub Temas.</span>
+                                                    </div>
+                                                    <div class="num-total-indi">
+                                                        <span>Total de Sub Temas: </span>
+                                                        <span class="num-total-valor-indi">0</span>
+                                                    </div>
+                                                    <div class="num-total-indi-evaluadas">
+                                                        <span>Total de Sub Temas Evaluadas: </span>
+                                                        <span class="num-total-valor-indi-eva">0</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
 
                                     </div>
 
                                 </div>
-
-                                <!-- Numero Dimesniones y Temas Evaluados -->
-                                <div class="info-puntage-eva">
-                                    <div class="info-puntaje-evaluado-titulo">
-                                        <div class="titulo">
-                                            <span>Información Aspectos Evaluados</span>
-                                        </div>
-                                    </div>
-                                    <div class="info-puntage-evaluado">
-                                        <div class="num-dim-evaluados">
-                                            <div class="titulo-dim">
-                                                <span>Dimensiones.</span>
-                                            </div>
-                                            <div class="num-total-dim">
-                                                <span>Total de Dimensiones: </span>
-                                                <span class="num-total-valor-dim">0</span>
-                                            </div>
-                                            <div class="num-total-dim-evaluadas">
-                                                <span>Total de Dimensiones Evaluadas: </span>
-                                                <span class="num-total-valor-dim-eva">0</span>
-                                            </div>
-                                        </div>
-                                        <div class="num-temas-evaluados">
-                                            <div class="titulo-tem">
-                                                <span>Temas.</span>
-                                            </div>
-                                            <div class="num-total-temas">
-                                                <span>Total de Temas: </span>
-                                                <span class="num-total-valor-temas">0</span>
-                                            </div>
-                                            <div class="num-total-temas-evaluadas">
-                                                <span>Total de Temas Evaluadas: </span>
-                                                <span class="num-total-valor-temas-eva">0</span>
-                                            </div>
-                                        </div>
-                                        <div class="num-indi-evaluados">
-                                            <div class="titulo-sub-temas">
-                                                <span>Sub Temas.</span>
-                                            </div>
-                                            <div class="num-total-indi">
-                                                <span>Total de Sub Temas: </span>
-                                                <span class="num-total-valor-indi">0</span>
-                                            </div>
-                                            <div class="num-total-indi-evaluadas">
-                                                <span>Total de Sub Temas Evaluadas: </span>
-                                                <span class="num-total-valor-indi-eva">0</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="info-general">
-                                    <div class="info-total">
-                                        <div class="title">
-                                            Nivel de Integración.
-                                        </div>
-                                        <span class="retroalimentacion-general"></span>
-                                    </div>
-                                    <div class="puntaje-total">
-                                        <div class="title">
-                                            Puntaje.
-                                        </div>
-                                        <div class='char-barra-cirular'></div>
-                                    </div>
-                                    <div class="grafica-general">
-                                        <div class="title">
-                                            Integración.
-                                        </div>
-                                        <div class="chart-container"></div>
-                                    </div>
-                                </div> -->
                                 <div class="info-temas-indicadores">
                                     <div class="titulo-temas-inidcadores">
                                         <span>Temas Evaluados.</span>
@@ -882,16 +828,17 @@
                                     </div>
                                     <div class="contenedor-graficas-temas">
                                         <!--MINI INFOMRE-->
-                                        <div id="grafica-radar">
-                                            <!-- <canvas id="marksChart_1"></canvas> -->
-                                            <div id="grafica_radar"></div>
-                                        </div>
                                         <div id="grafica-polar">
                                             <!-- <div id="chart"></div> -->
                                             <div class="grafica-zoomable-sunburst"></div>
                                             <!-- <div id="chartholder"></div> esta es la que estaba antes  -->
                                             <!-- <div class="dona_nueva"></div> -->
                                         </div>
+                                        <div id="grafica-radar">
+                                            <!-- <canvas id="marksChart_1"></canvas> -->
+                                            <div id="grafica_radar"></div>
+                                        </div>
+                                        
 
                                     </div>
                                 </div>

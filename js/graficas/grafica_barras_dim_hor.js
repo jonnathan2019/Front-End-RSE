@@ -2,8 +2,8 @@
 
 function grafica_barra_horixzontal() {
     const data = [
-        { player: 'Social', points: objeto_resp[1].nivel_2 * 100 },
-        { player: 'Ambiental', points: objeto_resp[0].nivel_2 * 100 }
+        { player: 'Social', points: objeto_resp[0].nivel_2 * 100 },
+        { player: 'Ambiental', points: objeto_resp[1].nivel_2 * 100 }
     ]
 
     // const data = [

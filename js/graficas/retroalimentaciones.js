@@ -32,22 +32,27 @@ function obtener_retroalimenatcion() {
                 objeto_resp.forEach(element_1 => {
                     if (element.nombre == element_1.dimension) {
                         if (element.nombre == 'Social') {
-                            // console.log(element.nombre)
+                            console.log(element.nombre)
+                            console.log(element_1.nivel_2)
                             if (element_1.nivel_2 > 0.66) {
-                                document.querySelector('.retroalimentacion-social').innerHTML = element.retroalimentacion_dimensiones.retroalimentacion_bueno;
-                            } else if (element_1.nivel_2 < 0.33) {
-                                document.querySelector('.retroalimentacion-social').innerHTML = element.retroalimentacion_dimensiones.retroalimentacion_malo;
+                                document.querySelector('.retroalimentacion-social').innerHTML = `Esta dimensión se aplica en gran parte de su empresa por lo que su empresa ya es considerada como una empresa sustentable y responsable.`;
+                            } else if (element_1.nivel_2 > 0.33 && element_1.nivel_2 < 0.66 ) {
+                                document.querySelector('.retroalimentacion-social').innerHTML = `Esta dimensión se aplica de forma media por lo que se sugiere mejorar en ciertos aspectos respecto a esta dimensión, para alcanzar un nivel óptimo de RSE.`;
                             } else {
-                                document.querySelector('.retroalimentacion-social').innerHTML = element.retroalimentacion_dimensiones.retroalimentacion_regular;
+                                document.querySelector('.retroalimentacion-social').innerHTML = 'Esta dimensión no se aplica en su empresa por lo que se sugiere empezar a trabar en esta dimensión.';
                             }
                         } else {
-                            // console.log('-' + element.nombre)
+                            console.log('-' + element.nombre)
+                            console.log(element_1.nivel_2)
                             if (element_1.nivel_2 > 0.66) {
-                                document.querySelector('.retroalimentacion-ambiental').innerHTML = element.retroalimentacion_dimensiones.retroalimentacion_bueno;
-                            } else if (element_1.nivel_2 < 0.33) {
-                                document.querySelector('.retroalimentacion-ambiental').innerHTML = element.retroalimentacion_dimensiones.retroalimentacion_malo;
-                            } else {
-                                document.querySelector('.retroalimentacion-ambiental').innerHTML = element.retroalimentacion_dimensiones.retroalimentacion_regular;
+                                document.querySelector('.retroalimentacion-ambiental').innerHTML = 'Esta dimensión se aplica en gran parte de su empresa por lo que su empresa ya es considerada como una empresa sustentable y responsable.';
+                            } 
+                            if (  element_1.nivel_2 > 0.33 && element_1.nivel_2 < 0.66 ) {
+                                document.querySelector('.retroalimentacion-ambiental').innerHTML = `Esta dimensión se aplica de forma media por lo que se sugiere mejorar en ciertos aspectos respecto a esta dimensión, para alcanzar un nivel óptimo de RSE.`;
+                            } 
+    
+                            if(element_1.nivel_2 < 0.33) {
+                                document.querySelector('.retroalimentacion-ambiental').innerHTML = 'Esta dimensión no se aplica en su empresa por lo que se sugiere empezar a trabar en esta dimensión.';
                             }
                         }
 

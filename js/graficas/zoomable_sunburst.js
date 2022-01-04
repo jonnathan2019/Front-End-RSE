@@ -41,7 +41,8 @@ function obtener_datos() {
                                 }
                                 const objeto_indicador = {
                                     name: indicador.indicador,
-                                    size: (valor * 100).toFixed(2)
+                                    size: valor + 1000
+                                    // size: (valor * 100).toFixed(2)
                                 }
                                 datos_z.children[index].children[index_tema].children.push(objeto_indicador)
                             }
@@ -70,8 +71,8 @@ function grafica_zoomable() {
             .size([2 * Math.PI, root.height + 1])
             (root);
     }
-
-    const colores = ['#1FE250', '#ff8000']// naranja: #FF5733
+    
+    const colores = ['#ff8000', '#1FE250']// naranja: #FF5733
     // const color = d3.scaleOrdinal(d3.schemeCategory20);
     const color = d3.scaleOrdinal(colores);
     // var color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
@@ -121,9 +122,15 @@ function grafica_zoomable() {
                 // var total = d.parent.value;
                 // var percent = Math.round(1000 * d.value / total) / 10;
                 // console.log(d.value)
-                if (d.value > 10) {
+                // if (d.value > 10) {
+                //     return 'green'
+                // } else if (d.value < 1.99) {
+                //     return 'red'
+                // }
+                // return "yellow"
+                if (d.value > (0.10 + 1000)) {
                     return 'green'
-                } else if (d.value < 1.99) {
+                } else if (d.value < (0.0199 + 1000)) {
                     return 'red'
                 }
                 return "yellow"
@@ -230,11 +237,11 @@ function grafica_zoomable() {
     }
 
 
-    d3.select("body").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
+    // d3.select("body").append("svg")
+    //     .attr("width", width)
+    //     .attr("height", height)
+    //     .append("g")
+    //     .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
 
     // });
 }

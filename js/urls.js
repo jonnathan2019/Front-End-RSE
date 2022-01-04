@@ -1,9 +1,10 @@
 var url_global_pagina = 'https://r-s-e-evaluation.herokuapp.com/html/';
 
-var link_service = `https://sping-boot-postgreswl-1.herokuapp.com/ejemplo01/`
+var link_service = `https://heruko-postgress.herokuapp.com/ejemplo01/`
  var extencion = `.php`
 //http://localhost:8080/ejemplo01/
-// https://sping-boot-postgreswl-1.herokuapp.com/ejemplo01/
+// https://sping-boot-postgreswl-1.herokuapp.com/ejemplo01/ -> no funciona
+// https://heruko-postgress.herokuapp.com/ejemplo01/ -> FUNCIONa
 
 
 

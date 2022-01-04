@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 
     <!--LETRA-->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;1,400&display=swap"
-        rel="stylesheet"> -->
+        rel="stylesheet">
 
     <!-- Loader -->
     <link rel="stylesheet" href="../css/loader.css">
@@ -307,12 +307,88 @@
                         <div class="info">
                             El informe de integración estará conformado
                             por un análisis de dimensiones, temas y subtemas,
-                            que estarán clasificados de acuerdo a su nivel de
+                            que están clasificados de acuerdo a su nivel de
                             integración. Este nivel de interacción tiene tres
-                            rangos que Nivel de Integración Alto, Nivel de
+                            rangos, Nivel de Integración Alto, Nivel de
                             Integración Medio y Nivel de Integración Bajo,
                             siendo el nivel de integración alto el más optimo y
                             el nivel de integración bajo el menos optimo.
+                        </div>
+                    </div>
+                    <div class="informacion-integracion">
+                        <div class="aspectos">
+                            <div class="aspecto active">
+                                Análisis de Temas Evaluados
+                            </div>
+                            <div class="aspecto-info" style="display: block;">
+                                <div class="contenido-aspecto">
+                                    Este análisis permite conocer el nivel de
+                                    integración de cada uno de los temas, el
+                                    nivel de integración esta entre un rango
+                                    de 0 a 100, siendo 100 y los valores cercanos
+                                    a 100 los valores más óptimos.
+                                </div>
+                            </div>
+                            <div class="aspecto">
+                                Análisis de Subtemas Evaluados
+                            </div>
+                            <div class="aspecto-info" style="display: none;">
+                                <div class="contenido-aspecto">
+                                    En este apartado se podrá visualizar
+                                    el nivel de integración de cada uno
+                                    de los subtemas de cada tema.
+                                </div>
+                            </div>
+                            <div class="aspecto">
+                                Análisis Dimensiones Evaluadas
+                            </div>
+                            <div class="aspecto-info" style="display: none;">
+                                <div class="contenido-aspecto">
+                                    Este análisis permite conocer el nivel
+                                    de integración de cada una de las
+                                    dimensiones que hacen parte de RSE,
+                                    así como una clasificación de los temas
+                                    de cada dimensión, los temas se clasifican
+                                    en tres rangos, Bueno, Malo y Regular de
+                                    acuerdo a su nivel de integración.
+                                </div>
+                            </div>
+                            <div class="aspecto">
+                                Graficas
+                            </div>
+                            <div class="aspecto-info" style="display: none;">
+                                <div class="contenido-aspecto">
+                                    En este apartado se podrá visualizar
+                                    graficas de los diferentes temas
+                                    y dimensiones evaluados. En estas
+                                    graficas se observa cuáles de los
+                                    diferentes aspectos de RSE predomina
+                                    en su empresa.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aspectos-img">
+                            <div class="info-aspecto info-aspecto-1" style="display: block;">
+                                <!-- esta imagen esta en el css en "info-aspecto-1" -->
+                            </div>
+                            <div class="info-aspecto info-aspecto-2" style="display: none;">
+                                <img src="../imagenes/subtema_inetgracion.png" alt="">
+                                <img src="../imagenes/subtema_inetgracion_2.png" alt="">
+                                <img src="../imagenes/subtema_inetgracion_3.png" alt="">
+                            </div>
+                            <div class="info-aspecto info-aspecto-3" style="display: none;">
+                                <img src="../imagenes/dim_social_inetegracion.png" alt="">
+                                <!-- <img src="../imagenes/dim_ambiental_inetegracion.png" alt=""> -->
+                            </div>
+                            <div class="info-aspecto info-aspecto-4" style="display: none;">
+                                <div class="garficas_temas">
+                                    <img src="../imagenes/grafica_circular.png" alt="">
+                                    <img src="../imagenes/grafica_radar_2.png" alt="">
+                                </div>
+                                <div class="grafica-dim">
+                                    <img src="../imagenes//grafica_bar_dim.png" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

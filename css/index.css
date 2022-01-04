@@ -307,12 +307,14 @@
 
 .car-social{
     background-image: url(../imagenes/social.jpg);
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .card-ambiental{
     background-image: url(../imagenes/ambiental.jpg);
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .cards-dimensiones:hover,
