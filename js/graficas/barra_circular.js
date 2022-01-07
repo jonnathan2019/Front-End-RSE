@@ -185,11 +185,11 @@ function grafica_circular_valor_dim_social() {
     let chart = radialProgress('.barra_progreso_social')
     chart.update(objeto_resp[0].nivel_2 * 100)
 
-    let chart_pdf = radialProgress('.barra-circular-social-pdf')
-    chart_pdf.update(objeto_resp[0].nivel_2 * 100)
+    // let chart_pdf = radialProgress('.barra-circular-social-pdf')
+    // chart_pdf.update(objeto_resp[0].nivel_2 * 100)
 
-    let chart_pdf_principal = radialProgress('.char-barra-cirular-pdf')
-    chart_pdf_principal.update(resutaldo_final * 100)
+    // let chart_pdf_principal = radialProgress('.char-barra-cirular-pdf')
+    // chart_pdf_principal.update(resutaldo_final * 100)
 
 }
 
@@ -277,8 +277,8 @@ function grafica_circular_valor_dim_ambental() {
     let chart = radialProgress('.barra_progreso_ambiental')
     chart.update(objeto_resp[1].nivel_2 * 100)
 
-    let chart_pdf = radialProgress('.barra-circular-ambiental-pdf')
-    chart_pdf.update(objeto_resp[1].nivel_2 * 100)
+    // let chart_pdf = radialProgress('.barra-circular-ambiental-pdf')
+    // chart_pdf.update(objeto_resp[1].nivel_2 * 100)
 
 }
 

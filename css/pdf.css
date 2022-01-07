@@ -166,23 +166,17 @@
 }
 
 .informe-info .informacion-general{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
+    /* background: #369681; */
+    margin-top: 5px;
 }
 
-.informe-info .informacion-general .info-desempeno{
-    width: 30%;
-    margin: 10px 0px;
+
+.informe-info .informacion-general .info-especifico{
     border: 1px solid #ccc;
-    text-align: center;
+    box-shadow: #fff 0px 0px 0.25em, #fff 0px 0.25em 1em;
 }
 
-.informe-info .informacion-general .info-desempeno .titulo-desempeno{
-    padding: 3px;
-    border-bottom:  2px solid #ccc;
-}
+
 
 /* desempeno por Dimensiones */
 .informe-info .desempeno-dimensiones{
@@ -199,11 +193,18 @@
 }
 
 .info-desmepeno-dimensiones{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    
+    background: #fff;
 }
 
+/* #grafica_circular-pdf{
+    background: #369681;
+    align-items: center;
+} */
+
+#grafica_circular-pdf .grafica-zoomable-sunburst{
+    margin: auto;
+}
 .grafica-desempeno-dimesniones .titulo-desmepeno-grafica{
     padding: 3px;
     border-bottom: 3px solid #ccc;
@@ -215,34 +216,6 @@
     border: 1px solid #ccc;
 }
 
-.desempeno-dimensional{
-    width: 49%;
-    margin: 10px 0px;
-    border: 1px solid #ccc;
-}
-
-.contenedor-info-dim{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.titulo-demsempeno-dim{
-    padding: 3px;
-    border-bottom:  2px solid #ccc;
-    text-align: center;
-}
-
-.retroalimentacion-dimensional, .puntaje-dimensional{
-    border: 1px solid #ccc;
-    width: 40%;
-    text-align: center;
-    margin: 10px;
-}
-
-.titulo-retroalimentacio-dimesnion, .titulo-desempeno{
-    border-bottom: 2px solid #ccc;
-}
 
 .grafica-dimensional{
     /* background: chartreuse; */
@@ -288,7 +261,7 @@
 /*GRAFICA RADAR*/
 #grafica_radar-pdf {
     width: 100%; /*antes estaba esto 700px*/
-    height: 400px;
+    /* height: 400px; */
     /* border: 1px solid #ccc; */
 }
 /* ___________________________ */

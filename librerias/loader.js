@@ -7,6 +7,6 @@ window.onload = function () {
     setTimeout(() => {
         $('#onload_resultados').fadeOut();
         $('body').removeClass('hidden_resultados');
-    },3000)
+    },1000)
 }
 

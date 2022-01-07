@@ -262,8 +262,21 @@
         </div>
 
         <div class="contenido">
-
-            <div class="wrapper">
+            <!-- loader resultados -->
+            <div class="loader-resultados" id="loader-resultados">
+                <div class="border-loader">
+                    <div class="space-loader">
+                        <div class="loading">
+                        </div>
+                    </div>
+                </div>
+                <div class="texto-resulatados">
+                    <!-- <span>Calcular su nivel de integración lleva tiempo, por favor espere.</span> -->
+                    <span>Calculando ...</span>
+                </div>
+            </div>
+            <!-- contendio  -->
+            <div class="wrapper" id="contenido-resultados">
                 <div class="tabs">
                     <ul>
                         <li class="active">
@@ -929,7 +942,6 @@
                     </div>
                 </div>
                 <div class="informe-info">
-
                     <div class="cabecera-informe">
                         <div class="cabezera-user">
                             <div class="imagen">
@@ -953,33 +965,13 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <!-- Desempeno general de RSE -->
                     <div class="desempeno-general">
                         <div class="titulo-deseenpeno-general">
                             <span>Desempeño General de RSE.</span>
                         </div>
                         <div class="informacion-general">
-                            <div class="desempeno-retroalimentacion info-desempeno">
-                                <div class="titulo-desempeno">
-                                    <span>Retroalimentación.</span>
-                                </div>
-                                <span class="retroalimentacion-general-pdf"></span>
-                            </div>
-                            <div class="desempeno-puntage-general info-desempeno">
-                                <div class="titulo-desempeno">
-                                    <span>Puntaje.</span>
-                                </div>
-                                <div class='char-barra-cirular-pdf'></div>
-                            </div>
-                            <div class="desmpeno-impacto info-desempeno">
-                                <div class="titulo-desempeno">
-                                    <span>Integración.</span>
-                                </div>
-                                <div class="chart-container-pdf"></div>
-                            </div>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima sunt magni quasi ipsum? Dicta, incidunt. Soluta impedit quaerat molestiae, porro, delectus distinctio, eius eum numquam nam alias eaque error. Eos!
                         </div>
                     </div>
                     <!-- Desempeno por Dimensiones -->
@@ -989,44 +981,7 @@
                         </div>
                         <div class="informacion-dimensiones">
                             <div class="info-desmepeno-dimensiones">
-                                <div class="desempeno-social desempeno-dimensional">
-                                    <div class="titulo-demsempeno-dim">
-                                        <span>Social.</span>
-                                    </div>
-                                    <div class="contenedor-info-dim">
-                                        <div class="retroalimentacon-social retroalimentacion-dimensional">
-                                            <div class="titulo-retroalimentacio-dimesnion">
-                                                <span>Retroalimentación.</span>
-                                            </div>
-                                            <div class="retroalimentacion-social-pdf"></div>
-                                        </div>
-                                        <div class="desempeno-dimesnion-puntaje puntaje-dimensional">
-                                            <div class="titulo-desempeno">
-                                                <span>Puntaje.</span>
-                                            </div>
-                                            <div class="barra-circular-social-pdf"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="desempeno-ambiental desempeno-dimensional">
-                                    <div class="titulo-demsempeno-dim">
-                                        <span>Ambiental.</span>
-                                    </div>
-                                    <div class="contenedor-info-dim">
-                                        <div class="retroalimentacon-ambiental retroalimentacion-dimensional">
-                                            <div class="titulo-retroalimentacio-dimesnion">
-                                                <span>Retroalimentación.</span>
-                                            </div>
-                                            <div class="retroalimentacion-ambiental-pdf"></div>
-                                        </div>
-                                        <div class="desempeno-dimesnion-puntaje puntaje-dimensional">
-                                            <div class="titulo-desempeno">
-                                                <span>Puntaje.</span>
-                                            </div>
-                                            <div class="barra-circular-ambiental-pdf"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex dolorum ullam tempore aperiam est. Ratione, officia? Dicta pariatur asperiores officia numquam veniam. Dignissimos laboriosam deserunt fugit voluptas quasi fugiat iusto.
                             </div>
                             <div class="grafica-desempeno-dimesniones">
                                 <div class="grafica-dim-dempeno">
@@ -1034,8 +989,11 @@
                                         <span>Grafica de Desempeño por Dimensiones.</span>
                                     </div>
                                     <div class="grafica-dimensional">
-                                        <div id="grafica-bar-dim-pdf">
-                                            <svg id="svg-bar-pdf" viewBox='0 0 750 500'></svg>
+                                        <div id="grafica-bar-dim-ver-pdf" class="grafica-bar-dim-ver-pdf">
+                                            <!-- <svg id="svg-bar-pdf" viewBox='0 0 750 500'></svg> -->
+                                        </div>
+                                        <div id="grafica-bar-dim-hor-pdf" class="grafica-bar-dim-hor-pdf">
+
                                         </div>
                                     </div>
                                 </div>
@@ -1235,6 +1193,7 @@
                                     <span>Grafica de Desempeño por Temas.</span>
                                 </div>
                                 <div class="grafica-desempeno-temas">
+                                    <div id="grafica_circular-pdf"></div>
                                     <div id="grafica_radar-pdf"></div>
                                 </div>
                             </div>

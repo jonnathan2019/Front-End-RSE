@@ -745,16 +745,20 @@ function algoritmo_graficar() {
         grafica_circular_valor_dim_ambental()//barra de progreso circular AMBIENTAL
         // barra vertical
         grafica_bar_vertical();
-        grafica_bar_vertical_pdf();
+        // grafica_bar_vertical_pdf();
         // barra horizontal
         grafica_barra_horixzontal();
         // radar
         grafica_radar();
-        grafica_radar_pdf();
+        // grafica_radar_pdf();
         // zoomable
         grafica_zoomable();
         // retroalimenatciones
         obtener_retroalimenatcion();
+        //mostrar panel
+        mostrar_resultados();
+        // copiar en PDF 
+        copiar_pdf();
         // _____________________________
         //-------------- MODAL Inicio -------------------
         setTimeout(() => {
@@ -834,6 +838,10 @@ function algoritmo_graficar() {
     //-------------- MODAL Fin -------------------
 }
 
+function mostrar_resultados(){
+    document.getElementById('contenido-resultados').style.display = "block";
+    document.getElementById('loader-resultados').style.display = "none";
+}
 
 ////------------------Select GRAFICAS TEMAS----------------------------
 function cargar_graficas_temas() {

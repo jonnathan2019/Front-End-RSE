@@ -288,6 +288,11 @@
     margin: 2rem auto;
 }
 
+#contenido-resultados{
+    display: none;
+}
+
+
 /*_____________Resultados Inicio_________________*/
 
 .resultados{
@@ -1509,3 +1514,60 @@ div.tooltip-zoom div {/*antes de div estaba p*/
     background: #999;
  
 } */
+
+
+/*_________________ Loader resultados INICIO  ______________________*/
+.loader-resultados {
+    width: 100%;
+    /* border: 2px solid #ccc; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 200px;
+}
+
+.border-loader {
+    /* border: 3px solid #272b33; */
+    height: 5px;
+    width: 40%;
+    padding: 5px;
+    background: rgb(246,246,249);
+    background: linear-gradient(180deg, rgba(246,246,249,1) 25%, rgba(227,229,233,1) 78%);
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.space-loader {
+    position: relative;
+    overflow: hidden;
+    height: 2px; /*estaba 100% antes y en el orginal */
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+.texto-resulatados{
+    padding: 10px;
+    color: rgb(148, 147, 147);
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.loading {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #7d54ec;
+    animation: loading 5s steps(40) infinite;
+    border-radius: 15px;
+}
+
+/*_________________ Loader resultados FIN  ______________________*/
