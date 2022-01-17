@@ -1379,8 +1379,8 @@ svg {
 
 text {
     font-size: 12px;
-    fill: #fff;
-    fill: black;
+    /* fill: #fff;
+    fill: black; */
 }
 
 /* path {

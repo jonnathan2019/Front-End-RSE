@@ -329,6 +329,7 @@ function grafica_bar_vertical_dashboard() {
                 .attr('y', (a) => yScale(a.value) + 30)
                 .attr('fill', 'white')
                 .attr('text-anchor', 'middle')
+                .style("font-size", "20px")
                 .text((a, idx) => {
                     const divergence = (a.value - actual.value).toFixed(1)
 
@@ -362,6 +363,7 @@ function grafica_bar_vertical_dashboard() {
         .attr('y', (a) => yScale(a.value) + 30)
         .attr('text-anchor', 'middle')
         .text((a) => `${a.value}%`)
+        .style("font-size", "20px")
 
     svg_diim_bar
         .append('text')
@@ -371,6 +373,7 @@ function grafica_bar_vertical_dashboard() {
         .attr('transform', 'rotate(-90)')
         .attr('text-anchor', 'middle')
         .text('Porcentajes (%)')
+        .style("font-size", "20px")
 
     svg_diim_bar.append('text')
         .attr('class', 'label')
@@ -378,6 +381,7 @@ function grafica_bar_vertical_dashboard() {
         .attr('y', height + margin * 1.7)
         .attr('text-anchor', 'middle')
         .text('Dimensiones')
+        .style("font-size", "20px")
 
     // svg_diim_bar.append('text')
     //     .attr('class', 'title')
@@ -391,6 +395,7 @@ function grafica_bar_vertical_dashboard() {
         .attr('x', width - margin / 2)
         .attr('y', height + margin * 1.7)
         .attr('text-anchor', 'start')
+        .style("font-size", "20px")
 
 
 }

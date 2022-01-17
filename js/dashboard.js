@@ -434,6 +434,82 @@ function algoritmo_graficar() {
         console.log(objeto_resp)
         console.log(resutaldo_final)
 
+        //mostramos la informacion de los temas evaluados en la tabla 
+        const info_temas_sociales = document.querySelector('.info-contenido-social');
+        let outInfo_temas_sociales = ''
+        const info_temas_ambientales = document.querySelector('.info-contenido-ambiental');
+        let outInfo_temas_ambientales = ''
+        let num_temas = 0;
+        var lista_barras_temas = [];
+        objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+            let nom_dim = datos_preguntas.dimension
+            if (datos_preguntas.dimension == "Social") {
+                datos_preguntas.temas.forEach(element => {
+                    // ${(element.nivel_1 * 100).toFixed(2)}
+                    // element.nombre
+                    outInfo_temas_sociales += ` 
+                    <div class="informacion-tema">
+                        <div class="nom-tema">${element.nombre}</div>
+                        <div class="puntaje-tema">${(element.nivel_1 * 100).toFixed(2)}</div>
+                        <div class="barra-tema">
+                            <div class="contorno">
+                                <div class="valor valor-${num_temas}">
+                                ${(element.nivel_1 * 100).toFixed(2)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    lista_barras_temas.push(`.valor-${num_temas}`)
+                    num_temas = num_temas + 1;
+                })
+            } else {
+                datos_preguntas.temas.forEach(element => {
+                    // ${(element.nivel_1 * 100).toFixed(2)}
+                    // element.nombre
+                    outInfo_temas_ambientales += `
+                            <div class="informacion-tema">
+                                <div class="nom-tema">${element.nombre}</div>
+                                <div class="puntaje-tema">${(element.nivel_1 * 100).toFixed(2)}</div>
+                                <div class="barra-tema">
+                                    <div class="contorno">
+                                        <div class="valor valor-${num_temas}">
+                                        ${(element.nivel_1 * 100).toFixed(2)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    `;
+                    lista_barras_temas.push(`.valor-${num_temas}`)
+                    num_temas = num_temas + 1;
+                    
+                })
+            }
+        })
+        info_temas_sociales.innerHTML = outInfo_temas_sociales;
+        info_temas_ambientales.innerHTML = outInfo_temas_ambientales;
+
+        // para agregar los resultados a la barra 
+        let numero_temas = 0;
+        console.log(lista_barras_temas)
+        objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+            datos_preguntas.temas.forEach(element => {//recorremos TEMAS
+                let valor_barra = (element.nivel_1 * 100)
+                console.log(lista_barras_temas[numero_temas])
+                if (valor_barra < 33) {
+                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "red"
+                } else if (valor_barra > 66) {
+                    
+                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "green"
+                } else {
+                    
+                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "yellow"
+                }
+                document.querySelector(lista_barras_temas[numero_temas]).style.width = valor_barra + "%";//para mostrar el resultados de cada TEMA en una BARRA
+                numero_temas = numero_temas + 1;
+            })
+        })
+
         // llamos a las graficas
         setTimeout(() => {
             // colocamos las graficas

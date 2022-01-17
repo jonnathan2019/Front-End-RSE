@@ -342,6 +342,101 @@
                 </div>
             </div>
 
+            <!-- info temas  -->
+            <div class="contenido-temas">
+                <!-- grafica circular zoom  -->
+                <div class="grafica-tema">
+                    <div class="titulo">
+                        <span>Dimensiones – Barra Horizontal.</span>
+
+                    </div>
+                    <div class="cont" id="grafica-var-horizontal-dashboard">.
+                    </div>
+                </div>
+                <!-- grafica radar -->
+                <div class="grafica-tema">
+                    <div class="titulo">
+                        <span>Dimensiones – Barra Vertical.</span>
+                    </div>
+                    <div class="cont grafica-bar-vertical" id="grafica-bar-dim-dashobaord">
+                        <svg id="svg-bar-dashobaord" viewBox='0 0 750 500'></svg>
+                    </div>
+                </div>
+                <!-- informacion de temas  -->
+                <div class="info-temas">
+                    <div class="titulo-info">
+                        <span>Temas Evaluados.</span>
+                    </div>
+                    <!-- dimension uno  -->
+                    <div class="info-dim-1 info-dimension">
+                        <div class="titulo">
+                            <div class="icono icono-dim-1">
+                                <i class="fas fa-hands"></i>
+                            </div>
+                            <span>Social</span>
+                        </div>
+                        <div class="info-contenido info-contenido-social">
+                            <div class="informacion-tema">
+                                <div class="nom-tema">Derechos Humanos</div>
+                                <div class="puntaje-tema">04</div>
+                                <div class="barra-tema">
+                                    <div class="contorno">
+                                        <div class="valor">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="informacion-tema">
+                                <div class="nom-tema">Practicas de Trabjo</div>
+                                <div class="puntaje-tema">04</div>
+                                <div class="barra-tema">
+                                    <div class="contorno">
+                                        <div class="valor">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="informacion-tema">
+                                <div class="nom-tema">Contaminacion</div>
+                                <div class="puntaje-tema">04</div>
+                                <div class="barra-tema">
+                                    <div class="contorno">
+                                        <div class="valor">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- dimension dos  -->
+                    <div class="info-dim-2 info-dimension">
+                        <div class="titulo">
+                            <div class="icono icono-dim-2">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <span>Ambiental</span>
+                        </div>
+                        <div class="info-contenido info-contenido-ambiental">
+                            <div class="informacion-tema">
+                                <div class="nom-tema">Ambiente</div>
+                                <div class="puntaje-tema">04</div>
+                                <div class="barra-tema">
+                                    <div class="contorno">
+                                        <div class="valor">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- graficas dimenssiones -->
             <div class="graficas-dimesniones">
                 <!-- grafica circular zoom  -->
@@ -365,24 +460,7 @@
 
             <!-- graficas temas -->
             <div class="graficas-temas">
-                <!-- grafica circular zoom  -->
-                <div class="grafica-tema">
-                    <div class="titulo">
-                        <span>Dimensiones – Barra Horizontal.</span>
-
-                    </div>
-                    <div class="cont" id="grafica-var-horizontal-dashboard">.
-                    </div>
-                </div>
-                <!-- grafica radar -->
-                <div class="grafica-tema">
-                    <div class="titulo">
-                        <span>Dimensiones – Barra Vertical.</span>
-                    </div>
-                    <div class="cont grafica-bar-vertical" id="grafica-bar-dim-dashobaord">
-                        <svg id="svg-bar-dashobaord" viewBox='0 0 750 500'></svg>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

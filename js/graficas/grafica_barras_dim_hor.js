@@ -126,8 +126,8 @@ function grafica_barra_horixzontal_dashboard() {
     // ]
 
     const margin = { top: 50, right: 50, bottom: 80, left: 75 }
-    const height = 200
-    const width = 360
+    const height = 50 /*estaba 200*/
+    const width = 210 /* estaba 360*/
     var greyColor = "#898989";
     var barColor = '#1FE250';//verde
     var highlightColor = "#ff8000";//naranja

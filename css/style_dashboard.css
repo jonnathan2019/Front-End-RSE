@@ -368,7 +368,7 @@
     padding: 10px 15px;
  }
 
- .graficas .grafica-circulares .card-bar-circular .titulo .icono{
+ .icono{
     background: #3f597a;
     width: 30px;
     height: 30px;
@@ -385,12 +385,12 @@
     margin-right:  5px;
 }
 
-.graficas .grafica-circulares .card-bar-circular .titulo .icono-dim-1{
+ .icono-dim-1{
     /* '#ff8000', '#1FE250' */
     background: #ff8000;
 }
 
-.graficas .grafica-circulares .card-bar-circular .titulo .icono-dim-2{
+.icono-dim-2{
     /* '#ff8000', '#1FE250' */
     background: #1FE250;
 }
@@ -400,6 +400,91 @@
     align-items: center;
     justify-content: center;
  }
+ /* Informcaion de temas */
+ .contenido-temas{
+     width: 100%;
+     /* background: #1FE250; */
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin-top: 20px;
+ }
+
+ .contenido-temas .info-temas{
+    background: #fff;
+    width: 30%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+ }
+
+ .contenido-temas .info-temas .titulo-info{
+    font-weight: bold;
+    padding: 0px 15px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    color: rgb(64, 84, 138);
+    /* ______________ */
+ }
+
+ .contenido-temas .info-temas .info-dimension{
+     margin: 15px;
+     font-size: 12px;
+     /* background: cornflowerblue; */
+ }
+
+ .contenido-temas .info-temas .info-dimension .titulo{
+     background: rgb(236, 233, 233);
+     display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    padding-left: 5px;
+}
+ .contenido-temas .info-temas .info-dimension .info-contenido .informacion-tema{
+     /* background: cornsilk; */
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding:  5px 0px;
+     border-bottom: 1px solid #ccc;
+ }
+
+ .nom-tema, .puntaje-tema, .barra-tema{
+     /* background: chocolate; */
+     width: 30%;
+     text-align: center;
+ }
+ .barra-tema{
+    /* background: chocolate; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .barra-tema .contorno{
+    background: rgb(240, 240, 233);
+    border: 1px solid #ccc;
+    width: 140px;
+    height: 13px;
+    border-radius: 15px;
+ }
+
+ .barra-tema .valor{
+    background-image: radial-gradient(circle at 50% -20.71%, #d7c35d 0, #deba54 8.33%, #e4b04d 16.67%, #e9a546 25%, #ed9841 33.33%, #f0893e 41.67%, #f2793c 50%, #f3673d 58.33%, #f35542 66.67%, #f34249 75%, #f22b52 83.33%, #f0065d 91.67%, #ec0069 100%);
+    width: 90%;
+    height: 100%;
+    margin-right: 10px;
+    border-top-left-radius:  5px;
+    border-bottom-left-radius:   5px;
+    font-size: 10px;
+}
+
+ .contenido-temas .info-temas .info-dimension .icono{
+     height: 20px;
+     width: 20px;
+     font-size: 7px;
+ }
+
+ 
  /* graficas dimensiones */
  .graficas-dimesniones{
      margin-top: 20px;
@@ -418,9 +503,11 @@
 
  .graficas-dimesniones .grafica-dim .titulo{
     font-weight: bold;
-    padding: 10px 15px;
-    border-bottom: 1px solid #ccc;
- }
+    /* padding: 10px 15px; */
+    padding: 0px 15px;
+    padding-top: 15px;
+    /* ______________ */
+}
 
  .graficas-dimesniones .grafica-dim .cont{
     padding: 10px 15px;
@@ -440,20 +527,22 @@
     margin-bottom: 20px;
 }
 
-.graficas-temas .grafica-tema{
+.contenido-temas .grafica-tema{
    background: #fff;
-   width: 49%;
+   width: 33%;
    border-radius: 5px;
    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.graficas-temas .grafica-tema .titulo{
+.contenido-temas .grafica-tema .titulo{
    font-weight: bold;
-   padding: 10px 15px;
-   border-bottom: 1px solid #ccc;
+   /* padding: 10px 15px; */
+   padding: 0px 15px;
+    padding-top: 15px;
+   /* ______________ */
 }
 
-.graficas-temas .grafica-tema .cont{
+.contenido-temas .grafica-tema .cont{
    padding: 10px 15px;
    display: flex;
    align-items: center;
@@ -594,14 +683,20 @@ div.tooltip-zoom div {/*antes de div estaba p*/
     height: 100%;
 }
 
+/* para las barras verticales */
+/* cambia el tamonao de los datos de las aristas  */
+#grafica-bar-dim-dashobaord text{
+    font-size: 20px;
+}
+
 .barras_dim {
     fill: #80cbc4;
 }
 
 text {
-    font-size: 12px;
-    fill: #fff;
-    fill: black;
+    font-size: 10px;
+    /* fill: #fff;
+    fill: black; */
 }
 
 /* path {
@@ -656,3 +751,4 @@ text.source {
     color: rgb(64, 84, 138);
     /* border-bottom:  1px solid #ccc; */
 }
+
