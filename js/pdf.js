@@ -1,5 +1,5 @@
 const info_retroalimenatcion_general = document.querySelector(".info-total")
-console.log(info_retroalimenatcion_general)
+// console.log(info_retroalimenatcion_general)
 function descargarPDF() {
     //const doc = new jsPDF();
 
@@ -52,7 +52,7 @@ function copiar_pdf() {
     document.querySelector('.nombre-usuario').innerHTML = nombre_usuario;
     document.querySelector('.correo-usuario').innerHTML = correo_usuario;
 
-    console.log(usuario_ID);
+    // console.log(usuario_ID);
 
     (async function () {
         const datos_empresa = await getDataUsuarioPDF(usuario_ID);

@@ -229,7 +229,7 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new) {
                 respuestasIndicadores.forEach(element => {
                     if (element.encuestado.encuestado_ID == encuestado_ID) {
                         respuestasIndicadoresPreguntas.forEach(respuestas_valores => {
-                            if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID) {
+                            if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID && respuestas_valores.respuesta != -1) {
                                 // console.log("-- " + element.indicador.tema.dimension.nombre)//nombre la dimension respondido
                                 // console.log("----- " + element.indicador.tema.nombre)//nombre del tema respondido
                                 // console.log("- " + element.indicador.nombre)//nombre del indicador respondido
@@ -258,7 +258,7 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new) {
     // respuestasIndicadores.forEach(element => {
     //     if (element.encuestado.encuestado_ID == encuestado_ID) {
     //         respuestasIndicadoresPreguntas.forEach(respuestas_valores => {
-    //             if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID) {
+    //             if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID  && respuestas_valores.respuesta != -1) {
     //                 console.log("-- " + element.indicador.tema.dimension.nombre)//nombre la dimension respondido
     //                 console.log("----- " + element.indicador.tema.nombre)//nombre del tema respondido
     //                 console.log("- " + element.indicador.nombre)//nombre del indicador respondido
@@ -281,7 +281,7 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new) {
             // console.log(element.encuestado.encuestado_ID)
             let datos = []
             respuestasIndicadoresPreguntas.forEach(respuestas_valores => {
-                if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID) {//obtenemos las respuetas del indicador para realizar la suma
+                if (element.respuestas_Indicadores_ID == respuestas_valores.respuestasaIndicadores.respuestas_Indicadores_ID && respuestas_valores.respuesta != -1) {//obtenemos las respuetas del indicador para realizar la suma
                     //console.log("-- " + element.indicador.tema.dimension.nombre)//nombre la dimensionrespondido
                     //console.log("----- " + element.indicador.tema.nombre)//nombre del tema respondido
                     //console.log("- " + element.indicador.nombre)//nombre del indicador respondido
@@ -734,31 +734,33 @@ function algoritmo_graficar() {
                 numero_temas = numero_temas + 1;
             })
         })
-
-        //llamamos a la funcion de Graficar
-        // _____________________________
-        // barra horizontal
-        graficar_barras();
-        // circular 
-        grafica_circular_valor_total()//para la barra de progreso circular TOTAL
-        grafica_circular_valor_dim_social()//barra de progreso circular SOCIAL
-        grafica_circular_valor_dim_ambental()//barra de progreso circular AMBIENTAL
-        // barra vertical
-        grafica_bar_vertical();
-        // grafica_bar_vertical_pdf();
-        // barra horizontal
-        grafica_barra_horixzontal();
-        // radar
-        grafica_radar();
-        // grafica_radar_pdf();
-        // zoomable
-        grafica_zoomable();
-        // retroalimenatciones
-        obtener_retroalimenatcion();
-        //mostrar panel
-        mostrar_resultados();
-        // copiar en PDF 
-        copiar_pdf();
+        //funciones para graficar
+        setTimeout(() => {
+            //llamamos a la funcion de Graficar
+            // _____________________________
+            // barra horizontal
+            graficar_barras();
+            // circular 
+            grafica_circular_valor_total()//para la barra de progreso circular TOTAL
+            grafica_circular_valor_dim_social()//barra de progreso circular SOCIAL
+            grafica_circular_valor_dim_ambental()//barra de progreso circular AMBIENTAL
+            // barra vertical
+            grafica_bar_vertical();
+            // grafica_bar_vertical_pdf();
+            // barra horizontal
+            grafica_barra_horixzontal();
+            // radar
+            grafica_radar();
+            // grafica_radar_pdf();
+            // zoomable
+            grafica_zoomable();
+            // retroalimenatciones
+            obtener_retroalimenatcion();
+            //mostrar panel
+            mostrar_resultados();
+            // copiar en PDF 
+            copiar_pdf();
+        },2000)
         // _____________________________
         //-------------- MODAL Inicio -------------------
         setTimeout(() => {
@@ -799,7 +801,7 @@ function algoritmo_graficar() {
                             if (nombre_1 == nombre_2) {
                                 if (valor > 66) {
                                     document.querySelector(".retoalimentacion-tema").innerHTML = "Este tema se aplica en gran parte de su empresa por lo que su empresa ya es considerada como una empresa sustentable y responsable.";
-    
+
                                 } else if (valor < 33) {
                                     document.querySelector(".retoalimentacion-tema").innerHTML = "Este tema no se aplica en su empresa por lo que se sugiere empezar a trabar en este tema.";
                                 } else {
@@ -838,7 +840,7 @@ function algoritmo_graficar() {
     //-------------- MODAL Fin -------------------
 }
 
-function mostrar_resultados(){
+function mostrar_resultados() {
     document.getElementById('contenido-resultados').style.display = "block";
     document.getElementById('loader-resultados').style.display = "none";
 }
@@ -954,6 +956,10 @@ function ir_evaluacion() {
     window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_ID}`;
 }
 
+function ir_dashboard() {
+    window.location.href = `${url_global_pagina}dashboard${extencion}?usuario=${usuario_ID}`;
+}
+
 function ir_reporte() {
     window.location.href = `${url_global_pagina}resultados${extencion}?usuario=${usuario_ID}`;
 }
@@ -961,7 +967,7 @@ function ir_perfil() {
     window.location.href = `${url_global_pagina}perfil_usuario${extencion}?usuario=${usuario_ID}`;
 }
 
-function ir_about(){
+function ir_about() {
     window.location.href = `${url_global_pagina}about${extencion}?usuario=${usuario_ID}`;
 }
 

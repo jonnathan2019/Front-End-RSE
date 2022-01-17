@@ -192,20 +192,39 @@
 
 
 .sidebar a{
-    /*background-color: azure;*/
     display: block;
-    border-bottom: 0.05rem solid #130f24;
-    padding: 20px;
+    padding: 10px;
     color: #fff;
     cursor: pointer;
 }
 
-.sidebar a:hover{
-    background: rgb(98, 98, 236);
+.sidebar .slider-text{
+    padding: 10px;
+}
+
+.sidebar .slider-text:hover{
+    background: rgb(94, 94, 248);
     color: #fff;
-    border-radius: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    /* border-radius: 20px; */
     /*border-bottom-left-radius: 20px;*/
 }
+
+.slider-opcion.active{
+    border-left: 4px solid #fff;
+}
+
+/*_________ long out START _______  */
+.sallir-option{
+    border-top: 1px solid #ccc;
+   position: relative;
+   bottom: -33%;
+    /* margin-top: 100px; */
+}
+
+/*_________ long out END _______  */
 
 #sidebar_btn:hover{
     background: #5b35f1;

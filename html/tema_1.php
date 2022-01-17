@@ -27,7 +27,7 @@
 </head>
 
 <body class="cuerpo hidden">
-    <div class="loader-centrado" id="onload">
+    <!-- <div class="loader-centrado" id="onload">
         <div class="lds-roller">
             <div></div>
             <div></div>
@@ -38,7 +38,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <input type="checkbox" id="check">
     <!--NAV-->
     <div class="nav">
@@ -82,43 +82,49 @@
         <div class="slider-encabesado">
             R S E
         </div>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-home"></i>
-            <span>Home</span>
-            <div class="texto-emergente">
-                Home
+        <a class="slider-opcion active" onclick="ir_evaluacion();">
+            <div class="slider-text">
+                <i class="fas fa-poll-h"></i>
+                <span>Evaluación</span>
+                <div class="texto-emergente">
+                    Evaluación
+                </div>
             </div>
-        </a> -->
-        <a class="slider-opcion" onclick="ir_evaluacion();">
-            <i class="fas fa-poll-h"></i>
-            <span>Evaluación</span>
-            <div class="texto-emergente">
-                Evaluación
+        </a>
+        <a class="slider-opcion" onclick="ir_dashboard();">
+            <div class="slider-text">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+                <div class="texto-emergente">
+                    Dashboard
+                </div>
             </div>
         </a>
         <a class="slider-opcion" onclick="ir_reporte();">
-            <i class="far fa-file-alt"></i>
-            <span>Reporte</span>
-            <div class="texto-emergente">
-                Reporte
+            <div class="slider-text">
+                <i class="far fa-file-alt"></i>
+                <span>Reporte</span>
+                <div class="texto-emergente">
+                    Reporte
+                </div>
             </div>
         </a>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
-            <span>Estándar</span>
-            <div class="texto-emergente">
-                Estándar
-            </div>
-        </a> -->
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-cogs"></i>
-            <span>Configuracion</span>
-            <div class="texto-emergente">
-                Configuracion
-            </div>
-        </a> -->
         <a class="slider-opcion" onclick="ir_about();">
-            <i class="fas fa-info-circle"></i>
-            <span>About</span>
-            <div class="texto-emergente">
-                About
+            <div class="slider-text">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+                <div class="texto-emergente">
+                    About
+                </div>
+            </div>
+        </a>
+        <a class="slider-opcion sallir-option" onclick="salir();">
+            <div class="slider-text">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+                <div class="texto-emergente">
+                    Salir
+                </div>
             </div>
         </a>
     </div>
@@ -130,7 +136,16 @@
 
         <!--Step-->
         <div class="stepper-wrapper">
-            <div class="stepper-item">
+            <div class="card-loader">
+                <div id="preloader_1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <!-- <div class="stepper-item">
                 <div class="step-counter active">1</div>
                 <div id="step_name_tema_1" class="step-name">
                     <div class="card-loader-0">
@@ -199,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!--CARD principal INICIO-->
@@ -244,7 +259,7 @@
                     </div>
                     <div class="buton-siguiente">
                         <a class="button" onclick="atras();">Atras</a>
-                        <a class="button" onclick="siguiente();">Siguiente</a>
+                        <a class="button" onclick="siguiente();"><span class="btn-siguiente">Siguiente</span></a>
                     </div>
                 </div>
 
@@ -406,6 +421,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../librerias/loader.js"></script>
 <script src="../js/urls.js"></script>
-<script src="../js/temas_RSE/tema_1.js" defer></script>
+<!-- <script src="../js/temas_RSE/tema_1.js" defer></script> -->
+<script src="../js/tema.js"></script>
 
 </html>

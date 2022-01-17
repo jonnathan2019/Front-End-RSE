@@ -144,7 +144,7 @@
 </head>
 
 <body class="cuerpo hidden_resultados">
-    <div class="loader-centrado" id="onload_resultados">
+    <!-- <div class="loader-centrado" id="onload_resultados">
         <div class="lds-roller">
             <div></div>
             <div></div>
@@ -155,7 +155,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <input type="checkbox" id="check">
     <!--NAV-->
     <div class="nav">
@@ -199,43 +199,49 @@
         <div class="slider-encabesado">
             R S E
         </div>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-home"></i>
-            <span>Home</span>
-            <div class="texto-emergente">
-                Home
-            </div>
-        </a> -->
         <a class="slider-opcion" onclick="ir_evaluacion();">
-            <i class="fas fa-poll-h"></i>
-            <span>Evaluación</span>
-            <div class="texto-emergente">
-                Evaluación
+            <div class="slider-text">
+                <i class="fas fa-poll-h"></i>
+                <span>Evaluación</span>
+                <div class="texto-emergente">
+                    Evaluación
+                </div>
             </div>
         </a>
-        <a class="slider-opcion" onclick="ir_reporte();">
-            <i class="far fa-file-alt"></i>
-            <span>Reporte</span>
-            <div class="texto-emergente">
-                Reporte
+        <a class="slider-opcion" onclick="ir_dashboard();">
+            <div class="slider-text">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+                <div class="texto-emergente">
+                    Dashboard
+                </div>
             </div>
         </a>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
-            <span>Estándar</span>
-            <div class="texto-emergente">
-                Estándar
+        <a class="slider-opcion active" onclick="ir_reporte();">
+            <div class="slider-text">
+                <i class="far fa-file-alt"></i>
+                <span>Reporte</span>
+                <div class="texto-emergente">
+                    Reporte
+                </div>
             </div>
-        </a> -->
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-cogs"></i>
-            <span>Configuracion</span>
-            <div class="texto-emergente">
-                Configuracion
-            </div>
-        </a> -->
+        </a>
         <a class="slider-opcion" onclick="ir_about();">
-            <i class="fas fa-info-circle"></i>
-            <span>About</span>
-            <div class="texto-emergente">
-                About
+            <div class="slider-text">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+                <div class="texto-emergente">
+                    About
+                </div>
+            </div>
+        </a>
+        <a class="slider-opcion sallir-option" onclick="salir();">
+            <div class="slider-text">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+                <div class="texto-emergente">
+                    Salir
+                </div>
             </div>
         </a>
     </div>
@@ -1223,16 +1229,16 @@
 <script src="../js/graficas/grafica_barras_dim.js"></script>
 
 <!-- GRAFICA Polar Area Temas-->
-<script src="https://raw.githack.com/jamesleesaunders/d3-ez/master/dist/d3-ez.js"></script>
+<!-- <script src="https://raw.githack.com/jamesleesaunders/d3-ez/master/dist/d3-ez.js"></script> -->
 <!-- Utiliza la libreria: <script src="https://d3js.org/d3.v5.min.js"></script>  -->
-<script src="../js/graficas/polar_area.js"></script>
+<!-- <script src="../js/graficas/polar_area.js"></script> -->
 
 <!-- GARFICA DONA Dimensiones-->
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="../js/graficas/grafica_dona_dim.js"></script>
+<!-- <script src="../js/graficas/grafica_dona_dim.js"></script> -->
 
 <!-- GRAFICA DONA Dimenisones 2-->
-<script src="../js/graficas/grafica_dona_dim_2.js"></script>
+<!-- <script src="../js/graficas/grafica_dona_dim_2.js"></script> -->
 
 <!-- GRAFICA BARRA Circular Puntate Total-->
 <!-- Utiliza la libreria: <script src="https://d3js.org/d3.v5.min.js"></script>  -->

@@ -81,43 +81,49 @@
         <div class="slider-encabesado">
             R S E
         </div>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-home"></i>
-            <span>Home</span>
-            <div class="texto-emergente">
-                Home
+        <a class="slider-opcion active" onclick="ir_evaluacion();">
+            <div class="slider-text">
+                <i class="fas fa-poll-h"></i>
+                <span>Evaluación</span>
+                <div class="texto-emergente">
+                    Evaluación
+                </div>
             </div>
-        </a> -->
-        <a class="slider-opcion" onclick="ir_evaluacion();">
-            <i class="fas fa-poll-h"></i>
-            <span>Evaluación</span>
-            <div class="texto-emergente">
-                Evaluación
+        </a>
+        <a class="slider-opcion" onclick="ir_dashboard();">
+            <div class="slider-text">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+                <div class="texto-emergente">
+                    Dashboard
+                </div>
             </div>
         </a>
         <a class="slider-opcion" onclick="ir_reporte();">
-            <i class="far fa-file-alt"></i>
-            <span>Reporte</span>
-            <div class="texto-emergente">
-                Reporte
+            <div class="slider-text">
+                <i class="far fa-file-alt"></i>
+                <span>Reporte</span>
+                <div class="texto-emergente">
+                    Reporte
+                </div>
             </div>
         </a>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
-            <span>Estándar</span>
-            <div class="texto-emergente">
-                Estándar
-            </div>
-        </a> -->
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-cogs"></i>
-            <span>Configuracion</span>
-            <div class="texto-emergente">
-                Configuracion
-            </div>
-        </a> -->
         <a class="slider-opcion" onclick="ir_about();">
-            <i class="fas fa-info-circle"></i>
-            <span>About</span>
-            <div class="texto-emergente">
-                About
+            <div class="slider-text">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+                <div class="texto-emergente">
+                    About
+                </div>
+            </div>
+        </a>
+        <a class="slider-opcion sallir-option" onclick="salir();">
+            <div class="slider-text">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+                <div class="texto-emergente">
+                    Salir
+                </div>
             </div>
         </a>
     </div>
@@ -151,76 +157,36 @@
 
 
         <div class="contenido">
-
             <div class="wrapper">
                 <div class="tabs">
                     <ul class="tabs-ul">
-                        <li class="active">
-
+                        <!-- <li class="active">
                             <span class="text">Social</span>
                         </li>
                         <li>
-
                             <span class="text">Ambiental</span>
-                        </li>
-
-
+                        </li> -->
                     </ul>
                 </div>
                 <!--_____________Tabs INICIO_______________-->
                 <div class="content-tabs">
                     <!--Dimension Social-->
-                    <div class="tab_wrap" style="display: block;">
+                    <!-- <div class="tab_wrap" style="display: block;">
                         <div class="title">
                             Dimensión Social
                         </div>
                         <div class="container-cards container-cards_1">
-                            <!-- <div class="card-dim">
-                                <div class="card-imagen-dim">
-                                    <img src="../imagenes/Trabajadores.jpg" alt="">
-                                </div>
-                                <div class="card-content-dim">
-                                    <p class="car-title">Derechos Humanos.</p>
-                                    <p class="res-concept">Permite trabajar de una forma consiente, para mejorar el
-                                        bienestar de lasa personas que están al rededor de una institución.
-                                    </p>
-                                    <div class="buton-comensar-dim">
-                                        <a href="#" class="button-dim">Comenzar</a>
-                                    </div>
-                                </div>
-                            </div> -->
-
-
 
                         </div>
-                    </div>
+                    </div> -->
                     <!--Dimension Ambiental-->
-                    <div class="tab_wrap" style="display: none;">
+                    <!-- <div class="tab_wrap" style="display: none;">
                         <div class="title">
                             Dimensión Ambiental
                         </div>
                         <div class="container-cards container-cards_2">
-                            <!-- <div class="card-dim">
-                                <div class="card-imagen-dim">
-                                    <img src="../imagenes/medio_ambiente.jpg" alt="">
-                                </div>
-                                <div class="card-content-dim">
-                                    <p class="car-title">HOLA.</p>
-                                    <p class="res-concept">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Placeat repellendus esse ullam itaque sapiente veniam ad voluptatibus mollitia
-                                        dolor iste temporibus fugit soluta, voluptate impedit numquam atque earum
-                                        accusamus! Porro.
-                                    </p>
-                                    <div class="buton-comensar-dim">
-                                        <a href="#" class="button-dim">Comenzar</a>
-                                    </div>
-                                </div>
-                            </div> -->
-
                         </div>
-
-                    </div>
-
+                    </div> -->
                 </div>
                 <!--_____________Tabs FIN_______________-->
             </div>
@@ -238,6 +204,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../librerias/loader.js"></script>
 <script src="../js/urls.js"></script>
-<script src="../js/e_p.js"></script>
+<!-- <script src="../js/e_p.js"></script> -->
+<script src="../js/evaluacion_principal.js"></script>
 
 </html>

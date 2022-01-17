@@ -67,43 +67,40 @@
         <div class="slider-encabesado">
             R S E
         </div>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-home"></i>
-            <span>Home</span>
-            <div class="texto-emergente">
-                Home
-            </div>
-        </a> -->
         <a class="slider-opcion" onclick="ir_evaluacion();">
-            <i class="fas fa-poll-h"></i>
-            <span>Evaluación</span>
-            <div class="texto-emergente">
-                Evaluación
+            <div class="slider-text">
+                <i class="fas fa-poll-h"></i>
+                <span>Evaluación</span>
+                <div class="texto-emergente">
+                    Evaluación
+                </div>
+            </div>
+        </a>
+        <a class="slider-opcion" onclick="ir_dashboard();">
+            <div class="slider-text">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+                <div class="texto-emergente">
+                    Dashboard
+                </div>
             </div>
         </a>
         <a class="slider-opcion" onclick="ir_reporte();">
-            <i class="far fa-file-alt"></i>
-            <span>Reporte</span>
-            <div class="texto-emergente">
-                Reporte
+            <div class="slider-text">
+                <i class="far fa-file-alt"></i>
+                <span>Reporte</span>
+                <div class="texto-emergente">
+                    Reporte
+                </div>
             </div>
         </a>
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-table"></i>
-            <span>Estándar</span>
-            <div class="texto-emergente">
-                Estándar
-            </div>
-        </a> -->
-        <!-- <a class="slider-opcion" href="#"><i class="fas fa-cogs"></i>
-            <span>Configuracion</span>
-            <div class="texto-emergente">
-                Configuracion
-            </div>
-        </a> -->
         <a class="slider-opcion" onclick="ir_about();">
-            <i class="fas fa-info-circle"></i>
-            <span>About</span>
-            <div class="texto-emergente">
-                About
+            <div class="slider-text">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+                <div class="texto-emergente">
+                    About
+                </div>
             </div>
         </a>
     </div>

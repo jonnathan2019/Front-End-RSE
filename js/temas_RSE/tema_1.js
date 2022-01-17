@@ -471,6 +471,10 @@ function ir_evaluacion() {
     window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_ID}`;
 }
 
+function ir_dashboard() {
+    window.location.href = `${url_global_pagina}dashboard${extencion}?usuario=${usuario_ID}`;
+}
+
 function ir_reporte() {
     window.location.href = `${url_global_pagina}resultados${extencion}?usuario=${usuario_ID}`;
 }

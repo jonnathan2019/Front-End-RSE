@@ -190,20 +190,39 @@
 
 
 .sidebar a{
-    /*background-color: azure;*/
     display: block;
-    border-bottom: 0.05rem solid #130f24;
-    padding: 20px 20px;
+    padding: 10px;
     color: #fff;
     cursor: pointer;
 }
 
-.sidebar a:hover{
-    background: rgb(98, 98, 236);
+.sidebar .slider-text{
+    padding: 10px;
+}
+
+.sidebar .slider-text:hover{
+    background: rgb(94, 94, 248);
     color: #fff;
-    border-radius: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    /* border-radius: 20px; */
     /*border-bottom-left-radius: 20px;*/
 }
+
+.slider-opcion.active{
+    border-left: 4px solid #fff;
+}
+
+/*_________ long out START _______  */
+.sallir-option{
+    border-top: 1px solid #ccc;
+   position: relative;
+   bottom: -33%;
+    /* margin-top: 100px; */
+}
+
+/*_________ long out END _______  */
 
 #sidebar_btn:hover{
     background: #5b35f1;
@@ -423,11 +442,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 15px 0px;
 }
 
 .card-dim{
     border: 1px solid #dddddd;
-    width: 40%;
+    width: 47%; /*before used to be 40*/
     font-size: 10px;
     display: flex;
     border-radius: 0.6rem;
@@ -436,7 +456,7 @@
 }
 
 .card-imagen-dim{
-    width: 30%;
+    width: 40%; /*before used to be 30*/
     height: 160px;
     overflow: hidden;
     border: 1px solid #dddddd;
@@ -450,7 +470,7 @@
 
 
 .card-content-dim{
-    width: 70%;
+    width: 60%; /* before used to be 70*/ 
     padding: 0.5rem;
 }
 
