@@ -262,7 +262,7 @@
                     <li><a href="#" onclick="imprimirPDF();"><i class="fas fa-download"></i></i>Descargar</a></li>
                     <li><a href="#" onclick="enviarPDF();"><i class="fas fa-paper-plane"></i>Enviar</a></li> -->
                     <li><a href="#" onclick="cargar_info_PDF();" id="abrir_pdf"><i class="fas fa-poll"></i>Ver
-                            Informe</a></li>
+                            Reporte</a></li>
                 </ul>
             </div>
         </div>
