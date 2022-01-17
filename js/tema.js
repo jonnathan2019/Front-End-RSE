@@ -284,7 +284,6 @@ function caragar_info_tema(tema_id) {
                                     <div class="preguntas">
                                         <span>${cont}.</span>
                                         <span>${pregunta.pregunta_cualitativa}</span>
-                                        <span style="color:red">  ${pregunta.pregunta_Cualitativa_ID}</span>
                                     </div>
                                 
                                     <div class="radio-button">
