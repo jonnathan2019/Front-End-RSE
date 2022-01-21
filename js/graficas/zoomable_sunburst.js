@@ -36,7 +36,9 @@ function obtener_datos() {
                             if (temas.nombre === tema_new.name) {
                                 // console.log(tema_new.name + ' - ' + indicador.indicador)
                                 var valor = indicador.valor_1_formula ;
-                                if(valor <= 0){
+                                if(valor == null){
+                                    valor = -1
+                                }else if(valor <= 0){
                                     valor =0.0198
                                 }
                                 const objeto_indicador = {
@@ -128,7 +130,9 @@ function grafica_zoomable() {
                 //     return 'red'
                 // }
                 // return "yellow"
-                if (d.value > (0.10 + 1000)) {
+                if (d.value < 1000) {
+                    return '#ccc'
+                }else if (d.value > (0.10 + 1000)) {
                     return 'green'
                 } else if (d.value < (0.0199 + 1000)) {
                     return 'red'
@@ -152,7 +156,7 @@ function grafica_zoomable() {
         })
         .on('mousemove', function (d) { // when mouse moves                  
             tooltip.style('top', (d3.event.layerY + 430) + 'px'); // always 10px below the cursor
-            tooltip.style('left', (d3.event.layerX + 330) + 'px'); // always 10px to the right of the mouse
+            tooltip.style('left', (d3.event.layerX + 230) + 'px'); // always 10px to the right of the mouse
         });;
 
     path.filter(d => d.children)
@@ -162,7 +166,12 @@ function grafica_zoomable() {
     // path.append("title")
     //     .text(d => d.data.name + '\n' + format(d.value));
     // .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
-
+    let cont = 1; //contador del codigo de la leyenda
+    function crear_codigo(d) {
+        var cod = d.data.name.slice(0, 3) + `-${cont}`
+        cont = cont + 1;
+        return cod;
+    }
     const label = g.append("g")
         .attr("pointer-events", "none")
         .attr("text-anchor", "middle")
@@ -175,13 +184,17 @@ function grafica_zoomable() {
         .attr("transform", d => labelTransform(d.current))
         .text(d => {
             var dato = d.data.name.slice(0, 10)
+            var result ;
             if (d.data.name.length < 10) {
-                return d.data.name;
+                result = d.data.name;
             } else {
-                return dato + '..';
+                result = dato + '..';
             }
 
-            return dato;
+            if (d.depth > 2) {
+                result = crear_codigo(d);
+            }
+            return result;
         });
 
     const parent = g.append("circle")
@@ -221,6 +234,36 @@ function grafica_zoomable() {
             .attr("fill-opacity", d => +labelVisible(d.target))
             .attrTween("transform", d => () => labelTransform(d.current));
     }
+
+    // ********* Leyenda INCIO**************
+    
+    var legendContainer = d3.select("#legend").append("div").classed("legends clearfix", true);
+
+    var legend = legendContainer.selectAll(".legend")
+        .data(root.descendants().filter(n => n.depth > 2))
+        .enter()
+        .append('div') // replace placeholders with g elements
+        .attr('class', 'legend'); // each g is given a legend class
+    
+    cont = 1; //incializamos el contador para el codigo de la leyenda
+    rect = legend.append('div').classed('rect', true) // append rectangle squares to legend
+        .text(function (d) {
+            //  return d.data.name; 
+            var dato = d.data.name.slice(0, 10)
+            if (d.depth > 2) {
+                dato = crear_codigo(d);
+            }
+
+            return dato;
+        })
+        
+
+    // adding text to legend
+    legend.append('span')
+        .text(function (d) { return d.data.name; })
+
+    // ********* Leyenda Fin **********
+
 
     function arcVisible(d) {
         return d.y1 <= 4 && d.y0 >= 1 && d.x1 > d.x0;
@@ -266,7 +309,7 @@ function grafica_zoomable_dashboard() {
     // var color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
     var format = d3.format(",d");
 
-    var width = 300;
+    var width = 240;
     var radius = width / 6;
 
     var arc = d3.arc()
@@ -290,7 +333,7 @@ function grafica_zoomable_dashboard() {
         .style("font", "10px sans-serif");
 
     const g = svg.append("g")
-        .attr("transform", `translate(${width / 1.38},${width / 1.39})`);
+        .attr("transform", `translate(${width / 1.38},${width / 1.2})`); // en lugar de 1.2 estaba 1.39
 
     var tooltip = d3.select('.grafica-circular-zoom') // select element in the DOM with id 'chart'
         .append('div').classed('tooltip-zoom', true); // append a div element to the element we've selected    
@@ -316,7 +359,9 @@ function grafica_zoomable_dashboard() {
                 //     return 'red'
                 // }
                 // return "yellow"
-                if (d.value > (0.10 + 1000)) {
+                if (d.value < 1000) {
+                    return '#ccc'
+                }else if (d.value > (0.10 + 1000)) {
                     return 'green'
                 } else if (d.value < (0.0199 + 1000)) {
                     return 'red'
@@ -339,8 +384,8 @@ function grafica_zoomable_dashboard() {
             tooltip.style('display', 'none'); // hide tooltip for that element
         })
         .on('mousemove', function (d) { // when mouse moves                  
-            tooltip.style('top', (d3.event.layerY + 490) + 'px'); // always 10px below the cursor
-            tooltip.style('left', (d3.event.layerX + 120) + 'px'); // always 10px to the right of the mouse
+            tooltip.style('top', (d3.event.layerY + 560) + 'px'); // always 10px below the cursor
+            tooltip.style('left', (d3.event.layerX + 60) + 'px'); // always 10px to the right of the mouse
         });;
 
     path.filter(d => d.children)
@@ -350,6 +395,13 @@ function grafica_zoomable_dashboard() {
     // path.append("title")
     //     .text(d => d.data.name + '\n' + format(d.value));
     // .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+
+    let cont = 1; //contador del codigo de la leyenda
+    function crear_codigo(d) {
+        var cod = d.data.name.slice(0, 3) + `-${cont}`
+        cont = cont + 1;
+        return cod;
+    }
 
     const label = g.append("g")
         .attr("pointer-events", "none")
@@ -362,14 +414,20 @@ function grafica_zoomable_dashboard() {
         .attr("fill-opacity", d => +labelVisible(d.current))
         .attr("transform", d => labelTransform(d.current))
         .text(d => {
-            var dato = d.data.name.slice(0, 10)
+            var dato = d.data.name.slice(0, 7)
+            var result ;
             if (d.data.name.length < 10) {
-                return d.data.name;
+                result = d.data.name;
             } else {
-                return dato + '..';
+                result = dato + '..';
             }
 
-            return dato;
+            if (d.depth > 2) {
+                result = crear_codigo(d);
+            }
+
+
+            return result;
         });
 
     const parent = g.append("circle")
@@ -409,6 +467,36 @@ function grafica_zoomable_dashboard() {
             .attr("fill-opacity", d => +labelVisible(d.target))
             .attrTween("transform", d => () => labelTransform(d.current));
     }
+
+
+    // ********* Leyenda INCIO**************
+    
+    var legendContainer = d3.select("#legend").append("div").classed("legends clearfix", true);
+
+    var legend = legendContainer.selectAll(".legend")
+        .data(root.descendants().filter(n => n.depth > 2))
+        .enter()
+        .append('div') // replace placeholders with g elements
+        .attr('class', 'legend'); // each g is given a legend class
+    
+    cont = 1; //incializamos el contador para el codigo de la leyenda
+    rect = legend.append('div').classed('rect', true) // append rectangle squares to legend
+        .text(function (d) {
+            //  return d.data.name; 
+            var dato = d.data.name.slice(0, 10)
+            if (d.depth > 2) {
+                dato = crear_codigo(d);
+            }
+
+            return dato;
+        })
+        
+
+    // adding text to legend
+    legend.append('span')
+        .text(function (d) { return d.data.name; })
+
+    // ********* Leyenda Fin **********
 
     function arcVisible(d) {
         return d.y1 <= 4 && d.y0 >= 1 && d.x1 > d.x0;

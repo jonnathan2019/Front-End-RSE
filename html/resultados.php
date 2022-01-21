@@ -450,7 +450,7 @@
                                                 </div>
 
                                                 <div class="cuerpo-tabla-temas">
-                                                    <!-- <div class="contenido-indicador fila">
+                                                    <!--<div class="contenido-indicador fila">
                                                         <div class="info-tema">
                                                             <div class="nom-img-temas fila-contenct">
                                                                 <img class="imagen"
@@ -475,6 +475,9 @@
                                                                         <div class="vertical-line"
                                                                             style="height: 30px;"></div>
                                                                         <span>100</span>
+                                                                    </div>
+                                                                    <div class="tema-no-evalaudo">
+                                                                        <span>Tema No Registrado</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -506,7 +509,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="contenido-indicador fila">
+                                                     <div class="contenido-indicador fila">
                                                         <div class="info-tema">
                                                             <div class="nom-img-temas fila-contenct">
                                                                 <img class="imagen"
@@ -673,7 +676,7 @@
                                             <!--mejora SOCIAL-->
                                             <div class="container-info">
                                                 <div class="titulo-info" id="no-estable">
-                                                    <span>Malo.</span>
+                                                    <span>Integración Baja.</span>
                                                 </div>
                                                 <div class="contenido-info-mejora-social">
                                                     <div class="tema-puntaje">
@@ -689,7 +692,7 @@
                                             <!--Posiblidad de mejora SOCIAL-->
                                             <div class=" container-info">
                                                 <div class="titulo-info" id="poco-estable">
-                                                    <span>Regular.</span>
+                                                    <span>Integración Media.</span>
                                                 </div>
                                                 <div class="contenido-info-posibilidad-mejora-social">
                                                     <div class="tema-puntaje">
@@ -705,7 +708,7 @@
                                             <!--estable SOCIAL-->
                                             <div class=" container-info">
                                                 <div class="titulo-info" id="estable">
-                                                    <span>Bueno.</span>
+                                                    <span>Integración Alta.</span>
                                                 </div>
                                                 <div class="contenido-info-estable-social">
                                                     <div class="tema-puntaje">
@@ -757,7 +760,7 @@
                                             <!--mejora AMMBIENTAL-->
                                             <div class="container-info">
                                                 <div class="titulo-info" id="no-estable">
-                                                    <span>Malo.</span>
+                                                    <span>Integración Baja.</span>
                                                 </div>
                                                 <div class="contenido-info-mejora-ambiental">
                                                     <div class="tema-puntaje">
@@ -773,7 +776,7 @@
                                             <!--posivilidad de mejora AMBIENTAL-->
                                             <div class=" container-info">
                                                 <div class="titulo-info" id="poco-estable">
-                                                    <span>Regular.</span>
+                                                    <span>Integración Media.</span>
                                                 </div>
                                                 <div class="contenido-info-posibilidad-mejora-ambiental">
                                                     <div class="tema-puntaje">
@@ -789,7 +792,7 @@
                                             <!--estable AMBIENTAL-->
                                             <div class=" container-info">
                                                 <div class="titulo-info" id="estable">
-                                                    <span>Bueno.</span>
+                                                    <span>Integración Alta.</span>
                                                 </div>
                                                 <div class="contenido-info-estable-ambiental">
                                                     <div class="tema-puntaje">
@@ -849,7 +852,59 @@
                                         <!--MINI INFOMRE-->
                                         <div id="grafica-polar">
                                             <!-- <div id="chart"></div> -->
+                                            <!-- GRAFICA -->
                                             <div class="grafica-zoomable-sunburst"></div>
+                                            <!-- leyendas -->
+                                            <div class="contedor-leyendas">
+                                                <div class="legenda">
+                                                    <div class="titulo-leyenda">
+                                                        <div class="codigo">
+                                                            <span>Codigo</span>
+                                                        </div>
+                                                        <div class="valor">
+                                                            <span>Valor</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="container-leyendas">
+                                                        <div id="legend"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- leyenda 2 -->
+                                                <div class="niveles-integracion">
+                                                    <div class="nivels alto">
+                                                        <div class="cuadro cuadro-alto">
+
+                                                        </div>
+                                                        <div class="nivel">
+                                                            <span>Nivel de Integracion Alto</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nivels medio">
+                                                        <div class="cuadro cuadro-medio">
+
+                                                        </div>
+                                                        <div class="nivel">
+                                                            <span>Nivel de Integracion Medio</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nivels Bajo">
+                                                        <div class="cuadro cuadro-bajo">
+
+                                                        </div>
+                                                        <div class="nivel">
+                                                            <span>Nivel de Integracion Bajo</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nivels no-registrado">
+                                                        <div class="cuadro cuadro-no-registrado">
+
+                                                        </div>
+                                                        <div class="nivel">
+                                                            <span>No Registrado</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <!-- <div id="chartholder"></div> esta es la que estaba antes  -->
                                             <!-- <div class="dona_nueva"></div> -->
                                         </div>
@@ -857,7 +912,7 @@
                                             <!-- <canvas id="marksChart_1"></canvas> -->
                                             <div id="grafica_radar"></div>
                                         </div>
-                                        
+
 
                                     </div>
                                 </div>
@@ -977,7 +1032,9 @@
                             <span>Desempeño General de RSE.</span>
                         </div>
                         <div class="informacion-general">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima sunt magni quasi ipsum? Dicta, incidunt. Soluta impedit quaerat molestiae, porro, delectus distinctio, eius eum numquam nam alias eaque error. Eos!
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima sunt magni quasi ipsum?
+                            Dicta, incidunt. Soluta impedit quaerat molestiae, porro, delectus distinctio, eius eum
+                            numquam nam alias eaque error. Eos!
                         </div>
                     </div>
                     <!-- Desempeno por Dimensiones -->
@@ -987,7 +1044,9 @@
                         </div>
                         <div class="informacion-dimensiones">
                             <div class="info-desmepeno-dimensiones">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex dolorum ullam tempore aperiam est. Ratione, officia? Dicta pariatur asperiores officia numquam veniam. Dignissimos laboriosam deserunt fugit voluptas quasi fugiat iusto.
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex dolorum ullam tempore
+                                aperiam est. Ratione, officia? Dicta pariatur asperiores officia numquam veniam.
+                                Dignissimos laboriosam deserunt fugit voluptas quasi fugiat iusto.
                             </div>
                             <div class="grafica-desempeno-dimesniones">
                                 <div class="grafica-dim-dempeno">

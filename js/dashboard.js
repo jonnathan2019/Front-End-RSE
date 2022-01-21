@@ -433,7 +433,39 @@ function algoritmo_graficar() {
 
         console.log(objeto_resp)
         console.log(resutaldo_final)
+        objeto_resp.find((dim, index_dim) => {
+            // recorremos el segundo objeto el que tiene todos los datos
+            objeto_resp_2.forEach(dim_2 => {
+                if (dim.dimension == dim_2.dimension) {
+                    // console.log('- ' + dim.dimension + ' ' + index_dim)
+                    dim.temas.find((tema, index_tema) => {
+                        // console.log(tema.nombre + ' ' + index_tema)
+                        dim_2.temas.forEach(element_tema => {
+                            //objeto_respuestas_new[index].temas[index_1_new].indicadores.find(
+                            // i => i.indicador === indicador_new.nombre
+                            // )
+                            const tema_existe = objeto_resp[index_dim].temas.find(
+                                i => i.nombre === element_tema.nombre
+                            )
+                            if (!tema_existe) {
+                                // console.log('No EXISTE: ' + element_tema.nombre)
+                                element_tema.nivel_1 = null;
+                                element_tema.indicadores.forEach(element_indicador => {
+                                    element_indicador.respuestas.splice(0, element_indicador.respuestas.length);
+                                    element_indicador.valor_1_formula = null;
+                                    // console.log(element_indicador.indicador)
+                                })
+                                //vacimaos los indicadores ya que contenian solo elemntos cero
+                                //ingresamos el tema no evaluado 
+                                objeto_resp[index_dim].temas.push(element_tema)
+                            }
 
+                        })
+                    })
+
+                }
+            })
+        })
         //mostramos la informacion de los temas evaluados en la tabla 
         const info_temas_sociales = document.querySelector('.info-contenido-social');
         let outInfo_temas_sociales = ''
@@ -447,7 +479,8 @@ function algoritmo_graficar() {
                 datos_preguntas.temas.forEach(element => {
                     // ${(element.nivel_1 * 100).toFixed(2)}
                     // element.nombre
-                    outInfo_temas_sociales += ` 
+                    if (element.nivel_1 != null) {
+                        outInfo_temas_sociales += ` 
                     <div class="informacion-tema">
                         <div class="nom-tema">${element.nombre}</div>
                         <div class="puntaje-tema">${(element.nivel_1 * 100).toFixed(2)}</div>
@@ -460,14 +493,28 @@ function algoritmo_graficar() {
                         </div>
                     </div>
                     `;
+                        
+                    } else {
+                        outInfo_temas_sociales += ` 
+                    <div class="informacion-tema">
+                        <div class="nom-tema">${element.nombre}</div>
+                        <div class="puntaje-tema">---</div>
+                        <div class="barra-tema">
+                        No Registrado
+                        </div>
+                    </div>
+                    `;
+                    }
                     lista_barras_temas.push(`.valor-${num_temas}`)
-                    num_temas = num_temas + 1;
+                        num_temas = num_temas + 1;
+
                 })
             } else {
                 datos_preguntas.temas.forEach(element => {
                     // ${(element.nivel_1 * 100).toFixed(2)}
                     // element.nombre
-                    outInfo_temas_ambientales += `
+                    if (element.nivel_1 != null) {
+                        outInfo_temas_ambientales += `
                             <div class="informacion-tema">
                                 <div class="nom-tema">${element.nombre}</div>
                                 <div class="puntaje-tema">${(element.nivel_1 * 100).toFixed(2)}</div>
@@ -480,9 +527,21 @@ function algoritmo_graficar() {
                                 </div>
                             </div>
                     `;
+                        
+                    } else {
+                        outInfo_temas_ambientales += `
+                            <div class="informacion-tema">
+                                <div class="nom-tema">${element.nombre}</div>
+                                <div class="puntaje-tema">---</div>
+                                <div class="barra-tema">
+                                    No Registrado
+                                </div>
+                            </div>
+                    `;
+                    }
                     lista_barras_temas.push(`.valor-${num_temas}`)
                     num_temas = num_temas + 1;
-                    
+
                 })
             }
         })
@@ -492,20 +551,26 @@ function algoritmo_graficar() {
         // para agregar los resultados a la barra 
         let numero_temas = 0;
         console.log(lista_barras_temas)
+        var cant = lista_barras_temas.length;
+        
         objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
             datos_preguntas.temas.forEach(element => {//recorremos TEMAS
                 let valor_barra = (element.nivel_1 * 100)
                 console.log(lista_barras_temas[numero_temas])
-                if (valor_barra < 33) {
+                if (valor_barra < 33 && numero_temas < cant && element.nivel_1 != null) {
                     document.querySelector(lista_barras_temas[numero_temas]).style.background = "red"
-                } else if (valor_barra > 66) {
-                    
+                } else if (valor_barra > 66 && numero_temas < cant && element.nivel_1 != null) {
+
                     document.querySelector(lista_barras_temas[numero_temas]).style.background = "green"
-                } else {
-                    
+                } else if (numero_temas < cant && element.nivel_1 != null) {
+
                     document.querySelector(lista_barras_temas[numero_temas]).style.background = "yellow"
                 }
-                document.querySelector(lista_barras_temas[numero_temas]).style.width = valor_barra + "%";//para mostrar el resultados de cada TEMA en una BARRA
+
+                if (numero_temas < cant && element.nivel_1 != null) {
+                    document.querySelector(lista_barras_temas[numero_temas]).style.width = valor_barra + "%";//para mostrar el resultados de cada TEMA en una BARRA
+                    
+                }
                 numero_temas = numero_temas + 1;
             })
         })

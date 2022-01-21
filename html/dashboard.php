@@ -306,9 +306,25 @@
                     </div>
                     <div class="cont grafica-valor-total">
                     </div>
+                    <!-- texto emergente  -->
+                    <div class="texto-emergente-dashboard">
+                        <div class="titulo-emergente">
+                            <span>Integración Global.</span>
+                        </div>
+                        <div class="descripcion-emergente">
+                            <span>El nivel de integración global
+                                 se basa en todas las prácticas 
+                                 evaluadas, ya se ha que haya o 
+                                 no registrado, es decir, para 
+                                 este resultado se tomaron en cuenta 
+                                 todas las dimensiones, temas y 
+                                 subtemas ya sea que haya o no 
+                                 registrado.</span>
+                        </div>
+                    </div>
                 </div>
                 <!-- valor especifico  -->
-                <div class="card-bar-circular valor-total">
+                <div class="card-bar-circular valor-especifico">
                     <div class="titulo">
                         <div class="icono icono-especifico">
                             <i class="far fa-file-alt"></i>
@@ -317,9 +333,24 @@
                     </div>
                     <div class="cont grafica-valor-especifico">
                     </div>
+                    <!-- texto emergente  -->
+                    <div class="texto-emergente-dashboard">
+                        <div class="titulo-emergente">
+                            <span>Integración Especifica.</span>
+                        </div>
+                        <div class="descripcion-emergente">
+                            <span>El nivel de integración especifico
+                                 se basa en las practicas que 
+                                 usted haya registrado previamente, 
+                                 es decir, para este resultado se 
+                                 tomaron en cuenta solo las dimensiones,
+                                  temas y subtemas que haya registrado 
+                                  previamente. </span>
+                        </div>
+                    </div>
                 </div>
                 <!-- dimension 1 -->
-                <div class="card-bar-circular valor-dim">
+                <div class="card-bar-circular valor-dim-1">
                     <div class="titulo">
                         <div class="icono icono-dim-1">
                             <i class="fas fa-hands"></i>
@@ -328,9 +359,21 @@
                     </div>
                     <div class="cont grafica-valor-dim-1">
                     </div>
+                    <!-- texto emergente  -->
+                    <div class="texto-emergente-dashboard">
+                        <div class="titulo-emergente">
+                            <span>Integración Social.</span>
+                        </div>
+                        <div class="descripcion-emergente">
+                            <span>El nivel de integración social 
+                                se refiere a aspectos que abarcan 
+                                ámbitos sociales como prácticas de 
+                                trabajo, derechos humanos, etc.</span>
+                        </div>
+                    </div>
                 </div>
                 <!-- dimension 2 -->
-                <div class="card-bar-circular valor-dim">
+                <div class="card-bar-circular valor-dim-2">
                     <div class="titulo">
                         <div class="icono icono-dim-2">
                             <i class="fas fa-leaf"></i>
@@ -338,6 +381,18 @@
                         <span>Integración Ambiental.</span>
                     </div>
                     <div class="cont grafica-valor-dim-2">
+                    </div>
+                    <!-- texto emergente  -->
+                    <div class="texto-emergente-dashboard">
+                        <div class="titulo-emergente">
+                            <span>Integración Ambiental.</span>
+                        </div>
+                        <div class="descripcion-emergente">
+                            <span>El nivel de integración ambiental 
+                                se refiere a aspecto que abarquen 
+                                ámbitos ambientales como medio 
+                                ambiente, etc. </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -354,7 +409,7 @@
                     </div>
                 </div>
                 <!-- grafica radar -->
-                <div class="grafica-tema">
+                <div class="grafica-tema grafica-temas-vertical">
                     <div class="titulo">
                         <span>Dimensiones – Barra Vertical.</span>
                     </div>
@@ -445,7 +500,60 @@
                         <span>Temas – Grafica Circular.</span>
 
                     </div>
-                    <div class="cont grafica-circular-zoom">
+                    <div class="grafica-zoom-leyenda">
+                        <!-- grafica  -->
+                        <div class="cont grafica-circular-zoom"></div>
+                        <!-- leyendas -->
+                        <div class="contedor-leyendas">
+                            <div class="legenda">
+                                <div class="titulo-leyenda">
+                                    <div class="codigo">
+                                        <span>Codigo</span>
+                                    </div>
+                                    <div class="valor">
+                                        <span>Valor</span>
+                                    </div>
+                                </div>
+                                <div class="container-leyendas">
+                                    <div id="legend"></div>
+                                </div>
+                            </div>
+                            <!-- leyenda 2 -->
+                            <div class="niveles-integracion">
+                                <div class="nivels alto">
+                                    <div class="cuadro cuadro-alto">
+
+                                    </div>
+                                    <div class="nivel">
+                                        <span>Nivel de Integracion Alto</span>
+                                    </div>
+                                </div>
+                                <div class="nivels medio">
+                                    <div class="cuadro cuadro-medio">
+
+                                    </div>
+                                    <div class="nivel">
+                                        <span>Nivel de Integracion Medio</span>
+                                    </div>
+                                </div>
+                                <div class="nivels Bajo">
+                                    <div class="cuadro cuadro-bajo">
+
+                                    </div>
+                                    <div class="nivel">
+                                        <span>Nivel de Integracion Bajo</span>
+                                    </div>
+                                </div>
+                                <div class="nivels no-registrado">
+                                    <div class="cuadro cuadro-no-registrado">
+
+                                    </div>
+                                    <div class="nivel">
+                                        <span>No Registrado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- grafica radar -->
@@ -460,7 +568,7 @@
 
             <!-- graficas temas -->
             <div class="graficas-temas">
-                
+
             </div>
         </div>
     </div>

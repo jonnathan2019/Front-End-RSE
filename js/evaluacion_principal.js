@@ -42,7 +42,8 @@ async function getTemas() {
     return json;
 }
 
-let nom_imagenes = ['Derechos_Humanos.jpg', 'Trabajadores.jpg', 'cuestiones_relacionadas_consumidor.jpg', 'participacion_comunidad_desarrollo.jpg', 'medio_ambiente.jpg'];
+// let nom_imagenes = ['Derechos_Humanos.jpg', 'Trabajadores.jpg', 'cuestiones_relacionadas_consumidor.jpg', 'participacion_comunidad_desarrollo.jpg', 'medio_ambiente.jpg']; imagenes anteriores
+let nom_imagenes = ['tema_practicas_trabajo_2.jpg', 'tema_derechos_humanos_2.png', 'tema_comunidad_desarrollo_2.jpg', 'tema_cuestiones_relacionadas_consumidor_2.jpg', 'medio_ambiente.jpg'];
 // let enlaces_paginas = [
 //     `${url_global_pagina}tema_1${extencion}?usuario=${usuario_ID}`,
 //     `${url_global_pagina}tema_2${extencion}?usuario=${usuario_ID}`,

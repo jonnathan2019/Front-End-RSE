@@ -51,7 +51,8 @@ let index_temas = lista_temas[parseInt(lista_temas.length - 1)];
 // console.log(index_temas)
 let tema_id = lista_temas[index_temas];
 // cargamos la IMAGEN 
-let nom_imagenes = ['Derechos_Humanos.jpg', 'Trabajadores.jpg', 'cuestiones_relacionadas_consumidor.jpg', 'participacion_comunidad_desarrollo.jpg', 'medio_ambiente.jpg'];
+let nom_imagenes = ['tema_practicas_trabajo_2.jpg', 'tema_derechos_humanos_2.png', 'tema_comunidad_desarrollo_2.jpg', 'tema_cuestiones_relacionadas_consumidor_2.jpg', 'medio_ambiente.jpg'];
+// let nom_imagenes = ['Derechos_Humanos.jpg', 'Trabajadores.jpg', 'cuestiones_relacionadas_consumidor.jpg', 'participacion_comunidad_desarrollo.jpg', 'medio_ambiente.jpg'];
 document.querySelector('.card-imagen').innerHTML = `<img src="../imagenes/${nom_imagenes[index_temas]}" alt="">`
 // cambiamos el contenidod del btn SIGUIENTE 
 function cambiar_btn_siguiete() {
