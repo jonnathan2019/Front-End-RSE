@@ -229,7 +229,7 @@ function caragar_info_tema(tema_id) {
                                     </div>
                                 </div>
                                 <div class="coment">
-                                    <textarea name="" id="comentario" cols="135" rows="5" placeholder="Descripcion Indicador"></textarea>
+                                    <textarea name="" id="comentario" cols="135" rows="5" placeholder=" Comentario"></textarea>
                                 </div>
                                 <div class="buton-enviar">
                                     <button class="enviar" id="buton_${num_indicadores + 1}" onclick="obtener_datos_indicador(${num_indicadores + 1})"><span class="guardar-preguntas-indicador-${num_indicadores + 1}">Guardar</span></button>
