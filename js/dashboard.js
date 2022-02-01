@@ -500,7 +500,9 @@ function algoritmo_graficar() {
                         <div class="nom-tema">${element.nombre}</div>
                         <div class="puntaje-tema">---</div>
                         <div class="barra-tema">
-                        No Registrado
+                            <div class="tema-no-registrado">
+                                No Registrado
+                            </div>
                         </div>
                     </div>
                     `;
@@ -620,6 +622,10 @@ function ir_reporte() {
 }
 function ir_perfil() {
     window.location.href = `${url_global_pagina}perfil_usuario${extencion}?usuario=${usuario_ID}`;
+}
+
+function configuracion_empresa() {
+    window.location.href = `${url_global_pagina}configuracion_empresa${extencion}?usuario=${usuario_ID}`;
 }
 
 function ir_about() {

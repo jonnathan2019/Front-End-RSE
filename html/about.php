@@ -108,6 +108,15 @@
                 </div>
             </div>
         </a>
+        <a class="slider-opcion" onclick="configuracion_empresa();">
+            <div class="slider-text">
+                <i class="fas fa-building"></i>
+                <span>Empresa</span>
+                <div class="texto-emergente">
+                    Empresa
+                </div>
+            </div>
+        </a>
         <a class="slider-opcion active" onclick="ir_about();">
             <div class="slider-text">
                 <i class="fas fa-info-circle"></i>

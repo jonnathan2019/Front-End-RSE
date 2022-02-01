@@ -44,22 +44,22 @@ async function getDataEmpresa() {
                                 `;
     info_user.innerHTML = out_info_user;
     //-------------------------
-    document.getElementById('nombre').value = datos_usuario.encuestado.nombre;
-    document.getElementById('apellido').value = datos_usuario.encuestado.apellido;
-    document.getElementById('usuario').value = datos_usuario.usuario;
-    document.getElementById('email').value = datos_usuario.encuestado.correo;
-    document.getElementById('contrasena').value = datos_usuario.contrasena;
-    document.getElementById('confirmar-contrasena').value = datos_usuario.contrasena;
+    // document.getElementById('nombre').value = datos_usuario.encuestado.nombre;
+    // document.getElementById('apellido').value = datos_usuario.encuestado.apellido;
+    // document.getElementById('usuario').value = datos_usuario.usuario;
+    // document.getElementById('email').value = datos_usuario.encuestado.correo;
+    // document.getElementById('contrasena').value = datos_usuario.contrasena;
+    // document.getElementById('confirmar-contrasena').value = datos_usuario.contrasena;
 
     encuestado_id = datos_usuario.encuestado.encuestado_ID;
     empresa_id = datos_usuario.encuestado.empresa.empresa_ID;
 
     //Carga,os la info de la empresa
-    // const datos_empresa = await getDataEmpresa();
-    // document.getElementById('nombre-empresa').value = datos_empresa.nombre;
-    // document.getElementById('secto-opera').value = datos_empresa.sector_tipo;
-    // document.getElementById('numero-empleados').value = datos_empresa.numero_empleados;
-    // document.getElementById('ruc-empresa').value = datos_empresa.ruc_empresa;
+    const datos_empresa = await getDataEmpresa();
+    document.getElementById('nombre-empresa').value = datos_empresa.nombre;
+    document.getElementById('secto-opera').value = datos_empresa.sector_tipo;
+    document.getElementById('numero-empleados').value = datos_empresa.numero_empleados;
+    document.getElementById('ruc-empresa').value = datos_empresa.ruc_empresa;
 
 })()
 //__________________________

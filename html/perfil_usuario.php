@@ -94,12 +94,30 @@
                 </div>
             </div>
         </a>
+        <a class="slider-opcion" onclick="configuracion_empresa();">
+            <div class="slider-text">
+                <i class="fas fa-building"></i>
+                <span>Empresa</span>
+                <div class="texto-emergente">
+                    Empresa
+                </div>
+            </div>
+        </a>
         <a class="slider-opcion" onclick="ir_about();">
             <div class="slider-text">
                 <i class="fas fa-info-circle"></i>
                 <span>About</span>
                 <div class="texto-emergente">
                     About
+                </div>
+            </div>
+        </a>
+        <a class="slider-opcion sallir-option" onclick="salir();">
+            <div class="slider-text">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+                <div class="texto-emergente">
+                    Salir
                 </div>
             </div>
         </a>
@@ -154,7 +172,7 @@
         </div>
 
         <!--Informacion Empresa-->
-        <div class="contenido">
+        <!-- <div class="contenido">
             <div class="titulo">
                 <span>Configuración Empresa</span>
             </div>
@@ -184,7 +202,7 @@
                 <button onclick="regresar();">Regresar</button>
                 <button onclick="actualizar_empresa();">Guardar</button>
             </div>
-        </div>
+        </div> -->
 
 
 

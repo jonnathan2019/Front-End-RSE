@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evaluación.</title>
+    <title>Configuración Empresa.</title>
     <link rel="icon" type="image/png" href="../imagenes/logo_3.png" />
-    <link rel="stylesheet" href="../css/style_evaluacion.css">
+    <link rel="stylesheet" href="../css/configuracion_empresa.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -20,24 +20,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;1,400&display=swap"
         rel="stylesheet">
 
-    <!-- Loader -->
-    <link rel="stylesheet" href="../css/loader.css">
-
+    <!--Libreria alerts-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
-<body class="cuerpo hidden">
-    <div class="loader-centrado" id="onload">
-        <div class="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+<body class="cuerpo">
     <input type="checkbox" id="check">
     <!--NAV-->
     <div class="nav">
@@ -66,8 +53,7 @@
                         <a>Mi Perfil</a>
                     </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
-                    <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a>
-                    </li>
+                    <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a></li>
                 </ul>
             </div>
         </ul>
@@ -81,7 +67,7 @@
         <div class="slider-encabesado">
             R S E
         </div>
-        <a class="slider-opcion active" onclick="ir_evaluacion();">
+        <a class="slider-opcion" onclick="ir_evaluacion();">
             <div class="slider-text">
                 <i class="fas fa-poll-h"></i>
                 <span>Evaluación</span>
@@ -108,7 +94,7 @@
                 </div>
             </div>
         </a>
-        <a class="slider-opcion" onclick="configuracion_empresa();">
+        <a class="slider-opcion active" onclick="configuracion_empresa();">
             <div class="slider-text">
                 <i class="fas fa-building"></i>
                 <span>Empresa</span>
@@ -142,78 +128,120 @@
     <!--contenido-->
     <div class="content">
 
-        <!--CARD principal-->
-
-        <div class="card-main">
-            <div class="card-imagen">
-                <img src="../imagenes/RSE2.jpg" alt="">
+        <!--Informacion Usuario-->
+        <!-- <div class="contenido">
+            <div class="titulo">
+                <span>Configuración Perfil.</span>
             </div>
-            <div class="card-content">
-                <h2 class="car-title">Evaluando RSE.</h2>
-                <p class="res-concept">La Responsabilidad social empresarial (RSE) o
-                    simplemente Responsabilidad social (RS), se define como la
-                    contribución activa y voluntaria al mejoramiento social y
-                    ambiental de las empresas. Esta herramienta de uso gratuito,
-                    busca apoyar a las empresas en la incorporación de la
-                    responsabilidad social empresarial (RSE) en sus estrategias
-                    de negocio, de modo que esta sea sustentable y responsable.</p>
-                <div class="buton-comensar" onclick="comezar()">
-                    <a class="button">Comenzar</a>
+            <div class="info-usuario">
+                <div class="nombre-usuario">
+                    <div class="datos">
+                        <label>Nombre:</label>
+                        <input type="text" id="nombre">
+                    </div>
+                    <div class="datos">
+                        <label>Apellido:</label>
+                        <input type="text" id="apellido">
+                    </div>
+                </div>
+                <div class="usuario-email">
+                    <div class="datos">
+                        <label>Usuario:</label>
+                        <input type="text" id="usuario">
+                    </div>
+                    <div class="datos">
+                        <label>Email:</label>
+                        <input type="text" id="email">
+                    </div>
+                </div>
+                <div class="contrasenas">
+                    <div class="datos">
+                        <label>Contraseña:</label>
+                        <input type="text" id="contrasena">
+                    </div>
+                    <div class="datos">
+                        <label>Confirmar Contraseña:</label>
+                        <input type="text" id="confirmar-contrasena">
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--__________________________-->
+            <div class="guardar-info">
+                <button onclick="regresar();">Regresar</button>
+                <button onclick="actualizar_usaurio();">Guardar</button>
+            </div>
+        </div> -->
 
-
+        <!--Informacion Empresa-->
         <div class="contenido">
-            <div class="wrapper">
-                <div class="tabs">
-                    <ul class="tabs-ul">
-                        <!-- <li class="active">
-                            <span class="text">Social</span>
-                        </li>
-                        <li>
-                            <span class="text">Ambiental</span>
-                        </li> -->
-                    </ul>
-                </div>
-                <!--_____________Tabs INICIO_______________-->
-                <div class="content-tabs">
-                    <!--Dimension Social-->
-                    <!-- <div class="tab_wrap" style="display: block;">
-                        <div class="title">
-                            Dimensión Social
-                        </div>
-                        <div class="container-cards container-cards_1">
-
-                        </div>
-                    </div> -->
-                    <!--Dimension Ambiental-->
-                    <!-- <div class="tab_wrap" style="display: none;">
-                        <div class="title">
-                            Dimensión Ambiental
-                        </div>
-                        <div class="container-cards container-cards_2">
-                        </div>
-                    </div> -->
-                </div>
-                <!--_____________Tabs FIN_______________-->
+            <div class="titulo">
+                <span>Configuración Empresa</span>
             </div>
-
+            <div class="info-usuario">
+                <div class="nombre-usuario">
+                    <div class="datos">
+                        <label>Nombre Empresa:</label>
+                        <input type="text" id="nombre-empresa">
+                    </div>
+                    <div class="datos">
+                        <label>Sector Opera:</label>
+                        <input type="text" id="secto-opera">
+                    </div>
+                </div>
+                <div class="usuario-email">
+                    <div class="datos">
+                        <label>Numero Empleados:</label>
+                        <input type="text" id="numero-empleados">
+                    </div>
+                    <div class="datos">
+                        <label>RUC:</label>
+                        <input type="text" id="ruc-empresa">
+                    </div>
+                </div>
+            </div>
+            <div class="guardar-info">
+                <button onclick="regresar();">Regresar</button>
+                <button onclick="actualizar_empresa();">Guardar</button>
+            </div>
         </div>
+
+
+
+
+
     </div>
 
+    <script>
+
+        function menuToggle() {
+            const toggleMenu = document.querySelector('.menu-salir');
+            toggleMenu.classList.toggle('active')
+        }
+
+        var tabs = document.querySelectorAll(".tabs ul li");
+        var tab_wraps = document.querySelectorAll(".tab_wrap");
+
+        tabs.forEach(function (tab, tab_index) {
+            tab.addEventListener("click", function () {
+                tabs.forEach(function (tab) {
+                    tab.classList.remove("active");
+                })
+                tab.classList.add("active");
+
+                tab_wraps.forEach(function (content, content_index) {
+                    if (content_index == tab_index) {
+                        content.style.display = "block";
+                    }
+                    else {
+                        content.style.display = "none";
+                    }
+                })
+
+            })
+        })
+    </script>
+
 </body>
-<script>
-    function menuToggle() {
-        const toggleMenu = document.querySelector('.menu-salir');
-        toggleMenu.classList.toggle('active')
-    }
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../librerias/loader.js"></script>
 <script src="../js/urls.js"></script>
-<!-- <script src="../js/e_p.js"></script> -->
-<script src="../js/evaluacion_principal.js"></script>
+<script src="../js/configuracion_empresa.js"></script>
 
 </html>
