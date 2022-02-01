@@ -19,8 +19,7 @@
     <!--LETRA-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
 
     <!--LIbrerias para graficar-->
     <!--Libreria D3.js: https://d3js.org/-->
@@ -309,9 +308,9 @@
                 <div class="card-bar-circular valor-total">
                     <div class="titulo">
                         <div class="icono icono-global">
-                            <i class="fas fa-globe"></i>
+                            <i class="far fa-file-alt"></i>
                         </div>
-                        <span>Integración Global.</span>
+                        <span>Integración Especifica.</span>
                     </div>
                     <div class="cont grafica-valor-total">
                     </div>
@@ -321,14 +320,13 @@
                             <span>Integración Global.</span>
                         </div>
                         <div class="descripcion-emergente">
-                            <span>El nivel de integración global
-                                 se basa en todas las prácticas 
-                                 evaluadas, ya se ha que haya o 
-                                 no registrado, es decir, para 
-                                 este resultado se tomaron en cuenta 
-                                 todas las dimensiones, temas y 
-                                 subtemas ya sea que haya o no 
-                                 registrado.</span>
+                            <span>El nivel de integración especifico
+                                se basa en las practicas que
+                                usted haya registrado previamente,
+                                es decir, para este resultado se
+                                tomaron en cuenta solo las dimensiones,
+                                temas y subtemas que haya registrado
+                                previamente. </span>
                         </div>
                     </div>
                 </div>
@@ -336,9 +334,9 @@
                 <div class="card-bar-circular valor-especifico">
                     <div class="titulo">
                         <div class="icono icono-especifico">
-                            <i class="far fa-file-alt"></i>
+                            <i class="fas fa-globe"></i>
                         </div>
-                        <span>Integración Especifica.</span>
+                        <span>Integración Global.</span>
                     </div>
                     <div class="cont grafica-valor-especifico">
                     </div>
@@ -348,13 +346,15 @@
                             <span>Integración Especifica.</span>
                         </div>
                         <div class="descripcion-emergente">
-                            <span>El nivel de integración especifico
-                                 se basa en las practicas que 
-                                 usted haya registrado previamente, 
-                                 es decir, para este resultado se 
-                                 tomaron en cuenta solo las dimensiones,
-                                  temas y subtemas que haya registrado 
-                                  previamente. </span>
+                            <span>El nivel de integración global
+                                se basa en todas las prácticas
+                                evaluadas, ya se ha que haya o
+                                no registrado, es decir, para
+                                este resultado se tomaron en cuenta
+                                todas las dimensiones, temas y
+                                subtemas ya sea que haya o no
+                                registrado.</span>
+
                         </div>
                     </div>
                 </div>
@@ -374,9 +374,9 @@
                             <span>Integración Social.</span>
                         </div>
                         <div class="descripcion-emergente">
-                            <span>El nivel de integración social 
-                                se refiere a aspectos que abarcan 
-                                ámbitos sociales como prácticas de 
+                            <span>El nivel de integración social
+                                se refiere a aspectos que abarcan
+                                ámbitos sociales como prácticas de
                                 trabajo, derechos humanos, etc.</span>
                         </div>
                     </div>
@@ -397,9 +397,9 @@
                             <span>Integración Ambiental.</span>
                         </div>
                         <div class="descripcion-emergente">
-                            <span>El nivel de integración ambiental 
-                                se refiere a aspecto que abarquen 
-                                ámbitos ambientales como medio 
+                            <span>El nivel de integración ambiental
+                                se refiere a aspecto que abarquen
+                                ámbitos ambientales como medio
                                 ambiente, etc. </span>
                         </div>
                     </div>
