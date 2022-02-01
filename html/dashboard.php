@@ -317,7 +317,7 @@
                     <!-- texto emergente  -->
                     <div class="texto-emergente-dashboard">
                         <div class="titulo-emergente">
-                            <span>Integración Global.</span>
+                            <span>Integración Especifica.</span>
                         </div>
                         <div class="descripcion-emergente">
                             <span>El nivel de integración especifico
@@ -343,7 +343,7 @@
                     <!-- texto emergente  -->
                     <div class="texto-emergente-dashboard">
                         <div class="titulo-emergente">
-                            <span>Integración Especifica.</span>
+                            <span>Integración Global.</span>
                         </div>
                         <div class="descripcion-emergente">
                             <span>El nivel de integración global
