@@ -257,12 +257,12 @@
                     <div class="google" id="googleLogin">
                         <div class="fa fa-google"></div>
                     </div>
-                    <div class="facebook">
+                    <!-- <div class="facebook">
                         <div class="fa fa-facebook"></div>
                     </div>
                     <div class="twitter">
                         <div class="fa fa-twitter"></div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="line-separacion">
                     <div class="line"></div>
