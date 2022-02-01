@@ -313,7 +313,7 @@
                 // 1. registramos a el usuario en SPRING BOOT
                 // lo que se esta pasando por parametro -> (usuario, contrasena, nombre, apellido, email)
                 setUsuarioEncuestado_google(usuario, usuario, nombre, apellido, email)
-                swal("", "Usuario Resgistrado Corectamente!", "success");
+
                 //vamos a crear la empresa
                 // 2. tomamos los datos del utimo usuario registrado y la clave que se le asigno
                 (async function() {
@@ -326,11 +326,9 @@
                         var ultimo_usario_ingresado = '';
                         datos_usuario.forEach(element => {
                             ultimo_usario_ingresado = element.usuario_ID
-                        })
-                        console.log(ultimo_usario_ingresado)
-                        // 3. ingresamos en Firefibase los datos previamente tomados
-                        // y usamos el "ID" como indentificador
-                        setTimeout(() => {
+                        }).then(() => {
+                            swal("", "Usuario Resgistrado Corectamente!", "success");
+                            console.log(ultimo_usario_ingresado)
                             set(ref(db, "UsersList/" + id_correo), {
                                     code: ultimo_usario_ingresado,
                                     name: nombre,
@@ -346,7 +344,13 @@
                                 })
                             // 4 finally, we have to send to the web to register the company
                             window.location.href = `${url_global_pagina}registrar_empresa${extencion}?usuario=${ultimo_usario_ingresado}`
-                        },2000)
+
+                        })
+
+                        // 3. ingresamos en Firefibase los datos previamente tomados
+                        // y usamos el "ID" como indentificador
+
+
 
                     })
                 })()
