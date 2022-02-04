@@ -558,7 +558,7 @@
 }
 
 
-.grafica-valor-total, .grafica-valor-especifico, .grafica-valor-dim-1, .grafica-valor-dim-2{
+.grafica-valor-espedifico, .grafica-valor-global, .grafica-valor-dim-1, .grafica-valor-dim-2{
     height: 115px;
 }
 

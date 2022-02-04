@@ -257,10 +257,10 @@
                     <div class="google" id="googleLogin">
                         <div class="fa fa-google"></div>
                     </div>
-                    <!-- <div class="facebook">
-                        <div class="fa fa-facebook"></div>
+                    <div class="facebook">
+                        <div class="fa fa-facebook" id="googleLoginFacebook"></div>
                     </div>
-                    <div class="twitter">
+                    <!-- <div class="twitter">
                         <div class="fa fa-twitter"></div>
                     </div> -->
                 </div>
@@ -317,7 +317,8 @@
     import {
         getAuth, createUserWithEmailAndPassword,
         signInWithEmailAndPassword, signOut, onAuthStateChanged,
-        GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult
+        GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
+        FacebookAuthProvider
     } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js';
     import { getFirestore, collection, query, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-firestore.js';
     import { getDatabase, ref, set, child, get, onValue }
@@ -339,6 +340,7 @@
     const fs = getFirestore();
     const provider = new GoogleAuthProvider(app);
     const db = getDatabase();
+    const providerFacebook = new FacebookAuthProvider(app);
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -354,12 +356,11 @@
 
     // consultas en la BD en caso de que no este Registrado el usuario
     //obtenemos los datos del usuario para verificar si se encuentran registrado
-    var datos_usuario;
+
     async function getDatosUsuarios_google() {
         const respuesta = await fetch(`${link_service}consultas/usuarios`)
         const json = await respuesta.json()
-        datos_usuario = json
-        console.log(json)
+
         return json;
     }
 
@@ -395,72 +396,89 @@
         console.log(nom_apel[0])
         console.log(nom_apel[1])
         // realizamos la busqueda de acuerdo al nombre
-        const starCountRef = ref(db, "UsersList/" + id_correo);
-        onValue(starCountRef, (snapshot) => {
-            const data = snapshot.val();
-            console.log(data)
+        validar_user = 0; // incia usuario NOOOOO existe
+        var data;
+        const promesa_1 = new Promise((resolve, reject) => {
+            const starCountRef = ref(db, "UsersList/" + id_correo);
+            onValue(starCountRef, (snapshot) => {
+                data = snapshot.val();
+                if (snapshot.exists()) {
+                    validar_user = 1; // Usuario SI Existe
+                    resolve(validar_user)
+                } else {
+                    validar_user = 0; // usuario NO existe 
+                    resolve(validar_user)
+                }
+            });
+        })
+        promesa_1
+            .then(res => {
+                // console.log(res)
+                // console.log(validar_user)
+                if (validar_user == 0) { // si el ussuario no existe
+                    (async function () {
+                        // USER DOES NOT EXIST
+                        // 1. registramos a el usuario en SPRING BOOT
+                        // lo que se esta pasando por parametro -> (usuario, contrasena, nombre, apellido, email)
+                        await setUsuarioEncuestado_google(usuario, usuario, nombre, apellido, email)
+                        swal("", "Usuario Resgistrado Corectamente!", "success");
+                        //vamos a crear la empresa
+                        // 2. tomamos los datos del utimo usuario registrado y la clave que se le asigno
 
-            if (!snapshot.exists()) {
-                validar_user = 1;
-                console.log(validar_user)
-                // USER DOES NOT EXIST
-
-
-                // 1. registramos a el usuario en SPRING BOOT
-                // lo que se esta pasando por parametro -> (usuario, contrasena, nombre, apellido, email)
-                setUsuarioEncuestado_google(usuario, usuario, nombre, apellido, email)
-                swal("", "Usuario Resgistrado Corectamente!", "success");
-                //vamos a crear la empresa
-                // 2. tomamos los datos del utimo usuario registrado y la clave que se le asigno
-                (async function () {
-                    await getDatosUsuarios_google().then((datos_usuario) => {
-                        console.log(datos_usuario)
-                        //Ordenamos los los Usuario/Encuestados
-                        datos_usuario.sort(function (a, b) {
-                            return a.usuario_ID - b.usuario_ID;
-                        });
-                        var ultimo_usario_ingresado = '';
-                        datos_usuario.forEach(element => {
-                            ultimo_usario_ingresado = element.usuario_ID
-                        })
-                        console.log(ultimo_usario_ingresado)
-                        // 3. ingresamos en Firefibase los datos previamente tomados
-                        // y usamos el "ID" como indentificador
-                        set(ref(db, "UsersList/" + id_correo), {
-                            code: ultimo_usario_ingresado,
-                            name: nombre,
-                            last_name: apellido,
-                            email: email,
-                            usernama: usuario
-                        })
-                            .then(() => {
-                                console.log('Usuario registrado ...........')
+                        await getDatosUsuarios_google().then((data_user) => {
+                            // console.log(data_user)
+                            //Ordenamos los los Usuario/Encuestados
+                            data_user.sort(function (a, b) {
+                                return a.usuario_ID - b.usuario_ID;
+                            });
+                            var ultimo_usario_ingresado = '';
+                            data_user.forEach(element => {
+                                ultimo_usario_ingresado = element.usuario_ID
                             })
-                            .catch((error) => {
-                                console.log("USuario noooooo")
+                            console.log("1 => " + ultimo_usario_ingresado)
+                            // 3. ingresamos en Firefibase los datos previamente tomados
+                            // y usamos el "ID" como indentificador
+
+                            const promesa_2 = new Promise((resolve, reject) => {
+                                set(ref(db, "UsersList/" + id_correo), {
+                                    code: ultimo_usario_ingresado,
+                                    name: nombre,
+                                    last_name: apellido,
+                                    email: email,
+                                    usernama: usuario
+                                })
+                                    .then(() => {
+                                        console.log("2 => " + 'Usuario registrado ...........')
+                                        resolve();
+                                    })
+                                    .catch((error) => {
+                                        console.log("2 => " + "USuario noooooo")
+                                        resolve();
+                                    })
                             })
-                        // 4 finally, we have to send to the web to register the company
-                        window.location.href = `${url_global_pagina}registrar_empresa${extencion}?usuario=${ultimo_usario_ingresado}`
+                            promesa_2
+                                .then(res_2 => {
+                                    // 4 finally, we have to send to the web to register the company
+                                    window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
+                                })
 
-                    })
-                })()
+                        })
+                    })()
 
 
-            } else if (validar_user == 0) {
-                console.log('Codigo:  ' + data.code)
-                codigo = data.code;
-                console.log('Usuario ya existe')
-                // tome el codigo y me envia a la pagina Evaluacion Responsabilidad social
-                window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${codigo}`;
-            }
-            validar_user = 0;
-            console.log(validar_user)
+                } else if (validar_user == 1) {
+                    codigo = data.code;
+                    // console.log("1 => " + 'Usuario ya existe')
+                    // console.log("2 => " + `${url_global_pagina}evaluacion_principal${extencion}?usuario=${codigo}`)
+                    // tome el codigo y me envia a la pagina Evaluacion Responsabilidad social
+                    window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${codigo}`;
+                }
+            })
 
-        });
 
 
     }
-    // Long IN
+    // Long IN GOOGLE 
     const googleButton = document.querySelector("#googleLogin");
     googleButton.addEventListener("click", (e) => {
         e.preventDefault();
@@ -486,6 +504,37 @@
                 // ...
             });
     });
+
+    // LOGIN IN FACEBOOK
+    const facebookButton = document.querySelector("#googleLoginFacebook");
+    facebookButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log('Iniciando con Facebook..')
+        signInWithPopup(auth, providerFacebook)
+            .then((result) => {
+                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                const credential = FacebookAuthProvider.credentialFromResult(result);
+                const accessToken = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+
+                console.log(user)
+
+                // ...
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = FacebookAuthProvider.credentialFromError(error);
+                console.log(errorCode)
+
+                // ...
+            });
+    })
 
 
 

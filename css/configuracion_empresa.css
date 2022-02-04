@@ -334,45 +334,79 @@
     margin: 30px 0px;
 }
 
-.nombre-usuario, .usuario-email, .contrasenas{
-    width: 100%;
-    margin: 5px 0px;
+.empresa-datos{
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    margin-bottom: 25px;
 }
 
-.nombre-usuario .datos, .usuario-email .datos, .contrasenas .datos{
+.empresa-datos .datos{
     display: flex;
     flex-direction: column;
+    width: 45%;
 }
 
-.nombre-usuario input, .usuario-email input, .contrasenas input{
-    padding: 10px 70px;
+input{
+    padding: 7px;
     border-radius: 10px;
-    outline: none;
-    border: 1px solid #ccc;
+    outline: none;  
+    border: 1px solid #c5c2c2;
+    
+}
+input[type=text]{/*cambiar el color del text de los inpus luego de dar escribir*/
+    color: #000;
 }
 
-.guardar-info{
+input:focus{
+    border: 2px solid rgb(71, 71, 241);;
+}
+
+#sector-anterior, #ciudad-anterior{
+    padding: 3px;
+    font-size: 13px;
+    margin-bottom: 5px;
+} 
+
+/* selector */
+#selector{
+    outline: none;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #c5c2c2;
+    width: 100%;
+}
+
+#selector:focus{
+    border: 2px solid rgb(71, 71, 241);;
+}
+.contenedor-botones{/*para los botoes internos de INDICADORES tambien es*/
     width: 90%;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-around;
+    margin: 5px auto;
 }
 
-.guardar-info button{
+.boton{
+    cursor: pointer;
     background: rgb(71, 71, 241);
-    border: 1px solid #fff;
-    border-radius: 15px;
-    padding: 5px 15px;
+    height: 30px;
+    width: 100px;
     color: #fff;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
 }
 
-.guardar-info button:focus{
-    outline:none !important;
+.boton a{
+    color: #fff;
+    text-decoration: none;
 }
-.guardar-info button:hover{
-background: rgb(118, 118, 241);
+
+.boton:hover{
+    background: rgb(118, 118, 241);
 }
 /*______________CAR FIN_______*/
 

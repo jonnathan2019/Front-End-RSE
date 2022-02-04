@@ -222,6 +222,8 @@ function getIdTemas(){
 
         })
     })
+    //escondemos el loader
+    document.getElementById('onload').style.visibility = "hidden"
 })()
 
 

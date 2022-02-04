@@ -369,11 +369,11 @@ function grafica_circular_dashboard() {
     // let chart = radialProgress('.char-barra-cirular')
     // chart.update(resutaldo_final * 100)
 
-    let chart_especifico = radialProgress('.grafica-valor-total',100,390,105,10,25)
+    let chart_especifico = radialProgress('.grafica-valor-espedifico',100,390,105,10,25)
     chart_especifico.update(resutaldo_final * 100)
 
     //respuesta_final_2
-    let chart_global = radialProgress('.grafica-valor-especifico',100,390,105,10,25)
+    let chart_global = radialProgress('.grafica-valor-global',100,390,105,10,25)
     chart_global.update(respuesta_final_2 * 100)
 
     let chart = radialProgress('.grafica-valor-dim-1',100,390,105,10,25)

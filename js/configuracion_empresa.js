@@ -54,14 +54,35 @@ async function getDataEmpresa() {
     encuestado_id = datos_usuario.encuestado.encuestado_ID;
     empresa_id = datos_usuario.encuestado.empresa.empresa_ID;
 
-    //Carga,os la info de la empresa
+    //Cargamos la info de la empresa
     const datos_empresa = await getDataEmpresa();
-    document.getElementById('nombre-empresa').value = datos_empresa.nombre;
-    document.getElementById('secto-opera').value = datos_empresa.sector_tipo;
-    document.getElementById('numero-empleados').value = datos_empresa.numero_empleados;
-    document.getElementById('ruc-empresa').value = datos_empresa.ruc_empresa;
+    document.getElementById("nombre-empresa").value = datos_empresa.nombre;
+    document.getElementById("pagina-web").value = datos_empresa.sitio_web;
+    document.getElementById("ciudad-anterior").value = datos_empresa.ciudad_operacion;
+    document.getElementById("direccion-operacion").value = datos_empresa.direccion_operacion;
+    document.getElementById("sector-anterior").value = datos_empresa.sector_tipo;
+    document.getElementById("numero-sedes").value = datos_empresa.numero_sedes;
+    document.getElementById("numero-empleados-empresa").value =datos_empresa.numero_empleados;
+    // document.getElementById("inicio-operacion").value = datos_empresa.fecha_inicio_operciones;
+    console.log(datos_empresa.fecha_inicio_operciones)
+    document.getElementById("estimado-ingresos").value = datos_empresa.estimado_ingresos;
+    document.getElementById("ruc-empresa").value = datos_empresa.ruc_empresa;
 
 })()
+
+function cargar_estar_ciudad_operacion() {
+    var combo_ciudad_operacion = document.querySelector(".selector-ciudad-operacion");
+    var ciudad_operacion = combo_ciudad_operacion.options[combo_ciudad_operacion.selectedIndex].value;
+    //console.log(value)
+    document.getElementById('ciudad-anterior').value = ciudad_operacion;
+}
+
+function cargar_sector() {
+    var combo_ciudad_operacion = document.querySelector(".selector-sector");
+    var ciudad_operacion = combo_ciudad_operacion.options[combo_ciudad_operacion.selectedIndex].value;
+    //console.log(value)
+    document.getElementById('sector-anterior').value = ciudad_operacion;
+}
 //__________________________
 //para actualizar los datos del Usuario
 async function putDatosUsuario() {
@@ -109,10 +130,16 @@ async function putDatosEmpresa() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            nombre: document.getElementById('nombre-empresa').value,
-            sector_tipo: document.getElementById('secto-opera').value,
-            numero_empleados: document.getElementById('numero-empleados').value,
-            ruc_empresa: document.getElementById('ruc-empresa').value
+            nombre: document.getElementById("nombre-empresa").value,
+            sitio_web: document.getElementById("pagina-web").value,
+            ciudad_operacion: document.getElementById("ciudad-anterior").value,
+            direccion_operacion: document.getElementById("direccion-operacion").value,
+            sector_tipo: document.getElementById("sector-anterior").value,
+            numero_sedes: document.getElementById("numero-sedes").value,
+            numero_empleados: document.getElementById("numero-empleados-empresa").value,
+            fecha_inicio_operciones: '2010-10-10',
+            estimado_ingresos: document.getElementById("estimado-ingresos").value,
+            ruc_empresa: document.getElementById("ruc-empresa").value
         })
     })
 }

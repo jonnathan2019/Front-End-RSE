@@ -583,7 +583,7 @@
                                     await set_real_time_firebase(ultimo_usario_ingresado, usuario, contrasena, nombre, apellido, email);
                                     //registramos lso datos en FIREBASE con el ID registrado
                                     await set_firebase(email, contrasena);
-                                    window.location.href = `${url_global_pagina}registrar_empresa${extencion}?usuario=${ultimo_usario_ingresado}`
+                                    window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
                                 })()
                             }, 3000)
 

@@ -93,8 +93,45 @@
                 </div>
                 <div class="empresa-datos">
                     <div class="datos">
-                        <label for="">Ciudad:</label>
-                        <input type="text" id="ciudad-operacion" placeholder="Ciudad de Operacion">
+                        <label for="">Ciudad Operación:</label>
+                        <!-- <input type="text" id="ciudad-operacion" placeholder="Ciudad de Operacion"> -->
+                        <div class="seleccionador">
+                            <!-- <i class="fas fa-caret-down"></i> -->
+                            <select id="selector" class="selector-ciudad-operacion" onchange="">
+                                <option value="" id="norma">Selecionar</option>
+                                <option value="Ambato" id="norma">Ambato</option>
+                                <option value="Azogues" id="norma">Azogues</option>
+                                <option value="Arajuno" id="norma">Arajuno</option>
+                                <option value="Babahoyo" id="norma">Babahoyo</option>
+                                <option value="Bahía de Caráquez" id="norma">Bahía de Caráquez</option>
+                                <option value="Baños de Agua Santa" id="norma">Baños de Agua Santa</option>
+                                <option value="Cuenca" id="norma">Cuenca</option>
+                                <option value="Durán" id="norma">Durán</option>
+                                <option value="Esmeraldas" id="norma">Esmeraldas</option>
+                                <option value="Guaranda" id="norma">Guaranda</option>
+                                <option value="Guayaquil" id="norma">Guayaquil</option>
+                                <option value="Ibarra" id="norma">Ibarra</option>
+                                <option value="La Libertad" id="norma">La Libertad</option>
+                                <option value="Latacunga" id="norma">Latacunga</option>
+                                <option value="Loja" id="norma">Loja</option>
+                                <option value="Macas" id="norma">Macas</option>
+                                <option value="Machala" id="norma">Machala</option>
+                                <option value="Manta" id="norma">Manta</option>
+                                <option value="Milagro" id="norma">Milagro</option>
+                                <option value="Nueva Loja" id="norma">Nueva Loja</option>
+                                <option value="Portoviejo" id="norma">Portoviejo</option>
+                                <option value="Piñas" id="norma">Piñas</option>
+                                <option value="Pintag" id="norma">Pintag</option>
+                                <option value="Quevedo" id="norma">Quevedo</option>
+                                <option value="Quito" id="norma">Quito</option>
+                                <option value="Riobamba" id="norma">Riobamba</option>
+                                <option value="Santo Domingo de los Colorados" id="norma">Santo Domingo de los Colorados</option>
+                                <option value="Salinas" id="norma">Salinas</option>
+                                <option value="Shell Mera" id="norma">Shell Mera</option>
+                                <option value="Tulcán" id="norma">Tulcán</option>
+                                <option value="Otro" id="norma">Otro</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="datos">
                         <label for="">Direccion de Operacion:</label>
@@ -108,7 +145,7 @@
                         <div class="seleccionador">
                             <!-- <i class="fas fa-caret-down"></i> -->
                             <select id="selector" class="selector-sector" onchange="">
-                                <option value="0" id="norma">Selecionar</option>
+                                <option value="" id="norma">Selecionar</option>
                                 <option value="Agricultura/Cutivadores" id="norma">Agricultura/Cutivadores</option>
                                 <option value="Fabricacion" id="norma">Fabricacion</option>
                                 <option value="Servicio con impacto ambietal significativo" id="norma">Servicio con impacto ambietal significativo</option>
@@ -128,8 +165,9 @@
                     <div class="datos">
                         <label for="">Numero de Empleados:</label>
                         <!-- <input type="text" id="numero-empleados-empresa" placeholder="Numero Empleados"> -->
-                        <div class="seleccionador">
-                            <!-- <i class="fas fa-caret-down"></i> -->
+                        <input type="number" id="numero-empleados-empresa"  min="0"
+                        onChange="" placeholder="Numero Empleados">
+                        <!-- <div class="seleccionador">
                             <select id="selector" class="selector-numero-empleados" onchange="">
                                 <option value="" id="norma">Selecionar</option>
                                 <option value="0" id="norma">0</option>
@@ -139,7 +177,7 @@
                                 <option value="250-999" id="norma">250-999</option>
                                 <option value="Mas de 1000" id="norma">Mas de 1000</option>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="datos">
                         <label for="">RUC:</label>

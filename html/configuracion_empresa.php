@@ -177,30 +177,118 @@
                 <span>Configuración Empresa</span>
             </div>
             <div class="info-usuario">
-                <div class="nombre-usuario">
+                <div class="empresa-datos">
                     <div class="datos">
-                        <label>Nombre Empresa:</label>
-                        <input type="text" id="nombre-empresa">
+                        <label for="">Nombre de la Empresa:</label>
+                        <input type="text" id="nombre-empresa" placeholder="Nombre Empresa">
                     </div>
                     <div class="datos">
-                        <label>Sector Opera:</label>
-                        <input type="text" id="secto-opera">
+                        <label for="">Sito Web:</label>
+                        <input type="text" id="pagina-web" placeholder="Pagina Web">
+                    </div>
+                    
+                </div>
+                <div class="empresa-datos">
+                    <div class="datos">
+                        <label for="">Ciudad Operación:</label>
+                        <input type="text" id="ciudad-anterior" disabled="disabled">
+                        <div class="seleccionador">
+                            <!-- <i class="fas fa-caret-down"></i> -->
+                            <select id="selector" class="selector-ciudad-operacion" onchange="cargar_estar_ciudad_operacion()">
+                                <option value="" id="norma">Selecionar nueva ciudad</option>
+                                <option value="Ambato" id="norma">Ambato</option>
+                                <option value="Azogues" id="norma">Azogues</option>
+                                <option value="Arajuno" id="norma">Arajuno</option>
+                                <option value="Babahoyo" id="norma">Babahoyo</option>
+                                <option value="Bahía de Caráquez" id="norma">Bahía de Caráquez</option>
+                                <option value="Baños de Agua Santa" id="norma">Baños de Agua Santa</option>
+                                <option value="Cuenca" id="norma">Cuenca</option>
+                                <option value="Durán" id="norma">Durán</option>
+                                <option value="Esmeraldas" id="norma">Esmeraldas</option>
+                                <option value="Guaranda" id="norma">Guaranda</option>
+                                <option value="Guayaquil" id="norma">Guayaquil</option>
+                                <option value="Ibarra" id="norma">Ibarra</option>
+                                <option value="La Libertad" id="norma">La Libertad</option>
+                                <option value="Latacunga" id="norma">Latacunga</option>
+                                <option value="Loja" id="norma">Loja</option>
+                                <option value="Macas" id="norma">Macas</option>
+                                <option value="Machala" id="norma">Machala</option>
+                                <option value="Manta" id="norma">Manta</option>
+                                <option value="Milagro" id="norma">Milagro</option>
+                                <option value="Nueva Loja" id="norma">Nueva Loja</option>
+                                <option value="Portoviejo" id="norma">Portoviejo</option>
+                                <option value="Piñas" id="norma">Piñas</option>
+                                <option value="Pintag" id="norma">Pintag</option>
+                                <option value="Quevedo" id="norma">Quevedo</option>
+                                <option value="Quito" id="norma">Quito</option>
+                                <option value="Riobamba" id="norma">Riobamba</option>
+                                <option value="Santo Domingo de los Colorados" id="norma">Santo Domingo de los Colorados</option>
+                                <option value="Salinas" id="norma">Salinas</option>
+                                <option value="Shell Mera" id="norma">Shell Mera</option>
+                                <option value="Tulcán" id="norma">Tulcán</option>
+                                <option value="Otro" id="norma">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <label for="">Direccion de Operacion:</label>
+                        <input type="text" id="direccion-operacion" placeholder="Direccion de Operacion">
                     </div>
                 </div>
-                <div class="usuario-email">
+                <div class="empresa-datos">
                     <div class="datos">
-                        <label>Numero Empleados:</label>
-                        <input type="text" id="numero-empleados">
+                        <label for="">Sector en el que Opera:</label>
+                        <input type="text" id="sector-anterior" disabled="disabled">
+                        <div class="seleccionador">
+                            <!-- <i class="fas fa-caret-down"></i> -->
+                            <select id="selector" class="selector-sector" onchange="cargar_sector()">
+                                <option value="" id="norma">Selecionar nuevo sector</option>
+                                <option value="Agricultura/Cutivadores" id="norma">Agricultura/Cutivadores</option>
+                                <option value="Fabricacion" id="norma">Fabricacion</option>
+                                <option value="Servicio con impacto ambietal significativo" id="norma">Servicio con impacto ambietal significativo</option>
+                                <option value="Servicio leve impacto ambiental" id="norma">Servicio leve impacto ambiental</option>
+                                <option value="Otro" id="norma">Otro</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="datos">
-                        <label>RUC:</label>
-                        <input type="text" id="ruc-empresa">
+                        <label for="">Numero de Sedes:</label>
+                        <input type="number" id="numero-sedes"  min="0"
+                        onChange="" placeholder="Total de Sedes">
                     </div>
                 </div>
-            </div>
-            <div class="guardar-info">
-                <button onclick="regresar();">Regresar</button>
-                <button onclick="actualizar_empresa();">Guardar</button>
+                
+                <div class="empresa-datos">
+                    <div class="datos">
+                        <label for="">Numero de Empleados:</label>
+                        <!-- <input type="text" id="numero-empleados-empresa" placeholder="Numero Empleados"> -->
+                        <input type="number" id="numero-empleados-empresa"  min="0"
+                        onChange="" placeholder="Numero Empleados">
+                    </div>
+                    <div class="datos">
+                        <label for="">RUC:</label>
+                        <input type="text" id="ruc-empresa" placeholder="ruc">
+                    </div>
+                </div>
+                <div class="empresa-datos">
+                    <div class="datos">
+                        <label for="">Fecha de Inicio de Operaciones:</label>
+                        <input type="date" id="inicio-operacion" placeholder="Inicio de Operaciones">
+                    </div>
+                    <div class="datos">
+                        <label for="">Estimado Ingresos Anuales:</label>
+                        <input type="text" id="estimado-ingresos" placeholder="Ingresos Anuales">
+                    </div>
+                </div>
+                <!--Botones-->
+                <div class="contenedor-botones">
+                    <!-- <div class="boton" onclick="regresar_ver_info_empresa()">
+                        <span>Regresar</span>
+                    </div> -->
+                    <div class="boton" onclick="actualizar_empresa();">
+                        <span>Guardar</span>
+                    </div>
+                </div>
             </div>
         </div>
 
