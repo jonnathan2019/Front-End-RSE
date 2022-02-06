@@ -44,14 +44,14 @@ function enviarPDF() {
     // imagen_temas.forEach(function(imagen) {
     //     imagen.style.display = "none"
     //   });
-
+    const html = document.getElementById('contenido-resultados')
+    console.log(html)
 
 
     setTimeout(() => {
         // const html = document.querySelector('.content-tabs');
-        const html = document.getElementById('contenido-resultados')
-        console.log(html)
-
+        
+        console.log("_____________________________")
         html2pdf()
             .set({
                 margin: 1,
@@ -111,7 +111,7 @@ function enviarPDF() {
             informacion.style.border = "1px solid #dddddd"
             informacion.style.padding = "20px"
         }, 10000)
-    }, 1000)
+    }, 3000)
     console.log('datso enciados')
 }
 
