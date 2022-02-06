@@ -71,7 +71,15 @@ function enviarPDF() {
                 }
             })
             .from(html)
-            .save()
+            .toPdf().output('datauristring').then(function (pdfAsString) {
+                let data = {
+                    'fileDataURI': pdfAsString,
+                };
+                console.log(data);
+                $.post("../php/main.php", data);
+                console.log(data);
+                alert("Enviado... ")
+            });
 
         setTimeout(() => {
 
