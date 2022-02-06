@@ -110,7 +110,7 @@ function enviarPDF() {
             informacion.style.background = "#fbfbfb"
             informacion.style.border = "1px solid #dddddd"
             informacion.style.padding = "20px"
-        }, 10000)
+        }, 3000)
     }, 1000)
 }
 
