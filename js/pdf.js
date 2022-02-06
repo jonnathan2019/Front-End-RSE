@@ -71,7 +71,7 @@ function enviarPDF() {
                 }
             })
             .from(html)
-            save()
+            .save()
 
         setTimeout(() => {
 
