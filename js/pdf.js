@@ -112,6 +112,7 @@ function enviarPDF() {
             informacion.style.padding = "20px"
         }, 10000)
     }, 1000)
+    console.log('datso enciados')
 }
 
 function descargarPDF() {
