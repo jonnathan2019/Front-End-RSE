@@ -31,6 +31,14 @@
     <!-- Libreria grafica POLAR AREA-->
     <link rel="stylesheet" href="../librerias/polar_3.css">
 
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- libreria para DESCARGAR PDF  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         path.arc {
             opacity: 0.9;
@@ -267,9 +275,9 @@
             </div>
             <div class="opciones">
                 <ul>
-                    <!-- <li><a href="#" onclick="descargarPDF();"><i class="fas fa-print"></i>Imprimir</a></li>
-                    <li><a href="#" onclick="imprimirPDF();"><i class="fas fa-download"></i></i>Descargar</a></li>
-                    <li><a href="#" onclick="enviarPDF();"><i class="fas fa-paper-plane"></i>Enviar</a></li> -->
+                    <li><a href="#" onclick="descargarPDF();"><i class="fas fa-print"></i>Descargar</a></li>
+                    <li><a href="#" onclick="imprimirPDF();"><i class="fas fa-download"></i></i>Imprimir</a></li>
+                    <li><a href="#" onclick="enviarPDF();"><i class="fas fa-paper-plane"></i>Enviar</a></li>
                     <li><a href="#" onclick="cargar_info_PDF();" id="abrir_pdf"><i class="fas fa-poll"></i>Ver
                             Reporte</a></li>
                 </ul>
@@ -292,6 +300,34 @@
             </div>
             <!-- contendio  -->
             <div class="wrapper" id="contenido-resultados">
+
+                <!-- cabecera con Info Empresa y del  Usuario  -->
+                <div class="info-usuario-empresa">
+                    <!-- info Usuario -->
+                    <div class="cabezera-user">
+                        <div class="imagen">
+                            <img src="../imagenes/logo_3.png" alt="">
+                        </div>
+                        <div class="info-user">
+                            <div class="titulo-info-user">Usuario:</div>
+                            <div class="nombre-usuario"><span>Jonnathan Cuvi</span></div>
+                            <div class="correo-usuario"><span>jonnthancuvi@gmai.com</span></div>
+                        </div>
+                    </div>
+                    <!-- info Empresa -->
+                    <div class="cabezera-empresa">
+                        <div class="info-empresa">
+                            <div class="titulo-info-empresa">Empresa:</div>
+                            <div class="nombre-empresa"><label>Nombre:</label><span>Blin</span></div>
+                            <div class="sector-empresa"><label>Sector:</label><span>Alimentos</span></div>
+                            <div class="num-empleados-empresa"><label>Numero de Empleados:</label><span>14</span>
+                            </div>
+                            <div class="ruc-empresa"><label>RUC:</label><span>1234</span></div>
+                        </div>
+                    </div>
+                    
+                </div>
+
                 <div class="tabs">
                     <ul>
                         <li class="active">
@@ -316,8 +352,8 @@
                     </ul>
                 </div>
 
-                <div class="content-tabs">
-                    <div class="tab_wrap" style="display: block;">
+                <div class="content-tabs" id="dowloand">
+                    <div class="tab_wrap" id="reporte-general" style="display: block;">
                         <div class="title title-main">Puntaje General</div>
                         <div class="tab_content">
                             <div class="puntaje">
@@ -647,7 +683,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab_wrap" style="display: none;">
+                    <div class="tab_wrap" id="reporte-dimenciones" style="display: none;">
                         <div class="title title-main">Análisis Dimensiones</div>
                         <div class="tab_content">
                             <div class="puntaje-dimensiones">
@@ -823,7 +859,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab_wrap" style="display: none;">
+                    <div class="tab_wrap" id="reporte-graficas" style="display: none;">
                         <div class="title">
                             <div class="titulo-graficas">
                                 Graficas Comparativas
@@ -842,7 +878,7 @@
                         </div>
 
                         <div class="content-tabs-1">
-                            <div class="tab_wrap_1" style="display: block;">
+                            <div class="tab_wrap_1" id="reporte_graficas_temas" style="display: block;">
                                 <div class="grafica-temas" id="grafica-temas">
                                     <div class="info-temas-titulo">
                                         <span>Analisis Temas.</span>
@@ -926,7 +962,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab_wrap_1" style="display: none;">
+                            <div class="tab_wrap_1" id="reporte_graficas_dimensiones" style="display: none;">
                                 <div class="grafica-dimension" id="grafica-dimension">
                                     <div class="info-dim-titulo">
                                         <span>Analisis Dimensiones.</span>

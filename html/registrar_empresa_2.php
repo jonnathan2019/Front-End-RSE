@@ -79,17 +79,25 @@
             <div class="titulo">
                 <span>Datos Empresa</span>
             </div>
-            <div class="contenedor-inputs">
+            <div class="contenedor-inputs" id="formulario">
                 <div class="empresa-datos">
-                    <div class="datos">
+                    <div class="datos" id="grupo_nombre-empresa">
                         <label for="">Nombre de la Empresa:</label>
-                        <input type="text" id="nombre-empresa" placeholder="Nombre Empresa">
+                        <div class="grupo_input">
+                            <input type="text" id="nombre-empresa" name="nombre-empresa" class="formulario__input" placeholder="Nombre Empresa">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El nombre no puede tener caracteres especiales.</p>
                     </div>
-                    <div class="datos">
+                    <div class="datos" id="grupo_pagina-web">
                         <label for="">Sito Web:</label>
-                        <input type="text" id="pagina-web" placeholder="Pagina Web">
+                        <div class="grupo_input">
+                            <input type="text" id="pagina-web" name="pagina-web" class="formulario__input" placeholder="Pagina Web">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La página web es invalida.</p>
                     </div>
-                    
+
                 </div>
                 <div class="empresa-datos">
                     <div class="datos">
@@ -125,7 +133,8 @@
                                 <option value="Quevedo" id="norma">Quevedo</option>
                                 <option value="Quito" id="norma">Quito</option>
                                 <option value="Riobamba" id="norma">Riobamba</option>
-                                <option value="Santo Domingo de los Colorados" id="norma">Santo Domingo de los Colorados</option>
+                                <option value="Santo Domingo de los Colorados" id="norma">Santo Domingo de los Colorados
+                                </option>
                                 <option value="Salinas" id="norma">Salinas</option>
                                 <option value="Shell Mera" id="norma">Shell Mera</option>
                                 <option value="Tulcán" id="norma">Tulcán</option>
@@ -133,9 +142,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class="datos">
+                    <div class="datos" id="grupo_direccion-operacion">
                         <label for="">Direccion de Operacion:</label>
-                        <input type="text" id="direccion-operacion" placeholder="Direccion de Operacion">
+                        <div class="grupo_input">
+                            <input type="text" id="direccion-operacion" name="direccion-operacion"
+                                placeholder="Direccion de Operacion" class="formulario__input">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">La dirección solo puede contener letras y números.</p>
                     </div>
                 </div>
                 <div class="empresa-datos">
@@ -148,40 +162,42 @@
                                 <option value="" id="norma">Selecionar</option>
                                 <option value="Agricultura/Cutivadores" id="norma">Agricultura/Cutivadores</option>
                                 <option value="Fabricacion" id="norma">Fabricacion</option>
-                                <option value="Servicio con impacto ambietal significativo" id="norma">Servicio con impacto ambietal significativo</option>
-                                <option value="Servicio leve impacto ambiental" id="norma">Servicio leve impacto ambiental</option>
+                                <option value="Servicio con impacto ambietal significativo" id="norma">Servicio con
+                                    impacto ambietal significativo</option>
+                                <option value="Servicio leve impacto ambiental" id="norma">Servicio leve impacto
+                                    ambiental</option>
                                 <option value="Otro" id="norma">Otro</option>
                             </select>
                         </div>
                     </div>
-                    <div class="datos">
+                    <div class="datos" id="grupo_numero-sedes">
                         <label for="">Numero de Sedes:</label>
-                        <input type="number" id="numero-sedes"  min="0"
-                        onChange="" placeholder="Total de Sedes">
+                        <div class="grupo_input">
+                            <input type="number" id="numero-sedes" class="formulario__input" name="numero-sedes" min="0" onChange=""
+                                placeholder="Total de Sedes">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">Solo Numeros.</p>
                     </div>
                 </div>
-                
+
                 <div class="empresa-datos">
-                    <div class="datos">
+                    <div class="datos" id="grupo_numero-empleados-empresa">
                         <label for="">Numero de Empleados:</label>
-                        <!-- <input type="text" id="numero-empleados-empresa" placeholder="Numero Empleados"> -->
-                        <input type="number" id="numero-empleados-empresa"  min="0"
-                        onChange="" placeholder="Numero Empleados">
-                        <!-- <div class="seleccionador">
-                            <select id="selector" class="selector-numero-empleados" onchange="">
-                                <option value="" id="norma">Selecionar</option>
-                                <option value="0" id="norma">0</option>
-                                <option value="1-9" id="norma">1-9</option>
-                                <option value="10-49" id="norma">10-49</option>
-                                <option value="50-249" id="norma">50-249</option>
-                                <option value="250-999" id="norma">250-999</option>
-                                <option value="Mas de 1000" id="norma">Mas de 1000</option>
-                            </select>
-                        </div> -->
+                        <div class="grupo_input">
+                            <input type="number" id="numero-empleados-empresa" class="formulario__input" name="numero-empleados-empresa" min="0"
+                                onChange="" placeholder="Numero Empleados">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">Solo Numeros.</p>
                     </div>
-                    <div class="datos">
+                    <div class="datos" id="grupo_ruc-empresa">
                         <label for="">RUC:</label>
-                        <input type="text" id="ruc-empresa" placeholder="ruc">
+                        <div class="grupo_input">
+                            <input type="text" id="ruc-empresa" class="formulario__input" name="ruc-empresa" placeholder="ruc">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">No puede contener caracteres especiales.</p>
                     </div>
                 </div>
                 <div class="empresa-datos">
@@ -189,9 +205,14 @@
                         <label for="">Fecha de Inicio de Operaciones:</label>
                         <input type="date" id="inicio-operacion" placeholder="Inicio de Operaciones">
                     </div>
-                    <div class="datos">
+                    <div class="datos" id="grupo_estimado-ingresos">
                         <label for="">Estimado Ingresos Anuales:</label>
-                        <input type="text" id="estimado-ingresos" placeholder="Ingresos Anuales">
+                        <div class="grupo_input">
+                            <input type="text" id="estimado-ingresos" class="formulario__input" name="estimado-ingresos"
+                                placeholder="Ingresos Anuales">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">Solo Numeros.</p>
                     </div>
                 </div>
                 <!--Botones-->
@@ -238,5 +259,6 @@
 </body>
 <script src="../js/urls.js"></script>
 <script src="../js/registrar_empresa_2.js"></script>
+<script src="../js/validadciones.js"></script>
 
 </html>

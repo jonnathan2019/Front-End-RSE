@@ -10,9 +10,50 @@
     <!--LIbreria iconos-->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
     <link rel="stylesheet" href="../css/resgistrar_encuestado.css">
     <!--Libreria alerts-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <style>
+        .formulario__validacion-estado {
+            position: absolute;
+            right: 10px;
+            bottom: 15px;
+            z-index: 100;
+            font-size: 16px;
+            opacity: 0;
+        }
+
+        /* ___________________________________ */
+        .formulario__grupo-incorrecto .formulario__input {
+            border: 2px solid #bb2929;
+        }
+
+        .formulario__grupo-correcto .formulario__validacion-estado {
+            color: #1ed12d;
+            opacity: 1;
+        }
+
+
+        .formulario__grupo-incorrecto .formulario__validacion-estado {
+            color: #bb2929;
+            opacity: 1;
+        }
+
+        .formulario__input-error {
+            font-size: 12px;
+            margin-bottom: 0;
+            display: none;
+        }
+
+        .formulario__input-error-activo {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -305,59 +346,72 @@
         </div>
         <div class="ingresar-datos">
             <div class="container-ingresar-datos">
-                <div class="ingresar-datos-titulo">
-                    <span>Registrarse.</span>
+                <div class="titulo-separador">
+                    <div class="ingresar-datos-titulo">
+                        <span>Registrarse.</span>
+                    </div>
+                    <!--______________________-->
+                    <div class="line-separacion">
+                        <div class="line"></div>
+                        <small class="or">O</small>
+                        <div class="line"></div>
+                    </div>
                 </div>
                 <!--______________________-->
-                <div class="line-separacion">
-                    <div class="line"></div>
-                    <small class="or">O</small>
-                    <div class="line"></div>
-                </div>
-                <!--______________________-->
-                <div class="iniciar-datos">
+                <div class="iniciar-datos" id="formulario_user">
                     <div class="nombre-apellido">
                         <!--nombre----->
-                        <div class="row-nombre">
+                        <div class="row-nombre" id="grupo_nombre">
                             <label class="mb-1">
-                                <span class="mb-0">Nombre</span>
+                                <span class="mb-0">Nombre:</span>
                             </label>
-                            <div class="ingresar-nombre">
-                                <i class="fa fa-user"></i>
-                                <input class="datos" type="text" id="nombre" placeholder="Ingrese su Nombre">
+                            <div class="ingresar-nombre" class="grupo_input">
+                                <!-- <i class="fa fa-user"></i> -->
+                                <input class="datos formulario__input" type="text" id="nombre" name="nombre"
+                                    placeholder="Ingrese su Nombre">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
+                            <p class="formulario__input-error">Nombre Incorrecto.</p>
                         </div>
                         <!--apellido-->
-                        <div class="row-apellido">
+                        <div class="row-apellido" id="grupo_apellido">
                             <label class="mb-1">
                                 <span class="mb-0">Apellido</span>
                             </label>
-                            <div class="ingresar-apellido">
-                                <i class="fa fa-user"></i>
-                                <input class="datos" type="text" id="apellido" placeholder="Ingrese su Apellido">
+                            <div class="ingresar-apellido" class="grupo_input">
+                                <!-- <i class="fa fa-user"></i> -->
+                                <input class="datos formulario__input" type="text" id="apellido" name="apellido"
+                                    placeholder="Ingrese su Apellido">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
+                            <p class="formulario__input-error">Apelido Incorrecto.</p>
                         </div>
                     </div>
                     <!--nombre de usuario-->
-                    <div class="row-nombre-usuario">
+                    <div class="row-nombre-usuario" id="grupo_usuario">
                         <label class="mb-1">
-                            <span class="mb-0">Nombre Usuario</span>
+                            <span class="mb-0">Usuario:</span>
                         </label>
-                        <div class="ingresar-nombre-usuario">
-                            <i class="fa fa-user"></i>
-                            <input class="datos" type="text" id="nombre-usuario"
+                        <div class="ingresar-nombre-usuario" class="grupo_input">
+                            <!-- <i class="fa fa-user"></i> -->
+                            <input class="datos formulario__input" type="text" id="nombre-usuario" name="usuario"
                                 placeholder="Ingrese su Nombre de Usuario">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
+                        <p class="formulario__input-error">Usuario Incorrecto.</p>
                     </div>
                     <!--emaill-->
-                    <div class="row-email">
+                    <div class="row-email" id="grupo_correo">
                         <label class="mb-1">
-                            <span class="mb-0">Email</span>
+                            <span class="mb-0">Email:</span>
                         </label>
-                        <div class="ingresar-email">
-                            <i class="fa fa-envelope"></i>
-                            <input class="datos" type="text" id="email" placeholder="Ingrese su Email">
+                        <div class="ingresar-email" class="grupo_input">
+                            <!-- <i class="fa fa-envelope"></i> -->
+                            <input class="datos formulario__input" type="text" id="email" name="correo"
+                                placeholder="Ingrese su Email">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
+                        <p class="formulario__input-error">Email Incorrecto.</p>
                     </div>
                     <!--numero de telefono-->
                     <!--
@@ -389,30 +443,35 @@
                     </div> -->
                     <!--contrasena-->
                     <div class="contrasena">
-                        <div class="row-contrasena">
+                        <div class="row-contrasena" id="grupo_password">
                             <label class="mb-1">
-                                <span class="mb-0">Contraseña</span>
+                                <span class="mb-0">Contraseña:</span>
                             </label>
-                            <div class="ingresar-contrasena">
-                                <i class="fa fa-lock"></i>
-                                <input class="datos" type="text" id="contrasena-id" placeholder="Ingresar Contraseña">
+                            <div class="ingresar-contrasena" class="grupo_input">
+                                <!-- <i class="fa fa-lock"></i> -->
+                                <input class="datos formulario__input" name="password" type="text" id="contrasena-id"
+                                    placeholder="Ingresar Contraseña">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
+                            <p class="formulario__input-error">Contrasena Incorrecto.</p>
                         </div>
                         <!--confirmar contrasena-->
-                        <div class="row-contrasena-confir">
+                        <div class="row-contrasena-confir" id="grupo_password2">
                             <label class="mb-1">
-                                <span class="mb-0">Confirmar Contraseña</span>
+                                <span class="mb-0">Confirmar Contraseña:</span>
                             </label>
-                            <div class="ingresar-contrasena-confir">
-                                <i class="fa fa-lock"></i>
-                                <input class="datos" type="text" id="contrasena-confir"
-                                    placeholder="Confirmar Contraseña">
+                            <div class="ingresar-contrasena-confir" class="grupo_input">
+                                <!-- <i class="fa fa-lock"></i> -->
+                                <input class="datos formulario__input" name="password2" type="text"
+                                    id="contrasena-confir" placeholder="Confirmar Contraseña">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
+                            <p class="formulario__input-error">Mala COmfirmacion Incorrecto.</p>
                         </div>
                     </div>
                     <!--Crear usuario-->
                     <div class="button-crear-usuario" id="crearUsuario_Encuestado">
-                        <a class="btn">Crear Usuario</a>
+                        <a class="btn"><i class="fas fa-sign-in-alt"></i>   Crear Usuario</a>
                     </div>
                     <!--Divisor-->
 
@@ -494,7 +553,7 @@
     }
 
     async function set_real_time_firebase(ultimo_usario_ingresado, usuario, contrasena, nombre, apellido, email) {
-        
+
         //creamos uan clave unica con el correo
         let id_correo = email.replace(/[^a-zA-Z0-9 ]/g, "");
         await set(ref(db, "UsersList/" + id_correo), {
@@ -585,7 +644,7 @@
                                     await set_firebase(email, contrasena);
                                     window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
                                 })()
-                            }, 3000)
+                            }, 2000)
 
                         })()
                     } else {
@@ -611,5 +670,6 @@
 </script>
 <script src="../js/urls.js"></script>
 <script src="../js/gestion_usuarios_encuestado.js"></script>
+<script src="../js/validadciones.js"></script>
 
 </html>

@@ -11,12 +11,13 @@ body{
     background-image: url(../imagenes/mountains.png);
 }
 .container{
-    margin-top: 30px;
-    height: 500px;
+    margin-top: 10px;
+    /* height: 500px; */
     width: 85%;
     border-radius: 15px;
     box-shadow: 0 2px 5px 0 rgba(71, 69, 69, 0.5);
     background: #fff;   
+    display: flex;
 }
 
 .container .decripcion{
@@ -68,7 +69,7 @@ body{
 .container-ingresar-datos{
     font-size: 14px;
     width: 80%;
-    height: auto;
+    /* padding: 20px 0px; */
 }
 label{
     font-weight: bold;
@@ -99,7 +100,11 @@ label{
     border-top: solid #c5c2c2 1px;
     
 }
-/*_______________________________________________*/
+/*_______________________________________________rtertryrrtrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr*/
+.iniciar-datos{
+    /* background: #0075FF; */
+    margin-top: 10px;
+}
 /*___________________INICIO Inputs________________________*/
 .nombre-apellido{
     display: flex;
@@ -121,17 +126,19 @@ label{
 
 
 .ingresar-nombre, .ingresar-apellido, .ingresar-nombre-usuario, .ingresar-email, .ingresar-telefono, .ingresar-trabajo, .ingresar-contrasena, .ingresar-contrasena-confir{
-    text-align: center;
-    border: 1px solid #c5c2c2;
-    border-radius: 15px;
-    margin: 5px 0px;
+    /* text-align: center; */
+    /* border: 1px solid #c5c2c2; */
+    /* border-radius: 15px; */
+    /* margin: 5px 0px; */
+    /* background: #1c88f5; */
+    position: relative;
+    margin-top: 10px;
 }
 /*tamano de inputs*/
 .ingresar-nombre input, .ingresar-apellido input, .ingresar-nombre-usuario input, .ingresar-email input, .ingresar-telefono input, .ingresar-trabajo select, .ingresar-contrasena input, .ingresar-contrasena-confir input{
     outline: none;  
-    padding: 15px 10px;
-    border-radius: 15px;
-    border: none;
+    padding: 15px 8px;
+    border-radius: 10px;
 }
 
 /*definimos el espacio a utilizar de inputs and iconos(i)*/
@@ -139,26 +146,38 @@ label{
     width:5%;
 }
 
-.row-nombre i, .row-apellido i, .row-contrasena i, .row-contrasena-confir i{
+/* .row-nombre i, .row-apellido i, .row-contrasena i, .row-contrasena-confir i{
     width: 10%;
-}
+} */
 
 .ingresar-nombre input, .ingresar-apellido input, .ingresar-contrasena input, .ingresar-contrasena-confir input{
-    width: 79%;
+    width: 93%;
 }
 
 .ingresar-nombre-usuario input, .ingresar-email input, .ingresar-telefono input, .ingresar-trabajo select{
-    width: 90%;
+    width: 97%;
 }
 
 .ingresar-trabajo select{
     width: 94%;
 }
+
+.grupo_input {
+    position: relative;
+}
+
+input {
+    border: 1px solid #ccc;
+}
+
+input:focus{
+    border: 2px solid #0075FF;
+}   
 /*___________________FIN Inputs________________________*/
 /*______________ Boton crear usuario___________________*/
 .button-crear-usuario{
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
     text-decoration: none;
     /*background: cornflowerblue;
     background: rgb(89,17,224);
@@ -168,7 +187,7 @@ label{
     text-align: center;
     border-radius: 15px;
     cursor: pointer;
-    padding: 12px 0px;
+    padding: 9px 0px;
 }
 
 .button-crear-usuario:hover{
@@ -178,5 +197,11 @@ label{
     text-decoration: none;
     color: #fff;
 }
+
+.button-crear-usuario .btn i{
+    margin-right: 10px;
+}
+
+
 
 

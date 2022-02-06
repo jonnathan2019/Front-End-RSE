@@ -364,6 +364,49 @@
 	margin: 5rem auto;
 }
 
+/* cabecera Informe INICIO  */
+
+.info-usuario-empresa{
+	background: #fbfbfb;
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+	margin-bottom: 25px;
+    padding: 20px;
+}
+
+.cabecera-informe{
+    width: 96%;
+    margin-top: 3px;
+    margin: auto;
+}
+ .cabezera-user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(133, 128, 128);
+    font-size: 14px;
+    border-bottom: 5px solid #ccc;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.cabezera-user .info-user .titulo-info-user{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+ .cabezera-user .info-user .correo-usuario{
+    color: rgb(104, 104, 240);
+}
+
+.cabezera-user img{
+    width: 85px;
+    height: 85px;
+}
+
+/*cabecera empresa*/
+
+
 .tabs ul{
 	display: flex;
     justify-content: center;

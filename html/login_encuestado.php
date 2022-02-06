@@ -257,9 +257,9 @@
                     <div class="google" id="googleLogin">
                         <div class="fa fa-google"></div>
                     </div>
-                    <div class="facebook" id="googleLoginFacebook">
+                    <!-- <div class="facebook" id="googleLoginFacebook">
                         <div class="fa fa-facebook"></div>
-                    </div>
+                    </div> -->
                     <!-- <div class="twitter">
                         <div class="fa fa-twitter"></div>
                     </div> -->
@@ -459,8 +459,8 @@
                             promesa_2
                                 .then(res_2 => {
                                     // 4 finally, we have to send to the web to register the company
-                                    console.log("3 => " + `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`)
-                                    // window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
+                                    // console.log("3 => " + `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`)
+                                    window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
                                 })
 
                         })
@@ -469,10 +469,10 @@
 
                 } else if (validar_user == 1) {
                     codigo = data.code;
-                    console.log("1 => " + 'Usuario ya existe')
-                    console.log("2 => " + `${url_global_pagina}evaluacion_principal${extencion}?usuario=${codigo}`)
+                    // console.log("1 => " + 'Usuario ya existe')
+                    // console.log("2 => " + `${url_global_pagina}evaluacion_principal${extencion}?usuario=${codigo}`)
                     // tome el codigo y me envia a la pagina Evaluacion Responsabilidad social
-                    // window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${codigo}`;
+                    window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${codigo}`;
                 }
             })
 

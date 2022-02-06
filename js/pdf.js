@@ -1,19 +1,335 @@
 const info_retroalimenatcion_general = document.querySelector(".info-total")
 // console.log(info_retroalimenatcion_general)
+function enviarPDF() {
+    var informacion = document.querySelector('.content-tabs')
+    informacion.style.background = "#fff"
+    informacion.style.border = "1px solid #fff"
+    informacion.style.padding = "0px"
+
+    var reporte_general = document.getElementById('reporte-general');
+    var reporte_dimensiones = document.getElementById('reporte-dimenciones');
+    var reporte_graficas = document.getElementById('reporte-graficas');
+    var barra_principal = document.querySelector('.tabs');
+    var barra_graficas = document.querySelector('.tabs-1');
+    var graficas_temas = document.getElementById('reporte_graficas_temas');
+    var graficas_dimensiones = document.getElementById('reporte_graficas_dimensiones');
+    var selecionador_graficas_dim = document.getElementById('selector');
+    var selecionador_graficas_temas = document.getElementById('selector_dim_bar');
+
+    var grafica_radar_temas = document.getElementById('grafica-radar')
+    var grafica_bar_horizontal_temas = document.getElementById('grafica-bar-vertical');
+
+    var imagen_temas = document.querySelectorAll('.imagen');
+
+    reporte_general.style.display = "block"
+    reporte_dimensiones.style.display = "block"
+    reporte_graficas.style.display = "block"
+
+    reporte_dimensiones.style.marginTop = "40px"
+    // reporte_dimensiones.style.background = "green"
+
+    reporte_graficas.style.marginTop = "40px"
+    // reporte_graficas.style.background = 'yellow'
+
+    barra_principal.style.display = "none";
+    barra_graficas.style.display = "none";
+    grafica_radar_temas.style.display = "block";
+    grafica_bar_horizontal_temas.style.display = "none";
+    graficas_temas.style.display = "block";
+    graficas_dimensiones.style.display = "block";
+    selecionador_graficas_dim.style.display = "none";
+    selecionador_graficas_temas.style.display = "none";
+
+    // imagen_temas.style.display = "none"
+    // imagen_temas.forEach(function(imagen) {
+    //     imagen.style.display = "none"
+    //   });
+
+
+
+    setTimeout(() => {
+        // const html = document.querySelector('.content-tabs');
+        const html = document.getElementById('contenido-resultados')
+        console.log(html)
+
+        html2pdf()
+            .set({
+                margin: 1,
+                filenama: 'documento.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2,
+                    letterRedering: true
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "a2",
+                    orientation: 'portrait' // landscape o portrait
+                }
+            })
+            .from(html)
+            .toPdf().output('datauristring').then(function (pdfAsString) {
+                let data = {
+                    'fileDataURI': pdfAsString,
+                };
+                console.log(data);
+                $.post("../php/main", data);
+                console.log(data);
+                alert("Enviado... ")
+            });
+
+        setTimeout(() => {
+
+            // var dowloand = document.querySelector('.content-tabs')
+            reporte_general.style.display = "block"
+            reporte_dimensiones.style.display = "none"
+            reporte_graficas.style.display = "none"
+
+            reporte_dimensiones.style.marginTop = "0px"
+            reporte_dimensiones.style.background = "none"
+
+            reporte_graficas.style.marginTop = "0px"
+            reporte_graficas.style.background = 'none'
+
+            barra_principal.style.display = "block";
+            barra_graficas.style.display = "block"
+            grafica_radar_temas.style.display = "none"
+            grafica_bar_horizontal_temas.style.display = "none"
+            graficas_temas.style.display = "block";
+            graficas_dimensiones.style.display = "none";
+            selecionador_graficas_dim.style.display = "block";
+            selecionador_graficas_temas.style.display = "block";
+
+            // imagen_temas.forEach(function(imagen) {
+            //     imagen.style.display = "block"
+            //   });
+
+            informacion.style.background = "#fbfbfb"
+            informacion.style.border = "1px solid #dddddd"
+            informacion.style.padding = "20px"
+        }, 3000)
+    }, 1000)
+}
+
 function descargarPDF() {
-    //const doc = new jsPDF();
 
-    //doc.text("Hello world!", 10, 10);
-    //doc.save("a4.pdf");
-    //alert(2)
+    var informacion = document.querySelector('.content-tabs')
+    informacion.style.background = "#fff"
+    informacion.style.border = "1px solid #fff"
+    informacion.style.padding = "0px"
 
-    //window.location.href = `${url_global_pagina}informe${extencion}`;
+    var reporte_general = document.getElementById('reporte-general');
+    var reporte_dimensiones = document.getElementById('reporte-dimenciones');
+    var reporte_graficas = document.getElementById('reporte-graficas');
+    var barra_principal = document.querySelector('.tabs');
+    var barra_graficas = document.querySelector('.tabs-1');
+    var graficas_temas = document.getElementById('reporte_graficas_temas');
+    var graficas_dimensiones = document.getElementById('reporte_graficas_dimensiones');
+    var selecionador_graficas_dim = document.getElementById('selector');
+    var selecionador_graficas_temas = document.getElementById('selector_dim_bar');
 
-    //alert("hola mundo")
-    window.open(
-        `${url_global_pagina}informe${extencion}`,
-        `_blank` // <- This is what makes it open in a new window.
-    );
+    var grafica_radar_temas = document.getElementById('grafica-radar')
+    var grafica_bar_horizontal_temas = document.getElementById('grafica-bar-vertical');
+
+    var imagen_temas = document.querySelectorAll('.imagen');
+
+    reporte_general.style.display = "block"
+    reporte_dimensiones.style.display = "block"
+    reporte_graficas.style.display = "block"
+
+    reporte_dimensiones.style.marginTop = "40px"
+    // reporte_dimensiones.style.background = "green"
+
+    reporte_graficas.style.marginTop = "40px"
+    // reporte_graficas.style.background = 'yellow'
+
+    barra_principal.style.display = "none";
+    barra_graficas.style.display = "none";
+    grafica_radar_temas.style.display = "block";
+    grafica_bar_horizontal_temas.style.display = "none";
+    graficas_temas.style.display = "block";
+    graficas_dimensiones.style.display = "block";
+    selecionador_graficas_dim.style.display = "none";
+    selecionador_graficas_temas.style.display = "none";
+
+    // imagen_temas.style.display = "none"
+    // imagen_temas.forEach(function(imagen) {
+    //     imagen.style.display = "none"
+    //   });
+
+
+
+    setTimeout(() => {
+        // const html = document.querySelector('.content-tabs');
+        const html = document.getElementById('contenido-resultados')
+        console.log(html)
+
+        html2pdf()
+            .set({
+                margin: 1,
+                filenama: 'documento.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2,
+                    letterRedering: true
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "a2",
+                    orientation: 'portrait' // landscape o portrait
+                }
+            })
+            .from(html)
+            .save()
+            .catch(err => console.log(err))
+
+        setTimeout(() => {
+
+            // var dowloand = document.querySelector('.content-tabs')
+            reporte_general.style.display = "block"
+            reporte_dimensiones.style.display = "none"
+            reporte_graficas.style.display = "none"
+
+            reporte_dimensiones.style.marginTop = "0px"
+            reporte_dimensiones.style.background = "none"
+
+            reporte_graficas.style.marginTop = "0px"
+            reporte_graficas.style.background = 'none'
+
+            barra_principal.style.display = "block";
+            barra_graficas.style.display = "block"
+            grafica_radar_temas.style.display = "none"
+            grafica_bar_horizontal_temas.style.display = "none"
+            graficas_temas.style.display = "block";
+            graficas_dimensiones.style.display = "none";
+            selecionador_graficas_dim.style.display = "block";
+            selecionador_graficas_temas.style.display = "block";
+
+            // imagen_temas.forEach(function(imagen) {
+            //     imagen.style.display = "block"
+            //   });
+
+            informacion.style.background = "#fbfbfb"
+            informacion.style.border = "1px solid #dddddd"
+            informacion.style.padding = "20px"
+        }, 3000)
+    }, 1000)
+
+}
+
+function imprimirPDF() {
+
+    var informacion = document.querySelector('.content-tabs')
+    informacion.style.background = "#fff"
+    informacion.style.border = "1px solid #fff"
+    informacion.style.padding = "0px"
+
+    var reporte_general = document.getElementById('reporte-general');
+    var reporte_dimensiones = document.getElementById('reporte-dimenciones');
+    var reporte_graficas = document.getElementById('reporte-graficas');
+    var barra_principal = document.querySelector('.tabs');
+    var barra_graficas = document.querySelector('.tabs-1');
+    var graficas_temas = document.getElementById('reporte_graficas_temas');
+    var graficas_dimensiones = document.getElementById('reporte_graficas_dimensiones');
+    var selecionador_graficas_dim = document.getElementById('selector');
+    var selecionador_graficas_temas = document.getElementById('selector_dim_bar');
+
+    var grafica_radar_temas = document.getElementById('grafica-radar')
+    var grafica_bar_horizontal_temas = document.getElementById('grafica-bar-vertical');
+
+    var imagen_temas = document.querySelectorAll('.imagen');
+
+    reporte_general.style.display = "block"
+    reporte_dimensiones.style.display = "block"
+    reporte_graficas.style.display = "block"
+
+    reporte_dimensiones.style.marginTop = "40px"
+    // reporte_dimensiones.style.background = "green"
+
+    reporte_graficas.style.marginTop = "40px"
+    // reporte_graficas.style.background = 'yellow'
+
+    barra_principal.style.display = "none";
+    barra_graficas.style.display = "none";
+    grafica_radar_temas.style.display = "block";
+    grafica_bar_horizontal_temas.style.display = "none";
+    graficas_temas.style.display = "block";
+    graficas_dimensiones.style.display = "block";
+    selecionador_graficas_dim.style.display = "none";
+    selecionador_graficas_temas.style.display = "none";
+
+    // imagen_temas.style.display = "none"
+    // imagen_temas.forEach(function(imagen) {
+    //     imagen.style.display = "none"
+    //   });
+
+
+
+    setTimeout(() => {
+        // const html = document.querySelector('.content-tabs');
+        const html = document.getElementById('contenido-resultados')
+        console.log(html)
+
+        html2pdf()
+            .set({
+                margin: 1,
+                filenama: 'documento.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2,
+                    letterRedering: true
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "a2",
+                    orientation: 'portrait' // landscape o portrait
+                }
+            })
+            .from(html)
+            .toPdf().get('pdf').then(function (pdf) {
+                window.open(pdf.output('bloburl'), '_blank');
+            });
+
+        setTimeout(() => {
+
+            // var dowloand = document.querySelector('.content-tabs')
+            reporte_general.style.display = "block"
+            reporte_dimensiones.style.display = "none"
+            reporte_graficas.style.display = "none"
+
+            reporte_dimensiones.style.marginTop = "0px"
+            reporte_dimensiones.style.background = "none"
+
+            reporte_graficas.style.marginTop = "0px"
+            reporte_graficas.style.background = 'none'
+
+            barra_principal.style.display = "block";
+            barra_graficas.style.display = "block"
+            grafica_radar_temas.style.display = "none"
+            grafica_bar_horizontal_temas.style.display = "none"
+            graficas_temas.style.display = "block";
+            graficas_dimensiones.style.display = "none";
+            selecionador_graficas_dim.style.display = "block";
+            selecionador_graficas_temas.style.display = "block";
+
+            // imagen_temas.forEach(function(imagen) {
+            //     imagen.style.display = "block"
+            //   });
+
+            informacion.style.background = "#fbfbfb"
+            informacion.style.border = "1px solid #dddddd"
+            informacion.style.padding = "20px"
+        }, 3000)
+    }, 1000)
 
 }
 
