@@ -140,14 +140,15 @@ function enviarPDF() {
     // imagen_temas.forEach(function(imagen) {
     //     imagen.style.display = "none"
     //   });
-    const html = document.getElementById('contenido-resultados')
-    console.log(html)
 
 
     setTimeout(() => {
         // const html = document.querySelector('.content-tabs');
+        const html = document.getElementById('contenido-resultados')
+        console.log(html)
 
-        console.log("_____________________________")
+
+        // console.log("_____________________________")
         html2pdf()
             .set({
                 margin: [0, 1],
