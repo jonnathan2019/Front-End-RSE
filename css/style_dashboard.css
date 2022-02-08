@@ -219,7 +219,7 @@
  .sallir-option{
      border-top: 1px solid #ccc;
     position: relative;
-    bottom: -22.5%;
+    bottom: -33%;
      /* margin-top: 100px; */
  }
 
@@ -594,6 +594,16 @@
     justify-content: center;
     flex-direction: column;
     height: 200px;
+}
+
+.loader-mensaje-error{
+    background: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(148, 147, 147);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 50px;
 }
 
 .border-loader {

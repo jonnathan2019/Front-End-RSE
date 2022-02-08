@@ -191,6 +191,9 @@
                     <li onclick="ir_perfil();"><i class="far fa-user-circle"></i></i>
                         <a>Mi Perfil</a>
                     </li>
+                    <li onclick="configuracion_empresa();"><i class="fas fa-building"></i></i>
+                        <a>Mi Empresa</a>
+                    </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
                     <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a>
                     </li>
@@ -234,7 +237,7 @@
                 </div>
             </div>
         </a>
-        <a class="slider-opcion" onclick="configuracion_empresa();">
+        <!-- <a class="slider-opcion" onclick="configuracion_empresa();">
             <div class="slider-text">
                 <i class="fas fa-building"></i>
                 <span>Empresa</span>
@@ -242,7 +245,7 @@
                     Empresa
                 </div>
             </div>
-        </a>
+        </a> -->
         <a class="slider-opcion" onclick="ir_about();">
             <div class="slider-text">
                 <i class="fas fa-info-circle"></i>
@@ -264,9 +267,21 @@
     </div>
 
     <!--sidebar end-->
-
+    <!-- loader resultados -->
+    <div class="loader-resultados" id="loader-resultados">
+        <div class="border-loader">
+            <div class="space-loader">
+                <div class="loading">
+                </div>
+            </div>
+        </div>
+        <div class="texto-resulatados">
+            <!-- <span>Calcular su nivel de integración lleva tiempo, por favor espere.</span> -->
+            <span>Calculando ...</span>
+        </div>
+    </div>
     <!--contenido-->
-    <div class="content">
+    <div class="content" id="contenido-resultados">
 
         <!--opciones de imprimir, descrgar, etc-->
         <div class="resultados">
@@ -278,28 +293,16 @@
                     <li><a href="#" onclick="descargarPDF();"><i class="fas fa-print"></i>Descargar</a></li>
                     <li><a href="#" onclick="imprimirPDF();"><i class="fas fa-download"></i></i>Imprimir</a></li>
                     <li><a href="#" onclick="enviarPDF();"><i class="fas fa-paper-plane"></i>Enviar</a></li>
-                    <li><a href="#" onclick="cargar_info_PDF();" id="abrir_pdf"><i class="fas fa-poll"></i>Ver
+                    <li style="display: none;"><a href="#" onclick="cargar_info_PDF();" id="abrir_pdf"><i class="fas fa-poll"></i>Ver
                             Reporte</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="contenido">
-            <!-- loader resultados -->
-            <div class="loader-resultados" id="loader-resultados">
-                <div class="border-loader">
-                    <div class="space-loader">
-                        <div class="loading">
-                        </div>
-                    </div>
-                </div>
-                <div class="texto-resulatados">
-                    <!-- <span>Calcular su nivel de integración lleva tiempo, por favor espere.</span> -->
-                    <span>Calculando ...</span>
-                </div>
-            </div>
+            
             <!-- contendio  -->
-            <div class="wrapper" id="contenido-resultados">
+            <div class="wrapper"  id="generar-pdf">
 
                 <!-- cabecera con Info Empresa y del  Usuario  -->
                 <div class="info-usuario-empresa">
@@ -325,7 +328,7 @@
                             <div class="ruc-empresa"><label>RUC:</label><span>1234</span></div>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="tabs">
@@ -1008,6 +1011,41 @@
         </div>
     </div>
 
+
+    <!-- Modal cargndo  -->
+    <div class="modal-carga" id="modal-carga-id">
+        <div class="cotendor-modal" id="cotendor-modal-id">
+            <div class="contenido-modal">
+                <div class="informacion-modal">
+                    <div class="logo-cargando">
+                        <div id="logo-modal-1" class="lds-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <i id="logo-modal-2" class="far fa-check-circle"></i>
+                    </div>
+                    <div class="texto-modal">
+                        <span class="mensage-1">Procesando...</span>
+                        <span class="mensage-2">Acción Completa.</span>
+                    </div>
+                </div>
+                <div class="botones-modal">
+                    <button onclick="go_everywhere()">Acceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal cargando FIn -->
     <!--MODAL-->
     <div class="modal-info" id="modal-info-id">
         <div class="cotendor-modal-info" id="cotendor-modal-info-id">
@@ -1313,12 +1351,18 @@
 
             </div>
         </div>
-        <!-- Informe Fin -->
+        
+    </div>
+    <!-- Informe Fin -->
+
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../librerias/loader.js"></script>
 <script src="../js/urls.js"></script>
 <script src="../js/resultados.js"></script>
+
+
 
 <!-- GRAFICA Puntaje TOTAL-->
 <script src="https://d3js.org/d3.v6.js"></script>
@@ -1364,5 +1408,8 @@
 
 <!--<script src="../js/modal_info.js"></script>-->
 <script src="../js/pdf.js"></script>
+
+<!-- para el modela cargando  -->
+<script src="../js/modal.js"></script>
 
 </html>

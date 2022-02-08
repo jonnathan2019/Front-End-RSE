@@ -131,6 +131,10 @@ function recuperar_reespuestas_usuario(info_preguntas_respondidas, nombre_indica
                     IDs_preguntas_respondidas.push(`#opcion_${opcion_ingresada}` + (contador_cargar_posicion + 4))
                 }
             }
+            //para cargar el comentario previamente guardado 
+            if (repuetas_guardadas.respuestasaIndicadores.cometario_usuario != null) {
+                document.getElementById(`comentario_${opcion_ingresada}`).innerHTML = repuetas_guardadas.respuestasaIndicadores.cometario_usuario;
+            }
         }
 
     })
@@ -229,7 +233,7 @@ function caragar_info_tema(tema_id) {
                                     </div>
                                 </div>
                                 <div class="coment">
-                                    <textarea name="" id="comentario" cols="135" rows="5" placeholder="Comentario"></textarea>
+                                    <textarea name="" id="comentario_${num_indicadores + 1}" cols="135" rows="5" placeholder="Comentario"></textarea>
                                 </div>
                                 <div class="buton-enviar">
                                     <button class="enviar" id="buton_${num_indicadores + 1}" onclick="obtener_datos_indicador(${num_indicadores + 1})"><span class="guardar-preguntas-indicador-${num_indicadores + 1}">Guardar</span></button>
@@ -361,7 +365,7 @@ caragar_info_tema(tema_id)
 
 //___________________________________________________________
 //Ingresa el ID del indicador Respondido
-async function setRespuestasIndicador(numero) {
+async function setRespuestasIndicador(numero, comentario_usuario) {
     await fetch(`${link_service}consultas/insertarRespuestasIndicadores`, {
         method: 'POST',
         headers: {
@@ -373,7 +377,26 @@ async function setRespuestasIndicador(numero) {
             },
             indicador: {
                 indicador_ID: id_indicador[numero - 1]
-            }
+            },
+            cometario_usuario: comentario_usuario
+        })
+    })
+}
+//Actualizar el comentario del indicador
+async function putRespuestasIndicador(numero, id_respuestas_indicador, id_encuestado, id_indicador_respondido, comentario_nuevo) {
+    await fetch(`${link_service}consultas/actualizarRespuestasIndicadores/${id_respuestas_indicador}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            encuestado: {
+                encuestado_ID: id_encuestado
+            },
+            indicador: {
+                indicador_ID: id_indicador_respondido
+            },
+            cometario_usuario: comentario_nuevo
         })
     })
 }
@@ -436,7 +459,7 @@ async function putPreguntas(id_pregunta_acualizar, id_indicador, id_pregunta, re
         })
     })
 }
-
+let auxiliar_2 = 0; // para que solo una ves actualice el comentario del inidcador 
 function encontrar_pregunta(informacion_preguntas_respondidas, id_indicador_ingresado, id_respuesta, respuesta, numero) {
     (async function () {
         // comparamos el usuario 
@@ -459,6 +482,23 @@ function encontrar_pregunta(informacion_preguntas_respondidas, id_indicador_ingr
                         await putPreguntas(id_pregunta_actulizar, id_indicador, id_pregunta, new_respuesta);
                     })()
                 }
+
+                var comentario_nuevo = document.getElementById(`comentario_${numero}`).value;
+                if (repuetas_guardadas.respuestasaIndicadores.cometario_usuario != comentario_nuevo && auxiliar_2 == 0) {
+                    var id_respuestas_indicador = repuetas_guardadas.respuestasaIndicadores.respuestas_Indicadores_ID;
+                    var id_encuestado = repuetas_guardadas.respuestasaIndicadores.encuestado.encuestado_ID;
+                    var id_indicador_respondido = repuetas_guardadas.respuestasaIndicadores.indicador.indicador_ID;
+                    var comentario_previo = repuetas_guardadas.respuestasaIndicadores.cometario_usuario; // este valor no lo utilizo
+                    // console.log(repuetas_guardadas.respuestasaIndicadores.respuestas_Indicadores_ID)//id del respueatas_indicador
+                    // console.log(repuetas_guardadas.respuestasaIndicadores.encuestado.encuestado_ID)// id encuestado
+                    // console.log(repuetas_guardadas.respuestasaIndicadores.indicador.indicador_ID) // id indicador respondido
+                    // console.log(repuetas_guardadas.respuestasaIndicadores.cometario_usuario) // comentario previo 
+                    (async function () {
+                        console.log("-------- > Actualizando comentario...")
+                        auxiliar_2 = 1;
+                        await putRespuestasIndicador(numero, id_respuestas_indicador, id_encuestado, id_indicador_respondido, comentario_nuevo);
+                    })()
+                }
             }
 
         })
@@ -468,14 +508,23 @@ function encontrar_pregunta(informacion_preguntas_respondidas, id_indicador_ingr
             //recorremos las lisa de pregunatas
             await setPreguntas(id_indicador_ingresado, id_respuesta, respuesta)
         }
-        swal("Datos registrados correctamente.");
+        // swal("Datos registrados correctamente.");
     })()
 
 }
 
 function obtener_datos_indicador(numero) {
     (async function () {
+        // para mostrar el modal cargando 
+        //___________________
+        var auxiliar_modal = 0;
+        mostrar_modal_cargando();
+        //___________________
         document.querySelector(`.guardar-preguntas-indicador-${numero}`).innerHTML = 'Guardando...'
+        // obtenemos el comentario del textarea
+        var comentario_usuario = document.getElementById(`comentario_${numero}`).value;
+        console.log(comentario_usuario);
+
         // obtenemos de nuevo las preguntas ya registradas 
         const informacion_preguntas_respondidas = await getRespuestas();;
         console.log(num_preguntas_indicador) // cantidad de pregunats por inidcador
@@ -528,6 +577,7 @@ function obtener_datos_indicador(numero) {
             })
 
             if (aux == 1) {
+                auxiliar_2 = 0; // para validar que solo una ves actualice el comentario del indicador
                 console.log('YA existe: ', id_indicador[numero - 1])
                 for (i = 0; i < posicione_preguntas.length; i++) {
                     // console.log(id_preguntas_marcadas[numero - 1][posicione_preguntas[i]] + ': ' + valores_preguntas[i])
@@ -535,20 +585,26 @@ function obtener_datos_indicador(numero) {
                 }
             } else {
                 console.log('NO existe: ', id_indicador[numero - 1])
-                await setRespuestasIndicador(numero)//llamos a la funcion que ingrese el ID del indicador respondido
+                await setRespuestasIndicador(numero, comentario_usuario)//llamos a la funcion que ingrese el ID del indicador respondido, y ademas si existe que ingrese el comentario
                 const id_indicador_respondido = await getIdIndicador();//obtenemos el ultimo inidcador respondido
                 //recorremos las lisa de pregunatas
                 for (i = 0; i < posicione_preguntas.length; i++) {
                     await setPreguntas(id_indicador_respondido, id_preguntas_marcadas[numero - 1][posicione_preguntas[i]], valores_preguntas[i])
                 }
-                swal("Datos registrados correctamente.");
-                
+                // swal("Datos registrados correctamente.");
+
 
             }
-        }else{
-            swal("Por favor seleccione al menos una pregunta..");
+        } else {
+            // swal("Por favor seleccione al menos una pregunta..");
+            auxiliar_modal = 1;
+            registrado_incompleto();
         }
-        document.querySelector(`.guardar-preguntas-indicador-${numero}`).innerHTML = 'Guardar'
+        document.querySelector(`.guardar-preguntas-indicador-${numero}`).innerHTML = 'Guardar';
+        // para mostrar el modal 
+        if (auxiliar_modal == 0) {
+            registrado_completo();
+        }
     })()
 }
 

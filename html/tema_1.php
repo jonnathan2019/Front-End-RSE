@@ -8,6 +8,8 @@
     <title>Tema.</title>
     <link rel="icon" type="image/png" href="../imagenes/logo_3.png" />
     <link rel="stylesheet" href="../css/style_evaluacion_temas.css">
+    <!-- modal cargando -->
+    <link rel="stylesheet" href="../css/modal.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -66,6 +68,9 @@
                     <li onclick="ir_perfil();"><i class="far fa-user-circle"></i></i>
                         <a>Mi Perfil</a>
                     </li>
+                    <li onclick="configuracion_empresa();"><i class="fas fa-building"></i></i>
+                        <a>Mi Empresa</a>
+                    </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
                     <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a>
                     </li>
@@ -109,7 +114,7 @@
                 </div>
             </div>
         </a>
-        <a class="slider-opcion" onclick="configuracion_empresa();">
+        <!-- <a class="slider-opcion" onclick="configuracion_empresa();">
             <div class="slider-text">
                 <i class="fas fa-building"></i>
                 <span>Empresa</span>
@@ -117,7 +122,7 @@
                     Empresa
                 </div>
             </div>
-        </a>
+        </a> -->
         <a class="slider-opcion" onclick="ir_about();">
             <div class="slider-text">
                 <i class="fas fa-info-circle"></i>
@@ -392,6 +397,41 @@
 
         </div>
 
+        <!-- Modal cargndo  -->
+        <div class="modal-carga" id="modal-carga-id">
+            <div class="cotendor-modal" id="cotendor-modal-id">
+                <div class="contenido-modal">
+                    <div class="informacion-modal">
+                        <div class="logo-cargando">
+                            <div id="logo-modal-1" class="lds-spinner">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <i id="logo-modal-2" class="far fa-check-circle"></i>
+                        </div>
+                        <div class="texto-modal">
+                            <span class="mensage-1">Registrando Preguntas...</span>
+                            <span class="mensage-2">Preguntas Registradas exitosamente.</span>
+                        </div>
+                    </div>
+                    <div class="botones-modal">
+                        <button onclick="go_everywhere()">Acceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal cargando FIn -->
+
 
     </div>
     </div>
@@ -432,5 +472,7 @@
 <script src="../js/urls.js"></script>
 <!-- <script src="../js/temas_RSE/tema_1.js" defer></script> -->
 <script src="../js/tema.js"></script>
+<!-- para el modela cargando  -->
+<script src="../js/modal.js"></script>
 
 </html>

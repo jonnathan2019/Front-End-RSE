@@ -183,6 +183,9 @@
                     <li onclick="ir_perfil();"><i class="far fa-user-circle"></i></i>
                         <a>Mi Perfil</a>
                     </li>
+                    <li onclick="configuracion_empresa();"><i class="fas fa-building"></i></i>
+                        <a>Mi Empresa</a>
+                    </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
                     <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a>
                     </li>
@@ -226,7 +229,7 @@
                 </div>
             </div>
         </a>
-        <a class="slider-opcion" onclick="configuracion_empresa();">
+        <!-- <a class="slider-opcion" onclick="configuracion_empresa();">
             <div class="slider-text">
                 <i class="fas fa-building"></i>
                 <span>Empresa</span>
@@ -234,7 +237,7 @@
                     Empresa
                 </div>
             </div>
-        </a>
+        </a> -->
         <a class="slider-opcion" onclick="ir_about();">
             <div class="slider-text">
                 <i class="fas fa-info-circle"></i>

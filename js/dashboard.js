@@ -143,6 +143,10 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new) {
         suma_niveles = suma_niveles + total;
     })
     respuesta_final_2 = Math.pow(suma_niveles, 1 / peso).toFixed(2);//FINAL DEL ALGORITMO-----------
+    // encaso de que el resultado final global sea mayor a 100
+    if (respuesta_final_2 > 1) {
+        respuesta_final_2 = 1;
+    }
     //---------------- FORMULA Fin ---------------------------
     // console.log(respuesta_final_2)
 
@@ -343,6 +347,10 @@ function algoritmo_todo_aspecpectos(objeto_respuestas_new) {
     if (auxiliar == 1) {
         //llamamos a la funcion para aplicar el algoritmo
         algoritmo_graficar();
+    }else {
+        document.getElementById('loader-resultados').innerHTML = `<div class="loader-mensaje-error">
+        Tiene que responder al menos una pregunta de cada dimensión (Social, Ambiental), para acceder a este apartado.
+    </div>`
     }
 
 
@@ -415,6 +423,10 @@ async function getAlgoritmo() {
         suma_niveles = suma_niveles + total;
     })
     resutaldo_final = Math.pow(suma_niveles, 1 / peso).toFixed(2);//FINAL DEL ALGORITMO-----------
+    // en caso de que el resultado final especifico sea mayor a 100 
+    if (resutaldo_final > 1) {
+        resutaldo_final = 1;
+    }
     //---------------- FORMULA Fin ---------------------------
 }
 //______Algoritmo FIn_____
@@ -431,56 +443,57 @@ function algoritmo_graficar() {
         //llamamos a la funcion para que aplique el algoritmo
         await getAlgoritmo()
 
-        console.log(objeto_resp)
-        console.log(resutaldo_final)
-        objeto_resp.find((dim, index_dim) => {
-            // recorremos el segundo objeto el que tiene todos los datos
-            objeto_resp_2.forEach(dim_2 => {
-                if (dim.dimension == dim_2.dimension) {
-                    // console.log('- ' + dim.dimension + ' ' + index_dim)
-                    dim.temas.find((tema, index_tema) => {
-                        // console.log(tema.nombre + ' ' + index_tema)
-                        dim_2.temas.forEach(element_tema => {
-                            //objeto_respuestas_new[index].temas[index_1_new].indicadores.find(
-                            // i => i.indicador === indicador_new.nombre
-                            // )
-                            const tema_existe = objeto_resp[index_dim].temas.find(
-                                i => i.nombre === element_tema.nombre
-                            )
-                            if (!tema_existe) {
-                                // console.log('No EXISTE: ' + element_tema.nombre)
-                                element_tema.nivel_1 = null;
-                                element_tema.indicadores.forEach(element_indicador => {
-                                    element_indicador.respuestas.splice(0, element_indicador.respuestas.length);
-                                    element_indicador.valor_1_formula = null;
-                                    // console.log(element_indicador.indicador)
-                                })
-                                //vacimaos los indicadores ya que contenian solo elemntos cero
-                                //ingresamos el tema no evaluado 
-                                objeto_resp[index_dim].temas.push(element_tema)
-                            }
+        // console.log(objeto_resp)
+        // console.log(resutaldo_final)
+        if (objeto_resp.length > 1) {
+            objeto_resp.find((dim, index_dim) => {
+                // recorremos el segundo objeto el que tiene todos los datos
+                objeto_resp_2.forEach(dim_2 => {
+                    if (dim.dimension == dim_2.dimension) {
+                        // console.log('- ' + dim.dimension + ' ' + index_dim)
+                        dim.temas.find((tema, index_tema) => {
+                            // console.log(tema.nombre + ' ' + index_tema)
+                            dim_2.temas.forEach(element_tema => {
+                                //objeto_respuestas_new[index].temas[index_1_new].indicadores.find(
+                                // i => i.indicador === indicador_new.nombre
+                                // )
+                                const tema_existe = objeto_resp[index_dim].temas.find(
+                                    i => i.nombre === element_tema.nombre
+                                )
+                                if (!tema_existe) {
+                                    // console.log('No EXISTE: ' + element_tema.nombre)
+                                    element_tema.nivel_1 = null;
+                                    element_tema.indicadores.forEach(element_indicador => {
+                                        element_indicador.respuestas.splice(0, element_indicador.respuestas.length);
+                                        element_indicador.valor_1_formula = null;
+                                        // console.log(element_indicador.indicador)
+                                    })
+                                    //vacimaos los indicadores ya que contenian solo elemntos cero
+                                    //ingresamos el tema no evaluado 
+                                    objeto_resp[index_dim].temas.push(element_tema)
+                                }
 
+                            })
                         })
-                    })
 
-                }
+                    }
+                })
             })
-        })
-        //mostramos la informacion de los temas evaluados en la tabla 
-        const info_temas_sociales = document.querySelector('.info-contenido-social');
-        let outInfo_temas_sociales = ''
-        const info_temas_ambientales = document.querySelector('.info-contenido-ambiental');
-        let outInfo_temas_ambientales = ''
-        let num_temas = 0;
-        var lista_barras_temas = [];
-        objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
-            let nom_dim = datos_preguntas.dimension
-            if (datos_preguntas.dimension == "Social") {
-                datos_preguntas.temas.forEach(element => {
-                    // ${(element.nivel_1 * 100).toFixed(2)}
-                    // element.nombre
-                    if (element.nivel_1 != null) {
-                        outInfo_temas_sociales += ` 
+            //mostramos la informacion de los temas evaluados en la tabla 
+            const info_temas_sociales = document.querySelector('.info-contenido-social');
+            let outInfo_temas_sociales = ''
+            const info_temas_ambientales = document.querySelector('.info-contenido-ambiental');
+            let outInfo_temas_ambientales = ''
+            let num_temas = 0;
+            var lista_barras_temas = [];
+            objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+                let nom_dim = datos_preguntas.dimension
+                if (datos_preguntas.dimension == "Social") {
+                    datos_preguntas.temas.forEach(element => {
+                        // ${(element.nivel_1 * 100).toFixed(2)}
+                        // element.nombre
+                        if (element.nivel_1 != null) {
+                            outInfo_temas_sociales += ` 
                     <div class="informacion-tema">
                         <div class="nom-tema">${element.nombre}</div>
                         <div class="puntaje-tema">${(element.nivel_1 * 100).toFixed(2)}</div>
@@ -493,9 +506,9 @@ function algoritmo_graficar() {
                         </div>
                     </div>
                     `;
-                        
-                    } else {
-                        outInfo_temas_sociales += ` 
+
+                        } else {
+                            outInfo_temas_sociales += ` 
                     <div class="informacion-tema">
                         <div class="nom-tema">${element.nombre}</div>
                         <div class="puntaje-tema">---</div>
@@ -506,17 +519,17 @@ function algoritmo_graficar() {
                         </div>
                     </div>
                     `;
-                    }
-                    lista_barras_temas.push(`.valor-${num_temas}`)
+                        }
+                        lista_barras_temas.push(`.valor-${num_temas}`)
                         num_temas = num_temas + 1;
 
-                })
-            } else {
-                datos_preguntas.temas.forEach(element => {
-                    // ${(element.nivel_1 * 100).toFixed(2)}
-                    // element.nombre
-                    if (element.nivel_1 != null) {
-                        outInfo_temas_ambientales += `
+                    })
+                } else {
+                    datos_preguntas.temas.forEach(element => {
+                        // ${(element.nivel_1 * 100).toFixed(2)}
+                        // element.nombre
+                        if (element.nivel_1 != null) {
+                            outInfo_temas_ambientales += `
                             <div class="informacion-tema">
                                 <div class="nom-tema">${element.nombre}</div>
                                 <div class="puntaje-tema">${(element.nivel_1 * 100).toFixed(2)}</div>
@@ -529,9 +542,9 @@ function algoritmo_graficar() {
                                 </div>
                             </div>
                     `;
-                        
-                    } else {
-                        outInfo_temas_ambientales += `
+
+                        } else {
+                            outInfo_temas_ambientales += `
                             <div class="informacion-tema">
                                 <div class="nom-tema">${element.nombre}</div>
                                 <div class="puntaje-tema">---</div>
@@ -540,60 +553,64 @@ function algoritmo_graficar() {
                                 </div>
                             </div>
                     `;
-                    }
-                    lista_barras_temas.push(`.valor-${num_temas}`)
-                    num_temas = num_temas + 1;
+                        }
+                        lista_barras_temas.push(`.valor-${num_temas}`)
+                        num_temas = num_temas + 1;
 
-                })
-            }
-        })
-        info_temas_sociales.innerHTML = outInfo_temas_sociales;
-        info_temas_ambientales.innerHTML = outInfo_temas_ambientales;
-
-        // para agregar los resultados a la barra 
-        let numero_temas = 0;
-        console.log(lista_barras_temas)
-        var cant = lista_barras_temas.length;
-        
-        objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
-            datos_preguntas.temas.forEach(element => {//recorremos TEMAS
-                let valor_barra = (element.nivel_1 * 100)
-                console.log(lista_barras_temas[numero_temas])
-                if (valor_barra < 33 && numero_temas < cant && element.nivel_1 != null) {
-                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "red"
-                } else if (valor_barra > 66 && numero_temas < cant && element.nivel_1 != null) {
-
-                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "green"
-                } else if (numero_temas < cant && element.nivel_1 != null) {
-
-                    document.querySelector(lista_barras_temas[numero_temas]).style.background = "yellow"
+                    })
                 }
-
-                if (numero_temas < cant && element.nivel_1 != null) {
-                    document.querySelector(lista_barras_temas[numero_temas]).style.width = valor_barra + "%";//para mostrar el resultados de cada TEMA en una BARRA
-                    
-                }
-                numero_temas = numero_temas + 1;
             })
-        })
+            info_temas_sociales.innerHTML = outInfo_temas_sociales;
+            info_temas_ambientales.innerHTML = outInfo_temas_ambientales;
 
-        // llamos a las graficas
-        setTimeout(() => {
-            // colocamos las graficas
-            // grafica barra circular
-            grafica_circular_dashboard()
-            // grafica circular zoomable
-            grafica_zoomable_dashboard()
-            // grafica radar
-            grafica_radar_dashboard()
-            // barra vertical
-            grafica_bar_vertical_dashboard();
-            // barra horizontal
-            grafica_barra_horixzontal_dashboard();
-            //mostrar panel
-            mostrar_resultados();
-        }, 2000)
+            // para agregar los resultados a la barra 
+            let numero_temas = 0;
+            console.log(lista_barras_temas)
+            var cant = lista_barras_temas.length;
 
+            objeto_resp.forEach(datos_preguntas => {//recorremos DIMENSIONES
+                datos_preguntas.temas.forEach(element => {//recorremos TEMAS
+                    let valor_barra = (element.nivel_1 * 100)
+                    console.log(lista_barras_temas[numero_temas])
+                    if (valor_barra < 33 && numero_temas < cant && element.nivel_1 != null) {
+                        document.querySelector(lista_barras_temas[numero_temas]).style.background = "red"
+                    } else if (valor_barra > 66 && numero_temas < cant && element.nivel_1 != null) {
+
+                        document.querySelector(lista_barras_temas[numero_temas]).style.background = "green"
+                    } else if (numero_temas < cant && element.nivel_1 != null) {
+
+                        document.querySelector(lista_barras_temas[numero_temas]).style.background = "yellow"
+                    }
+
+                    if (numero_temas < cant && element.nivel_1 != null) {
+                        document.querySelector(lista_barras_temas[numero_temas]).style.width = valor_barra + "%";//para mostrar el resultados de cada TEMA en una BARRA
+
+                    }
+                    numero_temas = numero_temas + 1;
+                })
+            })
+
+            // llamos a las graficas
+            setTimeout(() => {
+                // colocamos las graficas
+                // grafica barra circular
+                grafica_circular_dashboard()
+                // grafica circular zoomable
+                grafica_zoomable_dashboard()
+                // grafica radar
+                grafica_radar_dashboard()
+                // barra vertical
+                grafica_bar_vertical_dashboard();
+                // barra horizontal
+                grafica_barra_horixzontal_dashboard();
+                //mostrar panel
+                mostrar_resultados();
+            }, 2000)
+        } else {
+            document.getElementById('loader-resultados').innerHTML = `<div class="loader-mensaje-error">
+        Tiene que responder al menos una pregunta de cada dimensión (Social, Ambiental), para acceder a este apartado.
+    </div>`
+        }
     })()
     //-------------- MODAL Fin -------------------
 }
