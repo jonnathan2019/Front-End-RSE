@@ -210,7 +210,7 @@ function enviarPDF() {
             // para mostrar el modal 
             completado();
         }, 10000)
-    }, 3000)
+    }, 5000)
     console.log('datso enciados')
 }
 
