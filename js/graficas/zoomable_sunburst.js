@@ -155,7 +155,7 @@ function grafica_zoomable() {
             tooltip.style('display', 'none'); // hide tooltip for that element
         })
         .on('mousemove', function (d) { // when mouse moves                  
-            tooltip.style('top', (d3.event.layerY + 430) + 'px'); // always 10px below the cursor
+            tooltip.style('top', (d3.event.layerY + 730) + 'px'); // always 10px below the cursor
             tooltip.style('left', (d3.event.layerX + 230) + 'px'); // always 10px to the right of the mouse
         });;
 
