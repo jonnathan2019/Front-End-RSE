@@ -645,6 +645,10 @@ function configuracion_empresa() {
     window.location.href = `${url_global_pagina}configuracion_empresa${extencion}?usuario=${usuario_ID}`;
 }
 
+function ir_contactanos() {
+    window.location.href = `${url_global_pagina}contacto${extencion}?usuario=${usuario_ID}`;
+}
+
 function ir_about() {
     window.location.href = `${url_global_pagina}about${extencion}?usuario=${usuario_ID}`;
 }

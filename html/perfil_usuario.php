@@ -8,6 +8,7 @@
     <title>Perfil Usuario.</title>
     <link rel="icon" type="image/png" href="../imagenes/logo_3.png" />
     <link rel="stylesheet" href="../css/perfil_usuario.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -33,7 +34,8 @@
             <span>Responsabilidad Empresarial.</span>
         </label>
         <ul>
-            <li class="salir" onclick="menuToggle();"><a class="far fa-user" href="#"></a></li>
+            <!-- <li class="salir" onclick="menuToggle();"><a class="far fa-user" href="#"></a></li> -->
+            <li class="salir" id="menuToggle"><a class="far fa-user" href="#"></a></li>
             <div class="menu-salir">
                 <div class="info-user">
                     <div class="logo-user">
@@ -54,6 +56,10 @@
                     </li>
                     <li onclick="configuracion_empresa();"><i class="fas fa-building"></i></i>
                         <a>Mi Empresa</a>
+                    </li>
+                    <!-- <i class="fa-regular fa-comment-question"></i> -->
+                    <li onclick="ir_contactanos();"><i class="fas fa-question"></i></i>
+                        <a>Contactanos</a>
                     </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
                     <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a></li>
@@ -142,35 +148,45 @@
                         <label>Nombre:</label>
                         <input type="text" id="nombre">
                     </div>
-                    <div class="datos">
+                    <div id="apellido-actulizar" class="datos">
                         <label>Apellido:</label>
                         <input type="text" id="apellido">
                     </div>
                 </div>
                 <div class="usuario-email">
-                    <div class="datos">
+                    <div id="correo-actualizar" class="datos">
                         <label>Usuario:</label>
                         <input type="text" id="usuario">
                     </div>
                     <div class="datos">
                         <label>Email:</label>
-                        <input type="text" id="email">
+                        <input type="text" disabled id="email">
                     </div>
                 </div>
-                <div class="contrasenas">
+                <div class="contrasenas-anterior">
                     <div class="datos">
-                        <label>Contraseña:</label>
+                        <label>Ingrese sus Contraseña Previa:</label>
+                        <input type="password" id="contrasena-previa">
+                    </div>
+                    <div class="datos">
+                        <button onclick="comprobar_contrasena()" class="btn-comprabar-con">Comprobar Contraseña</button>
+                    </div>
+                </div>
+                <div class="contrasenas" style="display: none;">
+                    <div class="datos">
+                        <label>Ingrese la nueva contraseña:</label>
                         <input type="text" id="contrasena">
                     </div>
                     <div class="datos">
-                        <label>Confirmar Contraseña:</label>
+                        <label>Confirmar nuueva contraseña:</label>
                         <input type="text" id="confirmar-contrasena">
                     </div>
                 </div>
             </div>
             <div class="guardar-info">
                 <button onclick="regresar();">Regresar</button>
-                <button onclick="actualizar_usaurio();">Guardar</button>
+                <!-- <button id="boton-actualizar" onclick="actualizar_usaurio();">Guardar</button> -->
+                <button id="boton-actualizar">Guardar</button>
             </div>
         </div>
 
@@ -212,14 +228,75 @@
 
 
     </div>
+    <!-- Modal cargndo  -->
+    <div class="modal-carga" id="modal-carga-id">
+        <div class="cotendor-modal" id="cotendor-modal-id">
+            <div class="contenido-modal">
+                <div class="informacion-modal">
+                    <div class="logo-cargando">
+                        <div id="logo-modal-1" class="lds-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <i id="logo-modal-2" class="far fa-check-circle"></i>
+                    </div>
+                    <div class="texto-modal">
+                        <span class="mensage-1">Actualizando Datos...</span>
+                        <span class="mensage-2">Usuario autentificado correctamente.</span>
+                    </div>
+                </div>
+                <div class="botones-modal">
+                    <button id="go_everywhere" onclick="ocultar_modal_cargando()">Acceptar</button>
+                    <button style="display: none;" id="cloce_modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal cargando FIn -->
 
-    <script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js'
+        import {
+            getAuth, createUserWithEmailAndPassword,
+            signInWithEmailAndPassword, signOut, onAuthStateChanged,
+            GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult
+        } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js';
+        import { getFirestore, collection, query, onSnapshot } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-firestore.js';
+        import { getDatabase, ref, set, child, get, onValue, update }
+            from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
 
-        function menuToggle() {
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCfmQGYwsGnEo97z2mgJiwEjVW1r4rqntI",
+            authDomain: "ejemplo-1-57106.firebaseapp.com",
+            projectId: "ejemplo-1-57106",
+            storageBucket: "ejemplo-1-57106.appspot.com",
+            messagingSenderId: "575633810301",
+            appId: "1:575633810301:web:0b6d9d4749eb973f13e214"
+        };
+
+        // Inicializacion de Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const fs = getFirestore();
+        const provider = new GoogleAuthProvider(app);
+        const db = getDatabase();
+
+        const menuToggle = document.querySelector("#menuToggle");
+        menuToggle.addEventListener("click", (e) => {
             const toggleMenu = document.querySelector('.menu-salir');
             toggleMenu.classList.toggle('active')
-        }
-
+        })
         var tabs = document.querySelectorAll(".tabs ul li");
         var tab_wraps = document.querySelectorAll(".tab_wrap");
 
@@ -241,10 +318,84 @@
 
             })
         })
+
+        async function updateFirebase(nombre, apellido, email, contrasena, usuario) {
+            let id_correo = email.replace(/[^a-zA-Z0-9 ]/g, "");
+            await update(ref(db, "UsersList/" + id_correo), {
+                name: nombre,
+                last_name: apellido,
+                email: email,
+                contrasena: contrasena,
+                usernama: usuario
+            })
+                .then(() => {
+                    console.log('2-> Usuario actualizado Firebase')
+                })
+                .catch((error) => {
+                    console.log("USuario noooooo")
+                })
+
+        }
+        // llamamos a las funciones para actualizar los datos
+        async function putDatosUsuario() {
+            //actualizamos en postegress
+            await fetch(`${link_service}consultas/actualizarUsuario/${usuario_ID}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    usuario: document.getElementById('usuario').value,
+                    contrasena: contrasena_usuario,
+                    encuestado: {
+                        nombre: document.getElementById('nombre').value,
+                        apellido: document.getElementById('apellido').value,
+                        correo: document.getElementById('email').value,
+                        encuestado_ID: encuestado_id,
+                        empresa: {
+                            empresa_ID: empresa_id
+                        },
+                        terminos_aceptacion: termino_aceptacion_usuario,
+                        tipo_cuenta: tipo_cuenta_usuario
+                    },
+                    administrador_ID: null,
+                })
+            });
+            console.log("1 -> Postgress");
+            //actualisamos en firebase
+            await updateFirebase(
+                document.getElementById('nombre').value,
+                document.getElementById('apellido').value,
+                document.getElementById('email').value,
+                contrasena_usuario,
+                document.getElementById('usuario').value);
+
+        }
+        // llamar a la funcion desde el botoon para acatualizar datos
+        const updateUsuario = document.querySelector("#boton-actualizar");
+        updateUsuario.addEventListener("click", (e) => {
+            // para mostrar el modal cargando 
+            mostrar_modal_cargando();
+            var contrasena = document.getElementById('contrasena').value;
+            var confirmar_contrasena = document.getElementById('confirmar-contrasena').value;
+            if (contrasena == confirmar_contrasena) {
+                (async function () {
+                    contrasena_usuario = contrasena; // caambiamos la nueva contrasena
+                    await putDatosUsuario();
+                    user_actualizando_usuario();
+                    // swal("Datos actualizados correctamente.")
+                })()
+            } else {
+                user_contrasena_no_coincide();
+                // swal("Las contraseñas no coinciden.")
+            }
+        })
     </script>
 
 </body>
 <script src="../js/urls.js"></script>
 <script src="../js/perfil_usuario.js"></script>
+<!-- para el modela cargando  -->
+<script src="../js/modal.js"></script>
 
 </html>

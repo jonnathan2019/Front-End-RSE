@@ -78,6 +78,9 @@ function getIdTemas(){
 
 
 (async function () {
+    // para que aparesca el logo de cargando en la ventana encaluacion
+    document.getElementById('onload').style.visibility = "visible";
+
     const datos_dim = await getDimensiones();
     const datos_temas = await getTemas();
     datos_temas.forEach(element => {
@@ -222,8 +225,8 @@ function getIdTemas(){
 
         })
     })
-    //escondemos el loader
-    document.getElementById('onload').style.visibility = "hidden"
+    // escondemos el logo de cargando en la ventana evaluacion
+    document.getElementById('onload').style.visibility = "hidden";
 })()
 
 
@@ -252,6 +255,15 @@ function ir_perfil() {
 function configuracion_empresa() {
     window.location.href = `${url_global_pagina}configuracion_empresa${extencion}?usuario=${usuario_ID}`;
 }
+
+function ir_contactanos() {
+    window.location.href = `${url_global_pagina}contacto${extencion}?usuario=${usuario_ID}`;
+}
+
+function ir_contactanos() {
+    window.location.href = `${url_global_pagina}contacto${extencion}?usuario=${usuario_ID}`;
+}
+
 
 function ir_about() {
     window.location.href = `${url_global_pagina}about${extencion}?usuario=${usuario_ID}`;

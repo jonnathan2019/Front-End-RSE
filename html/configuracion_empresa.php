@@ -8,6 +8,7 @@
     <title>Configuración Empresa.</title>
     <link rel="icon" type="image/png" href="../imagenes/logo_3.png" />
     <link rel="stylesheet" href="../css/configuracion_empresa.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -54,6 +55,10 @@
                     </li>
                     <li onclick="configuracion_empresa();"><i class="fas fa-building"></i></i>
                         <a>Mi Empresa</a>
+                    </li>
+                    <!-- <i class="fa-regular fa-comment-question"></i> -->
+                    <li onclick="ir_contactanos();"><i class="fas fa-question"></i></i>
+                        <a>Contactanos</a>
                     </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
                     <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a></li>
@@ -234,7 +239,7 @@
                         </div>
                     </div>
                     <div class="datos">
-                        <label for="">Direccion de Operacion:</label>
+                        <label for="">Dirección de su Empresa:</label>
                         <input type="text" id="direccion-operacion" placeholder="Direccion de Operacion">
                     </div>
                 </div>
@@ -255,7 +260,7 @@
                         </div>
                     </div>
                     <div class="datos">
-                        <label for="">Numero de Sedes:</label>
+                        <label for="">Número de Sedes:</label>
                         <input type="number" id="numero-sedes"  min="0"
                         onChange="" placeholder="Total de Sedes">
                     </div>
@@ -263,7 +268,7 @@
                 
                 <div class="empresa-datos">
                     <div class="datos">
-                        <label for="">Numero de Empleados:</label>
+                        <label for="">Número de Empleados:</label>
                         <!-- <input type="text" id="numero-empleados-empresa" placeholder="Numero Empleados"> -->
                         <input type="number" id="numero-empleados-empresa"  min="0"
                         onChange="" placeholder="Numero Empleados">
@@ -275,8 +280,14 @@
                 </div>
                 <div class="empresa-datos">
                     <div class="datos">
-                        <label for="">Fecha de Inicio de Operaciones:</label>
-                        <input type="date" id="inicio-operacion" placeholder="Inicio de Operaciones">
+                        <label for="">Año Inicio Operaciones:</label>
+                        <input type="text" id="inicio-operacion" disabled="disabled">
+                        <div class="seleccionador">
+                            <!-- <i class="fas fa-caret-down"></i> -->
+                            <select id="selector" class="ano-inicio" onchange="cargar_anio_inicio()">
+                                <option value="" id="norma">Selecionar</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="datos">
                         <label for="">Estimado Ingresos Anuales:</label>
@@ -300,6 +311,42 @@
 
 
     </div>
+
+    <!-- Modal cargndo  -->
+    <div class="modal-carga" id="modal-carga-id">
+        <div class="cotendor-modal" id="cotendor-modal-id">
+            <div class="contenido-modal">
+                <div class="informacion-modal">
+                    <div class="logo-cargando">
+                        <div id="logo-modal-1" class="lds-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <i id="logo-modal-2" class="far fa-check-circle"></i>
+                    </div>
+                    <div class="texto-modal">
+                        <span class="mensage-1">Actualizando Datos...</span>
+                        <span class="mensage-2">Usuario autentificado correctamente.</span>
+                    </div>
+                </div>
+                <div class="botones-modal">
+                    <button id="go_everywhere" onclick="ocultar_modal_cargando()">Acceptar</button>
+                    <button style="display: none;" id="cloce_modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal cargando FIn -->
 
     <script>
 
@@ -334,5 +381,7 @@
 </body>
 <script src="../js/urls.js"></script>
 <script src="../js/configuracion_empresa.js"></script>
+<!-- para el modela cargando  -->
+<script src="../js/modal.js"></script>
 
 </html>

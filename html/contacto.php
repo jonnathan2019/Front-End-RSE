@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evaluación.</title>
+    <title>Contacto.</title>
     <link rel="icon" type="image/png" href="../imagenes/logo_3.png" />
-    <link rel="stylesheet" href="../css/style_evaluacion.css">
+    <link rel="stylesheet" href="../css/contacto.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -25,8 +25,8 @@
 
 </head>
 
-<body class="cuerpo"><!-- en el body antes estaba la clase hidden -->
-    <div class="loader-centrado" id="onload">
+<body class="cuerpo">
+    <!-- <div class="loader-centrado" id="onload">
         <div class="lds-roller">
             <div></div>
             <div></div>
@@ -37,7 +37,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <input type="checkbox" id="check">
     <!--NAV-->
     <div class="nav">
@@ -88,7 +88,7 @@
         <div class="slider-encabesado">
             R S E
         </div>
-        <a class="slider-opcion active" onclick="ir_evaluacion();">
+        <a class="slider-opcion" onclick="ir_evaluacion();">
             <div class="slider-text">
                 <i class="fas fa-poll-h"></i>
                 <span>Evaluación</span>
@@ -148,66 +148,59 @@
 
     <!--contenido-->
     <div class="content">
-
-        <!--CARD principal-->
-
-        <div class="card-main">
-            <div class="card-imagen">
-                <img src="../imagenes/RSE2.jpg" alt="">
-            </div>
-            <div class="card-content">
-                <h2 class="car-title">Evaluando RSE.</h2>
-                <p class="res-concept">La Responsabilidad social empresarial (RSE) o
-                    simplemente Responsabilidad social (RS), se define como la
-                    contribución activa y voluntaria al mejoramiento social y
-                    ambiental de las empresas. Esta herramienta de uso gratuito,
-                    busca apoyar a las empresas en la incorporación de la
-                    responsabilidad social empresarial (RSE) en sus estrategias
-                    de negocio, de modo que esta sea sustentable y responsable.</p>
-                <div class="buton-comensar" onclick="comezar()">
-                    <a class="button">Comenzar</a>
+        <div class="contendor-info-general" style="display: block;">
+            <div class="contendor-info">
+                <div class="caja-texto">
+                    <h1>Contáctanos!</h1>
+                    <p>En que podemos ayudarte.
+                    </p>
                 </div>
             </div>
         </div>
-        <!--__________________________-->
-
-
-        <div class="contenido">
-            <div class="wrapper">
-                <div class="tabs">
-                    <ul class="tabs-ul">
-                        <!-- <li class="active">
-                            <span class="text">Social</span>
-                        </li>
-                        <li>
-                            <span class="text">Ambiental</span>
-                        </li> -->
-                    </ul>
+        <div class="contenido-about" style="display: block;">
+            <div class="contacto">
+                <div class="contacto-info">
+                    <div class="contendor-datos">
+                        <div class="caja-contacto informacion-contacto">
+                            <div class="datos">
+                                <label class="title" for="">Numero de Telefono:</label>
+                                <label class="informacion" for="">090825212</label>
+                            </div>
+                            <div class="datos">
+                                <label class="title" for="">Email:</label>
+                                <label class="informacion" for="">jonnthancuvi@gmail.com</label>
+                            </div>
+                        </div>
+                        <div class="caja-contacto mensaje">
+                            <div class="datos-usuario">
+                                <label for="">Nombre Usuario:</label>
+                                <input class="nombre-usuario" type="text" placeholder="Nombre">
+                            </div>
+                            <div class="datos-usuario">
+                                <label for="">Correo Usuario:</label>
+                                <input class="correo-usuario" type="text" placeholder="Correo">
+                            </div>
+                            <div class="datos-usuario">
+                                <label for="">Empresa Usuario:</label>
+                                <input class="empresa-usuario" type="text" placeholder="Empresa">
+                            </div>
+                            <div class="datos-usuario">
+                                <label for="">Mensage:</label>
+                                <textarea name="" id="mensaje" cols="30" rows="5" placeholder="Mensaje"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button class="boton-1">Enviar</button>
+                    </div>
                 </div>
-                <!--_____________Tabs INICIO_______________-->
-                <div class="content-tabs">
-                    <!--Dimension Social-->
-                    <!-- <div class="tab_wrap" style="display: block;">
-                        <div class="title">
-                            Dimensión Social
-                        </div>
-                        <div class="container-cards container-cards_1">
-
-                        </div>
-                    </div> -->
-                    <!--Dimension Ambiental-->
-                    <!-- <div class="tab_wrap" style="display: none;">
-                        <div class="title">
-                            Dimensión Ambiental
-                        </div>
-                        <div class="container-cards container-cards_2">
-                        </div>
-                    </div> -->
-                </div>
-                <!--_____________Tabs FIN_______________-->
             </div>
-
+            <!-- foter -->
+            <div class="pie-pagina">
+                <span>Copyright © 2022. Todos los derechos reservados.</span>
+            </div>
         </div>
+
     </div>
 
 </body>
@@ -220,7 +213,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../librerias/loader.js"></script>
 <script src="../js/urls.js"></script>
-<!-- <script src="../js/e_p.js"></script> -->
-<script src="../js/evaluacion_principal.js"></script>
+<script src="../js/contacto.js"></script>
 
 </html>

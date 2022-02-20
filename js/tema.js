@@ -639,6 +639,10 @@ function atras() {
     // window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_ID}`;
 }
 
+function ir_estadnar_referencia(){
+    window.open("https://www.iarse.org/uploads/Indicadores%20Ethos-%20IARSE%20v3.1%202017.pdf", '_blank');
+}
+
 function ir_evaluacion() {
     window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_ID}`;
 }
@@ -656,6 +660,10 @@ function ir_perfil() {
 
 function configuracion_empresa() {
     window.location.href = `${url_global_pagina}configuracion_empresa${extencion}?usuario=${usuario_ID}`;
+}
+
+function ir_contactanos() {
+    window.location.href = `${url_global_pagina}contacto${extencion}?usuario=${usuario_ID}`;
 }
 
 function ir_about() {

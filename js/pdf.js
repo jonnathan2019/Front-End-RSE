@@ -97,122 +97,66 @@ function mostrar_elementos() {
 function enviarPDF() {
     // para mostrar el modal cargando 
     mostrar_modal_cargando();
-    var informacion = document.querySelector('.content-tabs')
-    informacion.style.background = "#fff"
-    informacion.style.border = "1px solid #fff"
-    informacion.style.padding = "0px"
+    // para ocultar los elemteos
+    ocultar_elementos();
 
-    var reporte_general = document.getElementById('reporte-general');
-    var reporte_dimensiones = document.getElementById('reporte-dimenciones');
-    var reporte_graficas = document.getElementById('reporte-graficas');
-    var barra_principal = document.querySelector('.tabs');
-    var barra_graficas = document.querySelector('.tabs-1');
-    var graficas_temas = document.getElementById('reporte_graficas_temas');
-    var graficas_dimensiones = document.getElementById('reporte_graficas_dimensiones');
-    var selecionador_graficas_dim = document.getElementById('selector');
-    var selecionador_graficas_temas = document.getElementById('selector_dim_bar');
-
-    var grafica_radar_temas = document.getElementById('grafica-radar')
-    var grafica_bar_horizontal_temas = document.getElementById('grafica-bar-vertical');
-
-    var imagen_temas = document.querySelectorAll('.imagen');
-
-    reporte_general.style.display = "block"
-    reporte_dimensiones.style.display = "block"
-    reporte_graficas.style.display = "block"
-
-    reporte_dimensiones.style.marginTop = "40px"
-    // reporte_dimensiones.style.background = "green"
-
-    reporte_graficas.style.marginTop = "350px"
-    // reporte_graficas.style.background = 'yellow'
-
-    barra_principal.style.display = "none";
-    barra_graficas.style.display = "none";
-    grafica_radar_temas.style.display = "block";
-    grafica_bar_horizontal_temas.style.display = "none";
-    graficas_temas.style.display = "block";
-    graficas_dimensiones.style.display = "block";
-    selecionador_graficas_dim.style.display = "none";
-    selecionador_graficas_temas.style.display = "none";
-
-    // imagen_temas.style.display = "none"
-    // imagen_temas.forEach(function(imagen) {
-    //     imagen.style.display = "none"
-    //   });
-    const html = document.getElementById('contenido-resultados')
-    console.log(html)
-
-
-    setTimeout(() => {
-        // const html = document.querySelector('.content-tabs');
-
-        console.log("_____________________________")
-        html2pdf()
-            .set({
-                margin: [0, 1],
-                filenama: 'documento.pdf',
-                image: {
-                    type: 'jpeg',
-                    quality: 0.98
-                },
-                html2canvas: {
-                    scale: 2,
-                    letterRedering: true
-                },
-                jsPDF: {
-                    unit: "in",
-                    format: "a2",
-                    orientation: 'portrait' // landscape o portrait
-                }
-            })
-            .from(html)
-            .toPdf().output('datauristring').then(function (pdfAsString) {
-                let data = {
-                    'fileDataURI': pdfAsString,
-                };
-                console.log(data);
-                $.post("../php/main.php", data);
-                console.log(data);
-                // alert("Enviado... ")
-            });
-
+    const promesa = new Promise((resolve, reject) => {
         setTimeout(() => {
+            const html = document.getElementById('generar-pdf')
+            console.log(html);
+            console.log("1. -> Paso");
+            resolve(html)
+        }, 2000)
 
-            // var dowloand = document.querySelector('.content-tabs')
-            reporte_general.style.display = "block"
-            reporte_dimensiones.style.display = "none"
-            reporte_graficas.style.display = "none"
 
-            reporte_dimensiones.style.marginTop = "0px"
-            reporte_dimensiones.style.background = "none"
+    })
 
-            reporte_graficas.style.marginTop = "0px"
-            reporte_graficas.style.background = 'none'
+    promesa
+        .then(res => {
+            const promesa_2 = new Promise((resolve_2, reject) => {
+                html2pdf()
+                    .set({
+                        margin: [0, 1],
+                        filenama: 'documento.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 0.98
+                        },
+                        html2canvas: {
+                            scale: 2,
+                            letterRedering: true
+                        },
+                        jsPDF: {
+                            unit: "in",
+                            format: "a2",
+                            orientation: 'portrait' // landscape o portrait
+                        }
+                    })
+                    .from(res)
+                    .toPdf().output('datauristring').then(function (pdfAsString) {
+                        let data = {
+                            'fileDataURI': pdfAsString,
+                        };
+                        console.log(data);
+                        $.post("../php/main.php", data);
+                        console.log(data);
+                        // alert("Enviado... ")
+                    });
+            })
 
-            barra_principal.style.display = "block";
-            barra_graficas.style.display = "block"
-            grafica_radar_temas.style.display = "none"
-            grafica_bar_horizontal_temas.style.display = "none"
-            graficas_temas.style.display = "block";
-            graficas_dimensiones.style.display = "none";
-            selecionador_graficas_dim.style.display = "block";
-            selecionador_graficas_temas.style.display = "block";
+            promesa_2
+                .then(res_2 => {
+                    console.log(res_2)
+                    console.log("3. -> Paso");
+                    //para mostrar los elemenots 
+                    mostrar_elementos();
+                    // para mostrar el modal 
+                    completado();
+                })
 
-            // imagen_temas.forEach(function(imagen) {
-            //     imagen.style.display = "block"
-            //   });
 
-            informacion.style.background = "#fbfbfb"
-            informacion.style.border = "1px solid #dddddd"
-            informacion.style.padding = "20px"
-            // para mostrar el modal 
-            completado();
-        }, 10000)
-    }, 3000)
-    console.log('datso enciados')
+        })
 }
-
 
 function descargarPDF() {
     // para mostrar el modal cargando 

@@ -162,7 +162,7 @@
     <!--Foter-->
     <div class="foter">
         <div class="copy-right">
-            <span>Copyright © 2021. Todos los derechos reservados.</span>
+            <span>Copyright © 2022. Todos los derechos reservados.</span>
         </div>
 
         <div class="iconos">

@@ -9,8 +9,11 @@
     <link rel="icon" type="image/png" href="../imagenes/logo_3.png" />
     <!--LIbreria iconos-->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
 
     <link rel="stylesheet" href="../css/login_usuarios.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <!--Libreria alerts-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -255,7 +258,7 @@
                     <!-- <span>Bienvenido.</span> -->
                     <span>Iniciar con</span>
                     <div class="google" id="googleLogin">
-                        <div class="fa fa-google"></div>
+                        <div class="fab fa-google"></div>
                     </div>
                     <!-- <div class="facebook" id="googleLoginFacebook">
                         <div class="fa fa-facebook"></div>
@@ -307,6 +310,73 @@
             </div>
         </div>
     </div>
+    </div>
+    <!-- Modal cargndo  -->
+    <div class="modal-carga" id="modal-carga-id">
+        <div class="cotendor-modal" id="cotendor-modal-id">
+            <div class="contenido-modal">
+                <div class="informacion-modal">
+                    <div class="logo-cargando">
+                        <div id="logo-modal-1" class="lds-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <i id="logo-modal-2" class="far fa-check-circle"></i>
+                    </div>
+                    <div class="texto-modal">
+                        <span class="mensage-1">Comprobando...</span>
+                        <span class="mensage-2">Usuario autentificado correctamente.</span>
+                    </div>
+                </div>
+                <div class="botones-modal">
+                    <button id="go_everywhere">Acceptar</button>
+                    <button style="display: none;" id="cloce_modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal cargando FIn -->
+    <!-- Modal aceptacion de Terminos -->
+    <div class="modal-aceptacion-terminos" id="modal-aceptacion-terminos-id">
+        <div class="cotendor-modal" id="cotendor-modal-terminos-id">
+            <div class="contenido-modal">
+                <div class="informacion-modal-terminos">
+                    <div class="titulo">
+                        <span>Términos de aceptación.</span>
+                    </div>
+                    <div class="texto-modal">
+                        <span class="mensage-1">Desea que su información personal se utilice, en otros aspectos, siempre
+                            con la debida ética.</span>
+                    </div>
+                    <div class="radio-button">
+                        <div class="radio">
+                            <input type="radio" id="terminos-aceptacion-SI" name="terminos-aceptacion" value="1"> SI
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="terminos-aceptacion-NO" name="terminos-aceptacion" value="0"> NO
+                        </div>
+                    </div>
+                </div>
+                <div class="botones-modal-acptar-terminos">
+                    <div class="boton">
+                        <button id="registrar_datos_eneustado">Acceptar</button>
+                    </div>
+                    <div class="boton">
+                        <button class="btn-cerrar" onclick="close_modal()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
@@ -365,7 +435,7 @@
     }
 
     //ingresamos el usuario 
-    async function setUsuarioEncuestado_google(usuario, contrasena, nombre, apellido, email) {
+    async function setUsuarioEncuestado_google(usuario, contrasena, nombre, apellido, email, termino_aceptacion, tipo_cuenta) {
         await fetch(`${link_service}consultas/insertarUsuario`, {
             method: 'POST',
             headers: {
@@ -378,13 +448,105 @@
                     nombre: nombre,
                     apellido: apellido,
                     correo: email,
-                    empresa_ID: "2"
+                    empresa_ID: "2",
+                    terminos_aceptacion: termino_aceptacion,
+                    tipo_cuenta: tipo_cuenta
                 }
             })
         })
     }
 
+    // registrar usuario
+    var ultimo_usario_ingresado = '';
+    function registrar_datos_encuestado(codigo_google, nombre_apellido_google, email_google, termino_aceptacion) {
+        mostrar_modal_cargando();
+        // console.log(termino_aceptacion);
+        let tipo_cuenta = 1; //para saber que esta cuenta es una cuencta de google
+        (async function () {
+            // USER DOES NOT EXIST
+            // 1. registramos a el usuario en SPRING BOOT
+            // lo que se esta pasando por parametro -> (usuario, contrasena, nombre, apellido, email)
+            await setUsuarioEncuestado_google(nombre_apellido_google, nombre_apellido_google, nombre_apellido_google, nombre_apellido_google, email_google, termino_aceptacion, tipo_cuenta)
+            // swal("", "Usuario Resgistrado Corectamente!", "success");
+
+            //vamos a crear la empresa
+            // 2. tomamos los datos del utimo usuario registrado y la clave que se le asigno
+
+            await getDatosUsuarios_google().then((data_user) => {
+                // console.log(data_user)
+                //Ordenamos los los Usuario/Encuestados
+                data_user.sort(function (a, b) {
+                    return a.usuario_ID - b.usuario_ID;
+                });
+
+                data_user.forEach(element => {
+                    ultimo_usario_ingresado = element.usuario_ID
+                })
+                console.log("1 => " + ultimo_usario_ingresado)
+                // 3. ingresamos en Firefibase los datos previamente tomados
+                // y usamos el "ID" como indentificador
+
+                const promesa_2 = new Promise((resolve, reject) => {
+                    set(ref(db, "UsersList/" + id_firebase), {
+                        code: ultimo_usario_ingresado,
+                        name: nombre_apellido_google,
+                        last_name: nombre_apellido_google,
+                        email: nombre_apellido_google,
+                        usernama: nombre_apellido_google
+                    })
+                        .then(() => {
+                            console.log("2 => " + 'Usuario registrado ...........')
+                            resolve();
+                        })
+                        .catch((error) => {
+                            console.log("2 => " + "USuario noooooo")
+                            resolve();
+                        })
+                })
+                promesa_2
+                    .then(res_2 => {
+                        // 4 finally, we have to send to the web to register the company
+                        // console.log("3 => " + `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`)
+                        user_usuario_registrado();
+                    })
+
+            })
+        })()
+
+    }
+    const siginte_page = document.querySelector("#go_everywhere");
+    siginte_page.addEventListener("click", (e) => {
+        window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
+
+    })
+    const cerrar_modal = document.querySelector("#cloce_modal");
+    cerrar_modal.addEventListener("click", (e) => {
+        ocultar_modal_cargando();
+    })
+    const buton_aceptar_condiciones = document.querySelector("#registrar_datos_eneustado");
+    buton_aceptar_condiciones.addEventListener("click", (e) => {
+        e.preventDefault();
+        //obtenemos la info del modal
+        let opcion_si = document.getElementById('terminos-aceptacion-SI').checked;
+        let opcion_no = document.getElementById('terminos-aceptacion-NO').checked;
+        if (opcion_si == false && opcion_no == false) {
+            swal("Seleccione una opción!");
+        } else {
+            //cerramos el modal
+            close_modal();
+            if (opcion_si == true) {
+                registrar_datos_encuestado(codigo_google, nombre_apellido_google, email_google, 1);
+            } else if (opcion_no == true) {
+                registrar_datos_encuestado(codigo_google, nombre_apellido_google, email_google, 0);
+            }
+        }
+    })
+
     //________________________ registar con GOOGLE _________________________
+    var nombre_apellido_google;
+    var email_google;
+    var codigo_google;
+    var id_firebase;
     let validar_user = 0;
     function insertDataFire(codigo, nombre_apellido, email) {
         let id_correo = email.replace(/[^a-zA-Z0-9 ]/g, "");
@@ -392,9 +554,9 @@
         let nom_apel = nombre_apellido.split(" ");
         var nombre = nom_apel[0];
         var apellido = nom_apel[1];
-        var usuario = nom_apel[0] + "_" + nom_apel[1]
-        console.log(nom_apel[0])
-        console.log(nom_apel[1])
+        var usuario = nom_apel[0] + "_" + nom_apel[1];
+        // console.log(nom_apel[0])
+        // console.log(nom_apel[1])
         // realizamos la busqueda de acuerdo al nombre
         validar_user = 0; // incia usuario NOOOOO existe
         var data;
@@ -416,55 +578,13 @@
                 // console.log(res)
                 // console.log(validar_user)
                 if (validar_user == 0) { // si el ussuario no existe
-                    (async function () {
-                        // USER DOES NOT EXIST
-                        // 1. registramos a el usuario en SPRING BOOT
-                        // lo que se esta pasando por parametro -> (usuario, contrasena, nombre, apellido, email)
-                        await setUsuarioEncuestado_google(usuario, usuario, nombre, apellido, email)
-                        swal("", "Usuario Resgistrado Corectamente!", "success");
-                        //vamos a crear la empresa
-                        // 2. tomamos los datos del utimo usuario registrado y la clave que se le asigno
-
-                        await getDatosUsuarios_google().then((data_user) => {
-                            // console.log(data_user)
-                            //Ordenamos los los Usuario/Encuestados
-                            data_user.sort(function (a, b) {
-                                return a.usuario_ID - b.usuario_ID;
-                            });
-                            var ultimo_usario_ingresado = '';
-                            data_user.forEach(element => {
-                                ultimo_usario_ingresado = element.usuario_ID
-                            })
-                            console.log("1 => " + ultimo_usario_ingresado)
-                            // 3. ingresamos en Firefibase los datos previamente tomados
-                            // y usamos el "ID" como indentificador
-
-                            const promesa_2 = new Promise((resolve, reject) => {
-                                set(ref(db, "UsersList/" + id_correo), {
-                                    code: ultimo_usario_ingresado,
-                                    name: nombre,
-                                    last_name: apellido,
-                                    email: email,
-                                    usernama: usuario
-                                })
-                                    .then(() => {
-                                        console.log("2 => " + 'Usuario registrado ...........')
-                                        resolve();
-                                    })
-                                    .catch((error) => {
-                                        console.log("2 => " + "USuario noooooo")
-                                        resolve();
-                                    })
-                            })
-                            promesa_2
-                                .then(res_2 => {
-                                    // 4 finally, we have to send to the web to register the company
-                                    // console.log("3 => " + `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`)
-                                    window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
-                                })
-
-                        })
-                    })()
+                    console.log('usuario no existe');
+                    // para gurdar lso datos del correo en variables globales
+                    nombre_apellido_google = nombre_apellido;
+                    email_google = email;
+                    codigo_google = codigo;
+                    id_firebase = id_correo;
+                    mostrar_modal_acptar_terminos();
 
 
                 } else if (validar_user == 1) {
@@ -543,11 +663,14 @@
     const signinForm = document.querySelector("#autentificar_encuestado");
     signinForm.addEventListener("click", (e) => {
         e.preventDefault();
+        // para mostrar el modal cargando 
+        mostrar_modal_cargando();
         var email = document.getElementById("email").value;
         var contrasena = document.getElementById("password").value;
 
         if (email == "" || contrasena == "") {
-            swal("Porfavor ingrese todos los campos.")
+            // swal("Porfavor ingrese todos los campos.")
+            user_complete_campos();
         } else {
             signInWithEmailAndPassword(auth, email, contrasena)
                 .then((userCredential) => {
@@ -562,17 +685,23 @@
                     onValue(starCountRef_2, (snapshot) => {
                         const data = snapshot.val();
                         let usuario_id = data.code; //id del usuario registrado en firebase
-                        swal("", "Se identifo correctamente!", "success");
-                        setTimeout(() => {
-                            window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_id}`;
-                        }, 2000)
+                        // swal("", "Se identifo correctamente!", "success");
+                        // para mostrar el modal 
+
+                        // setTimeout(() => {
+                        user_usuario_autentificado();
+                        // console.log(`${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_id}`)
+                        window.location.href = `${url_global_pagina}evaluacion_principal${extencion}?usuario=${usuario_id}`;
+
+                        // }, 2000)
 
                     })
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    swal("Datos incorrectos, por favor ingrese de nuevo.");
+                    // swal("Datos incorrectos, por favor ingrese de nuevo.");
+                    user_usuario_incorrecto();
                 });
         }
     })
@@ -580,5 +709,8 @@
 
 <script src="../js/urls.js"></script>
 <script src="../js/gestion_usuarios_encuestado.js"></script>
+<!-- para el modela cargando  -->
+<script src="../js/modal.js"></script>
+
 
 </html>

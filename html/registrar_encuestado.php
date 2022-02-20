@@ -15,6 +15,7 @@
 
 
     <link rel="stylesheet" href="../css/resgistrar_encuestado.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <!--Libreria alerts-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -52,6 +53,11 @@
 
         .formulario__input-error-activo {
             display: block;
+        }
+
+        /* para el modal de carga  */
+        .modal-carga {
+            z-index: 1000;
         }
     </style>
 </head>
@@ -371,7 +377,7 @@
                                     placeholder="Ingrese su Nombre">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
-                            <p class="formulario__input-error">Nombre Incorrecto.</p>
+                            <p class="formulario__input-error">Este campo solo puede tener letra.</p>
                         </div>
                         <!--apellido-->
                         <div class="row-apellido" id="grupo_apellido">
@@ -384,7 +390,7 @@
                                     placeholder="Ingrese su Apellido">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
-                            <p class="formulario__input-error">Apelido Incorrecto.</p>
+                            <p class="formulario__input-error">Este campo solo puede tener letra.</p>
                         </div>
                     </div>
                     <!--nombre de usuario-->
@@ -398,7 +404,7 @@
                                 placeholder="Ingrese su Nombre de Usuario">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">Usuario Incorrecto.</p>
+                        <p class="formulario__input-error">Este debe tener mas de 4 y no puede tener caracteres especiales.</p>
                     </div>
                     <!--emaill-->
                     <div class="row-email" id="grupo_correo">
@@ -411,7 +417,7 @@
                                 placeholder="Ingrese su Email">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">Email Incorrecto.</p>
+                        <p class="formulario__input-error">Correo invalido.</p>
                     </div>
                     <!--numero de telefono-->
                     <!--
@@ -453,7 +459,7 @@
                                     placeholder="Ingresar Contraseña">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
-                            <p class="formulario__input-error">Contrasena Incorrecto.</p>
+                            <p class="formulario__input-error">La contraseña debe tener 6 o más caracteres.</p>
                         </div>
                         <!--confirmar contrasena-->
                         <div class="row-contrasena-confir" id="grupo_password2">
@@ -466,12 +472,12 @@
                                     id="contrasena-confir" placeholder="Confirmar Contraseña">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
-                            <p class="formulario__input-error">Mala COmfirmacion Incorrecto.</p>
+                            <p class="formulario__input-error">La contraseña no coincide.</p>
                         </div>
                     </div>
                     <!--Crear usuario-->
                     <div class="button-crear-usuario" id="crearUsuario_Encuestado">
-                        <a class="btn"><i class="fas fa-sign-in-alt"></i>   Crear Usuario</a>
+                        <a class="btn"><i class="fas fa-sign-in-alt"></i> Crear Usuario</a>
                     </div>
                     <!--Divisor-->
 
@@ -479,6 +485,72 @@
             </div>
         </div>
     </div>
+    </div>
+    <!-- Modal cargndo  -->
+    <div class="modal-carga" id="modal-carga-id">
+        <div class="cotendor-modal" id="cotendor-modal-id">
+            <div class="contenido-modal">
+                <div class="informacion-modal">
+                    <div class="logo-cargando">
+                        <div id="logo-modal-1" class="lds-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <i id="logo-modal-2" class="far fa-check-circle"></i>
+                    </div>
+                    <div class="texto-modal">
+                        <span class="mensage-1">Registrando Usuario...</span>
+                        <span class="mensage-2">Preguntas Registradas exitosamente.</span>
+                    </div>
+                </div>
+                <div class="botones-modal">
+                    <button id="go_everywhere">Acceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal cargando FIn -->
+    <!-- Modal aceptacion de Terminos -->
+    <div class="modal-aceptacion-terminos" id="modal-aceptacion-terminos-id">
+        <div class="cotendor-modal" id="cotendor-modal-terminos-id">
+            <div class="contenido-modal">
+                <div class="informacion-modal-terminos">
+                    <div class="titulo">
+                        <span>Términos de aceptación.</span>
+                    </div>
+                    <div class="texto-modal">
+                        <span class="mensage-1">Desea que su información personal se utilice, en otros aspectos, siempre
+                            con la debida ética.</span>
+                    </div>
+                    <div class="radio-button">
+                        <div class="radio">
+                            <input type="radio" id="terminos-aceptacion-SI" name="terminos-aceptacion" value="1"> SI
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="terminos-aceptacion-NO" name="terminos-aceptacion" value="0"> NO
+                        </div>
+                    </div>
+                </div>
+                <div class="botones-modal-acptar-terminos">
+                    <div class="boton">
+                        <button id="registrar_datos_eneustado">Acceptar</button>
+                    </div>
+                    <div class="boton">
+                        <button class="btn-cerrar" onclick="close_modal()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
@@ -533,7 +605,7 @@
     }
 
     // Guardar Info spring boot
-    async function setUsuarioEncuestado_mail(usuario, contrasena, nombre, apellido, email) {
+    async function setUsuarioEncuestado_mail(usuario, contrasena, nombre, apellido, email, termino_aceptacion, tipo_cuenta) {
         await fetch(`${link_service}consultas/insertarUsuario`, {
             method: 'POST',
             headers: {
@@ -546,7 +618,9 @@
                     nombre: nombre,
                     apellido: apellido,
                     correo: email,
-                    empresa_ID: "2"
+                    empresa_ID: "2",
+                    terminos_aceptacion: termino_aceptacion,
+                    tipo_cuenta: tipo_cuenta
                 }
             })
         })
@@ -594,9 +668,75 @@
 
     }
 
+    // ingresar datos usuario encuestado
+    var ultimo_usario_ingresado = '';
+    function registrar_datos_encuestado(termino_aceptacion) {
+        mostrar_modal_cargando();
+        var nombre = document.getElementById("nombre").value;
+        let apellido = document.getElementById("apellido").value;
+        let usuario = document.getElementById("nombre-usuario").value;
+        let email = document.getElementById("email").value;
+        let contrasena = document.getElementById("contrasena-id").value;
+        let contrasenaConfir = document.getElementById("contrasena-confir").value;
+        //Ingresamos el usuario
+        (async function () {
+            let tipo_cuenta = 0; //para saber que esta cuenta es un cuenta por correo y contrasena
+            await setUsuarioEncuestado_mail(usuario, contrasena, nombre, apellido, email, termino_aceptacion, tipo_cuenta)
+            // swal("", "Usuario Resgistrado Corectamente!", "success");
+            // user_usuario_registrado();
+            //vamos a crear la empresa
+            setTimeout(() => {
+                user_usuario_registrado();
+                (async function () {
+                    const datos_usuario = await getDatosUsuarios();
+                    //Ordenamos los los Usuario/Encuestados
+                    datos_usuario.sort(function (a, b) {
+                        return a.usuario_ID - b.usuario_ID;
+                    });
+                    datos_usuario.forEach(element => {
+                        ultimo_usario_ingresado = element.usuario_ID
+                    })
+                    // save the info of user in Realtime Database
+                    await set_real_time_firebase(ultimo_usario_ingresado, usuario, contrasena, nombre, apellido, email);
+                    //registramos lso datos en FIREBASE con el ID registrado
+                    await set_firebase(email, contrasena);
+                    // console.log(`${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`)
+
+                })()
+            }, 3000)
+
+        })()
+    }
+
+    const siginte_page = document.querySelector("#go_everywhere");
+    siginte_page.addEventListener("click", (e) => {
+        window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
+    })
+
     //Registrar Encuestado
+    const buton_aceptar_condiciones = document.querySelector("#registrar_datos_eneustado");
+    buton_aceptar_condiciones.addEventListener("click", (e) => {
+        e.preventDefault();
+        //obtenemos la info del modal
+        let opcion_si = document.getElementById('terminos-aceptacion-SI').checked;
+        let opcion_no = document.getElementById('terminos-aceptacion-NO').checked;
+        if (opcion_si == false && opcion_no == false) {
+            swal("Seleccione una opción!");
+        } else {
+            //cerramos el modal
+            close_modal();
+            if (opcion_si == true) {
+                registrar_datos_encuestado(1);
+            } else if (opcion_no == true) {
+                registrar_datos_encuestado(0);
+            }
+        }
+    })
+    //Registrar Encuestado CONTINUACION
     const registrar_encuestado = document.querySelector("#crearUsuario_Encuestado");
     registrar_encuestado.addEventListener("click", (e) => {
+        // para mostrar el modal cargando 
+        mostrar_modal_cargando();
         e.preventDefault();
         var nombre = document.getElementById("nombre").value;
         let apellido = document.getElementById("apellido").value;
@@ -613,45 +753,27 @@
 
         if (nombre == "" || apellido == "" || usuario == "" || email == ""
             || contrasena == "" || contrasenaConfir == "") {
-            swal("Porfavor ingrese todos los datos.")
+            // swal("Porfavor ingrese todos los datos.")
+            user_complete_campos();
         }
         else {
             if (contrasena != contrasenaConfir) {
-                swal("La contrasena no conicide!")
+                // swal("La contrasena no conicide!")
+                user_usuario_paswords_same();
             }
             else {
                 if (validar_email != 0) {
                     if (val_contrasena == 1) {
-                        //Ingresamos el usuario
-                        (async function () {
-                            await setUsuarioEncuestado_mail(usuario, contrasena, nombre, apellido, email)
-                            swal("", "Usuario Resgistrado Corectamente!", "success");
-                            //vamos a crear la empresa
-                            setTimeout(() => {
-                                (async function () {
-                                    const datos_usuario = await getDatosUsuarios();
-                                    //Ordenamos los los Usuario/Encuestados
-                                    datos_usuario.sort(function (a, b) {
-                                        return a.usuario_ID - b.usuario_ID;
-                                    });
-                                    var ultimo_usario_ingresado = '';
-                                    datos_usuario.forEach(element => {
-                                        ultimo_usario_ingresado = element.usuario_ID
-                                    })
-                                    // save the info of user in Realtime Database
-                                    await set_real_time_firebase(ultimo_usario_ingresado, usuario, contrasena, nombre, apellido, email);
-                                    //registramos lso datos en FIREBASE con el ID registrado
-                                    await set_firebase(email, contrasena);
-                                    window.location.href = `${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`
-                                })()
-                            }, 2000)
+                        ocultar_modal_cargando();
+                        mostrar_modal_acptar_terminos();
 
-                        })()
                     } else {
-                        swal("La contrasena debe tener al menos 6 caracteres!")
+                        // swal("La contrasena debe tener al menos 6 caracteres!")
+                        user_usuario_paswords_invalido();
                     }
                 } else {
-                    swal("Correo Invalido!")
+                    // swal("Correo Invalido!")
+                    user_usuario_mail_invalido();
                 }
             }
         }
@@ -671,5 +793,8 @@
 <script src="../js/urls.js"></script>
 <script src="../js/gestion_usuarios_encuestado.js"></script>
 <script src="../js/validadciones.js"></script>
+<!-- para el modela cargando  -->
+<script src="../js/modal.js"></script>
+
 
 </html>

@@ -3,9 +3,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
 .cuerpo{
-    background: #f1f5f9;
+    background: #fff;
 }
 #check{
     display: none;
@@ -24,11 +23,7 @@
     align-items: center;
     justify-content: space-between;
 }
-/*administradro INICIO*/
-.navegador{
-    width: 100%;
-}
-/*administradro INICIO*/
+
 .nav .logo {
     margin-left: 20px;
     font-weight: bold;
@@ -153,7 +148,6 @@
 }
 /*___________________slider_________________________*/
 .sidebar{
-    background-color: #270e8a;
     background-color: rgb(71, 71, 241);
     color: #fff;
     width: 5%;
@@ -172,6 +166,7 @@
     color: #fff;
 
 }
+
 /*_________IMG Encabezado INICIO________________*/
 .sidebar .slider-encabesado{
     border-bottom: 1px solid #fff;
@@ -252,18 +247,6 @@
     transition: 0.2s;
     opacity: 0;
 }
-/*
-.slider-opcion .texto-emergente::before{
-    background: #4b2dd1;
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 6%;
-    top: 26%;
-    transform: translateX(-50%) rotate(45deg);
-}*/
-
 .slider-opcion:hover .texto-emergente{
     opacity: 1;
     visibility: visible;
@@ -273,18 +256,14 @@
 
 
 .content{
+    /* background: #fff;  */
     width: 95%;
     position: relative;
     float: right;
-    margin-top: 20px;
     margin-left: 15%;
     transition: 0.5s;
 }
-/*Administrador INICIO*/
-.content-administrador{
-    width: 100%;
-}
-/*Administrador FIN*/
+
 
 #check:checked ~ .sidebar{
     width: 15%;
@@ -300,115 +279,157 @@
     
 }
 
-
 #check:checked ~ .sidebar a span{  
     display: inline;
     margin-left: 10px;
     position: absolute;
 }
 
-/*______________CAR INICIO_______*/
-.contenido{
-    width: 70%;
-    margin: 1rem auto;
-    /*border: 1px solid #dddddd;*/
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 0 4px rgba(153, 150, 150, 0.25);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* ____________________________________ */
 
-.contenido .titulo{
+.contendor-info{
+    min-height: 70vh;
     width: 100%;
-    padding: 14px 0px;
-    border-bottom: 1px solid #ccc;
-}
-.contenido .titulo span{
-    margin: 20px;
-}
-
-.contenido .info-usuario{
-    width: 90%;
-    margin: 30px 0px;
+    background-size: cover;
+    background-image: url(../imagenes/contactanos.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
-.empresa-datos{
+
+
+.caja-texto{
+    width: 60%;
+    padding: 10px 0px;
+    color: #fff;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+/* para la segunda caja de texto  */
+
+.caja-texto h1{
+    font-size: 62px;
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+.caja-texto p{
+    margin: 10px 0 40px;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: black 0.1em 0.1em 0.1em;
+}
+
+
+/* para contacto  */
+.contacto{
+    width: 100%;
+    /* background: #ccc; */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-}
-
-.empresa-datos .datos{
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-}
-
-input{
-    padding: 7px;
-    border-radius: 10px;
-    outline: none;  
-    border: 1px solid #c5c2c2;
+    justify-content: center;
     
 }
-input[type=text]{/*cambiar el color del text de los inpus luego de dar escribir*/
-    color: #000;
-}
-
-input:focus{
-    border: 2px solid rgb(71, 71, 241);;
-}
-
-#sector-anterior, #ciudad-anterior, #inicio-operacion{
-    padding: 3px;
-    font-size: 13px;
-    margin-bottom: 5px;
-} 
-
-/* selector */
-#selector{
-    outline: none;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #c5c2c2;
-    width: 100%;
-}
-
-#selector:focus{
-    border: 2px solid rgb(71, 71, 241);;
-}
-.contenedor-botones{/*para los botoes internos de INDICADORES tambien es*/
-    width: 90%;
-    display: flex;
-    justify-content: space-around;
-    margin: 5px auto;
-}
-
-.boton{
-    cursor: pointer;
-    background: rgb(71, 71, 241);
-    height: 30px;
-    width: 100px;
-    color: #fff;
-    margin: 5px;
-    display: flex;
-    justify-content: center;
+.contacto-info{
+    padding: 40px 20px;
+    padding-bottom: 20px;
+    /* background: #5b35f1; */
+    width: 70%;
+    /* display: flex;
     align-items: center;
+    justify-content: space-between; */
+    margin: 40px;
     border-radius: 15px;
+    /* border: 1px solid #ccc; */
+    /* background: #f1f5f9; */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
-.boton a{
+.contendor-datos{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: #ccc; */
+}
+
+.botones{
+    /* background: #5b35f1; */
+    width: 100%;
+    text-align: center;
+}
+
+.botones .boton-1{
+    outline: none;
+    border: 0px;
+    padding: 5px 15px;
+    border-radius: 5px;
     color: #fff;
-    text-decoration: none;
+    background: #5b35f1;
+    cursor: pointer;
 }
 
-.boton:hover{
-    background: rgb(118, 118, 241);
+.botones .boton-1:hover{
+    background: rgb(98, 98, 236);
 }
-/*______________CAR FIN_______*/
+.caja-contacto{
+    /* background: #119c85; */
+    width: 49%;
+    padding: 0px 10px;    
+}
+
+.caja-contacto .datos label{
+    margin-bottom: 10px;
+    color: rgb(68, 67, 67);
+    background: #fff;
+    
+}
+
+.caja-contacto .datos .title{
+    font-weight: bold;
+    width: 160px;
+}
+
+.caja-contacto .datos .informacion{
+    width: 100px;
+}
+
+.informacion-contacto{
+    /* background: #ac9619; */
+    height: 400px;
+    padding: 20px 0px;
+    border-right: 1px solid #ccc;
+}
+
+.datos-usuario{
+    /* background: #fff; */
+    margin: 10px 0px;
+}
+.datos-usuario input{
+    /* background: #ac9619; */
+    width: 100%;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.datos-usuario input:focus{
+    border: 2px solid rgb(71, 71, 241);
+}
+#mensaje:focus{
+    border: 2px solid rgb(71, 71, 241);
+}
+
+.datos-usuario textarea{
+    /* background: #ac9619; */
+    width: 100%;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
 
 
 /*________ scroll bar INICIO __________*/
@@ -429,3 +450,13 @@ input:focus{
     border-radius: 10px;
   }
  /*________ scroll bar FIN __________*/
+
+ /* footer */
+ .pie-pagina{
+     /* background: #3240da; */
+     padding: 20px 0px;
+     text-align: center;
+     width: 100%;
+ }
+
+

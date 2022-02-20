@@ -15,6 +15,9 @@ let out_info_user = '';
 //para guardar el id del enscuetado y de la empresa
 var encuestado_id;
 var empresa_id;
+var contrasena_usuario;
+var tipo_cuenta_usuario;
+var termino_aceptacion_usuario;
 //___________________________
 //obtenemos la info del Usuario
 async function getDataUsuario() {
@@ -43,6 +46,7 @@ async function getDataEmpresa() {
                             </div>
                                 `;
     info_user.innerHTML = out_info_user;
+    console.log(datos_usuario)
     //-------------------------
     document.getElementById('nombre').value = datos_usuario.encuestado.nombre;
     document.getElementById('apellido').value = datos_usuario.encuestado.apellido;
@@ -53,13 +57,22 @@ async function getDataEmpresa() {
 
     encuestado_id = datos_usuario.encuestado.encuestado_ID;
     empresa_id = datos_usuario.encuestado.empresa.empresa_ID;
-
-    //Carga,os la info de la empresa
-    // const datos_empresa = await getDataEmpresa();
-    // document.getElementById('nombre-empresa').value = datos_empresa.nombre;
-    // document.getElementById('secto-opera').value = datos_empresa.sector_tipo;
-    // document.getElementById('numero-empleados').value = datos_empresa.numero_empleados;
-    // document.getElementById('ruc-empresa').value = datos_empresa.ruc_empresa;
+    contrasena_usuario = datos_usuario.contrasena;
+    //guardamos el termino de aceptacion y el tipo de correo con el que el usuario inicio seccion 
+    termino_aceptacion_usuario = datos_usuario.encuestado.terminos_aceptacion;
+    tipo_cuenta_usuario = datos_usuario.encuestado.tipo_cuenta;
+    // comprbamos que tipo de usuario es
+    var tipo_usuario = datos_usuario.encuestado.tipo_cuenta;
+    if (tipo_usuario == 1) { // si el usuario se registro por google ocultamos elmentos
+        document.getElementById("correo-actualizar").style.display = "none";
+        document.getElementById("apellido-actulizar").style.display = "none";
+        document.querySelector(".contrasenas").style.display = "none";
+        document.getElementById("boton-actualizar").style.display = "none";
+        document.getElementById('nombre').disabled = true;
+        document.getElementById('email').disabled = true;
+        document.querySelector(".contenido").style.width = "30%";
+        document.querySelector('.contrasenas-anterior').style.display = 'none';
+    }
 
 })()
 //__________________________
@@ -72,7 +85,7 @@ async function putDatosUsuario() {
         },
         body: JSON.stringify({
             usuario: document.getElementById('usuario').value,
-            contrasena: document.getElementById('contrasena').value,
+            contrasena: contrasena_usuario,
             encuestado: {
                 nombre: document.getElementById('nombre').value,
                 apellido: document.getElementById('apellido').value,
@@ -80,7 +93,9 @@ async function putDatosUsuario() {
                 encuestado_ID: encuestado_id,
                 empresa: {
                     empresa_ID: empresa_id
-                }
+                },
+                terminos_aceptacion: termino_aceptacion_usuario,
+                tipo_cuenta: tipo_cuenta_usuario
             },
             administrador_ID: null,
         })
@@ -92,36 +107,25 @@ function actualizar_usaurio() {
     var confirmar_contrasena = document.getElementById('confirmar-contrasena').value;
     if (contrasena == confirmar_contrasena) {
         (async function () {
+            contrasena_usuario = contrasena; // caambiamos la nueva contrasena
             await putDatosUsuario();
+            swal("Datos actualizados correctamente.")
         })()
-        swal("Datos actualizados correctamente.")
     } else {
         swal("Las contraseñas no coinciden.")
     }
 
 
 }
-//para actualizar los datos de la EMPRESAa
-async function putDatosEmpresa() {
-    await fetch(`${link_service}consultas/actualizarEmpresa/${empresa_id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            nombre: document.getElementById('nombre-empresa').value,
-            sector_tipo: document.getElementById('secto-opera').value,
-            numero_empleados: document.getElementById('numero-empleados').value,
-            ruc_empresa: document.getElementById('ruc-empresa').value
-        })
-    })
-}
 
-function actualizar_empresa() {
-    (async function (){
-        await putDatosEmpresa()
-    })()
-    swal("Datos de la Empresa actualizados correctamente.")
+function comprobar_contrasena() {
+    var contrasena_anterior = document.getElementById('contrasena-previa').value;
+    if(contrasena_anterior == contrasena_usuario){
+        document.querySelector('.contrasenas-anterior').style.display = 'none';
+        document.querySelector('.contrasenas').style.display = 'flex'; 
+    }else{
+        swal('La contrasena no coincide!')
+    }
 }
 
 function ir_evaluacion() {
@@ -143,7 +147,11 @@ function configuracion_empresa() {
     window.location.href = `${url_global_pagina}configuracion_empresa${extencion}?usuario=${usuario_ID}`;
 }
 
-function ir_about(){
+function ir_contactanos() {
+    window.location.href = `${url_global_pagina}contacto${extencion}?usuario=${usuario_ID}`;
+}
+
+function ir_about() {
     window.location.href = `${url_global_pagina}about${extencion}?usuario=${usuario_ID}`;
 }
 

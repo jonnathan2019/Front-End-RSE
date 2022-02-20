@@ -15,6 +15,19 @@ let out_info_user = '';
 //para guardar el id del enscuetado y de la empresa
 var encuestado_id;
 var empresa_id;
+var terminos_aceptacion_usuario;
+function crear_anos() {
+    const inicio_operaciones = document.querySelector('.ano-inicio');
+    let anos = '';
+    anos = '<option value="" id="norma">Selecionar nuevo año</option>'
+    for (i = 1980; i <= 2022; i++) {
+        anos += `
+        <option value="${i}" id="norma">${i}</option>
+        `;
+    }
+    inicio_operaciones.innerHTML = anos;
+}
+crear_anos();
 //___________________________
 //obtenemos la info del Usuario
 async function getDataUsuario() {
@@ -43,31 +56,25 @@ async function getDataEmpresa() {
                             </div>
                                 `;
     info_user.innerHTML = out_info_user;
-    //-------------------------
-    // document.getElementById('nombre').value = datos_usuario.encuestado.nombre;
-    // document.getElementById('apellido').value = datos_usuario.encuestado.apellido;
-    // document.getElementById('usuario').value = datos_usuario.usuario;
-    // document.getElementById('email').value = datos_usuario.encuestado.correo;
-    // document.getElementById('contrasena').value = datos_usuario.contrasena;
-    // document.getElementById('confirmar-contrasena').value = datos_usuario.contrasena;
-
+    //guardamos la info los IDs del encuestado y de la empresa
     encuestado_id = datos_usuario.encuestado.encuestado_ID;
     empresa_id = datos_usuario.encuestado.empresa.empresa_ID;
-
+    
     //Cargamos la info de la empresa
     const datos_empresa = await getDataEmpresa();
+    
     document.getElementById("nombre-empresa").value = datos_empresa.nombre;
     document.getElementById("pagina-web").value = datos_empresa.sitio_web;
     document.getElementById("ciudad-anterior").value = datos_empresa.ciudad_operacion;
     document.getElementById("direccion-operacion").value = datos_empresa.direccion_operacion;
     document.getElementById("sector-anterior").value = datos_empresa.sector_tipo;
     document.getElementById("numero-sedes").value = datos_empresa.numero_sedes;
-    document.getElementById("numero-empleados-empresa").value =datos_empresa.numero_empleados;
-    // document.getElementById("inicio-operacion").value = datos_empresa.fecha_inicio_operciones;
+    document.getElementById("numero-empleados-empresa").value = datos_empresa.numero_empleados;
+    document.getElementById("inicio-operacion").value = datos_empresa.fecha_inicio_operciones;
     console.log(datos_empresa.fecha_inicio_operciones)
     document.getElementById("estimado-ingresos").value = datos_empresa.estimado_ingresos;
     document.getElementById("ruc-empresa").value = datos_empresa.ruc_empresa;
-
+    terminos_aceptacion_usuario = datos_empresa.terminos_aceptacion;
 })()
 
 function cargar_estar_ciudad_operacion() {
@@ -83,45 +90,15 @@ function cargar_sector() {
     //console.log(value)
     document.getElementById('sector-anterior').value = ciudad_operacion;
 }
+
+function cargar_anio_inicio() {
+    var combo_ciudad_operacion = document.querySelector(".ano-inicio");
+    var ciudad_operacion = combo_ciudad_operacion.options[combo_ciudad_operacion.selectedIndex].value;
+    //console.log(value)
+    document.getElementById('inicio-operacion').value = ciudad_operacion;
+}
 //__________________________
-//para actualizar los datos del Usuario
-async function putDatosUsuario() {
-    await fetch(`${link_service}consultas/actualizarUsuario/${usuario_ID}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            usuario: document.getElementById('usuario').value,
-            contrasena: document.getElementById('contrasena').value,
-            encuestado: {
-                nombre: document.getElementById('nombre').value,
-                apellido: document.getElementById('apellido').value,
-                correo: document.getElementById('email').value,
-                encuestado_ID: encuestado_id,
-                empresa: {
-                    empresa_ID: empresa_id
-                }
-            },
-            administrador_ID: null,
-        })
-    })
 
-}
-function actualizar_usaurio() {
-    var contrasena = document.getElementById('contrasena').value;
-    var confirmar_contrasena = document.getElementById('confirmar-contrasena').value;
-    if (contrasena == confirmar_contrasena) {
-        (async function () {
-            await putDatosUsuario();
-        })()
-        swal("Datos actualizados correctamente.")
-    } else {
-        swal("Las contraseñas no coinciden.")
-    }
-
-
-}
 //para actualizar los datos de la EMPRESAa
 async function putDatosEmpresa() {
     await fetch(`${link_service}consultas/actualizarEmpresa/${empresa_id}`, {
@@ -137,18 +114,22 @@ async function putDatosEmpresa() {
             sector_tipo: document.getElementById("sector-anterior").value,
             numero_sedes: document.getElementById("numero-sedes").value,
             numero_empleados: document.getElementById("numero-empleados-empresa").value,
-            fecha_inicio_operciones: '2010-10-10',
+            fecha_inicio_operciones: document.getElementById("inicio-operacion").value,
             estimado_ingresos: document.getElementById("estimado-ingresos").value,
-            ruc_empresa: document.getElementById("ruc-empresa").value
+            ruc_empresa: document.getElementById("ruc-empresa").value,
+            terminos_aceptacion: terminos_aceptacion_usuario
         })
     })
 }
 
 function actualizar_empresa() {
-    (async function (){
+    (async function () {
+        // para mostrar el modal cargando 
+        mostrar_modal_cargando();
         await putDatosEmpresa()
+        user_actualizando_usuario();
     })()
-    swal("Datos de la Empresa actualizados correctamente.")
+    // swal("Datos de la Empresa actualizados correctamente.")
 }
 
 function ir_evaluacion() {
@@ -170,7 +151,11 @@ function configuracion_empresa() {
     window.location.href = `${url_global_pagina}configuracion_empresa${extencion}?usuario=${usuario_ID}`;
 }
 
-function ir_about(){
+function ir_contactanos() {
+    window.location.href = `${url_global_pagina}contacto${extencion}?usuario=${usuario_ID}`;
+}
+
+function ir_about() {
     window.location.href = `${url_global_pagina}about${extencion}?usuario=${usuario_ID}`;
 }
 

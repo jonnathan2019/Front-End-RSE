@@ -333,12 +333,35 @@
 .info-tema{
     width: 100%;
     height: 60%;
+    /* background: #ccc; */
 }
 
 .car-title, .res-concept{
     width: 95%;
     margin: 1rem auto;
 }
+
+.estandar-utilizado{
+    width: 95%;
+    margin: 1rem auto;
+}
+
+.ir-referencia{
+    text-decoration: none;
+    width: 40%;
+    text-align: center;
+    padding: 3px 8px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgb(88, 86, 86);
+}
+
+.estandar-utilizado .ir-referencia:hover{
+    color: #5b35f1;
+}
+
+
 .car-title{
     font-weight: bold;
     height: 20%;

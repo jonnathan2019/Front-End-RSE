@@ -25,7 +25,7 @@
 
 </head>
 
-<body class="cuerpo hidden">
+<body class="cuerpo">
     <!-- <div class="loader-centrado" id="onload">
         <div class="lds-roller">
             <div></div>
@@ -67,6 +67,10 @@
                     </li>
                     <li onclick="configuracion_empresa();"><i class="fas fa-building"></i></i>
                         <a>Mi Empresa</a>
+                    </li>
+                    <!-- <i class="fa-regular fa-comment-question"></i> -->
+                    <li onclick="ir_contactanos();"><i class="fas fa-question"></i></i>
+                        <a>Contactanos</a>
                     </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
                     <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a>
@@ -159,7 +163,7 @@
             <div class="contendor-info_2">
                 <div class="caja-texto">
                     <h1>Consulte su nivel de Integración.</h1>
-                    <p>Revise su informe sobre el nivel de integración de practicas de RSE y
+                    <p>Revise su reporte sobre el nivel de integración de practicas de RSE y
                         vea como se comporta su empresa frente a conceptos de RSE.
                     </p>
                 </div>
@@ -170,11 +174,141 @@
                 <span>Evaluación.</span>
             </div>
             <div class="about-reporte about-repoter-info">
-                <span>Informe.</span>
+                <span>Reporte.</span>
             </div>
         </div>
         <div class="contenido-about" style="display: block;">
-            <div class="contenido-abput-evaluacion">
+            <div class="whta-evaluation">
+                <!-- titulo -->
+                <div class="que-evaluamos">
+                    <div class="titulo-cabecera">
+                        <span>Que evaluamos.</span>
+                    </div>
+                </div>
+                <!-- dimensiones -->
+                <div class="info-dimentions">
+                    <div class="titulo">
+                        <span>Dimensiones.</span>
+                        <!-- <p>se evalua lo que se va jhacer y no se que ma poner </p> -->
+                    </div>
+                    <!-- cards-dimensiones -->
+                    <div class="dimensiones-info">
+                        <div class="cards-dimensiones car-social">
+                            <div class="card-contenido">
+                                <h2 class="card-titulo">Social</h2>
+                                <p class="card-cuerpo">
+                                    La Responsabilidad Social incluye temas relacionados con el personal
+                                    trabajador de la organización, con la mejora de la calidad de vida de la ciudadanía,
+                                    creando
+                                    oportunidades para los colectivos con especiales dificultades.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cards-dimensiones card-ambiental">
+                            <div class="card-contenido">
+                                <h2 class="card-titulo">Ambiental</h2>
+                                <p class="card-cuerpo">
+                                    La Responsabilidad Social Ambiental se puede entender como el conjunto de mecanismos
+                                    aplicados por las empresas,
+                                    para minimizar su impacto al medio ambiente, contribuyendo así a mejorar
+                                    la calidad de vida de la empresa y de sus alrededores.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- temas de RSE -->
+                <div class="info-temas">
+                    <div class="titulo">
+                        <span>Temas.</span>
+                        <!-- <p>
+                            Se evaluan aspectos relacionados con personas que no se que mas decir
+                        </p> -->
+                    </div>
+                    <div class="container-temas">
+                        <div class="a-box">
+                            <div class="img-container">
+                                <div class="img-inner">
+                                    <div class="inner-skew">
+                                        <!-- let nom_imagenes = ['tema_practicas_trabajo_2.jpg', 'tema_derechos_humanos_2.png', 'tema_comunidad_desarrollo_2.jpg', 'tema_cuestiones_relacionadas_consumidor_2.jpg', 'medio_ambiente.jpg']; -->
+
+                                        <img src="../imagenes/tema_derechos_humanos_2.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-container">
+                                <h3>Derechos Humanos</h3>
+                                <div>
+                                    Dimensión social.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="a-box">
+                            <div class="img-container">
+                                <div class="img-inner">
+                                    <div class="inner-skew">
+                                        <img src="../imagenes/tema_cuestiones_relacionadas_consumidor_2.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-container">
+                                <h3>Cuestiones Relativas al Consumidor</h3>
+                                <div>
+                                    Dimensión social.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="a-box">
+                            <div class="img-container">
+                                <div class="img-inner">
+                                    <div class="inner-skew">
+                                        <img src="../imagenes/tema_practicas_trabajo_2.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-container">
+                                <h3>Prácticas de Trabajo</h3>
+                                <div>
+                                    Dimensión social.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="a-box">
+                            <div class="img-container">
+                                <div class="img-inner">
+                                    <div class="inner-skew">
+                                        <img src="../imagenes/tema_cuestiones_relacionadas_consumidor_2.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-container">
+                                <h3>Relaciones con la Comunidad y su Participación en su Desarrollo</h3>
+                                <div>
+                                    Dimensión social.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="a-box">
+                            <div class="img-container">
+                                <div class="img-inner">
+                                    <div class="inner-skew">
+                                        <img src="../imagenes/medio_ambiente.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-container">
+                                <h3>Medio Ambiente</h3>
+                                <div>
+                                    Dimensión Ambiental.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- acerca del NIVEL DE INTEGRACION -->
+            <!-- <div class="contenido-abput-evaluacion">
                 <div class="about-evaluacion-info">
                     <div class="titulo">
                         Obtenga un nivel de integración de practicas de RSE.
@@ -195,109 +329,111 @@
                 <div class="about-evaluacion-img">
                     <img src="../imagenes/nivel_integracion.png" alt="">
                 </div>
-            </div>
+            </div> -->
 
             <!-- Ejemplo de Preguntas -->
             <div class="contenido-ejemplo-preguntas">
                 <div class="titulo">
-                    Ejemplo de preguntas.
+                    Sub-Temas y Preguntas.
                 </div>
                 <div class="info">
-                    Todas las preguntas están clasificadas por temas,
-                    y tendrán tres tipos de opciones, si, no y
-                    parcialmente, siendo ‘si’ la opción más optima,
-                    ‘parcialmente’ la opción media y ‘no’
-                    la opción mas baja o menos optima.
+                    Todas las preguntas se encuentran calcificadas por
+                    temas que a la vez están clasificadas por subtemas.
+                    Estas preguntas tendrán 4 tipo de opciones “Si”,
+                    “Parcial”, “No” y “No Aplica”, siendo la “Si” la
+                    opción más optima y “No” la opción menos optima,
+                    mientras que “No Aplica” se refiere a preguntas
+                    que no se tomarán en cuenta al obtener los resultados finales.
                 </div>
-                <div class="ejemplo-preguntas">
-                    <div class="tema-1">
-                        <div class="tema-1-ejemplo">
-                            <img class="imagenes-temas" src="../imagenes/Derechos_Humanos.jpg" alt="">
-                        </div>
-                        <div class="titulo-imagen">
-                            Derechos Humanos
-                        </div>
-                        <div class="ver-preguntas active" id="boton-ver-pregunta">
-                            Ver preguntas
-                        </div>
-                    </div>
-                    <div class="tema-1">
-                        <div class="tema-1-ejemplo">
-                            <img class="imagenes-temas" src="../imagenes/cuestiones_relacionadas_consumidor.jpg" alt="">
-                        </div>
-                        <div class="titulo-imagen">
-                            Cuestiones Relativas al Consumidor
-                        </div>
-                        <div class="ver-preguntas" id="boton-ver-pregunta">
-                            Ver preguntas
-                        </div>
-                    </div>
-                    <div class="tema-1">
-                        <div class="tema-1-ejemplo">
-                            <img class="imagenes-temas" src="../imagenes/practicas_trabajo.png" alt="">
-                        </div>
-                        <div class="titulo-imagen">
-                            Prácticas de Trabajo
-                        </div>
-                        <div class="ver-preguntas" id="boton-ver-pregunta">
-                            Ver preguntas
-                        </div>
-                    </div>
-                    <div class="tema-1">
-                        <div class="tema-1-ejemplo">
-                            <img class="imagenes-temas" src="../imagenes/participacion_comunidad_desarrollo.jpg" alt="">
-                        </div>
-                        <div class="titulo-imagen">
-                            Relaciones con la Comunidad y su Participación en su Desarrollo
-                        </div>
-                        <div class="ver-preguntas" id="boton-ver-pregunta">
-                            Ver preguntas
-                        </div>
-                    </div>
-                    <div class="tema-1">
-                        <div class="tema-1-ejemplo">
-                            <img class="imagenes-temas" src="../imagenes/medio_ambiente.jpg" alt="">
-                        </div>
-                        <div class="titulo-imagen">
-                            Medio Ambiente
-                        </div>
-                        <div class="ver-preguntas" id="boton-ver-pregunta">
-                            Ver preguntas
-                        </div>
-                    </div>
-                </div>`
-                <div class="ejemplo-preguntas-imagen">
-                    <div class="imagen-preguntas" style="display: block;">
-                        <img src="../imagenes/preguntas-DH.png" alt="">
-                    </div>
-                    <div class="imagen-preguntas" style="display: none;">
-                        <img src="../imagenes/preguntas-CRC.png" alt="">
-                    </div>
-                    <div class="imagen-preguntas" style="display: none;">
-                        <img src="../imagenes/preguntas-PT.png" alt="">
-                    </div>
-                    <div class="imagen-preguntas" style="display: none;">
-                        <img src="../imagenes/preguntas-PCD.png" alt="">
-                    </div>
-                    <div class="imagen-preguntas" style="display: none;">
-                        <img src="../imagenes/preguntas-MA.png" alt="">
-                    </div>
+
+                <div class="conteiner-acordion-vertical">
+                    <input class="input-acordion" type="radio" id="animal" name="wiki" value="part-1" checked>
+                    <input class="input-acordion" type="radio" id="plant" name="wiki" value="part-2">
+                    <input class="input-acordion" type="radio" id="space" name="wiki" value="part-3">
+                    <input class="input-acordion" type="radio" id="river" name="wiki" value="part-4">
+                    <input class="input-acordion" type="radio" id="monatana" name="wiki" value="part-5">
+
+
+                    <ul class="accordion">
+                        <li data-radio="animal">
+                            <label for="animal" class="accordion-title">
+                                <span></span>
+                                <span class="accordion-heading">Derechos Humanos</span>
+                            </label>
+                            <div class="accordion-content">
+                                <div class="imagen-preguntas">
+                                    <img src="../imagenes/preguntas-DH.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li data-radio="plant">
+                            <label for="plant" class="accordion-title">
+                                <span></span>
+                                <span class="accordion-heading">Cuestiones Relativas al Consumidor</span>
+                            </label>
+                            <div class="accordion-content">
+                                <div class="imagen-preguntas">
+                                    <img src="../imagenes/preguntas-CRC.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li data-radio="space">
+                            <label for="space" class="accordion-title">
+                                <span></span>
+                                <span class="accordion-heading">Prácticas de Trabajo</span>
+                            </label>
+                            <div class="accordion-content">
+                                <div class="imagen-preguntas">
+                                    <img src="../imagenes/preguntas-PT.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li data-radio="river">
+                            <label for="river" class="accordion-title">
+                                <span></span>
+                                <span class="accordion-heading">Relaciones con la Comunidad</span>
+                            </label>
+                            <div class="accordion-content">
+                                <div class="imagen-preguntas">
+                                    <img src="../imagenes/preguntas-PCD.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li data-radio="monatana">
+                            <label for="monatana" class="accordion-title">
+                                <span></span>
+                                <span class="accordion-heading">Medio Ambiente</span>
+                            </label>
+                            <div class="accordion-content">
+                                <div class="imagen-preguntas">
+                                    <img src="../imagenes/preguntas-MA.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
                 </div>
+            </div>
+            <!-- foter -->
+            <div class="pie-pagina">
+                <span>Copyright © 2022. Todos los derechos reservados.</span>
             </div>
         </div>
 
         <div class="contenido-about" style="display: none;">
             <div class="contenido-about-reporte">
-                <div class="titulo">
-                    Informe de Integración.
-                </div>
-                <div class="info">
-                    El informe de Integración mostrara un análisis
-                    general de Responsabilidad Social Empresarial,
-                    así como un análisis por cada una de las dimensiones,
-                    temas y subtemas. Este análisis constara en índice que
-                    tiene un rango de 0 a 100 siendo cien el valor mas optimo
-                    y cero el menos optimo.
+                <div class="reporte-integracion">
+                    <div class="titulo">
+                        Reporte de Integración.
+                    </div>
+                    <div class="info">
+                        El reporte de Integración mostrara un análisis
+                        general de Responsabilidad Social Empresarial,
+                        así como un análisis por cada una de las dimensiones,
+                        temas y subtemas. Este análisis constara en índice que
+                        tiene un rango de 0 a 100 siendo cien el valor mas optimo
+                        y cero el menos optimo.
+                    </div>
                 </div>
                 <div class="about-nivel-integracion">
                     <div class="informacion_1">
@@ -320,10 +456,10 @@
                 <div class="about-aspectos-evaluados">
                     <div class="informacion-aspectos-evaluados">
                         <div class="titulo">
-                            Informe de Integración, aspectos evaluados.
+                            Reporte de Integración, aspectos evaluados.
                         </div>
                         <div class="info">
-                            El informe de integración estará conformado
+                            El reporte de integración estará conformado
                             por un análisis de dimensiones, temas y subtemas,
                             que están clasificados de acuerdo a su nivel de
                             integración. Este nivel de interacción tiene tres
@@ -410,8 +546,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- foter -->
+                <div class="pie-pagina">
+                    <span>Copyright © 2022. Todos los derechos reservados.</span>
+                </div>
             </div>
+
         </div>
+
     </div>
 
 </body>

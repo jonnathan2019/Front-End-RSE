@@ -8,6 +8,7 @@
     <title>Registrar Empresa.</title>
     <link rel="icon" type="image/png" href="../imagenes/logo_3.png" />
     <link rel="stylesheet" href="../css/resgitrar_empresa_2.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
 
@@ -22,6 +23,12 @@
 
     <!--Libreria alerts-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        /* para el modal de carga  */
+        .modal-carga {
+            z-index: 1000;
+        }
+    </style>
 
 </head>
 
@@ -70,7 +77,7 @@
                 <button onclick="mostrar_ingresarEmpresa()"><i class="fas fa-plus-square"></i>Ingresar Empresa</button>
             </div> -->
             <div class="button-continuar">
-                <button onclick="continuar_encuesta()"><i class="fas fa-arrow-circle-right"></i>Continuar a
+                <button id="continuar_evaluacion" onclick="continuar_encuesta()"><i class="fas fa-arrow-circle-right"></i>Continuar a
                     Encuesta</button>
             </div>
         </div>
@@ -84,15 +91,18 @@
                     <div class="datos" id="grupo_nombre-empresa">
                         <label for="">Nombre de la Empresa:</label>
                         <div class="grupo_input">
-                            <input type="text" id="nombre-empresa" name="nombre-empresa" class="formulario__input" placeholder="Nombre Empresa">
+                            <input type="text" id="nombre-empresa" name="nombre-empresa" class="formulario__input"
+                                placeholder="Nombre Empresa">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">El nombre no puede tener caracteres especiales.</p>
+                        <p class="formulario__input-error">El nombre de la empresa no debe contener caracteres
+                            especiales.</p>
                     </div>
                     <div class="datos" id="grupo_pagina-web">
                         <label for="">Sito Web:</label>
                         <div class="grupo_input">
-                            <input type="text" id="pagina-web" name="pagina-web" class="formulario__input" placeholder="Pagina Web">
+                            <input type="text" id="pagina-web" name="pagina-web" class="formulario__input"
+                                placeholder="Pagina Web">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
                         <p class="formulario__input-error">La página web es invalida.</p>
@@ -143,10 +153,10 @@
                         </div>
                     </div>
                     <div class="datos" id="grupo_direccion-operacion">
-                        <label for="">Direccion de Operacion:</label>
+                        <label for="">Dirección de su Empresa:</label>
                         <div class="grupo_input">
                             <input type="text" id="direccion-operacion" name="direccion-operacion"
-                                placeholder="Direccion de Operacion" class="formulario__input">
+                                placeholder="Dirección Empresa" class="formulario__input">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
                         <p class="formulario__input-error">La dirección solo puede contener letras y números.</p>
@@ -171,48 +181,62 @@
                         </div>
                     </div>
                     <div class="datos" id="grupo_numero-sedes">
-                        <label for="">Numero de Sedes:</label>
+                        <label for="">Número de Sedes:</label>
                         <div class="grupo_input">
-                            <input type="number" id="numero-sedes" class="formulario__input" name="numero-sedes" min="0" onChange=""
-                                placeholder="Total de Sedes">
+                            <input type="number" id="numero-sedes" class="formulario__input" name="numero-sedes" min="0"
+                                onChange="" placeholder="Total de Sedes">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">Solo Numeros.</p>
+                        <p class="formulario__input-error">Este campo solo debe tener valores numéricos.</p>
                     </div>
                 </div>
 
                 <div class="empresa-datos">
                     <div class="datos" id="grupo_numero-empleados-empresa">
-                        <label for="">Numero de Empleados:</label>
+                        <label for="">Número de Empleados:</label>
                         <div class="grupo_input">
-                            <input type="number" id="numero-empleados-empresa" class="formulario__input" name="numero-empleados-empresa" min="0"
-                                onChange="" placeholder="Numero Empleados">
+                            <input type="number" id="numero-empleados-empresa" class="formulario__input"
+                                name="numero-empleados-empresa" min="0" onChange="" placeholder="Número Empleados">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">Solo Numeros.</p>
+                        <p class="formulario__input-error">Este campo solo debe tener valores numéricos.</p>
                     </div>
                     <div class="datos" id="grupo_ruc-empresa">
                         <label for="">RUC:</label>
                         <div class="grupo_input">
-                            <input type="text" id="ruc-empresa" class="formulario__input" name="ruc-empresa" placeholder="ruc">
+                            <input type="text" id="ruc-empresa" class="formulario__input" name="ruc-empresa"
+                                placeholder="ruc">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">No puede contener caracteres especiales.</p>
+                        <p class="formulario__input-error">Este campo no puede tener valores especiales.</p>
                     </div>
                 </div>
                 <div class="empresa-datos">
                     <div class="datos">
-                        <label for="">Fecha de Inicio de Operaciones:</label>
-                        <input type="date" id="inicio-operacion" placeholder="Inicio de Operaciones">
+                        <label for="">Año Inicio Operaciones:</label>
+                        <!-- <input type="date" id="inicio-operacion" placeholder="Inicio de Operaciones"> -->
+                        <div class="seleccionador">
+                            <!-- <i class="fas fa-caret-down"></i> -->
+                            <select id="selector" id="inicio-operacion" class="ano-inicio" onchange="">
+                                <option value="" id="norma">Selecionar</option>
+                                <option value="Agricultura/Cutivadores" id="norma">Agricultura/Cutivadores</option>
+                                <option value="Fabricacion" id="norma">Fabricacion</option>
+                                <option value="Servicio con impacto ambietal significativo" id="norma">Servicio con
+                                    impacto ambietal significativo</option>
+                                <option value="Servicio leve impacto ambiental" id="norma">Servicio leve impacto
+                                    ambiental</option>
+                                <option value="Otro" id="norma">Otro</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="datos" id="grupo_estimado-ingresos">
-                        <label for="">Estimado Ingresos Anuales:</label>
+                        <label for="">Estimado de Ingresos Anuales.:</label>
                         <div class="grupo_input">
                             <input type="text" id="estimado-ingresos" class="formulario__input" name="estimado-ingresos"
                                 placeholder="Ingresos Anuales">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">Solo Numeros.</p>
+                        <p class="formulario__input-error">Este campo no puede tener valores especiales</p>
                     </div>
                 </div>
                 <!--Botones-->
@@ -220,7 +244,7 @@
                     <!-- <div class="boton" onclick="regresar_ver_info_empresa()">
                         <span>Regresar</span>
                     </div> -->
-                    <div class="boton" onclick="guardar_empresa();">
+                    <div class="boton" onclick="aceptar_terminos();">
                         <span>Guardar</span>
                     </div>
                 </div>
@@ -251,6 +275,71 @@
                 </div>
             </div> -->
         </div>
+        <!-- Modal cargndo  -->
+        <div class="modal-carga" id="modal-carga-id">
+            <div class="cotendor-modal" id="cotendor-modal-id">
+                <div class="contenido-modal">
+                    <div class="informacion-modal">
+                        <div class="logo-cargando">
+                            <div id="logo-modal-1" class="lds-spinner">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <i id="logo-modal-2" class="far fa-check-circle"></i>
+                        </div>
+                        <div class="texto-modal">
+                            <span class="mensage-1">Registrando Empresa...</span>
+                            <span class="mensage-2">Preguntas Registradas exitosamente.</span>
+                        </div>
+                    </div>
+                    <div class="botones-modal">
+                        <button onclick="go_everywhere()">Acceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal cargando FIn -->
+        <!-- Modal aceptacion de Terminos -->
+        <div class="modal-aceptacion-terminos" id="modal-aceptacion-terminos-id">
+            <div class="cotendor-modal" id="cotendor-modal-terminos-id">
+                <div class="contenido-modal">
+                    <div class="informacion-modal-terminos">
+                        <div class="titulo">
+                            <span>Términos de aceptación.</span>
+                        </div>
+                        <div class="texto-modal">
+                            <span class="mensage-1">Desea que información de su empresa y los resultados obtenidos sean utilizados en otras áreas de evaluación. </span>
+                        </div>
+                        <div class="radio-button">
+                            <div class="radio">
+                                <input type="radio" id="terminos-aceptacion-SI" name="terminos-aceptacion" value="1"> SI
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="terminos-aceptacion-NO" name="terminos-aceptacion" value="0"> NO
+                            </div>
+                        </div>
+                    </div>
+                    <div class="botones-modal-acptar-terminos">
+                        <div class="boton-modal-terminos">
+                            <button onclick="regitrarDatos()" id="registrar_datos_eneustado">Acceptar</button>
+                        </div>
+                        <div class="boton-modal-terminos">
+                            <button class="btn-cerrar" onclick="close_modal()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     </div>
@@ -260,5 +349,7 @@
 <script src="../js/urls.js"></script>
 <script src="../js/registrar_empresa_2.js"></script>
 <script src="../js/validadciones.js"></script>
+<!-- para el modela cargando  -->
+<script src="../js/modal.js"></script>
 
 </html>

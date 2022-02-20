@@ -334,23 +334,48 @@
     margin: 30px 0px;
 }
 
-.nombre-usuario, .usuario-email, .contrasenas{
+.nombre-usuario, .usuario-email, .contrasenas, .contrasenas-anterior{
     width: 100%;
     margin: 5px 0px;
     display: flex;
     justify-content: space-between;
 }
 
-.nombre-usuario .datos, .usuario-email .datos, .contrasenas .datos{
+.nombre-usuario .datos, .usuario-email .datos, .contrasenas .datos, .contrasenas-anterior .datos{
     display: flex;
     flex-direction: column;
 }
 
-.nombre-usuario input, .usuario-email input, .contrasenas input{
+.nombre-usuario input, .usuario-email input, .contrasenas input, .contrasenas-anterior input{
     padding: 10px 70px;
     border-radius: 10px;
     outline: none;
     border: 1px solid #ccc;
+}
+
+.contrasenas-anterior{
+    width: 100%;
+    /* background: #5b35f1; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contrasenas-anterior .datos{
+    margin: 5px;
+}
+
+.contrasenas-anterior .btn-comprabar-con{
+    outline: none;
+    background: rgb(71, 71, 241);
+    border: 1px solid #fff;
+    border-radius: 15px;
+    padding: 5px 15px;
+    color: #fff;
+}
+
+.contrasenas-anterior .btn-comprabar-con:hover{
+    background: rgb(118, 118, 241);
 }
 
 .guardar-info{

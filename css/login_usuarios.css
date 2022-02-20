@@ -221,4 +221,82 @@ label{
 .registarse .font-weight-bold{
     font-weight: bold;
 }
-/*_______________________________________________*/
+/*__________________modal aceptacion terminos y condiciones_____________________________*/
+
+.modal-aceptacion-terminos{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    transition: all 500ms ease;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .informacion-modal-terminos{
+    width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 10px 0px;
+      color: rgb(80, 78, 78);
+  }
+  
+  .informacion-modal-terminos .titulo{
+    font-size: 23px;
+    font-weight: bold;
+    color: rgb(80, 78, 78);
+  } 
+  
+  .informacion-modal-terminos .texto-modal{
+    padding: 20px 0px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .informacion-modal-terminos .radio-button{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+  
+  .botones-modal-acptar-terminos{
+  
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+    
+  }
+  
+  .botones-modal-acptar-terminos button{
+    float: right;
+    border: none;
+    outline:none;
+    background: rgb(47, 240, 47);
+    border-radius: 5px;
+    padding: 5px 12px;
+    color: #fff;
+    border: 2px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .botones-modal-acptar-terminos button:hover{
+  background: rgb(110, 247, 110);
+  }
+  
+  .botones-modal-acptar-terminos .btn-cerrar{
+    background: red;
+  }
+  
+  .botones-modal-acptar-terminos .btn-cerrar:hover{
+    background: rgb(240, 72, 72);
+  }
+  
