@@ -241,6 +241,10 @@ input:focus{
     font-size: 18px;
   }
   
+  .terminos_aceptacion_msg{
+    font-size: 14px;
+}
+
   .informacion-modal-terminos .radio-button{
     width: 30%;
     display: flex;

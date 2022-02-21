@@ -175,7 +175,7 @@ function configuracion_empresa() {
 }
 
 function ir_contactanos() {
-    window.location.href = `${url_global_pagina}contacto${extencion}?usuario=${usuario_ID}`;
+    window.location.href = `${url_global_pagina}ayuda${extencion}?usuario=${usuario_ID}`;
 }
 
 function ir_about(){

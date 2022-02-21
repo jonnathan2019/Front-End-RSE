@@ -39,18 +39,19 @@ fetch(`${link_service}consultas/usuarioId/${usuario_ID}`)//recorremos solo una v
     })
 
 
-/* Desplegar imagenes de cada una de las preguntas*/
-var tabs_preguntas = document.querySelectorAll(".ver-preguntas");
-var tab_wraps_preguntas = document.querySelectorAll(".imagen-preguntas");
+/* Tab*/
+// recorremos el objeto para crear los tabs
+var tabs = document.querySelectorAll(".tabs ul li");
+var tab_wraps = document.querySelectorAll(".tab_wrap");
 
-tabs_preguntas.forEach(function (tab, tab_index) {
+tabs.forEach(function (tab, tab_index) {
     tab.addEventListener("click", function () {
-        tabs_preguntas.forEach(function (tab) {
+        tabs.forEach(function (tab) {
             tab.classList.remove("active");
         })
         tab.classList.add("active");
 
-        tab_wraps_preguntas.forEach(function (content, content_index) {
+        tab_wraps.forEach(function (content, content_index) {
             if (content_index == tab_index) {
                 content.style.display = "block";
             }
@@ -62,7 +63,13 @@ tabs_preguntas.forEach(function (tab, tab_index) {
     })
 })
 
+function ver_manual(){
+    window.open(`${url_global_pagina}manual_usuario${extencion}?usuario=${usuario_ID}`);
+}
 
+function imprimir_manual(){
+    window.open(`${url_global_pagina}manual_usuario${extencion}?usuario=${usuario_ID}`);
+}
 
 //funciones de los botones
 function ir_evaluacion() {

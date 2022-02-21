@@ -59,7 +59,7 @@
                     </li>
                     <!-- <i class="fa-regular fa-comment-question"></i> -->
                     <li onclick="ir_contactanos();"><i class="fas fa-question"></i></i>
-                        <a>Contactanos</a>
+                        <a>Ayuda</a>
                     </li>
                     <!--<li><i class="fas fa-edit"></i><a href="#">Editar Perfil</a></li>-->
                     <li><i class="fas fa-sign-out-alt"></i><a onclick="salir()">Salir</a></li>

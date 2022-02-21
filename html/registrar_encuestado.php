@@ -455,7 +455,7 @@
                             </label>
                             <div class="ingresar-contrasena" class="grupo_input">
                                 <!-- <i class="fa fa-lock"></i> -->
-                                <input class="datos formulario__input" name="password" type="text" id="contrasena-id"
+                                <input class="datos formulario__input" name="password" type="password" id="contrasena-id"
                                     placeholder="Ingresar Contraseña">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
@@ -468,7 +468,7 @@
                             </label>
                             <div class="ingresar-contrasena-confir" class="grupo_input">
                                 <!-- <i class="fa fa-lock"></i> -->
-                                <input class="datos formulario__input" name="password2" type="text"
+                                <input class="datos formulario__input" name="password2" type="password"
                                     id="contrasena-confir" placeholder="Confirmar Contraseña">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
@@ -529,8 +529,24 @@
                         <span>Términos de aceptación.</span>
                     </div>
                     <div class="texto-modal">
-                        <span class="mensage-1">Desea que su información personal se utilice, en otros aspectos, siempre
-                            con la debida ética.</span>
+                        <span class="mensage-1 terminos_aceptacion_msg">
+                            La presente política de aceptación resume las practicas llevadas a cabo por “El sistema de
+                            Evaluación de Practicas de Responsabilidad Social Empresarial”, en relación a la información
+                            recopilada de los usuarios que acceden al sitio web por medio de “https://app-prueba-r-se.herokuapp.com/” o que comparten
+                            información con nosotros.
+                            <br><br>
+                            El procesamiento de su información personal (cualquier información que pueda permitir su
+                            identificación) es necesario para el cumplimiento de nuestras obligaciones con usted, además
+                            de para proporcionar nuestros servicios, proteger nuestros intereses y cumplir con las
+                            legislaciones.
+                            <br><br>
+                            Al utilizar el sistema web da su consentimiento a la recopilación, el almacenamiento, la
+                            utilización, la divulgación, y otros usos de su información personal tal y como se describen
+                            en la presen política de aceptación.
+                            <br><br>
+                            Recomendamos a los Usuarios que lean la presente política de aceptación y hagan uso de ella
+                            para la toma de decisiones.
+                        </span>
                     </div>
                     <div class="radio-button">
                         <div class="radio">
