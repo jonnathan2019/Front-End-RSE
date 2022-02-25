@@ -25,27 +25,27 @@ const campos = {
 const validarFormulario = (e) => {
     // console.log(e.target.name)
     switch (e.target.name) {
-        case "nombre-empresa":
-            validarCampo(expresiones.nombre, e.target, 'nombre-empresa');
-            break;
-        case "pagina-web":
-            // validarCampo(expresiones.pagina_web, e.target, 'pagina-web');
-            break;
-        case "direccion-operacion":
-            validarCampo(expresiones.letras_numeros, e.target, 'direccion-operacion');
-            break;
-        case "numero-sedes": // mal
-            validarCampo(expresiones.numero, e.target, 'numero-sedes');
-            break;
-        case "numero-empleados-empresa":
-            validarCampo(expresiones.numero, e.target, 'numero-empleados-empresa');
-            break;
-        case "ruc-empresa":
-            validarCampo(expresiones.letras_numeros, e.target, 'ruc-empresa');
-            break;
-        case "estimado-ingresos":
-            validarCampo(expresiones.numero, e.target, 'estimado-ingresos');
-            break;
+        // case "nombre-empresa":
+        //     validarCampo(expresiones.nombre, e.target, 'nombre-empresa');
+        //     break;
+        // case "pagina-web":
+        //     // validarCampo(expresiones.pagina_web, e.target, 'pagina-web');
+        //     break;
+        // case "direccion-operacion":
+        //     // validarCampo(expresiones.letras_numeros, e.target, 'direccion-operacion');
+        //     break;
+        // case "numero-sedes": // mal
+        //     validarCampo(expresiones.numero, e.target, 'numero-sedes');
+        //     break;
+        // case "numero-empleados-empresa":
+        //     validarCampo(expresiones.numero, e.target, 'numero-empleados-empresa');
+        //     break;
+        // case "ruc-empresa":
+        //     validarCampo(expresiones.letras_numeros, e.target, 'ruc-empresa');
+        //     break;
+        // case "estimado-ingresos":
+        //     validarCampo(expresiones.numero, e.target, 'estimado-ingresos');
+        //     break;
         // __________-
         case "nombre":
             validarCampo(expresiones.nombre, e.target, 'nombre');
