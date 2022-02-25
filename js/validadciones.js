@@ -31,9 +31,9 @@ const validarFormulario = (e) => {
         case "pagina-web":
             // validarCampo(expresiones.pagina_web, e.target, 'pagina-web');
             break;
-        case "direccion-operacion":
-            // validarCampo(expresiones.letras_numeros, e.target, 'direccion-operacion');
-            break;
+        // case "direccion-operacion":
+        //     // validarCampo(expresiones.letras_numeros, e.target, 'direccion-operacion');
+        //     break;
         case "numero-sedes": // mal
             validarCampo(expresiones.numero, e.target, 'numero-sedes');
             break;
