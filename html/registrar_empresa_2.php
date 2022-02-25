@@ -348,7 +348,7 @@
 </body>
 <script src="../js/urls.js"></script>
 <script src="../js/registrar_empresa_2.js"></script>
-<script src="../js/validadciones.js"></script>
+<script src="../js/validadciones_empresa.js"></script>
 <!-- para el modela cargando  -->
 <script src="../js/modal.js"></script>
 
