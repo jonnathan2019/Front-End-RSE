@@ -159,7 +159,7 @@
                                 placeholder="Dirección Empresa" class="formulario__input">
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="formulario__input-error">La dirección solo puede contener letras y números y sin espacios.</p>
+                        <p class="formulario__input-error">La dirección solo puede contener letras y números y no debe contener espacios.</p>
                     </div>
                 </div>
                 <div class="empresa-datos">
