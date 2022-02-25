@@ -9,7 +9,7 @@ const expresiones = {
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/, // 7 a 14 numeros.
     numero: /^([0-9])*$/,
-    letras_numeros: /^[0-9a-zA-Z]+$/,
+    letras_numeros: /^[A-Za-z0-9\s]+$/,
     pagina_web: /^$/, // 4 a 12 digitos.
 }
 
@@ -32,7 +32,7 @@ const validarFormulario = (e) => {
             // validarCampo(expresiones.pagina_web, e.target, 'pagina-web');
             break;
         case "direccion-operacion":
-            // validarCampo(expresiones.letras_numeros, e.target, 'direccion-operacion');
+            validarCampo(expresiones.letras_numeros, e.target, 'direccion-operacion');
             break;
         case "numero-sedes": // mal
             validarCampo(expresiones.numero, e.target, 'numero-sedes');
