@@ -23,7 +23,7 @@ const campos = {
 }
 
 const validarFormulario = (e) => {
-    // console.log(e.target.name)
+    console.log(e.target.name)
     switch (e.target.name) {
         case "nombre-empresa":
             validarCampo(expresiones.nombre, e.target, 'nombre-empresa');
