@@ -294,7 +294,9 @@ function guardar_empresa(termino_aceptacion) {
         console.log(info_usuario)
         await putUsuarioID(info_usuario.usuario, info_usuario.contrasena, info_usuario.encuestado.nombre, info_usuario.encuestado.apellido, info_usuario.encuestado.correo, info_usuario.encuestado.encuestado_ID, info_usuario.encuestado.terminos_aceptacion, info_usuario.encuestado.tipo_cuenta, ultima_empresa_ingresa);
         aux_empresa = 1;//para validar que solo pasa al siguinet proceso si ingreso una empresa
-        user_empresa_registrado(); // para mostrar el mesnaje de aceptacion empresa
+        setTimeout(()=>{
+            user_empresa_registrado(); // para mostrar el mesnaje de aceptacion empresa
+        },2000)
         // document.getElementById('continuar_evaluacion').style.border = "border: 2px solid rgb(71, 71, 241);";
 
     })()

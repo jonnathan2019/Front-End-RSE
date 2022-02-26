@@ -702,7 +702,6 @@
             // user_usuario_registrado();
             //vamos a crear la empresa
             setTimeout(() => {
-                user_usuario_registrado();
                 (async function () {
                     const datos_usuario = await getDatosUsuarios();
                     //Ordenamos los los Usuario/Encuestados
@@ -717,7 +716,9 @@
                     //registramos lso datos en FIREBASE con el ID registrado
                     await set_firebase(email, contrasena);
                     // console.log(`${url_global_pagina}registrar_empresa_2${extencion}?usuario=${ultimo_usario_ingresado}`)
-
+                    setTimeout(()=>{
+                        user_usuario_registrado();
+                    },1000)
                 })()
             }, 3000)
 
