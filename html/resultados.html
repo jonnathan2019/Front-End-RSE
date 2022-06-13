@@ -294,8 +294,9 @@
             </div>
             <div class="opciones">
                 <ul>
-                    <li><a href="#" onclick="descargarPDF();"><i class="fas fa-print"></i>Descargar</a></li>
-                    <li><a href="#" onclick="imprimirPDF();"><i class="fas fa-download"></i></i>Imprimir</a></li>
+                    <li><a href="#" onclick="descargarPDF();"><i class="fas fa-print"></i>Descargar Reporte</a></li>
+                    <li><a href="#" onclick="imprimirPDF();"><i class="fas fa-download"></i></i>Imprimir Reporte</a></li>
+                    <li><a href="#" onclick="descargarExcel();"><i class="fas fa-file-excel"></i></i>Generar Excel Resultados</a></li>
                     <!-- <li><a href="#" onclick="enviarPDF();"><i class="fas fa-paper-plane"></i>Enviar</a></li> -->
                     <li style="display: none;"><a href="#" onclick="cargar_info_PDF();" id="abrir_pdf"><i class="fas fa-poll"></i>Ver
                             Reporte</a></li>
@@ -1409,6 +1410,10 @@
 
 <!-- Para cargar RETROALIMENTACIONES -->
 <script src="../js/graficas/retroalimentaciones.js"></script>
+
+<!-- Libreria para generar el Excel -->
+<script lang="javascript" src="../librerias/excel/xlsx.full.min.js"></script>
+<script lang="javascript" src="../librerias/excel/Filesaver.min.js"></script>
 
 <!--<script src="../js/modal_info.js"></script>-->
 <script src="../js/pdf.js"></script>

@@ -158,6 +158,7 @@ function enviarPDF() {
         })
 }
 
+
 function descargarPDF() {
     // para mostrar el modal cargando 
     mostrar_modal_cargando();
@@ -287,6 +288,165 @@ function imprimirPDF() {
 
         })
 
+}
+
+// para obtener las respuestas
+
+//Obtenemos el USUARIO de la URL
+function obtener_valor(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+
+var usuario_ID = obtener_valor("usuario");//OBtenemos el ID de la URLs
+// console.log(usuario_ID)
+// buscamos el Encuestado ID de acuerod al usuario ID
+var encuestado_ID;
+fetch(`${link_service}consultas/usuarioId/${usuario_ID}`)
+    .then(response => response.json())
+    .then(data => {
+        encuestado_ID = data.encuestado.encuestado_ID;//guardamos el ID del encuestado
+        // console.log(encuestado_ID);
+    })
+async function getTemas() {
+    const respuesta = await fetch(`${link_service}consultas/listarTemas`)
+    const json = await respuesta.json()
+
+    return json;
+}
+
+async function getIndicadores() {
+    const respuesta = await fetch(`${link_service}consultas/listarIndicadores`)
+    const json = await respuesta.json()
+
+    return json;
+}
+async function getRespuestas() {
+    const respuesta = await fetch(`${link_service}consultas/respuestasIndicadoresPreguntas`)
+    const json = await respuesta.json()
+
+    return json;
+}
+
+function descargarExcel() {
+    // para mostrar el modal cargando 
+    mostrar_modal_cargando();
+    // para ocultar los elemteos
+    ocultar_elementos();
+
+    (async function () {
+        // const info_temas = await getTemas();
+        // const info_indicadores = await getIndicadores();
+        const info_preguntas_respondidas = await getRespuestas();
+        // console.log(info_preguntas_respondidas);
+        
+        // console.log(resutaldo_final)//resulatdo final
+        // console.log(objeto_resp)//resulatdo dimensiones y otros
+        // console.log(respuesta_final_2) // resultado final con todas las practicas de RSE
+
+        var lista_resultados = [];
+        lista_resultados.push([])
+        lista_resultados.push([])
+        setTimeout(() => {
+            var lista_titulo = ['Integración Global.', 'Integración Especifica.'];
+            var lista_valores = [resutaldo_final * 100, respuesta_final_2 * 100];
+
+            // we save the dimenstions informartion first 
+            objeto_resp.forEach(dimesnion => {// datos de las Dimesniones
+                var titulo = 'Integración ' + dimesnion.dimension;
+                lista_titulo.push(titulo);// agregamos el nombre de la dimension;
+                lista_valores.push(dimesnion.nivel_2 * 100); // agregamos el valor de la dimension
+            })
+            lista_resultados.push(lista_titulo);
+            lista_resultados.push(lista_valores);
+
+            // then we save the data about topics
+            objeto_resp.forEach(dimesnion => {// datos de las Dimesniones
+                // console.log(dimesnion.dimension);
+                // console.log(dimesnion.nivel_2 * 100);
+                //guardamos el nombre de lsa dimensiones
+                lista_resultados.push([])
+                lista_resultados.push([])
+                lista_resultados.push(["Dimensión "+dimesnion.dimension+"."])
+                lista_resultados.push([])
+                dimesnion.temas.forEach(tema => {// datos de los Temas
+                    var tema_nom_valor = [];
+                    // console.log(tema.nombre);
+                    // console.log(tema.nivel_1 * 100);
+                    tema_nom_valor.push(tema.nombre);
+                    tema_nom_valor.push(tema.nivel_1 * 100);
+                    lista_resultados.push(tema_nom_valor);
+                })
+            })
+
+            lista_resultados.push([])
+            lista_resultados.push([])
+
+            lista_resultados.push(['Preguntas Respondidas.','Respuesta.','Tema','Dimensión'])
+            lista_resultados.push([])
+            // saving quesrtions results
+            info_preguntas_respondidas.forEach(repuetas_guardadas => {//recorremos todas las respuestas
+                //comparamos el indicador y el usuario para saber que indicador ha sido respondido 
+                var pregunta_respuesta = [];
+                if (repuetas_guardadas.respuestasaIndicadores.encuestado.encuestado_ID == encuestado_ID) {
+                    //  console.log("--    " + repuetas_guardadas.respuestasaIndicadores.encuestado.encuestado_ID+ " " + repuetas_guardadas.preguntasCualitativas.pregunta_cualitativa + ":    " + repuetas_guardadas.respuesta);
+                    //  console.log(repuetas_guardadas.respuestasaIndicadores.indicador.tema.nombre)
+                    //  console.log(repuetas_guardadas.respuestasaIndicadores.indicador.tema.dimension.nombre)
+                    var respuesta;
+                    if(repuetas_guardadas.respuesta == 2){
+                        respuesta = 'Si';
+                    }else if(repuetas_guardadas.respuesta == 1){
+                        respuesta = "Parcial";
+                    }else if(repuetas_guardadas.respuesta == 0){
+                        respuesta = 'No';
+                    }else{
+                        respuesta = 'No Aplica';
+                    }
+                    // saving the question and the value
+                    pregunta_respuesta.push(repuetas_guardadas.preguntasCualitativas.pregunta_cualitativa);
+                    pregunta_respuesta.push(respuesta);
+                    pregunta_respuesta.push(repuetas_guardadas.respuestasaIndicadores.indicador.tema.nombre);// saving the topic
+                    pregunta_respuesta.push(repuetas_guardadas.respuestasaIndicadores.indicador.tema.dimension.nombre);// saving the dimention
+
+                    // saving the the questions with its value in the final array
+                    lista_resultados.push(pregunta_respuesta);
+                }
+            })
+            // show the results by consol
+            
+            // console.log(lista_resultados);
+
+            var wb = XLSX.utils.book_new();
+            wb.Props = {
+                Title: "SheetJS Tutorial",
+                Subject: "Test",
+                Author: "Red Stapler",
+                CreatedDate: new Date(2017, 12, 19)
+            };
+
+            wb.SheetNames.push("Test Sheet");
+            // var ws_data = [['hello', 'world'],['1', '2'],['4', '5','7','8']];
+            var ws = XLSX.utils.aoa_to_sheet(lista_resultados);
+            wb.Sheets["Test Sheet"] = ws;
+
+
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+            saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'resultados.xlsx');
+            // para indicar en el MODAL que se ha completado la operacion
+            completado();
+            mostrar_elementos();// para volver a cargar todos los Resultados en la vista 
+        }, 0000)
+    })()
 }
 
 //PDF modal

@@ -7,7 +7,7 @@ async function getDatosUsuarios() {
 
 (async function () {
     const datos_usuario = await getDatosUsuarios();
-    console.log(datos_usuario)
+    console.log("datos_usuario")
 })()
 
 function registrar_encuestado(){
